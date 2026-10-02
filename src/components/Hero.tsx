@@ -1,127 +1,188 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { FC } from 'react';
-import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Shield, ArrowRight, HardHat } from 'lucide-react';
+
+interface Slide {
+  image: string;
+  title: string;
+  metricLabel: string;
+  metricValue: string;
+  status: string;
+}
+
+const slides: Slide[] = [
+  {
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80',
+    title: 'Metro Viaduct Structural Coating',
+    metricLabel: 'Coating Area',
+    metricValue: '45,000 sq.m.',
+    status: '100% Safety Rated',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    title: 'High-Speed Expressway Gantry Alignment',
+    metricLabel: 'Corridor Length',
+    metricValue: '12.4 km',
+    status: 'In Alignment Phase',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1200&q=80',
+    title: 'Industrial Manufacturing & Civil Assets',
+    metricLabel: 'Fabrication Volume',
+    metricValue: '18,500 MT',
+    status: 'Quality Certified',
+  },
+];
+
+const BlueprintPattern = () => (
+  <svg className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
+        <path d="M 0 20 L 40 20" fill="none" stroke="white" strokeWidth="0.5" strokeDasharray="2,2" />
+        <path d="M 20 0 L 20 40" fill="none" stroke="white" strokeWidth="0.5" strokeDasharray="2,2" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)" />
+    <circle cx="80%" cy="20%" r="150" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="5,5" />
+    <circle cx="80%" cy="20%" r="80" fill="none" stroke="white" strokeWidth="1" />
+    <line x1="0" y1="30%" x2="100%" y2="30%" stroke="white" strokeWidth="1" strokeDasharray="10,5" />
+    <line x1="30%" y1="0" x2="30%" y2="100%" stroke="white" strokeWidth="1" strokeDasharray="10,5" />
+    <path d="M 10% 90% L 30% 70% L 60% 85% L 90% 55%" fill="none" stroke="white" strokeWidth="1.5" />
+    <path d="M 28% 70% L 32% 70% M 30% 68% L 30% 72%" stroke="white" strokeWidth="2" />
+    <path d="M 58% 85% L 62% 85% M 60% 83% L 60% 87%" stroke="white" strokeWidth="2" />
+    <path d="M 88% 55% L 92% 55% M 90% 53% L 90% 57%" stroke="white" strokeWidth="2" />
+  </svg>
+);
 
 export const Hero: FC = () => {
-  const [activePanel, setActivePanel] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="relative min-h-[100vh] bg-[#020617] text-white overflow-hidden flex items-center pt-40 lg:pt-32 pb-12">
-      
-      {/* Creative Liquid Paint Ambient Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#020617]">
-        {/* Animated Conic Gradient */}
-        <motion.div 
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] opacity-50"
-          style={{
-            background: 'conic-gradient(from 0deg at 50% 50%, #020617, #0F2E5A, #E31E24, #020617, #0F2E5A)'
-          }}
-        />
-        {/* Heavy glass blur */}
-        <div className="absolute inset-0 backdrop-blur-[150px]"></div>
-        
-        {/* Faint industrial texture overlay */}
-        <div className="absolute inset-0 opacity-[0.1] mix-blend-overlay" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1920&q=80")', backgroundSize: 'cover' }}></div>
-      </div>
+    <div className="relative bg-[#0F2E5A] text-white overflow-hidden border-b-8 border-[#E31E24] w-full">
+      {/* Structural Background Pattern */}
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="w-full max-w-none grid grid-cols-1 lg:grid-cols-12 min-h-[600px] items-stretch relative z-10 mx-0 px-0">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Left Column: Authority & Directives */}
+        <div className="hero-clip-path lg:col-span-7 flex flex-col justify-center px-6 py-16 md:px-16 lg:pl-24 lg:pr-16 bg-[#0F2E5A] space-y-8 relative z-20">
+          <BlueprintPattern />
           
-          {/* Left Content Column */}
-          <div className="lg:col-span-6 space-y-6 sm:space-y-8 mt-12 lg:mt-4">
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-4"
-            >
-              {/* Corporate Tagline */}
-              <div className="inline-flex items-center gap-2.5 text-[11px] font-bold text-white tracking-[0.2em] uppercase cursor-default">
-                <span>WORK IS WORSHIP</span>
-                <span className="text-white/30">•</span>
-                <span className="text-white/70 font-medium normal-case tracking-wide">कर्म ही पूजा है</span>
-              </div>
+          <div className="relative z-10 space-y-8">
+            {/* Trust Badge */}
+            <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700/60 p-2.5 self-start rounded-lg shadow-sm">
+              <Shield className="w-4 h-4 text-[#E31E24]" />
+              <span className="text-xs uppercase tracking-widest font-bold text-slate-300">
+                ISO 9001:2015 Certified Contractor
+              </span>
+            </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-[1.1] text-white drop-shadow-2xl">
-                Building Infrastructure<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-apcoRed to-red-400 drop-shadow-lg">Enhancing Horizons</span>
+            {/* Heavy Typography */}
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">
+                Industrial Execution. <br />
+                <span className="text-[#E31E24]">Structural Precision.</span>
               </h1>
-              <p className="text-sm md:text-base text-slate-300 max-w-xl font-medium leading-loose border-l-2 border-apcoRed/50 pl-4 py-1">
-                Trusted Civil Construction, Commercial Painting, and Specialized Structural Fabrication Services Across India.
+              <p className="text-sm md:text-base text-slate-300 max-w-xl font-normal leading-relaxed">
+                Varan Corporation delivers elite engineering support, heavy-duty industrial painting, structural fabrication, and commercial manpower logistics for large-scale infrastructure and transit systems across Mumbai.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col sm:flex-row gap-4 pt-12 sm:pt-20 lg:pt-[18rem]"
-            >
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gradient-to-r from-apcoRed to-[#ff3b42] hover:from-[#ff3b42] hover:to-apcoRed text-white font-bold uppercase tracking-widest text-[10px] px-7 py-4 transition-all duration-300 flex items-center justify-center space-x-2 rounded-xl shadow-[0_10px_30px_-10px_rgba(227,30,36,0.6)] group hover:-translate-y-1">
-                <span>Get a Quote</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            {/* Action Hub */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-[#E31E24] hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs px-8 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center space-x-2 rounded-lg shadow-md">
+                <span>Request Project Quote / RFP</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white/5 hover:bg-white/10 text-white border border-white/20 backdrop-blur-md font-bold uppercase tracking-widest text-[10px] px-7 py-4 transition-all duration-300 flex items-center justify-center space-x-2 rounded-xl shadow-lg hover:-translate-y-1">
-                <span>View Our Projects</span>
+              <button className="border border-slate-500/60 hover:bg-slate-800/50 text-white font-bold uppercase tracking-wider text-xs px-8 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center space-x-2 rounded-lg shadow-md">
+                <HardHat className="w-4 h-4 text-slate-400" />
+                <span>Explore Fleet & Machinery</span>
               </button>
-            </motion.div>
+            </div>
 
-
-
+            {/* High-Contrast Industrial Feature Badges */}
+            <div className="grid grid-cols-3 gap-3 pt-6 border-t border-slate-700/50">
+              <div className="flex flex-col items-center justify-center p-3 border border-slate-700/60 bg-slate-800/40 rounded-lg text-center shadow-sm">
+                <span className="text-[#E31E24] font-black text-sm block">100%</span>
+                <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider mt-0.5">Compliance</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-3 border border-slate-700/60 bg-slate-800/40 rounded-lg text-center shadow-sm">
+                <span className="text-green-400 font-black text-sm block">HSE</span>
+                <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider mt-0.5">Safety Certified</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-3 border border-slate-700/60 bg-slate-800/40 rounded-lg text-center shadow-sm">
+                <span className="text-blue-400 font-black text-sm block">GOVT</span>
+                <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider mt-0.5">Approved Layouts</span>
+              </div>
+            </div>
           </div>
-
-          {/* Right Showcase - Interactive Expanding Accordion */}
-          <div className="lg:col-span-6 relative mt-16 lg:mt-0 h-[450px] sm:h-[500px] w-full flex gap-3">
-            
-            {[
-              { id: 1, title: 'Civil Infra', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
-              { id: 2, title: 'Painting', image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=800&q=80' },
-              { id: 3, title: 'Fabrication', image: 'https://images.unsplash.com/photo-1525207934214-58e69a8f8a3e?auto=format&fit=crop&w=800&q=80' },
-            ].map((panel, idx) => (
-              <motion.div 
-                key={panel.id}
-                onMouseEnter={() => setActivePanel(panel.id)}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2 + (idx * 0.1), ease: [0.22, 1, 0.36, 1] }}
-                className="relative h-full rounded-2xl overflow-hidden cursor-pointer border border-white/10 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                style={{ flex: activePanel === panel.id ? 2.5 : 1 }}
-              >
-                <img 
-                  src={panel.image} 
-                  alt={panel.title} 
-                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out ${activePanel === panel.id ? 'scale-110' : 'scale-100'}`}
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-opacity duration-500 ${activePanel === panel.id ? 'opacity-90' : 'opacity-80'}`}></div>
-                
-                {/* Content */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  {/* Vertical Text */}
-                  <div className={`transform -rotate-90 origin-bottom-left absolute bottom-10 left-[60%] whitespace-nowrap transition-opacity duration-300 ${activePanel === panel.id ? 'opacity-0' : 'opacity-100'}`}>
-                    <span className="text-white/60 font-bold tracking-[0.3em] uppercase text-xs">{panel.title}</span>
-                  </div>
-                  
-                  {/* Horizontal Text */}
-                  <div className={`transition-all duration-500 delay-100 transform w-48 ${activePanel === panel.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                    <span className="text-apcoRed font-bold text-[9px] uppercase tracking-[0.2em] block mb-1">Division 0{panel.id}</span>
-                    <span className="text-white font-black text-2xl tracking-tighter leading-none block">{panel.title}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-            
-          </div>
-
         </div>
+
+        {/* Right Column: Cinematic Industrial Showcase Carousel */}
+        <div className="lg:col-span-5 relative bg-slate-900 min-h-[400px] lg:min-h-full flex items-center justify-center overflow-hidden lg:-ml-32 lg:pl-32 z-10">
+          {/* Slide Images */}
+          {slides.map((slide, index) => (
+            <img 
+              key={index}
+              src={slide.image} 
+              alt={slide.title} 
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-in-out ${
+                index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+              }`}
+            />
+          ))}
+          
+          {/* Dark Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent z-10"></div>
+          
+          {/* Glassmorphic Metrics Card */}
+          <div className="absolute bottom-8 left-8 right-8 z-20 bg-slate-900/65 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl shadow-slate-950/30 transition-all duration-500">
+            <div className="border-l-4 border-[#E31E24] pl-4 space-y-1 mb-4">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Featured Operational Site</span>
+              <h3 className="text-sm font-bold uppercase tracking-wide text-white leading-snug min-h-[2.5rem] flex items-center">
+                {slides[currentSlide].title}
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-white/10 text-xs">
+              <div>
+                <span className="text-slate-400 block uppercase tracking-wider text-[10px]">
+                  {slides[currentSlide].metricLabel}
+                </span>
+                <span className="font-bold text-white text-sm">
+                  {slides[currentSlide].metricValue}
+                </span>
+              </div>
+              <div>
+                <span className="text-slate-400 block uppercase tracking-wider text-[10px]">Execution Status</span>
+                <span className="font-bold text-green-400 text-sm">
+                  {slides[currentSlide].status}
+                </span>
+              </div>
+            </div>
+            {/* Slide indicators */}
+            <div className="flex space-x-1.5 mt-4 justify-end">
+              {slides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    idx === currentSlide ? 'bg-[#E31E24] w-4' : 'bg-white/40'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

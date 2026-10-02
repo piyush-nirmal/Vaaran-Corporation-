@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import type { FC } from 'react';
-import { Briefcase, MapPin, Wrench } from 'lucide-react';
+import { Briefcase, MapPin, ShieldCheck, Wrench } from 'lucide-react';
 
 interface Project {
   id: string;
   title: string;
-  sector: 'Marine & High-Rise Painting' | 'Civil Infrastructure' | 'Structural & Metro Works';
-  client: string;
+  sector: 'Transit Infrastructure' | 'Commercial Branding' | 'Civil Works';
   metric: string;
   image: string;
   location: string;
@@ -16,122 +15,38 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    id: 'bandra-worli-sea-link',
-    title: 'Bandra–Worli Sea Link Marine Coating',
-    sector: 'Marine & High-Rise Painting',
-    client: 'MSRDC',
-    metric: '100 Ft Elevation Above Sea',
-    image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=800&q=80',
-    location: 'Mumbai Sea Link Corridor',
-    equipment: 'Marine Safety Net Rigs & High-Elevation Cradles',
-    safetyStatus: 'Anti-Carbonation Certified',
-  },
-  {
-    id: 'vashi-flyover-lt',
-    title: 'Vashi Flyover Protective Coating',
-    sector: 'Marine & High-Rise Painting',
-    client: 'Larsen & Toubro (L&T)',
-    metric: 'Full Viaduct Protective Coating',
-    image: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80',
-    location: 'Vashi Flyover, Navi Mumbai',
-    equipment: 'Airless Spray Systems & Boom Lifts',
-    safetyStatus: '100% Weather Resistant',
-  },
-  {
-    id: 'bandra-versova-infra',
-    title: 'Bandra–Versova Infrastructure Painting',
-    sector: 'Marine & High-Rise Painting',
-    client: 'Apco Infratech',
-    metric: 'Express Infrastructure Scope',
+    id: 'metro-viaduct',
+    title: 'Metro Line Viaduct Structural Coating',
+    sector: 'Transit Infrastructure',
+    metric: '45,000 sq.m.',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-    location: 'Bandra–Versova Coastal Corridor',
-    equipment: 'Scaffolding & Structural Painting Rigs',
-    safetyStatus: 'Site Clearances Approved',
+    location: 'Mumbai Metro Line 3 Corridor',
+    equipment: 'Airless Spray Plants & Blasting Rigs',
+    safetyStatus: '100% OSHA Compliant',
   },
   {
-    id: 'metro-rail-corridor-tata',
-    title: 'Metro Rail Corridor Vikhroli–Ghatkopar & BKC',
-    sector: 'Structural & Metro Works',
-    client: 'TATA Group',
-    metric: 'Metro Track & Station Structure',
-    image: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80',
-    location: 'Vikhroli–Ghatkopar & BKC Metro',
-    equipment: 'Steel Fabrication & Track Safety Nets',
-    safetyStatus: 'TATA Safety Audit Passed',
+    id: 'highway-gantry',
+    title: 'High-Speed Expressway Gantry Fabrication',
+    sector: 'Civil Works',
+    metric: '12 Units Installed',
+    image: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80',
+    location: 'Western Express Highway Toll Plaza',
+    equipment: 'Structural Welding Stations & Gantries',
+    safetyStatus: 'Structural Certification Logged',
   },
   {
-    id: 'delhi-toll-infra',
-    title: 'Delhi Toll Infrastructure Civil Construction',
-    sector: 'Civil Infrastructure',
-    client: 'MEP Infrastructure',
-    metric: 'Toll Plaza Civil & Canopy Setup',
+    id: 'acp-display',
+    title: 'Corporate ACP Display & Sky-Sign Setup',
+    sector: 'Commercial Branding',
+    metric: '180 ft Elevation',
     image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80',
-    location: 'Delhi Expressway Entry Corridor',
-    equipment: 'Heavy Concrete Paving & Steel Fabrication Rigs',
-    safetyStatus: 'Structural Clearance Logged',
-  },
-  {
-    id: 'goa-bridge-project',
-    title: 'Goa Infrastructure Bridge Painting',
-    sector: 'Marine & High-Rise Painting',
-    client: 'State Public Works',
-    metric: 'Bridge Span Protective System',
-    image: 'https://images.unsplash.com/photo-1525207934214-58e69a8f8a3e?auto=format&fit=crop&w=800&q=80',
-    location: 'Goa River Bridge Structure',
-    equipment: 'Sand Blasting & Anti-Carbonation Rigs',
-    safetyStatus: 'ISO 9001 Standard Executed',
+    location: 'Bandra-Kurla Complex Corporate HQ',
+    equipment: 'Aluminum Scaffolding Systems & LED CNC letters',
+    safetyStatus: 'High-Altitude Safety Verified',
   },
 ];
 
-const categories = ['All', 'Marine & High-Rise Painting', 'Civil Infrastructure', 'Structural & Metro Works'] as const;
-
-const esteemedClients = [
-  { name: 'MSRDC', type: 'Government' },
-  { name: 'Larsen & Toubro (L&T)', type: 'Infrastructure Giant' },
-  { name: 'TATA Group', type: 'Corporate' },
-  { name: 'Godrej', type: 'Corporate' },
-  { name: 'Amul (GCMMF)', type: 'Corporate' },
-  { name: 'Apco Infratech', type: 'Infrastructure' },
-  { name: 'MEP Infrastructure', type: 'Toll Operator' },
-  { name: 'HCC', type: 'Infrastructure' },
-  { name: 'NCC Limited', type: 'Infrastructure' },
-  { name: 'HMM Infra Limited', type: 'Fabrication' },
-  { name: 'Roadway Solutions', type: 'Highways' },
-  { name: 'Pragati Infra', type: 'Civil Engineering' },
-];
-
-const getSectorPastelTheme = (sector: string) => {
-  switch (sector) {
-    case 'Marine & High-Rise Painting':
-      return {
-        bg: 'bg-sky-100',
-        text: 'text-sky-800',
-        border: 'border-sky-200',
-        icon: 'text-sky-400',
-      };
-    case 'Civil Infrastructure':
-      return {
-        bg: 'bg-amber-100',
-        text: 'text-amber-800',
-        border: 'border-amber-200',
-        icon: 'text-amber-400',
-      };
-    case 'Structural & Metro Works':
-      return {
-        bg: 'bg-rose-100',
-        text: 'text-rose-800',
-        border: 'border-rose-200',
-        icon: 'text-rose-400',
-      };
-    default:
-      return {
-        bg: 'bg-slate-800',
-        text: 'text-white',
-        border: 'border-slate-800',
-        icon: 'text-white',
-      };
-  }
-};
+const categories = ['All', 'Transit Infrastructure', 'Commercial Branding', 'Civil Works'] as const;
 
 export const ProjectsPortfolio: FC = () => {
   const [activeTab, setActiveTab] = useState<typeof categories[number]>('All');
@@ -141,21 +56,34 @@ export const ProjectsPortfolio: FC = () => {
     : projectsData.filter((p) => p.sector === activeTab);
 
   return (
-    <div className="space-y-24">
-      {/* Sleek Glass Filter Tabs with Pastel Themes */}
-      <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto bg-white p-2.5 rounded-[2.5rem] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+    <div className="bg-white border border-gray-200/60 rounded-2xl p-6 md:p-8 shadow-xl shadow-slate-950/5">
+      {/* Header Block */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-200/60 pb-6 mb-8 gap-4">
+        <div>
+          <span className="text-apcoRed font-bold tracking-widest text-xs uppercase block mb-1">
+            Varan Corporation
+          </span>
+          <h2 className="text-2xl font-bold uppercase text-apcoBlue tracking-wide">
+            Projects Portfolio
+          </h2>
+          <p className="text-xs text-apcoMuted uppercase tracking-wider font-semibold mt-1">
+            Explore execution milestones and structural setups across municipal & private sectors.
+          </p>
+        </div>
+      </div>
+
+      {/* Filter Tabs Navigation */}
+      <div className="flex flex-wrap gap-2 pb-6 border-b border-gray-200/60 mb-8">
         {categories.map((cat) => {
           const isActive = activeTab === cat;
-          const theme = getSectorPastelTheme(cat);
-          
           return (
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-6 py-3 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-500 rounded-full border ${
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 border rounded-lg ${
                 isActive
-                  ? `${theme.bg} ${theme.text} ${theme.border} shadow-sm`
-                  : 'bg-transparent text-slate-500 border-transparent hover:bg-slate-50 hover:text-slate-800'
+                  ? 'bg-apcoBlue text-white border-transparent shadow-md shadow-slate-950/10'
+                  : 'bg-white text-apcoMuted hover:text-apcoBlue hover:bg-gray-50 border-gray-200/60 shadow-sm'
               }`}
             >
               {cat}
@@ -166,81 +94,73 @@ export const ProjectsPortfolio: FC = () => {
 
       {/* Grid Projects Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project) => {
-          const theme = getSectorPastelTheme(project.sector);
-          return (
-            <div
-              key={project.id}
-              className="group relative overflow-hidden rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 aspect-[4/5] w-full bg-white cursor-pointer transition-all duration-700 border border-slate-100/50"
-            >
-              {/* Project Image */}
-              <div className="absolute inset-0 p-4 transition-all duration-700 group-hover:p-0">
-                <div className="relative w-full h-full rounded-[2rem] overflow-hidden group-hover:rounded-none transition-all duration-700 bg-slate-100">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-110"
-                  />
-                  {/* Premium Gradient Overlay on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/60 to-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        {filteredProjects.map((project) => (
+          <div
+            key={project.id}
+            className="group relative overflow-hidden rounded-2xl border border-gray-200/60 shadow-md aspect-[4/3] w-full bg-slate-950 cursor-pointer"
+          >
+            {/* Project Image */}
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+            />
+
+            {/* Base Overlay Gradient (Always Visible for Contrast) */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent z-10"></div>
+
+            {/* Default Unhovered Typography Title info */}
+            <div className="absolute bottom-6 left-6 right-6 z-20 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
+              <span className="text-[10px] uppercase font-bold text-white tracking-widest bg-apcoRed px-2.5 py-1 rounded-md mb-2 inline-block">
+                {project.sector}
+              </span>
+              <h3 className="text-base font-bold uppercase text-white tracking-wide leading-snug">
+                {project.title}
+              </h3>
+            </div>
+
+            {/* Premium Glassmorphic Overlay (Slides/Fades in on Hover) */}
+            <div className="absolute inset-0 z-30 bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6 border border-white/10 rounded-2xl">
+              <div className="space-y-4 text-white">
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-white tracking-widest bg-apcoRed px-2 py-0.5 rounded">
+                    {project.sector}
+                  </span>
+                  <h3 className="text-base font-bold uppercase tracking-wide mt-2 leading-snug">
+                    {project.title}
+                  </h3>
                 </div>
-              </div>
 
-              {/* Default Unhovered Title info */}
-              <div className="absolute bottom-10 left-10 right-10 z-20 transition-all duration-700 group-hover:opacity-0 group-hover:translate-y-4">
-                <h3 className="text-lg font-bold text-slate-800 tracking-tight leading-snug drop-shadow-sm bg-white/95 backdrop-blur-md px-6 py-5 rounded-2xl inline-block max-w-[95%] shadow-lg">
-                  {project.title}
-                </h3>
-              </div>
-
-              {/* Info Reveal on Hover */}
-              <div className="absolute inset-0 z-30 opacity-0 group-hover:opacity-100 transition-all duration-700 flex flex-col justify-end p-10">
-                <div className="space-y-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
-                  <div>
-                    <span className={`text-[10px] uppercase font-bold tracking-[0.2em] px-3.5 py-1.5 rounded-full border shadow-sm inline-block ${theme.bg} ${theme.text} ${theme.border}`}>
-                      {project.client}
+                <div className="space-y-2 border-t border-white/10 pt-4 text-xs">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-apcoRed flex-shrink-0" />
+                    <span className="text-slate-300">
+                      <strong className="text-white">Location:</strong> {project.location}
                     </span>
-                    <h3 className="text-2xl font-bold tracking-tight mt-6 leading-snug text-white">
-                      {project.title}
-                    </h3>
                   </div>
-
-                  <div className="space-y-4 pt-6 mt-4 border-t border-white/20 text-xs font-medium tracking-wide text-slate-300">
-                    <div className="flex items-center gap-3">
-                      <MapPin className={`w-4 h-4 flex-shrink-0 ${theme.icon}`} />
-                      <span>{project.location}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Wrench className={`w-4 h-4 flex-shrink-0 ${theme.icon}`} />
-                      <span className="line-clamp-1">{project.metric}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Briefcase className={`w-4 h-4 flex-shrink-0 ${theme.icon}`} />
-                      <span className="line-clamp-1">{project.equipment}</span>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Wrench className="w-4 h-4 text-apcoRed flex-shrink-0" />
+                    <span className="text-slate-300">
+                      <strong className="text-white">Metric:</strong> {project.metric}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="w-4 h-4 text-apcoRed flex-shrink-0" />
+                    <span className="text-slate-300">
+                      <strong className="text-white">Assets:</strong> {project.equipment}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span className="text-slate-300">
+                      <strong className="text-white">Status:</strong> {project.safetyStatus}
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
-          );
-        })}
-      </div>
-
-      {/* Esteemed Clients - Ultra Minimal */}
-      <div className="pt-32 border-t border-slate-200/60 text-center">
-        <h3 className="text-sm font-bold uppercase text-slate-400 tracking-[0.3em] mb-12">
-          Trusted By Industry Leaders
-        </h3>
-        <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 max-w-5xl mx-auto">
-          {esteemedClients.map((client, idx) => (
-            <div
-              key={idx}
-              className="group flex flex-col items-center justify-center opacity-40 hover:opacity-100 transition-opacity duration-500 cursor-pointer"
-            >
-              <div className="text-xl font-bold text-slate-700 tracking-tight group-hover:text-apcoBlue transition-colors">{client.name}</div>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

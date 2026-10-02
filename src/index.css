@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-size: 14px; /* Scales down all rem-based Tailwind classes globally by ~12.5% */
-  }
   body {
     @apply bg-white text-apcoDark font-sans antialiased;
   }
@@ -47,4 +44,10 @@ html.lenis, html.lenis body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #E31E24; /* apcoRed */
+}
+
+@media (min-width: 1024px) {
+  .hero-clip-path {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  }
 }
