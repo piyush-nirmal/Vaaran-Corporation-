@@ -1,144 +1,116 @@
 import { useState } from 'react';
-import type { ComponentType, FC } from 'react';
-import { Paintbrush, Layers, Hammer, Users, Check, TrendingUp, Shield, Target, Search } from 'lucide-react';
+import type { FC } from 'react';
 import { servicesData } from '../data/services';
+import { 
+  Paintbrush, 
+  Layers, 
+  Hammer, 
+  Users, 
+  ShieldCheck, 
+  ArrowRight, 
+  Check, 
+  Sliders
+} from 'lucide-react';
 
-// Lucide icon mapping to render icons dynamically
-const iconMap: Record<string, ComponentType<{ className?: string }>> = {
-  Paintbrush: Paintbrush,
-  Layers: Layers,
-  Hammer: Hammer,
-  Users: Users,
-};
-
-// Contextual images for active division preview
-const divisionImages: Record<string, string> = {
-  'industrial-infra-painting': 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80', // Automated spray coating / industrial spray painting
-  'display-fabrication': 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80', // Heavy industrial metal laser cutting / fabrication workshop
-  'civil-structures': 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80', // Concrete construction / steel foundation site
-  'enterprise-manpower': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80', // Technicians / engineers with hard hats
+const iconMap = {
+  Paintbrush,
+  Layers,
+  Hammer,
+  Users,
 };
 
 export const ServiceTabs: FC = () => {
   const [activeCategoryId, setActiveCategoryId] = useState<string>(servicesData[0].id);
-  
-  // Find current active category
   const activeCategory = servicesData.find(cat => cat.id === activeCategoryId) || servicesData[0];
   
-  // Track active service within the active category
   const [activeServiceId, setActiveServiceId] = useState<string>(activeCategory.services[0].id);
-  
-  // If category changes, make sure the active service exists in the new category
-  const activeService = activeCategory.services.find(ser => ser.id === activeServiceId) || activeCategory.services[0];
+  const activeService = activeCategory.services.find(s => s.id === activeServiceId) || activeCategory.services[0];
 
-  const handleCategoryChange = (categoryId: string) => {
-    setActiveCategoryId(categoryId);
-    const newCategory = servicesData.find(cat => cat.id === categoryId) || servicesData[0];
-    setActiveServiceId(newCategory.services[0].id);
+  // Interactive Technical Coating Spec Simulator State
+  const [coatingThickness, setCoatingThickness] = useState<number>(180);
+  const [blastStandard, setBlastStandard] = useState<'Sa 2.5' | 'Sa 3.0'>('Sa 2.5');
+  const [topcoatType, setTopcoatType] = useState<'Aliphatic PU' | 'Fluoropolymer'>('Aliphatic PU');
+
+  const handleCategorySwitch = (catId: string) => {
+    setActiveCategoryId(catId);
+    const cat = servicesData.find(c => c.id === catId);
+    if (cat && cat.services.length > 0) {
+      setActiveServiceId(cat.services[0].id);
+    }
+  };
+
+  const handleAttachToRFP = () => {
+    const el = document.getElementById('rfp-quote');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <div className="w-full max-w-none bg-white border-y border-gray-200/60 shadow-xl overflow-hidden">
-      {/* Top Banner / Corporate Header */}
-      <div className="bg-apcoBlue text-white p-6 flex flex-col md:flex-row md:items-center md:justify-between border-b border-white/10">
-        <div>
-          <span className="text-apcoRed font-bold tracking-widest text-xs uppercase block mb-1">
-            Varan Corporation
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight uppercase font-sans">
-            Core Infrastructure & Support Divisions
-          </h2>
-        </div>
-        <div className="mt-4 md:mt-0 text-left md:text-right border-l-2 md:border-l-0 md:border-r-2 border-apcoRed pl-4 md:pl-0 md:pr-4">
-          <p className="text-xs uppercase text-gray-300 font-semibold tracking-wider">Operational Mode</p>
-          <p className="text-sm font-bold tracking-widest text-white">ELITE ENTERPRISE</p>
+    <div className="w-full bg-white border border-slate-200/90 rounded-2xl shadow-sm overflow-hidden">
+      
+      {/* Category Tab Segmented Controller */}
+      <div className="border-b border-slate-200 bg-slate-50/70 p-3 sm:p-4">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+          {servicesData.map((category, idx) => {
+            const Icon = iconMap[category.icon as keyof typeof iconMap] || Paintbrush;
+            const isActive = category.id === activeCategoryId;
+            return (
+              <button
+                key={category.id}
+                type="button"
+                onClick={() => handleCategorySwitch(category.id)}
+                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 whitespace-nowrap cursor-pointer shrink-0 font-display ${
+                  isActive
+                    ? 'bg-vrnNavy text-white shadow-sm'
+                    : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-200/60'
+                }`}
+              >
+                <Icon className={`w-4 h-4 ${isActive ? 'text-vrnOrange' : 'text-slate-400'}`} />
+                <span>0{idx + 1}. {category.title}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Main Grid Structure */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
-        {/* Left Side: Division Navigation (Col Span 4) */}
-        <div className="lg:col-span-4 bg-slate-50/50 p-4 border-r border-gray-200/60 flex flex-col justify-between gap-4">
-          <div className="flex flex-col space-y-4">
-            <div className="p-3 bg-slate-100/50 rounded-lg border border-gray-200/40">
-              <span className="text-xs font-bold tracking-widest text-apcoMuted uppercase">
-                Select Operational Division
-              </span>
-            </div>
-            
-            <nav className="flex flex-col gap-3">
-              {servicesData.map((category) => {
-                const IconComponent = iconMap[category.icon] || Paintbrush;
-                const isActive = category.id === activeCategoryId;
-
-                return (
-                  <button
-                    key={category.id}
-                    onClick={() => handleCategoryChange(category.id)}
-                    className={`text-left p-4 transition-all duration-300 flex items-start gap-4 border relative ${
-                      isActive 
-                        ? 'bg-apcoBlue text-white border-transparent shadow-lg shadow-slate-950/10' 
-                        : 'bg-slate-50/70 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] text-apcoDark hover:bg-slate-100/90 border-gray-200/60 shadow-sm'
-                    } rounded-xl`}
-                  >
-                    <div className={`p-2.5 rounded-lg flex-shrink-0 transition-colors ${isActive ? 'bg-apcoRed text-white shadow-sm' : 'bg-gray-100 text-apcoBlue'}`}>
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold uppercase tracking-wide text-xs">
-                        {category.title}
-                      </h3>
-                      <p className={`text-[11px] mt-1 line-clamp-2 ${isActive ? 'text-gray-300' : 'text-apcoMuted'}`}>
-                        {category.description}
-                      </p>
-                    </div>
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
+      {/* Main Capability Workbench */}
+      <div className="p-6 lg:p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Bottom Info Block */}
-          <div className="p-4 border border-gray-200/40 bg-slate-100/50 rounded-xl hidden lg:block">
-            <div className="flex items-center gap-2 text-apcoBlue">
-              <Shield className="w-4 h-4 text-apcoRed" />
-              <span className="text-xs font-bold uppercase tracking-wider">ISO 9001:2015 Standards</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side: Detailed View (Col Span 8) */}
-        <div className="lg:col-span-8 flex flex-col justify-between bg-white border-l border-gray-200/60">
-          <div>
-            {/* Division Banner Statement */}
-            <div className="p-6 md:p-8 pb-5 border-b border-gray-200/60">
-              <h3 className="text-xs font-bold tracking-widest text-apcoRed uppercase mb-1">
-                Active Division Summary
-              </h3>
-              <h2 className="text-xl font-bold uppercase text-apcoBlue tracking-wide">
+          {/* Left Column: Capability Sub-items (Col Span 6) */}
+          <div className="lg:col-span-6 space-y-6">
+            
+            {/* Division Intro */}
+            <div>
+              <div className="text-[11px] font-mono uppercase tracking-wider text-vrnOrange font-bold">
+                Operational Division Focus
+              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-vrnNavy tracking-tight mt-1 font-display">
                 {activeCategory.title}
-              </h2>
-              <p className="text-sm text-apcoMuted mt-2 leading-relaxed">
+              </h3>
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed font-sans">
                 {activeCategory.description}
               </p>
             </div>
 
-            {/* Service Selection Tabs (Horizontal Sub-Nav) */}
-            <div className="px-6 md:px-8 py-4 border-b border-gray-200/60">
-              <span className="text-xs font-bold tracking-widest text-apcoMuted uppercase block mb-3">
-                Select Specific Capability
+            {/* Service Pills / Interactive Filter Tabs */}
+            <div className="space-y-2 pt-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
+                Select Execution Portfolio
               </span>
               <div className="flex flex-wrap gap-2">
                 {activeCategory.services.map((service) => {
-                  const isServiceActive = service.id === activeServiceId;
+                  const isCurrent = service.id === activeServiceId;
                   return (
                     <button
                       key={service.id}
+                      type="button"
                       onClick={() => setActiveServiceId(service.id)}
-                      className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 border rounded-lg ${
-                        isServiceActive
-                          ? 'bg-apcoRed text-white border-transparent shadow-md shadow-red-500/10'
-                          : 'bg-white text-apcoMuted hover:text-apcoBlue hover:bg-gray-50 border-gray-200/60 shadow-sm'
+                      className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
+                        isCurrent
+                          ? 'bg-vrnOrange-light border border-vrnOrange text-vrnOrange shadow-xs'
+                          : 'bg-slate-100 border border-slate-200/60 text-slate-600 hover:bg-slate-200/70 hover:text-vrnNavy'
                       }`}
                     >
                       {service.title}
@@ -148,131 +120,203 @@ export const ServiceTabs: FC = () => {
               </div>
             </div>
 
-            {/* Selected Service Core Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-              
-              {/* Column 1: Scope & Sectors */}
-              <div className="lg:col-span-4 p-6 md:p-8 border-r border-gray-200/60 flex flex-col justify-between space-y-6">
-                <div>
-                  <h4 className="text-xs font-bold tracking-widest text-apcoBlue uppercase mb-2">
-                    Scope of Operations
-                  </h4>
-                  <p className="text-sm text-apcoDark leading-relaxed mb-6">
-                    {activeService.description}
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="text-xs font-bold tracking-widest text-apcoBlue uppercase mb-2.5 flex items-center gap-1">
-                    <Target className="w-3.5 h-3.5 text-apcoRed" />
-                    Target Sectors
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {activeService.targetSectors.map((sector, index) => (
-                      <span 
-                        key={index} 
-                        className="border border-apcoBlue/20 text-apcoBlue bg-apcoBlue/5 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md"
-                      >
-                        {sector}
-                      </span>
-                    ))}
-                  </div>
+            {/* Active Service Detailed Parameters */}
+            <div className="bg-slate-50/70 border border-slate-200 rounded-xl p-5 space-y-4">
+              <div className="space-y-1">
+                <h4 className="text-sm font-bold text-vrnNavy font-display">
+                  {activeService.title} Scope
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                  {activeService.description}
+                </p>
+              </div>
+
+              {/* Unboxed Metadata Sectors */}
+              <div className="pt-2 border-t border-slate-200/80">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5 font-mono">
+                  Target Municipal & Enterprise Sectors
+                </span>
+                <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-600 font-sans">
+                  {activeService.targetSectors.map((sector, i) => (
+                    <span key={i} className="inline-flex items-center">
+                      <span className="font-semibold text-slate-700">{sector}</span>
+                      {i < activeService.targetSectors.length - 1 && (
+                        <span aria-hidden="true" className="mx-2 text-slate-300">·</span>
+                      )}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Column 2: Deliverables & Metrics */}
-              <div className="lg:col-span-4 p-6 md:p-8 border-r border-gray-200/60 flex flex-col justify-between space-y-6">
-                <div>
-                  <h4 className="text-xs font-bold tracking-widest text-apcoBlue uppercase mb-3">
-                    Key Project Deliverables
-                  </h4>
-                  <ul className="space-y-3">
-                    {activeService.keyDeliverables.map((item, index) => (
-                      <li key={index} className="flex items-start text-xs text-apcoDark font-medium">
-                        <div className="w-5 h-5 bg-apcoRed/10 border border-apcoRed/30 rounded flex items-center justify-center mr-3 mt-[2px] flex-shrink-0">
-                          <Check className="w-3.5 h-3.5 text-apcoRed stroke-[3]" />
-                        </div>
-                        <span className="leading-tight">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-6 border-t border-gray-100">
-                  <h4 className="text-xs font-bold tracking-widest text-apcoBlue uppercase mb-3 flex items-center gap-1">
-                    <TrendingUp className="w-3.5 h-3.5 text-apcoRed" />
-                    Operational Metrics
-                  </h4>
-                  <div className="space-y-2">
-                    {activeService.metrics.map((metric, index) => (
-                      <div 
-                        key={index} 
-                        className="bg-slate-50 border border-gray-200/60 border-l-4 border-l-apcoBlue p-2 flex flex-col justify-between rounded-r-lg shadow-sm"
-                      >
-                        <div className="flex justify-between items-baseline">
-                          <span className="text-[9px] text-apcoMuted font-bold uppercase tracking-wider">
-                            {metric.label}
-                          </span>
-                          <span className="text-xs font-bold text-apcoBlue tracking-tight">
-                            {metric.value}
-                          </span>
-                        </div>
-                        {metric.description && (
-                          <span className="text-[8px] text-apcoMuted mt-0.5">
-                            {metric.description}
-                          </span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+              {/* Quantified Key Deliverables */}
+              <div className="pt-2 border-t border-slate-200/80">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2 font-mono">
+                  Standard Technical Deliverables
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {activeService.keyDeliverables.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-700 font-sans">
+                      <Check className="w-3.5 h-3.5 text-vrnCyan-dark shrink-0 mt-0.5" />
+                      <span className="leading-snug">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Column 3: Context Image Card with zero margins */}
-              <div className="lg:col-span-4 flex flex-col">
-                <div className="group relative overflow-hidden bg-gray-100 flex-1 min-h-[300px] w-full flex flex-col justify-between">
-                  <div className="absolute inset-0 overflow-hidden">
-                    <img 
-                      src={divisionImages[activeCategoryId]} 
-                      alt={`${activeCategory.title} operations`}
-                      className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  
-                  {/* Glassmorphic Magnifying Glass Overlay */}
-                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 backdrop-blur-[2px]">
-                    <div className="p-3 bg-white/20 border border-white/30 rounded-full transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
-                      <Search className="w-6 h-6 text-white" />
+              {/* Metrics Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-3 border-t border-slate-200/80">
+                {activeService.metrics.map((m, i) => (
+                  <div key={i} className="bg-white p-2.5 rounded-lg border border-slate-200/80 shadow-xs">
+                    <div className="text-[10px] font-mono uppercase text-slate-400 truncate">
+                      {m.label}
+                    </div>
+                    <div className="text-sm font-extrabold text-vrnNavy font-mono tabular-nums mt-0.5">
+                      {m.value}
                     </div>
                   </div>
+                ))}
+              </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent z-10 pointer-events-none"></div>
-                  
-                  <div className="absolute bottom-3 left-4 right-4 z-20 pointer-events-none">
-                    <span className="text-[10px] uppercase font-bold text-white tracking-widest bg-apcoRed px-2 py-0.5 rounded">
-                      {activeCategory.title} Operations
+            </div>
+
+          </div>
+
+          {/* Right Column: Live Interactive Spec Sandbox & Pre-flight Calculator (Col Span 6) */}
+          <div className="lg:col-span-6 space-y-6">
+            
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-xs space-y-6">
+              
+              <div className="flex items-center justify-between pb-4 border-b border-slate-200">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-vrnNavy font-mono">
+                  <Sliders className="w-4 h-4 text-vrnOrange" />
+                  <span>Technical Coating Specification Matrix</span>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-vrnCyan-dark bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">
+                  Interactive Sandbox
+                </span>
+              </div>
+
+              {/* Dynamic Interactive Controls */}
+              <div className="space-y-5">
+                
+                {/* Dry Film Thickness (DFT) Slider */}
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="font-bold text-slate-700">Dry Film Thickness (DFT) Spec</span>
+                    <span className="font-mono font-bold text-vrnOrange text-sm">{coatingThickness} µm</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={120}
+                    max={300}
+                    step={20}
+                    value={coatingThickness}
+                    onChange={(e) => setCoatingThickness(Number(e.target.value))}
+                    className="w-full accent-vrnOrange h-1.5 bg-slate-200 rounded-lg cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] font-mono text-slate-500">
+                    <span>120 µm (Standard)</span>
+                    <span>200 µm (Heavy Corridor)</span>
+                    <span>300 µm (Marine C5)</span>
+                  </div>
+                </div>
+
+                {/* Substrate Prep Selector */}
+                <div className="space-y-1.5">
+                  <span className="text-xs font-bold text-slate-700 block">Abrasive Blast Profile</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    {(['Sa 2.5', 'Sa 3.0'] as const).map((std) => (
+                      <button
+                        key={std}
+                        type="button"
+                        onClick={() => setBlastStandard(std)}
+                        className={`py-2 px-3 rounded-xl text-xs font-mono font-bold border transition-colors cursor-pointer ${
+                          blastStandard === std
+                            ? 'bg-vrnNavy text-white border-vrnNavy shadow-xs'
+                            : 'bg-white border-slate-200 text-slate-700 hover:border-vrnNavy'
+                        }`}
+                      >
+                        {std} Standard {std === 'Sa 2.5' ? '(Near-White)' : '(White Metal)'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Topcoat Chemistry Selector */}
+                <div className="space-y-1.5">
+                  <span className="text-xs font-bold text-slate-700 block">Topcoat Chemistry Formulation</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    {(['Aliphatic PU', 'Fluoropolymer'] as const).map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => setTopcoatType(type)}
+                        className={`py-2 px-3 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
+                          topcoatType === type
+                            ? 'bg-vrnCyan-light border-vrnCyan text-vrnCyan-dark shadow-xs'
+                            : 'bg-white border-slate-200 text-slate-700 hover:border-vrnCyan'
+                        }`}
+                      >
+                        {type} {type === 'Aliphatic PU' ? '(UV Standard)' : '(Ultra-Life)'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Live Calculated Matrix Output */}
+              <div className="p-4 bg-white border border-slate-200/90 rounded-xl space-y-3 shadow-xs">
+                <div className="text-[10px] font-mono font-bold uppercase text-slate-500 tracking-wider">
+                  Calculated Performance Matrix
+                </div>
+                
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200/60">
+                    <span className="text-[10px] font-mono text-slate-500 block">Durability</span>
+                    <span className="font-mono text-sm font-bold text-emerald-700">
+                      {coatingThickness >= 240 ? '25+ Yrs' : coatingThickness >= 180 ? '15–20 Yrs' : '10 Yrs'}
+                    </span>
+                  </div>
+                  <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200/60">
+                    <span className="text-[10px] font-mono text-slate-500 block">Salt Spray</span>
+                    <span className="font-mono text-sm font-bold text-vrnNavy">
+                      {coatingThickness >= 200 ? '3,000h' : '2,000h'}
+                    </span>
+                  </div>
+                  <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200/60">
+                    <span className="text-[10px] font-mono text-slate-500 block">Adhesion</span>
+                    <span className="font-mono text-sm font-bold text-vrnOrange">
+                      {blastStandard === 'Sa 3.0' ? '5B / 12 MPa' : '4B / 9 MPa'}
                     </span>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-2 text-[11px] text-slate-600 font-medium pt-1">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Complies with ISO 12944 Part 5 C5-Industrial atmospheric rating</span>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={handleAttachToRFP}
+                  className="w-full bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-900/20 flex items-center justify-center gap-2 cursor-pointer font-display"
+                >
+                  <span>Apply {activeService.title} Specs to RFP Form</span>
+                  <ArrowRight className="w-4 h-4 text-vrnOrange" />
+                </button>
               </div>
 
             </div>
+
           </div>
 
-          {/* Footer Interactive Actions */}
-          <div className="px-6 md:px-8 py-5 border-t border-gray-200/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-50/50">
-            <div className="text-[11px] text-apcoMuted font-semibold uppercase tracking-wider">
-              Selected Service ID: <span className="font-mono text-apcoRed">{activeService.id}</span>
-            </div>
-            <button 
-              className="bg-apcoRed text-white px-5 py-3 text-xs font-bold uppercase tracking-widest hover:bg-apcoBlue transition-all duration-300 flex items-center justify-center gap-2 border border-transparent active:border-apcoRed rounded-lg shadow-md hover:-translate-y-0.5 hover:shadow-lg"
-              onClick={() => alert(`Requesting deployment specs for service category: ${activeCategory.title} (${activeService.title})`)}
-            >
-              Request Operational Blueprint
-            </button>
-          </div>
         </div>
       </div>
+
     </div>
   );
 };

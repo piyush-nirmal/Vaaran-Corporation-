@@ -1,188 +1,236 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { FC } from 'react';
-import { Shield, ArrowRight, HardHat } from 'lucide-react';
+import { ArrowRight, HardHat, CheckCircle2, ChevronRight, Gauge } from 'lucide-react';
+import heroViaductImg from '../assets/images/hero_infrastructure_viaduct_1791032354735.jpg';
+import transitCoatingImg from '../assets/images/metro_transit_coating_1791032395039.jpg';
+import steelFabImg from '../assets/images/structural_steel_fabrication_1791032383584.jpg';
 
-interface Slide {
-  image: string;
-  title: string;
+interface ProjectMilestone {
+  id: string;
+  name: string;
+  corridor: string;
+  coatingSpec: string;
   metricLabel: string;
   metricValue: string;
-  status: string;
+  safetyStatus: string;
+  image: string;
+  stage: string;
 }
 
-const slides: Slide[] = [
+const milestones: ProjectMilestone[] = [
   {
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80',
-    title: 'Metro Viaduct Structural Coating',
+    id: 'metro-line-3',
+    name: 'Mumbai Metro Line 3 Corridor',
+    corridor: 'Elevated Viaduct Span 14–28',
+    coatingSpec: 'Sa 2.5 Near-White Blast · 180µm Polyurethane',
     metricLabel: 'Coating Area',
-    metricValue: '45,000 sq.m.',
-    status: '100% Safety Rated',
+    metricValue: '45,000 m²',
+    safetyStatus: '100% Zero-Incident Logged',
+    image: heroViaductImg,
+    stage: 'Phase IV Active',
   },
   {
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-    title: 'High-Speed Expressway Gantry Alignment',
-    metricLabel: 'Corridor Length',
-    metricValue: '12.4 km',
-    status: 'In Alignment Phase',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1200&q=80',
-    title: 'Industrial Manufacturing & Civil Assets',
-    metricLabel: 'Fabrication Volume',
+    id: 'highway-gantry',
+    name: 'Western Expressway High-Speed Gantries',
+    corridor: 'KM 18.2 Toll Plaza Alignment',
+    coatingSpec: 'AWS D1.1 Certified Welds · Epoxy MIO Barrier',
+    metricLabel: 'Steel Tonnage',
     metricValue: '18,500 MT',
-    status: 'Quality Certified',
+    safetyStatus: 'HSE Safety Cleared',
+    image: steelFabImg,
+    stage: 'Fabrication Verified',
+  },
+  {
+    id: 'bkc-transit',
+    name: 'BKC Intermodal Corporate Terminal',
+    corridor: 'Sky-Gantry Elevation 180 ft',
+    coatingSpec: 'Dual-Coat Fluoropolymer · Wind-Load Rated',
+    metricLabel: 'Curtain Truss',
+    metricValue: '12.4 km Line',
+    safetyStatus: 'Structural Signoff Logged',
+    image: transitCoatingImg,
+    stage: 'Site Mobilization',
   },
 ];
 
-const BlueprintPattern = () => (
-  <svg className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-        <path d="M 0 20 L 40 20" fill="none" stroke="white" strokeWidth="0.5" strokeDasharray="2,2" />
-        <path d="M 20 0 L 20 40" fill="none" stroke="white" strokeWidth="0.5" strokeDasharray="2,2" />
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#grid)" />
-    <circle cx="80%" cy="20%" r="150" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="5,5" />
-    <circle cx="80%" cy="20%" r="80" fill="none" stroke="white" strokeWidth="1" />
-    <line x1="0" y1="30%" x2="100%" y2="30%" stroke="white" strokeWidth="1" strokeDasharray="10,5" />
-    <line x1="30%" y1="0" x2="30%" y2="100%" stroke="white" strokeWidth="1" strokeDasharray="10,5" />
-    <path d="M 10% 90% L 30% 70% L 60% 85% L 90% 55%" fill="none" stroke="white" strokeWidth="1.5" />
-    <path d="M 28% 70% L 32% 70% M 30% 68% L 30% 72%" stroke="white" strokeWidth="2" />
-    <path d="M 58% 85% L 62% 85% M 60% 83% L 60% 87%" stroke="white" strokeWidth="2" />
-    <path d="M 88% 55% L 92% 55% M 90% 53% L 90% 57%" stroke="white" strokeWidth="2" />
-  </svg>
-);
-
 export const Hero: FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+  const [selectedMilestone, setSelectedMilestone] = useState<ProjectMilestone>(milestones[0]);
 
   return (
-    <div className="relative bg-[#0F2E5A] text-white overflow-hidden border-b-8 border-[#E31E24] w-full">
-      {/* Structural Background Pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div className="relative bg-white text-slate-900 overflow-hidden border-b border-slate-200/80">
+      
+      {/* Subtle Architectural Grid Lines */}
+      <div 
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #203182 1px, transparent 0)`,
+          backgroundSize: '28px 28px'
+        }}
+      />
+      
+      {/* Luminous Brand Color Accents */}
+      <div className="absolute -top-32 right-1/4 w-96 h-96 bg-vrnCyan/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-vrnOrange/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="w-full max-w-none grid grid-cols-1 lg:grid-cols-12 min-h-[600px] items-stretch relative z-10 mx-0 px-0">
-        
-        {/* Left Column: Authority & Directives */}
-        <div className="hero-clip-path lg:col-span-7 flex flex-col justify-center px-6 py-16 md:px-16 lg:pl-24 lg:pr-16 bg-[#0F2E5A] space-y-8 relative z-20">
-          <BlueprintPattern />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          <div className="relative z-10 space-y-8">
-            {/* Trust Badge */}
-            <div className="inline-flex items-center space-x-2 bg-slate-800/50 border border-slate-700/60 p-2.5 self-start rounded-lg shadow-sm">
-              <Shield className="w-4 h-4 text-[#E31E24]" />
-              <span className="text-xs uppercase tracking-widest font-bold text-slate-300">
-                ISO 9001:2015 Certified Contractor
-              </span>
+          {/* Left Column: Core Value Proposition */}
+          <div className="lg:col-span-7 space-y-7">
+            
+            {/* Unboxed Metadata Trust Marker */}
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider uppercase text-slate-500 font-mono">
+              <span className="text-vrnNavy font-bold">Varan Corporation</span>
+              <span aria-hidden="true" className="text-slate-300">·</span>
+              <span className="text-vrnOrange font-bold">ISO 9001:2015</span>
+              <span aria-hidden="true" className="text-slate-300">·</span>
+              <span className="text-vrnCyan-dark font-bold">Sa 2.5 Specification</span>
             </div>
 
-            {/* Heavy Typography */}
+            {/* Display Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-vrnNavy font-display">
                 Industrial Execution. <br />
-                <span className="text-[#E31E24]">Structural Precision.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-vrnOrange via-amber-500 to-vrnCyan-dark">
+                  Structural Precision.
+                </span>
               </h1>
-              <p className="text-sm md:text-base text-slate-300 max-w-xl font-normal leading-relaxed">
-                Varan Corporation delivers elite engineering support, heavy-duty industrial painting, structural fabrication, and commercial manpower logistics for large-scale infrastructure and transit systems across Mumbai.
+              <p className="text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed font-sans">
+                Engineering contractor deploying high-volume protective coatings, certified structural gantry fabrication, and transit workforce logistics across high-density Indian infrastructure corridors.
               </p>
             </div>
 
-            {/* Action Hub */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#E31E24] hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs px-8 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center space-x-2 rounded-lg shadow-md">
-                <span>Request Project Quote / RFP</span>
+            {/* Action Buttons using VRN Logo Colors */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-1">
+              <button 
+                type="button"
+                onClick={() => document.getElementById('rfp-quote')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-vrnOrange hover:bg-vrnOrange-hover text-white font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2.5 cursor-pointer"
+              >
+                <span>Initiate Technical RFP</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="border border-slate-500/60 hover:bg-slate-800/50 text-white font-bold uppercase tracking-wider text-xs px-8 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center space-x-2 rounded-lg shadow-md">
-                <HardHat className="w-4 h-4 text-slate-400" />
+              
+              <button 
+                type="button"
+                onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy hover:text-vrnNavy-dark font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-xs flex items-center justify-center gap-2.5 cursor-pointer"
+              >
+                <HardHat className="w-4 h-4 text-vrnCyan-dark" />
                 <span>Explore Fleet & Machinery</span>
               </button>
             </div>
 
-            {/* High-Contrast Industrial Feature Badges */}
-            <div className="grid grid-cols-3 gap-3 pt-6 border-t border-slate-700/50">
-              <div className="flex flex-col items-center justify-center p-3 border border-slate-700/60 bg-slate-800/40 rounded-lg text-center shadow-sm">
-                <span className="text-[#E31E24] font-black text-sm block">100%</span>
-                <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider mt-0.5">Compliance</span>
+            {/* Real Quantitative Proof Bar on Clean White Base */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200">
+              <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/60">
+                <div className="font-mono text-2xl font-extrabold text-vrnNavy tabular-nums tracking-tight">45,000<span className="text-vrnOrange text-base ml-0.5">m²</span></div>
+                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Coating Deployed</div>
               </div>
-              <div className="flex flex-col items-center justify-center p-3 border border-slate-700/60 bg-slate-800/40 rounded-lg text-center shadow-sm">
-                <span className="text-green-400 font-black text-sm block">HSE</span>
-                <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider mt-0.5">Safety Certified</span>
+              <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/60">
+                <div className="font-mono text-2xl font-extrabold text-vrnNavy tabular-nums tracking-tight">18,500<span className="text-slate-400 text-base ml-0.5">MT</span></div>
+                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Steel Fabricated</div>
               </div>
-              <div className="flex flex-col items-center justify-center p-3 border border-slate-700/60 bg-slate-800/40 rounded-lg text-center shadow-sm">
-                <span className="text-blue-400 font-black text-sm block">GOVT</span>
-                <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider mt-0.5">Approved Layouts</span>
+              <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/60">
+                <div className="font-mono text-2xl font-extrabold text-vrnCyan-dark tabular-nums tracking-tight">Sa 2.5</div>
+                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Blast Standard</div>
+              </div>
+              <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/60">
+                <div className="font-mono text-2xl font-extrabold text-emerald-600 tabular-nums tracking-tight">100%</div>
+                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">HSE Compliance</div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Right Column: Cinematic Industrial Showcase Carousel */}
-        <div className="lg:col-span-5 relative bg-slate-900 min-h-[400px] lg:min-h-full flex items-center justify-center overflow-hidden lg:-ml-32 lg:pl-32 z-10">
-          {/* Slide Images */}
-          {slides.map((slide, index) => (
-            <img 
-              key={index}
-              src={slide.image} 
-              alt={slide.title} 
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-in-out ${
-                index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-              }`}
-            />
-          ))}
-          
-          {/* Dark Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent z-10"></div>
-          
-          {/* Glassmorphic Metrics Card */}
-          <div className="absolute bottom-8 left-8 right-8 z-20 bg-slate-900/65 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl shadow-slate-950/30 transition-all duration-500">
-            <div className="border-l-4 border-[#E31E24] pl-4 space-y-1 mb-4">
-              <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Featured Operational Site</span>
-              <h3 className="text-sm font-bold uppercase tracking-wide text-white leading-snug min-h-[2.5rem] flex items-center">
-                {slides[currentSlide].title}
-              </h3>
-            </div>
-            <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-white/10 text-xs">
-              <div>
-                <span className="text-slate-400 block uppercase tracking-wider text-[10px]">
-                  {slides[currentSlide].metricLabel}
-                </span>
-                <span className="font-bold text-white text-sm">
-                  {slides[currentSlide].metricValue}
-                </span>
-              </div>
-              <div>
-                <span className="text-slate-400 block uppercase tracking-wider text-[10px]">Execution Status</span>
-                <span className="font-bold text-green-400 text-sm">
-                  {slides[currentSlide].status}
-                </span>
-              </div>
-            </div>
-            {/* Slide indicators */}
-            <div className="flex space-x-1.5 mt-4 justify-end">
-              {slides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                    idx === currentSlide ? 'bg-[#E31E24] w-4' : 'bg-white/40'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
+          </div>
+
+          {/* Right Column: Dynamic Project Showcase & Live Telemetry HUD */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xl shadow-slate-200/60 group">
+              
+              {/* Media Visual Container */}
+              <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-100">
+                <img
+                  src={selectedMilestone.image}
+                  alt={selectedMilestone.name}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  referrerPolicy="no-referrer"
                 />
-              ))}
+                
+                {/* Measured Light-To-Dark Scrim for Legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
+                
+                {/* Top Badges */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs">
+                  <div className="bg-white/90 backdrop-blur-md border border-slate-200 px-3 py-1 rounded-md text-vrnNavy font-bold text-[11px]">
+                    {selectedMilestone.stage}
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-emerald-500/90 text-white px-2.5 py-1 rounded-md text-[11px] font-bold shadow-xs">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Certified</span>
+                  </div>
+                </div>
+
+                {/* Bottom Details HUD */}
+                <div className="absolute bottom-4 left-4 right-4 space-y-1.5">
+                  <div className="text-[11px] font-mono text-cyan-300 uppercase tracking-wider">
+                    {selectedMilestone.corridor}
+                  </div>
+                  <h3 className="text-lg font-bold text-white leading-snug">
+                    {selectedMilestone.name}
+                  </h3>
+                  <div className="flex items-center gap-2 text-xs text-slate-200 font-mono">
+                    <Gauge className="w-3.5 h-3.5 text-vrnOrange shrink-0" />
+                    <span className="truncate">{selectedMilestone.coatingSpec}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Interactive Milestone Selector Bar */}
+              <div className="p-4 bg-white border-t border-slate-100 space-y-3">
+                <div className="text-[11px] uppercase tracking-wider font-bold text-slate-500 flex items-center justify-between font-mono">
+                  <span>Active Operational Sectors</span>
+                  <span className="text-vrnCyan-dark font-medium">Select to inspect</span>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-2">
+                  {milestones.map((m) => {
+                    const isActive = m.id === selectedMilestone.id;
+                    return (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => setSelectedMilestone(m)}
+                        className={`text-left p-2.5 rounded-xl border transition-all duration-200 cursor-pointer ${
+                          isActive
+                            ? 'bg-vrnNavy-tint border-vrnNavy text-vrnNavy shadow-xs'
+                            : 'bg-slate-50 border-slate-200/80 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                        }`}
+                      >
+                        <div className="text-[10px] font-mono text-slate-500 uppercase truncate">
+                          {m.metricLabel}
+                        </div>
+                        <div className="text-xs font-bold text-vrnNavy mt-0.5 truncate">
+                          {m.metricValue}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <button 
+                  type="button"
+                  onClick={() => document.getElementById('rfp-quote')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full mt-1 py-2 px-3 text-xs font-bold text-vrnNavy hover:text-vrnOrange flex items-center justify-center gap-1.5 transition-colors cursor-pointer group/btn"
+                >
+                  <span>Attach {selectedMilestone.name} parameters to RFP</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-vrnOrange group-hover/btn:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   );

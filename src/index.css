@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white text-apcoDark font-sans antialiased;
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
   }
 }
 
@@ -28,22 +28,37 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* Premium Scrollbar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Premium Architectural Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #0A0F1D; 
 }
  
 ::-webkit-scrollbar-thumb {
-  background: #0F2E5A; /* apcoBlue */
+  background: #334155;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E31E24; /* apcoRed */
+  background: #E11D48;
 }
 
 @media (min-width: 1024px) {

@@ -1,0 +1,8 @@
+{
+  "name": "Varan Corporation - Infrastructure Group",
+  "description": "Industrial execution and structural engineering portal for Varan Corporation, managing infrastructure painting, fabrication, heavy machinery, and workforce logistics.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

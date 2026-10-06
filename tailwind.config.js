@@ -7,14 +7,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        apcoBlue: '#0F2E5A',
-        apcoRed: '#E31E24',
-        apcoDark: '#111827',
-        apcoGray: '#F3F4F6',
-        apcoMuted: '#4B5563',
+        vrnNavy: {
+          DEFAULT: '#203182',
+          dark: '#17235E',
+          light: '#2E43A8',
+          tint: '#F1F4FD',
+          subtle: '#E8ECFA',
+        },
+        vrnOrange: {
+          DEFAULT: '#F58220',
+          hover: '#DD6F12',
+          light: '#FFF7ED',
+          border: '#FDBA74',
+        },
+        vrnCyan: {
+          DEFAULT: '#00AEEF',
+          dark: '#0284C7',
+          light: '#F0F9FF',
+          tint: '#E0F2FE',
+        },
+        vrnViolet: {
+          DEFAULT: '#8D217B',
+          light: '#FDF2F8',
+        },
+        apcoBlue: '#203182',
+        apcoRed: '#F58220',
+        apcoDark: '#0F172A',
+        apcoGray: '#FFFFFF',
+        apcoMuted: '#64748B',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['"Manrope"', 'system-ui', 'sans-serif'],
+        display: ['"Outfit"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },

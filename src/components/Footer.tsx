@@ -1,114 +1,148 @@
+import { useState } from 'react';
 import type { FC } from 'react';
-import { Building, Shield, Award, CheckCircle, ArrowRight } from 'lucide-react';
+import { Shield, Award, CheckCircle2, Check } from 'lucide-react';
+import { VrnLogo } from './VrnLogo';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer: FC = () => {
+  const [subscribed, setSubscribed] = useState(false);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="bg-slate-950 pt-20 pb-10 border-t-8 border-apcoRed mt-auto">
+    <footer className="bg-slate-50 pt-16 pb-12 border-t border-slate-200 text-slate-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
           
-          {/* Brand & Description */}
-          <div className="space-y-6 lg:col-span-1">
-            <div className="flex items-center gap-3">
-              <div className="bg-apcoBlue p-2 rounded-lg flex items-center justify-center">
-                <Building className="w-5 h-5 text-white" />
-              </div>
+          {/* Brand & Proposition (Col span 4) */}
+          <div className="lg:col-span-4 space-y-4">
+            <div 
+              className="flex items-center gap-3 cursor-pointer group inline-flex"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <VrnLogo size={36} />
               <div>
-                <span className="text-sm font-extrabold text-white uppercase tracking-wider block">
+                <span className="text-lg font-black tracking-tight text-vrnNavy uppercase block font-display">
                   Varan Corporation
                 </span>
-                <span className="text-[10px] font-bold text-apcoRed uppercase tracking-widest block -mt-1">
+                <span className="text-[10px] font-bold text-vrnOrange uppercase tracking-widest block -mt-1 font-mono">
                   Infrastructure Group
                 </span>
               </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Pioneering structural integrity and workforce logistics across the nation's most demanding infrastructure projects.
+            
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm font-sans">
+              Certified infrastructure contractor delivering heavy industrial coating, structural gantry fabrication, and transit workforce logistics across high-density corridors.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-apcoBlue hover:bg-apcoBlue transition-all">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-apcoBlue hover:bg-apcoBlue transition-all">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-              </a>
+
+            <div className="text-xs font-mono text-slate-500 pt-1">
+              Registered Contractor ID: <span className="text-vrnNavy font-bold">VRN-IND-9001</span>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white">Operations</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Industrial Painting</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Manpower Logistics</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Structural Fabrication</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Machinery Fleet</a></li>
+          {/* Quick Operations Links (Col span 2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-vrnNavy">Operations</h4>
+            <ul className="space-y-2.5 text-xs text-slate-600 font-sans">
+              <li><button type="button" onClick={() => scrollTo('operations')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">Protective Coatings</button></li>
+              <li><button type="button" onClick={() => scrollTo('operations')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">Gantry Fabrication</button></li>
+              <li><button type="button" onClick={() => scrollTo('operations')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">Surface Blasting</button></li>
+              <li><button type="button" onClick={() => scrollTo('fleet')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">Machinery Deck</button></li>
             </ul>
           </div>
 
-          {/* Company */}
-          <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white">Company</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> About Us</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Project Portfolio</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Compliance & Safety</a></li>
-              <li><a href="#" className="text-sm text-gray-400 hover:text-apcoRed transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Contact Information</a></li>
+          {/* Infrastructure Desk (Col span 2) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-vrnNavy">Governance</h4>
+            <ul className="space-y-2.5 text-xs text-slate-600 font-sans">
+              <li><button type="button" onClick={() => scrollTo('projects')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">Projects Portfolio</button></li>
+              <li><button type="button" onClick={() => scrollTo('rfp-quote')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">RFP Portal</button></li>
+              <li><button type="button" onClick={() => scrollTo('operations')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">HSE & ISO Audits</button></li>
+              <li><button type="button" onClick={() => scrollTo('contact')} className="hover:text-vrnNavy transition-colors text-left cursor-pointer">Executive Desk</button></li>
             </ul>
           </div>
 
-          {/* Newsletter / Bulletin */}
-          <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white">Corporate Bulletin</h4>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Subscribe to receive quarterly updates on infrastructural milestones.
+          {/* Newsletter / Bulletin (Col span 4) */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-vrnNavy">Tender & Milestone Bulletin</h4>
+            <p className="text-xs text-slate-600 leading-relaxed font-sans">
+              Quarterly operational briefings on major municipal transit and corridor executions.
             </p>
-            <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Email Address" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-apcoBlue transition-colors" />
-              <button className="w-full bg-apcoBlue hover:bg-apcoRed text-white font-bold uppercase tracking-wider text-xs px-4 py-3 rounded-lg transition-all duration-300">
-                Subscribe
-              </button>
-            </form>
+            {subscribed ? (
+              <div className="p-3 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl text-xs flex items-center gap-2 font-mono">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Quarterly notification channel connected.</span>
+              </div>
+            ) : (
+              <form className="flex gap-2" onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }}>
+                <input
+                  required
+                  type="email"
+                  placeholder="Official Email"
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-vrnNavy transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shrink-0 cursor-pointer font-display"
+                >
+                  Join
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
 
-        {/* Corporate Trust Matrix (Repurposed from App.tsx) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-slate-900 text-white p-8 border border-white/5 rounded-2xl mb-12">
-          <div className="flex items-start gap-4">
-            <Shield className="w-8 h-8 text-apcoRed flex-shrink-0" />
+        {/* Corporate Trust Matrix */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white p-6 sm:p-7 border border-slate-200 rounded-2xl mb-12 shadow-xs">
+          <div className="flex items-start gap-3.5">
+            <Shield className="w-6 h-6 text-vrnOrange shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Secure Operations</h4>
-              <p className="text-[11px] text-gray-400 mt-1">100% compliance with PASARA, DGR, ESIC, and PF labor regulatory audits.</p>
+              <h5 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Statutory Labor Compliance</h5>
+              <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed font-sans">
+                100% compliance with PASARA, DGR, ESIC, and PF regulatory labor code audits.
+              </p>
             </div>
           </div>
-          <div className="flex items-start gap-4 border-t border-white/5 pt-4 md:border-t-0 md:pt-0 md:border-x md:border-x-white/5 md:px-6">
-            <Award className="w-8 h-8 text-apcoRed flex-shrink-0" />
+
+          <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4 md:border-t-0 md:pt-0 md:border-x md:border-slate-200 md:px-6">
+            <Award className="w-6 h-6 text-vrnCyan-dark shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Quality Assurance</h4>
-              <p className="text-[11px] text-gray-400 mt-1">Certified execution using industrial-grade Sa 2.5 blast profiles and ISO 12944.</p>
+              <h5 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">ISO 12944 Certified Standards</h5>
+              <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed font-sans">
+                Sa 2.5 near-white blast profiles and high-durability C5-I corrosive environments.
+              </p>
             </div>
           </div>
-          <div className="flex items-start gap-4 border-t border-white/5 pt-4 md:border-t-0 md:pt-0">
-            <CheckCircle className="w-8 h-8 text-apcoRed flex-shrink-0" />
+
+          <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4 md:border-t-0 md:pt-0">
+            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-white">Scale & Precision</h4>
-              <p className="text-[11px] text-gray-400 mt-1">Managing 1,200+ personnel across 2M+ sq.ft. of corporate assets.</p>
+              <h5 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Scale & Continuous Mobilization</h5>
+              <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed font-sans">
+                Managing 1,200+ certified personnel across 2M+ sq.ft. of municipal infrastructure.
+              </p>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500 font-semibold tracking-wider">
-            &copy; {new Date().getFullYear()} Varan Corporation. All Rights Reserved.
+        <div className="border-t border-slate-200 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-mono">
+          <p>
+            &copy; {CURRENT_YEAR} Varan Corporation. All Rights Reserved.
           </p>
-          <div className="flex space-x-6 text-xs text-gray-500 font-semibold tracking-wider">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+          <div className="flex items-center gap-6">
+            <span className="hover:text-vrnNavy transition-colors cursor-pointer">Procurement Terms</span>
+            <span className="hover:text-vrnNavy transition-colors cursor-pointer">HSE Policy</span>
+            <span className="hover:text-vrnNavy transition-colors cursor-pointer">Sitemap</span>
           </div>
         </div>
 
