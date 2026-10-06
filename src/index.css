@@ -2,9 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --color-vrn-navy: #203182;
+  --color-vrn-orange: #F58220;
+  --color-vrn-cyan: #00AEEF;
+  --color-vrn-violet: #8D217B;
+  --ease-precision: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    @apply bg-white text-slate-800 antialiased selection:bg-vrnNavy selection:text-white;
+  }
+
+  h1, h2, h3, .font-heading, .font-display {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+    line-height: 1.05;
   }
 }
 
@@ -24,45 +44,96 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
+/* Subtle Engineering Grid Texture */
+.bg-grid-blueprint {
+  background-image: 
+    linear-gradient(to right, rgba(32, 49, 130, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 49, 130, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.bg-grid-dots {
+  background-image: radial-gradient(circle at 1px 1px, rgba(32, 49, 130, 0.07) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.bg-grid-dark {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* Premium Architectural Scrollbar */
+/* 1px Navy Hairline Divider */
+.hairline-divider {
+  height: 1px;
+  background-color: rgba(32, 49, 130, 0.12);
+  width: 100%;
+}
+
+/* Glassmorphic Panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+/* Glassmorphic HUD on Imagery */
+.hud-glass {
+  background: rgba(12, 23, 61, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Interactive Magnetic Button Sweep */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-sweep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transition: transform 0.6s var(--ease-precision);
+  z-index: -1;
+}
+
+.btn-sweep:hover::before {
+  transform: translateX(200%);
+}
+
+/* Precision Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0F1D; 
+  background: #F8FAFC;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E11D48;
+  background: #203182;
 }
 
-@media (min-width: 1024px) {
-  .hero-clip-path {
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
