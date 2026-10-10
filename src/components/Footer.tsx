@@ -68,26 +68,26 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
           {/* Brand & Proposition (Col span 4) */}
           <div className="lg:col-span-4 space-y-5">
             <Link 
-              to="/"
+              to="/" 
               className="flex items-center gap-3 cursor-pointer group inline-flex text-left bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
             >
-              <VrnLogo size={42} />
+              <VrnLogo size={38} />
               <div>
-                <span className="text-xl font-black tracking-tight text-vrnNavy uppercase block font-display">
+                <span className="text-lg font-semibold tracking-tight text-vrnNavy uppercase block font-heading">
                   Varan Corporation
                 </span>
-                <span className="text-[12px] font-medium font-body text-vrnNavy uppercase tracking-[0.04em] block -mt-0.5">
+                <span className="text-[11px] font-medium font-body text-slate-500 uppercase tracking-wider block -mt-0.5">
                   Infrastructure Group
                 </span>
               </div>
             </Link>
             
-            <p className="text-slate-700 text-xs sm:text-sm leading-relaxed max-w-sm font-sans">
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm font-body">
               Certified infrastructure contractor delivering heavy industrial coating, structural gantry fabrication, and transit workforce logistics across high-density corridors.
             </p>
 
-            <div className="text-[12px] sm:text-[13px] font-body text-slate-600 pt-1">
-              Registered Contractor ID: <span className="text-vrnNavy font-bold font-mono text-xs">VRN-IND-9001</span>
+            <div className="text-xs font-body text-slate-500 pt-1">
+              Registered Contractor ID: <span className="text-vrnNavy font-semibold font-mono text-xs">VRN-IND-9001</span>
             </div>
 
             {/* Lead Magnet Download Button */}
@@ -95,9 +95,9 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
               <button
                 type="button"
                 onClick={onOpenCapabilityModal}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border-2 border-vrnNavy text-vrnNavy hover:bg-vrnNavy hover:text-white text-xs font-bold font-display uppercase tracking-wider transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy shadow-2xs"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-vrnNavy text-xs font-semibold font-heading uppercase tracking-[0.04em] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy shadow-2xs"
               >
-                <Download className="w-4 h-4 shrink-0" />
+                <Download className="w-4 h-4 shrink-0 text-vrnNavy" />
                 <span>Download Capability Profile (PDF)</span>
               </button>
             </div>
@@ -105,8 +105,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Quick Operations Links (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-[12px] sm:text-[13px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">Operations</h4>
-            <ul className="space-y-3 text-xs text-slate-700 font-sans">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Operations</h4>
+            <ul className="space-y-3 text-xs text-slate-600 font-body">
               {[
                 { to: '/operations', label: 'All Capabilities' },
                 { to: '/operations', label: 'Protective Coatings' },
@@ -117,7 +117,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 <li key={i}>
                   <Link
                     to={item.to}
-                    className="relative group text-slate-700 hover:text-vrnNavy transition-colors text-left cursor-pointer inline-block"
+                    className="relative group text-slate-600 hover:text-vrnNavy transition-colors text-left cursor-pointer inline-block"
                   >
                     <span>{item.label}</span>
                     <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-vrnNavy transition-all duration-200 group-hover:w-full" />
@@ -129,8 +129,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Infrastructure Governance & Tenders (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-[12px] sm:text-[13px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">Navigation</h4>
-            <ul className="space-y-3 text-xs text-slate-700 font-sans">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Navigation</h4>
+            <ul className="space-y-3 text-xs text-slate-600 font-body">
               {[
                 { to: '/', label: 'Overview & Highlights' },
                 { to: '/projects', label: 'Projects Portfolio' },
@@ -141,7 +141,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 <li key={i}>
                   <Link
                     to={item.to}
-                    className="relative group text-slate-700 hover:text-vrnNavy transition-colors text-left cursor-pointer inline-block"
+                    className="relative group text-slate-600 hover:text-vrnNavy transition-colors text-left cursor-pointer inline-block"
                   >
                     <span>{item.label}</span>
                     <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-vrnNavy transition-all duration-200 group-hover:w-full" />
@@ -153,13 +153,13 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Newsletter / Bulletin using submitLead (Col span 4) */}
           <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-[12px] sm:text-[13px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">Tender & Milestone Bulletin</h4>
-            <p className="text-xs text-slate-600 leading-relaxed font-sans">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Tender & Milestone Bulletin</h4>
+            <p className="text-xs text-slate-600 leading-relaxed font-body">
               Receive quarterly technical bulletins on protective coating specifications, transit deployment schedules, and plant mobilization alerts.
             </p>
 
             {subscribed ? (
-              <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2.5 text-xs text-emerald-800 font-sans font-medium animate-fadeIn">
+              <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2.5 text-xs text-emerald-800 font-body font-medium animate-fadeIn">
                 <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Subscription confirmed. Quarterly technical updates will be sent to your email.</span>
               </div>
@@ -173,12 +173,12 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter corporate email..."
                     aria-label="Corporate Email for Tender Bulletin"
-                    className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-vrnNavy focus:border-vrnNavy"
+                    className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-vrnNavy focus:border-vrnNavy font-body"
                   />
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-4 py-2.5 bg-vrnNavy hover:bg-vrnNavy-dark text-white rounded-xl text-xs font-bold font-display uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50 shrink-0 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                    className="px-4 py-2.5 bg-vrnNavy hover:bg-vrnNavy-dark text-white rounded-xl text-xs font-semibold font-heading uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50 shrink-0 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
                   >
                     {loading ? (
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -191,61 +191,54 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                   </button>
                 </div>
                 {error && (
-                  <p className="text-[11px] text-red-600 font-sans">{error}</p>
+                  <p className="text-[11px] text-red-600 font-body">{error}</p>
                 )}
-                <span className="text-[12px] text-slate-500 block font-body">
+                <span className="text-[11px] text-slate-400 block font-body">
                   Strictly confidential. No spam. You may opt out anytime.
                 </span>
               </form>
             )}
 
             {/* Quick Contact Line */}
-            <div className="pt-2 text-[12px] sm:text-[13px] font-body text-slate-600 space-y-1">
-              <div>Tender Inquiries: <a href={`mailto:${companyConfig.email}`} className="text-vrnNavy hover:underline font-bold font-mono text-xs">{companyConfig.email}</a></div>
-              <div>Direct Desk: <a href={`tel:${companyConfig.phoneRaw}`} className="text-vrnNavy hover:underline font-bold font-mono text-xs">{companyConfig.phone}</a></div>
+            <div className="pt-2 text-xs font-body text-slate-600 space-y-1">
+              <div>Tender Inquiries: <a href={`mailto:${companyConfig.email}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{companyConfig.email}</a></div>
+              <div>Direct Desk: <a href={`tel:${companyConfig.phoneRaw}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{companyConfig.phone}</a></div>
             </div>
           </div>
 
         </div>
 
         {/* Corporate Trust Matrix */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white p-6 sm:p-8 border border-slate-200 rounded-3xl shadow-navy-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white p-6 sm:p-8 border border-slate-200/90 rounded-2xl shadow-navy-sm">
           <div className="flex items-start gap-3.5">
-            <Shield className="w-6 h-6 text-vrnNavy shrink-0 mt-0.5" />
+            <Shield className="w-5 h-5 text-vrnNavy shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Statutory Labor Compliance</h5>
-              <p className="text-[11px] text-slate-700 mt-0.5 leading-relaxed font-sans">
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Statutory Labor Compliance</h5>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
                 100% compliance with PASARA, DGR, ESIC, and PF regulatory labor code audits.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4 md:border-t-0 md:pt-0 md:border-x md:border-slate-200 md:px-6">
-            <Award className="w-6 h-6 text-vrnNavy shrink-0 mt-0.5" />
+            <Award className="w-5 h-5 text-vrnNavy shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">ISO 12944 Certified Standards</h5>
-              <p className="text-[11px] text-slate-700 mt-0.5 leading-relaxed font-sans">
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">ISO 12944 Certified Standards</h5>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
                 Sa 2.5 near-white blast profiles and high-durability C5-I corrosive environments.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4 md:border-t-0 md:pt-0">
-            <CheckCircle2 className="w-6 h-6 text-emerald-700 shrink-0 mt-0.5" />
+            <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Scale & Continuous Mobilization</h5>
-              <p className="text-[11px] text-slate-700 mt-0.5 leading-relaxed font-sans">
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Scale & Continuous Mobilization</h5>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
                 Managing 1,200+ certified personnel across 2M+ sq.ft. of municipal infrastructure.
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Oversized Engineered Wordmark Treatment */}
-        <div className="pt-6 border-t border-slate-200 text-center select-none overflow-hidden">
-          <span className="text-[clamp(2.5rem,9vw,7.5rem)] font-black text-slate-200/70 tracking-tighter uppercase font-display block leading-none">
-            VARAN CORPORATION
-          </span>
         </div>
 
         {/* Bottom Bar */}

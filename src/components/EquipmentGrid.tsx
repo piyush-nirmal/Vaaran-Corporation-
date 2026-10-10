@@ -77,10 +77,10 @@ export const EquipmentGrid: FC = () => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
         <div>
           <SectionLabel number="02" name="MACHINERY FLEET" className="mb-2" />
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-vrnNavy tracking-tight font-display">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-[-0.02em] font-heading">
             Operational Fleet & Machinery Deck
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-sans">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-body leading-relaxed">
             Mechanized asset inventory deployed for municipal transit, surface preparation, and structural erection.
           </p>
         </div>
@@ -94,10 +94,10 @@ export const EquipmentGrid: FC = () => {
                 key={key}
                 type="button"
                 onClick={() => handleFilterChange(key)}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer whitespace-nowrap font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
                   isSelected
                     ? 'bg-vrnNavy text-white shadow-xs'
-                    : 'text-slate-700 hover:text-vrnNavy hover:bg-slate-200/60'
+                    : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-200/60'
                 }`}
               >
                 {label}
@@ -159,7 +159,7 @@ export const EquipmentGrid: FC = () => {
                 <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">
                   <span className="font-mono font-bold">{item.capacity}</span> Available
                 </div>
-                <h3 className="text-base font-bold text-vrnNavy group-hover:text-vrnNavy-light transition-colors mt-0.5 leading-snug font-display">
+                <h3 className="text-base font-semibold text-slate-900 group-hover:text-vrnNavy transition-colors mt-0.5 leading-snug font-heading">
                   {item.name}
                 </h3>
                 <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed font-sans">

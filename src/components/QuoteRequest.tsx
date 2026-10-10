@@ -183,10 +183,10 @@ export const QuoteRequest: FC = () => {
         <div className="border-b border-slate-200 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <SectionLabel number="04" name="RFP PORTAL" className="mb-2" />
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-vrnNavy tracking-tight font-display">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-[-0.02em] font-heading">
               Configure Technical Bid Packet
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-sans">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-body leading-relaxed">
               Instant scope calculator for municipal infrastructure, highway alignments, and corporate tenders.
             </p>
           </div>
@@ -195,13 +195,13 @@ export const QuoteRequest: FC = () => {
             <button
               type="button"
               onClick={handleWhatsAppWithScope}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-vrnNavy text-xs font-bold font-display transition-colors cursor-pointer border border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-vrnNavy text-xs font-semibold font-heading transition-colors cursor-pointer border border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
             >
               <MessageSquare className="w-4 h-4 text-emerald-700" />
               <span>Chat on WhatsApp</span>
             </button>
 
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-vrnNavy bg-vrnNavy-tint border border-vrnNavy/20 px-3.5 py-1.5 rounded-lg shrink-0">
+            <div className="flex items-center gap-2 text-xs font-mono font-medium text-vrnNavy bg-vrnNavy/5 border border-vrnNavy/20 px-3.5 py-1.5 rounded-lg shrink-0">
               <ShieldCheck className="w-4 h-4 text-vrnNavy" />
               <span>24h Engineering Review SLA</span>
             </div>
@@ -572,7 +572,7 @@ export const QuoteRequest: FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full sm:w-auto bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-black text-xs uppercase tracking-wider py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2 cursor-pointer shrink-0 font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange disabled:opacity-60"
+                className="w-full sm:w-auto bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer shrink-0 font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange disabled:opacity-60"
               >
                 {isLoading ? (
                   <>

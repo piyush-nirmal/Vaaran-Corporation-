@@ -33,19 +33,21 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'sans-serif'],
-        display: ['var(--font-heading)', 'sans-serif'],
-        body: ['var(--font-body)', 'sans-serif'],
-        sans: ['var(--font-body)', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        heading: ['var(--font-heading)', 'Inter', 'sans-serif'],
+        display: ['var(--font-heading)', 'Inter', 'sans-serif'],
+        body: ['var(--font-body)', 'Inter', 'sans-serif'],
+        sans: ['var(--font-body)', 'Inter', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
       },
       letterSpacing: {
-        heading: '-0.01em',
+        heading: '-0.02em',
+        subtle: '-0.01em',
         label: '0.04em',
       },
       lineHeight: {
-        heading: '1.05',
-        body: '1.6',
+        heading: '1.15',
+        tight: '1.1',
+        body: '1.65',
       },
       boxShadow: {
         'navy-sm': '0 2px 8px -2px rgba(32, 49, 130, 0.08)',
@@ -55,11 +57,12 @@ export default {
       },
       borderRadius: {
         'sharp': '4px',
-        'smooth': '20px',
+        'smooth': '16px',
       },
       fontSize: {
-        'fluid-hero': ['clamp(2.75rem, 6.5vw, 5.75rem)', { lineHeight: '1.04', letterSpacing: '-0.035em' }],
-        'fluid-section': ['clamp(1.75rem, 3.2vw, 2.75rem)', { lineHeight: '1.15', letterSpacing: '-0.025em' }],
+        'fluid-hero': ['clamp(2.5rem, 5vw, 4.25rem)', { lineHeight: '1.12', letterSpacing: '-0.025em' }],
+        'fluid-section': ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'fluid-subheading': ['clamp(1.125rem, 1.8vw, 1.35rem)', { lineHeight: '1.4', letterSpacing: '-0.01em' }],
       },
       animation: {
         'marquee': 'marquee 28s linear infinite',

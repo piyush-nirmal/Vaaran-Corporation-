@@ -68,10 +68,10 @@ export const ProjectsPortfolio: FC = () => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
         <div>
           <SectionLabel number="03" name="CASE STUDIES" className="mb-2" />
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-vrnNavy tracking-tight font-display">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-[-0.02em] font-heading">
             Projects & Infrastructure Portfolio
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-sans">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-body leading-relaxed">
             Selected major works completed for transit authorities, highways, and enterprise campuses.
           </p>
         </div>
@@ -85,10 +85,10 @@ export const ProjectsPortfolio: FC = () => {
                 key={sector}
                 type="button"
                 onClick={() => handleFilterChange(sector)}
-                className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
+                className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer whitespace-nowrap font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
                   isSelected
                     ? 'bg-vrnNavy text-white shadow-xs'
-                    : 'text-slate-700 hover:text-vrnNavy hover:bg-slate-200/60'
+                    : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-200/60'
                 }`}
               >
                 {sector}

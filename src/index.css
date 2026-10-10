@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-heading: 'Barlow Condensed', sans-serif;
-  --font-body: 'Manrope', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   --color-vrn-navy: #203182;
   --color-vrn-orange: #F58220;
   --color-vrn-cyan: #00AEEF;
@@ -17,14 +17,21 @@
   body {
     font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.65;
     @apply bg-white text-slate-800 antialiased selection:bg-vrnNavy selection:text-white;
   }
 
-  h1, h2, h3, .font-heading, .font-display {
+  h1, h2, h3, h4, h5, h6, .font-heading, .font-display {
     font-family: var(--font-heading);
-    letter-spacing: -0.01em;
-    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    line-height: 1.65;
   }
 }
 

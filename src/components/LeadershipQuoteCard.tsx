@@ -31,25 +31,25 @@ export const LeadershipQuoteCard: FC = () => {
 
         {/* Text */}
         <div className="space-y-3 text-center md:text-left flex-1">
-          <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">
+          <div className="text-[11px] sm:text-xs font-body font-medium uppercase tracking-wider text-slate-500">
             Executive Governance Directive
           </div>
           
-          <blockquote className="text-sm sm:text-base md:text-lg font-medium text-slate-800 leading-relaxed italic font-sans">
+          <blockquote className="text-base sm:text-lg font-normal text-slate-700 leading-relaxed font-body">
             &ldquo;{leadershipQuote.quote}&rdquo;
           </blockquote>
 
-          <div className="pt-1 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="pt-2 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <div className="text-base font-extrabold text-vrnNavy font-display">
+              <div className="text-base font-semibold text-vrnNavy font-heading">
                 {leadershipQuote.author}
               </div>
-              <div className="text-xs text-slate-600 font-sans">
+              <div className="text-xs text-slate-500 font-body">
                 {leadershipQuote.role} · {leadershipQuote.credentials}
               </div>
             </div>
 
-            <div className="text-[12px] font-body font-medium tracking-[0.04em] text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-lg self-center sm:self-auto">
+            <div className="text-[11px] sm:text-xs font-body font-medium tracking-wider text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-lg self-center sm:self-auto">
               Statutory Board Sign-Off
             </div>
           </div>

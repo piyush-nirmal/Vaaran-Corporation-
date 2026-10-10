@@ -69,14 +69,14 @@ export const PageHeader: FC<PageHeaderProps> = ({
           <div className="lg:col-span-8 space-y-4">
             <SectionLabel number={badgeNumber} name={badgeName} />
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.01em] text-vrnNavy font-heading leading-[1.05]">
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold tracking-[-0.02em] text-slate-900 font-heading leading-[1.15] text-balance">
               {title}{' '}
               {highlightWord && (
-                <span className="text-vrnOrange">{highlightWord}</span>
+                <span className="text-vrnNavy">{highlightWord}</span>
               )}
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-700 max-w-3xl font-normal leading-[1.6] font-body">
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl font-normal leading-[1.65] font-body">
               {description}
             </p>
 
@@ -88,14 +88,14 @@ export const PageHeader: FC<PageHeaderProps> = ({
                 <>
                   <Link
                     to="/rfp-portal"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-bold text-xs uppercase tracking-[0.04em] shadow-sm hover:shadow-md transition-all font-heading"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] shadow-sm hover:shadow-md transition-all font-heading"
                   >
                     <span>Request a Bid</span>
                     <ArrowRight className="w-4 h-4 text-slate-950" />
                   </Link>
                   <a
                     href={`tel:${companyConfig.phoneRaw}`}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-bold text-xs uppercase tracking-[0.04em] transition-colors font-heading"
+                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] transition-colors font-heading"
                   >
                     <Phone className="w-3.5 h-3.5 text-vrnOrange" />
                     <span>Direct Desk: {companyConfig.phone}</span>
@@ -105,19 +105,19 @@ export const PageHeader: FC<PageHeaderProps> = ({
             </div>
           </div>
 
-          {/* Key Metrics: Barlow Condensed big stats, JetBrains Mono units, Manrope labels */}
+          {/* Key Metrics: Inter tabular numerals, JetBrains Mono units */}
           {metrics && metrics.length > 0 && (
             <div className="lg:col-span-4 grid grid-cols-2 gap-3">
               {metrics.map((m, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs"
+                  className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs"
                 >
-                  <div className="text-2xl sm:text-3xl font-bold font-heading tracking-[-0.01em] leading-[1.05] text-vrnNavy">
+                  <div className="text-2xl sm:text-3xl font-semibold font-heading tracking-tight leading-none text-vrnNavy tabular-nums">
                     {m.value}
                     {m.unit && <span className="text-xs font-mono font-medium text-slate-500 ml-1.5">{m.unit}</span>}
                   </div>
-                  <div className="text-[12px] sm:text-[13px] font-medium font-body uppercase tracking-[0.04em] text-slate-600 mt-0.5 truncate">
+                  <div className="text-[11px] sm:text-xs font-medium font-body uppercase tracking-wider text-slate-500 mt-1.5 truncate">
                     {m.label}
                   </div>
                 </div>

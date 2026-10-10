@@ -113,27 +113,27 @@ export const Navbar: FC<NavbarProps> = ({ onOpenPortal }) => {
             to="/" 
             className="flex items-center gap-3 text-left bg-transparent border-none cursor-pointer group p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
           >
-            <VrnLogo size={40} className="shrink-0 transition-transform duration-300 group-hover:scale-105" />
+            <VrnLogo size={38} className="shrink-0 transition-transform duration-300 group-hover:scale-105" />
             <div>
-              <span className="text-xl font-bold tracking-[-0.01em] text-vrnNavy uppercase block font-heading leading-tight">
+              <span className="text-lg font-semibold tracking-tight text-vrnNavy uppercase block font-heading leading-tight">
                 Varan Corporation
               </span>
-              <span className="text-[12px] font-medium text-vrnNavy uppercase tracking-[0.04em] block font-body">
+              <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider block font-body">
                 Infrastructure Group
               </span>
             </div>
           </Link>
           
           {/* Desktop Navigation Links with Animated Sliding Indicator */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs font-bold uppercase tracking-[0.04em] text-slate-700 font-heading relative">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] font-medium text-slate-600 font-sans relative">
             {navRoutes.map((link) => {
               const isActive = isLinkActive(link.path);
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative px-3 py-2 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
-                    isActive ? 'text-vrnNavy font-bold' : 'text-slate-700 hover:text-vrnNavy'
+                  className={`relative px-3.5 py-2 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
+                    isActive ? 'text-vrnNavy font-semibold' : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-50'
                   }`}
                 >
                   <span className="relative z-10">{link.label}</span>
@@ -141,7 +141,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenPortal }) => {
                     <motion.div
                       layoutId="activeNavIndicator"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      className="absolute bottom-0 left-2 right-2 h-[2.5px] bg-vrnOrange rounded-full"
+                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-vrnOrange rounded-full"
                     />
                   )}
                 </Link>
@@ -154,7 +154,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenPortal }) => {
             {/* Click-to-call phone from config (numeric in JetBrains Mono min 12px) */}
             <a
               href={`tel:${companyConfig.phoneRaw}`}
-              className="hidden md:inline-flex items-center gap-1.5 text-xs font-mono font-bold text-vrnNavy hover:text-vrnOrange transition-colors py-1 px-2.5 rounded-lg hover:bg-slate-100/80"
+              className="hidden md:inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 hover:text-vrnNavy transition-colors py-1.5 px-2.5 rounded-lg hover:bg-slate-100/80"
               title="Direct Engineering Desk"
             >
               <Phone className="w-3.5 h-3.5 text-vrnOrange shrink-0" />
@@ -165,7 +165,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenPortal }) => {
             <button 
               type="button"
               onClick={onOpenPortal}
-              className="hidden lg:inline-flex items-center gap-1 text-[13px] font-medium text-slate-600 hover:text-vrnNavy transition-colors cursor-pointer py-1 px-1 bg-transparent border-none font-body hover:underline"
+              className="hidden lg:inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-vrnNavy transition-colors cursor-pointer py-1 px-1 bg-transparent border-none font-body hover:underline"
             >
               <span>Client Portal (Coming Soon)</span>
             </button>
@@ -174,7 +174,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenPortal }) => {
             <button 
               type="button"
               onClick={handleRequestBidClick}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-[0.04em] text-slate-950 bg-vrnOrange hover:bg-vrnOrange-hover shadow-sm transition-all hover:shadow-md hover:shadow-orange-500/20 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-[0.04em] text-slate-950 bg-vrnOrange hover:bg-vrnOrange-hover shadow-sm transition-all hover:shadow-md cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
             >
               <span>Request Bid</span>
               <ArrowRight className="w-3.5 h-3.5 text-slate-950" />

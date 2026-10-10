@@ -27,7 +27,7 @@ export const RfpPage: FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={`tel:${companyConfig.phoneRaw}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider font-display shadow-xs transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-vrnOrange" />
               <span>Need Urgent Quote? {companyConfig.phone}</span>

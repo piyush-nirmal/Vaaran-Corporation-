@@ -32,16 +32,16 @@ export const DarkCapacitySection: FC = () => {
         {/* Top Header Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end justify-between">
           <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">
+            <div className="flex items-center gap-2 text-xs font-mono font-medium tracking-wider text-cyan-400 uppercase">
               <Zap className="w-3.5 h-3.5 text-amber-400" />
               <span>{darkBandContent.sectionLabel}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-display leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold tracking-[-0.02em] text-white font-heading leading-[1.15] text-balance">
               {darkBandContent.headline}
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans leading-relaxed">
+            <p className="text-base text-slate-300 max-w-2xl font-body leading-[1.65]">
               {darkBandContent.subtext}
             </p>
           </div>
@@ -49,7 +49,7 @@ export const DarkCapacitySection: FC = () => {
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 justify-end">
             <MagneticButton
               onClick={handleRequestBid}
-              className="w-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-black text-xs uppercase tracking-wider py-4 px-6 rounded-xl transition-all shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2 cursor-pointer font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
+              className="w-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] py-4 px-6 rounded-xl transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
             >
               <span>Request Priority Bid</span>
               <ArrowRight className="w-4 h-4 text-slate-950" />
@@ -58,7 +58,7 @@ export const DarkCapacitySection: FC = () => {
             <button
               type="button"
               onClick={handleCall}
-              className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-xs uppercase tracking-[0.04em] py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <Phone className="w-3.5 h-3.5 text-cyan-400" />
               <span>Direct Dispatch Wire</span>
@@ -71,14 +71,14 @@ export const DarkCapacitySection: FC = () => {
           {darkBandContent.stats.map((stat, i) => (
             <Reveal key={i} delay={i * 0.1} variant="fadeUp">
               <div className="p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xs space-y-2 hover:bg-white/10 transition-colors">
-                <div className="text-3xl sm:text-4xl font-bold text-white font-heading tracking-[-0.01em] leading-[1.05]">
+                <div className="text-3xl sm:text-4xl font-semibold text-white font-heading tracking-tight leading-none tabular-nums">
                   <CountUp value={stat.value} />
                 </div>
                 <div>
-                  <h4 className="text-[12px] sm:text-[13px] font-medium uppercase tracking-[0.04em] text-amber-400 font-body">
+                  <h4 className="text-[11px] sm:text-xs font-medium uppercase tracking-wider text-amber-400 font-body">
                     {stat.label}
                   </h4>
-                  <p className="text-[12px] text-slate-300 mt-0.5 font-body">
+                  <p className="text-xs text-slate-300 mt-1 font-body">
                     {stat.sublabel}
                   </p>
                 </div>

@@ -89,14 +89,14 @@ export const ServiceTabs: FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <SectionLabel number="01A" name="CAPABILITY DISCIPLINES" className="mb-2" />
-            <h3 className="text-xl sm:text-2xl font-extrabold text-vrnNavy tracking-tight font-display">
+            <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight font-heading">
               Four Specialized Engineering Divisions
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-sans">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-body">
               Single-contract mobilization across surface preparation, gantry fabrication, and site logistics.
             </p>
           </div>
-          <span className="text-xs font-mono text-vrnNavy font-bold hidden sm:inline">
+          <span className="text-xs font-mono text-vrnNavy font-medium hidden sm:inline">
             Click division to inspect live parameters ↓
           </span>
         </div>
@@ -128,7 +128,7 @@ export const ServiceTabs: FC = () => {
 
             {/* Top Badge */}
             <div className="relative z-10 p-6 flex items-center justify-between">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-vrnOrange text-slate-950 text-[12px] font-body font-medium uppercase tracking-[0.04em] shadow-sm">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-vrnOrange text-slate-950 text-[11px] font-body font-semibold uppercase tracking-wider shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-slate-950" />
                 <span>Flagship Division</span>
               </div>
@@ -140,14 +140,14 @@ export const ServiceTabs: FC = () => {
             {/* Bottom Content */}
             <div className="relative z-10 p-6 sm:p-8 space-y-3 text-white">
               <div className="space-y-1">
-                <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-cyan-300 block">
+                <span className="text-[11px] font-body font-medium uppercase tracking-wider text-cyan-300 block">
                   01 / HIGH-DENSITY CORRIDORS
                 </span>
-                <h4 className="text-2xl sm:text-3xl font-extrabold text-white font-display group-hover:text-amber-300 transition-colors">
+                <h4 className="text-2xl sm:text-3xl font-semibold text-white font-heading group-hover:text-amber-300 transition-colors">
                   {flagshipCategory.title}
                 </h4>
               </div>
-              <p className="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-xl font-sans">
+              <p className="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-xl font-body leading-relaxed">
                 {flagshipCategory.description}
               </p>
 
@@ -156,7 +156,7 @@ export const ServiceTabs: FC = () => {
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
                   <span>ISO 12944 C5-I Specification</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-bold text-vrnOrange group-hover:translate-x-1 transition-transform">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-vrnOrange group-hover:translate-x-1 transition-transform">
                   <span>Inspect Parameters</span>
                   <ArrowRight className="w-4 h-4 text-vrnOrange" />
                 </div>
@@ -187,12 +187,12 @@ export const ServiceTabs: FC = () => {
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <span className={`text-[12px] font-body font-medium uppercase tracking-[0.04em] block ${
+                        <span className={`text-[11px] font-body font-medium uppercase tracking-wider block ${
                           isSelected ? 'text-cyan-300' : 'text-slate-500'
                         }`}>
                           0{idx + 2} / Division
                         </span>
-                        <h4 className={`text-base font-bold font-display ${
+                        <h4 className={`text-base font-semibold font-heading ${
                           isSelected ? 'text-white' : 'text-vrnNavy group-hover:text-vrnNavy-light'
                         }`}>
                           {cat.title}
@@ -223,10 +223,10 @@ export const ServiceTabs: FC = () => {
         {/* Active Division Banner */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-4">
           <div>
-            <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">
+            <div className="text-[11px] font-body font-medium uppercase tracking-wider text-vrnNavy">
               Active Division Scope
             </div>
-            <h4 className="text-xl sm:text-2xl font-black text-vrnNavy font-display mt-0.5">
+            <h4 className="text-xl sm:text-2xl font-semibold text-vrnNavy font-heading mt-0.5">
               {activeCategory.title}
             </h4>
           </div>
@@ -460,7 +460,7 @@ export const ServiceTabs: FC = () => {
                 <button
                   type="button"
                   onClick={handleAttachToRFP}
-                  className="w-full bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider py-4 px-4 rounded-xl transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                  className="w-full bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] py-4 px-4 rounded-xl transition-colors hover:shadow-md flex items-center justify-center gap-2 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
                 >
                   <span>Apply {activeService.title} Specs to RFP Form</span>
                   <ArrowRight className="w-4 h-4 text-amber-400" />
