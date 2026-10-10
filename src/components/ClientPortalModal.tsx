@@ -88,7 +88,7 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
               <h3 id="portal-modal-title" className="font-extrabold uppercase tracking-wide text-sm text-vrnNavy font-display">
                 Client Portal (Coming Soon)
               </h3>
-              <p className="text-[10px] text-slate-500 font-mono">Secured Contractor Extranet · In Development</p>
+              <p className="text-[12px] text-slate-500 font-body">Secured Contractor Extranet · In Development</p>
             </div>
           </div>
           <button 
@@ -125,7 +125,7 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Task 5: Notice with no fake worksite or safety data */}
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-vrnNavy font-mono uppercase">
+                <div className="flex items-center gap-2 text-[12px] font-bold text-vrnNavy font-body uppercase tracking-[0.04em]">
                   <HardHat className="w-4 h-4 text-vrnNavy" />
                   <span>Deployment Notice</span>
                 </div>
@@ -159,7 +159,7 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
                 </span>
                 
                 <div className="space-y-1">
-                  <label htmlFor="portal-email" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label htmlFor="portal-email" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Corporate Email *
                   </label>
                   <input
@@ -174,7 +174,7 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="portal-company" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label htmlFor="portal-company" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Enterprise / EPC Authority (Optional)
                   </label>
                   <input

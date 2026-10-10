@@ -112,7 +112,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
               <FileText className="w-5 h-5 text-vrnOrange" />
             </div>
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-vrnOrange font-bold block">
+              <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnOrange block">
                 Technical Contractor Dossier
               </span>
               <h3 id="capability-modal-title" className="text-lg font-black text-vrnNavy font-display">
@@ -158,8 +158,8 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                 </a>
               </div>
 
-              <p className="text-[11px] text-slate-400 font-mono">
-                Direct link also logged for enterprise domain: {company}
+              <p className="text-[12px] text-slate-500 font-body">
+                Direct link also logged for enterprise domain: <span className="font-semibold text-slate-700">{company}</span>
               </p>
             </div>
           ) : (
@@ -188,7 +188,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
               )}
 
               <div className="space-y-1">
-                <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                   Full Name *
                 </label>
                 <input
@@ -208,7 +208,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
               </div>
 
               <div className="space-y-1">
-                <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                   Company / Organization *
                 </label>
                 <input
@@ -228,7 +228,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Corporate Email *
                   </label>
                   <input
@@ -247,7 +247,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Direct Phone *
                   </label>
                   <input
@@ -286,7 +286,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                 </button>
               </div>
 
-              <p className="text-[10px] text-slate-400 text-center font-mono">
+              <p className="text-[12px] text-slate-400 text-center font-body">
                 Zero spam promise. Strictly for formal procurement and tender verification.
               </p>
             </form>

@@ -10,7 +10,7 @@ interface WhatsAppContextType {
   whatsAppNumber: string;
 }
 
-const WhatsAppContext = createContext<WhatsAppContextType | null>(null);
+export const WhatsAppContext = createContext<WhatsAppContextType | null>(null);
 
 export const WhatsAppProvider = ({ children }: { children: ReactNode }) => {
   const [contextMessage, setContextMessage] = useState<string>(
@@ -45,12 +45,4 @@ export const WhatsAppProvider = ({ children }: { children: ReactNode }) => {
   );
 
   return <WhatsAppContext.Provider value={value}>{children}</WhatsAppContext.Provider>;
-};
-
-export const useWhatsApp = () => {
-  const context = useContext(WhatsAppContext);
-  if (!context) {
-    throw new Error('useWhatsApp must be used within a WhatsAppProvider');
-  }
-  return context;
 };

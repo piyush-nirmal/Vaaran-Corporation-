@@ -199,7 +199,7 @@ export const ContactForm: FC = () => {
 
                 {/* Topic Pills */}
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">Classification</label>
+                  <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">Classification</label>
                   <div className="flex flex-wrap gap-1.5">
                     {contactSubjects.map((sub) => {
                       const isSel = sub === activeSubject;
@@ -223,7 +223,7 @@ export const ContactForm: FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                   <div className="space-y-1">
-                    <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">First Name *</label>
+                    <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">First Name *</label>
                     <input
                       type="text"
                       value={firstName}
@@ -240,7 +240,7 @@ export const ContactForm: FC = () => {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">Last Name</label>
+                    <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">Last Name</label>
                     <input
                       type="text"
                       value={lastName}
@@ -253,7 +253,7 @@ export const ContactForm: FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">Corporate Email *</label>
+                    <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">Corporate Email *</label>
                     <input
                       type="email"
                       value={email}
@@ -270,7 +270,7 @@ export const ContactForm: FC = () => {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">Direct Phone *</label>
+                    <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">Direct Phone *</label>
                     <input
                       type="tel"
                       value={phone}
@@ -288,7 +288,7 @@ export const ContactForm: FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">Operational Directive / Scope Details *</label>
+                  <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">Operational Directive / Scope Details *</label>
                   <textarea
                     rows={4}
                     value={message}

@@ -211,7 +211,7 @@ export const QuoteRequest: FC = () => {
         {/* Stepper Progress Bar (Task 5) */}
         {!submittedRef && (
           <div className="mb-8 space-y-2">
-            <div className="flex items-center justify-between text-[11px] font-mono font-bold text-slate-600">
+            <div className="flex items-center justify-between text-[12px] sm:text-[13px] font-body font-medium tracking-[0.04em] text-slate-600">
               <span className={isStep1Done ? 'text-vrnNavy' : ''}>1. Division Scope</span>
               <span className={isStep2Done ? 'text-vrnNavy' : ''}>2. Volume & Mobilization</span>
               <span className={isStep3Done ? 'text-vrnNavy' : ''}>3. Enterprise Lead</span>
@@ -229,11 +229,11 @@ export const QuoteRequest: FC = () => {
         {/* Statutory Certification Badges as small icon chips */}
         <div className="mb-8 p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-1.5">
+            <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500 flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-vrnNavy" />
               <span>Audited Statutory & Engineering Standards</span>
             </span>
-            <span className="text-[10px] text-slate-500 hidden sm:inline font-mono">
+            <span className="text-[12px] text-slate-500 hidden sm:inline font-body">
               Valid for State & Central Tenders
             </span>
           </div>
@@ -243,11 +243,11 @@ export const QuoteRequest: FC = () => {
               <div 
                 key={badge.id}
                 title={`${badge.authority}: ${badge.scope}`}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-[11px] font-mono font-semibold shadow-2xs hover:border-vrnNavy/40 transition-colors"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-[12px] font-body font-medium shadow-2xs hover:border-vrnNavy/40 transition-colors"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                 <span className="text-slate-900 font-bold">{badge.name}</span>
-                <span className="text-slate-400 text-[10px] hidden md:inline">({badge.authority})</span>
+                <span className="text-slate-400 text-[11px] hidden md:inline">({badge.authority})</span>
               </div>
             ))}
           </div>
@@ -462,13 +462,13 @@ export const QuoteRequest: FC = () => {
               onFocus={handleFocusStep3}
               className="space-y-4"
             >
-              <span className="font-bold uppercase tracking-wider text-xs text-slate-800 block font-mono">
+              <span className="font-bold uppercase tracking-wider text-xs text-slate-800 block font-heading">
                 Step 3: Enterprise Point of Contact
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="space-y-1">
-                  <label htmlFor="rfp-company" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label htmlFor="rfp-company" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Enterprise / EPC *
                   </label>
                   <input
@@ -488,7 +488,7 @@ export const QuoteRequest: FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="rfp-contact-person" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label htmlFor="rfp-contact-person" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Designated Lead *
                   </label>
                   <input
@@ -508,7 +508,7 @@ export const QuoteRequest: FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="rfp-email" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label htmlFor="rfp-email" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Corporate Email *
                   </label>
                   <input
@@ -528,7 +528,7 @@ export const QuoteRequest: FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="rfp-phone" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                  <label htmlFor="rfp-phone" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                     Direct Phone *
                   </label>
                   <input
@@ -549,7 +549,7 @@ export const QuoteRequest: FC = () => {
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="rfp-directives" className="text-[11px] font-mono uppercase text-slate-600 font-semibold block">
+                <label htmlFor="rfp-directives" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
                   Site Directives or Blast Criteria (Optional)
                 </label>
                 <input
@@ -565,7 +565,7 @@ export const QuoteRequest: FC = () => {
 
             {/* Submission CTA Bar */}
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
-              <div className="text-xs text-slate-600 font-mono">
+              <div className="text-[12px] text-slate-600 font-body">
                 Mandates adherence to standard ISO 9001 and PASARA labor codes.
               </div>
 

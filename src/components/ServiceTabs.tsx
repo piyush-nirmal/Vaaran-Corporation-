@@ -128,8 +128,8 @@ export const ServiceTabs: FC = () => {
 
             {/* Top Badge */}
             <div className="relative z-10 p-6 flex items-center justify-between">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-vrnOrange text-slate-950 text-[10px] font-mono font-black uppercase tracking-wider shadow-sm">
-                <Sparkles className="w-3 h-3 text-slate-950" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-vrnOrange text-slate-950 text-[12px] font-body font-medium uppercase tracking-[0.04em] shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-slate-950" />
                 <span>Flagship Division</span>
               </div>
               <span className="text-xs font-mono text-cyan-300 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded border border-white/20">
@@ -140,7 +140,7 @@ export const ServiceTabs: FC = () => {
             {/* Bottom Content */}
             <div className="relative z-10 p-6 sm:p-8 space-y-3 text-white">
               <div className="space-y-1">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-cyan-300 font-bold block">
+                <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-cyan-300 block">
                   01 / HIGH-DENSITY CORRIDORS
                 </span>
                 <h4 className="text-2xl sm:text-3xl font-extrabold text-white font-display group-hover:text-amber-300 transition-colors">
@@ -187,7 +187,7 @@ export const ServiceTabs: FC = () => {
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <span className={`text-[10px] font-mono uppercase tracking-wider block font-bold ${
+                        <span className={`text-[12px] font-body font-medium uppercase tracking-[0.04em] block ${
                           isSelected ? 'text-cyan-300' : 'text-slate-500'
                         }`}>
                           0{idx + 2} / Division
@@ -223,7 +223,7 @@ export const ServiceTabs: FC = () => {
         {/* Active Division Banner */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-4">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-vrnNavy font-bold">
+            <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">
               Active Division Scope
             </div>
             <h4 className="text-xl sm:text-2xl font-black text-vrnNavy font-display mt-0.5">
@@ -269,7 +269,7 @@ export const ServiceTabs: FC = () => {
 
             {/* Target Sectors */}
             <div className="pt-2 border-t border-slate-200/80">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block mb-1">
+              <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500 block mb-1">
                 Approved Municipal & Enterprise Sectors
               </span>
               <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-700 font-sans">
@@ -286,7 +286,7 @@ export const ServiceTabs: FC = () => {
 
             {/* Key Deliverables */}
             <div className="pt-2 border-t border-slate-200/80">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block mb-2">
+              <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500 block mb-2">
                 Standard Engineering Deliverables
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -303,7 +303,7 @@ export const ServiceTabs: FC = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-3 border-t border-slate-200/80">
               {activeService.metrics.map((m, i) => (
                 <div key={i} className="bg-slate-50 p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
-                  <div className="text-[10px] font-mono uppercase text-slate-500 truncate">
+                  <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500 truncate">
                     {m.label}
                   </div>
                   <div className="text-sm font-extrabold text-vrnNavy font-mono tabular-nums mt-0.5">
@@ -330,11 +330,11 @@ export const ServiceTabs: FC = () => {
             <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 sm:p-7 shadow-xs space-y-6">
               
               <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-vrnNavy font-mono">
+                <div className="flex items-center gap-2 text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">
                   <Sliders className="w-4 h-4 text-vrnNavy" />
                   <span>Coating Specification Simulator</span>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-vrnNavy bg-white px-2 py-0.5 rounded border border-slate-200">
+                <span className="text-[12px] font-body font-medium text-vrnNavy bg-white px-2.5 py-0.5 rounded border border-slate-200">
                   Live Calculations
                 </span>
               </div>
@@ -417,25 +417,25 @@ export const ServiceTabs: FC = () => {
 
               {/* Output Performance Matrix with Number Tweening */}
               <div className="p-4 bg-white border border-slate-200 rounded-2xl space-y-3 shadow-xs">
-                <div className="text-[10px] font-mono font-bold uppercase text-slate-500 tracking-wider">
+                <div className="text-[12px] font-body font-medium uppercase text-slate-500 tracking-[0.04em]">
                   Calculated Specification Matrix
                 </div>
                 
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/60">
-                    <span className="text-[10px] font-mono text-slate-500 block">Estimated service life</span>
+                    <span className="text-[12px] font-body text-slate-500 block">Estimated service life</span>
                     <span className="font-mono text-sm font-bold text-emerald-700 block mt-0.5">
                       {coatingThickness >= 240 ? '25+ Yrs' : coatingThickness >= 180 ? '15–20 Yrs' : '10 Yrs'}
                     </span>
                   </div>
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/60">
-                    <span className="text-[10px] font-mono text-slate-500 block">Salt Spray Resistance</span>
+                    <span className="text-[12px] font-body text-slate-500 block">Salt Spray Resistance</span>
                     <span className="font-mono text-sm font-bold text-vrnNavy block mt-0.5">
                       <CountUp value={coatingThickness >= 200 ? '3,000h' : '2,000h'} />
                     </span>
                   </div>
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/60">
-                    <span className="text-[10px] font-mono text-slate-500 block">Tensile Adhesion</span>
+                    <span className="text-[12px] font-body text-slate-500 block">Tensile Adhesion</span>
                     <span className="font-mono text-sm font-bold text-vrnNavy block mt-0.5">
                       {blastStandard === 'Sa 3.0' ? '5B / 12 MPa' : '4B / 9 MPa'}
                     </span>

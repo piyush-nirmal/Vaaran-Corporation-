@@ -136,10 +136,10 @@ export const ProjectsPortfolio: FC = () => {
                 
                 {/* Badges Ribbon */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs">
-                  <span className="text-[11px] font-mono font-bold text-vrnNavy bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-200 shadow-xs">
+                  <span className="text-[12px] font-body font-medium text-vrnNavy bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-200 shadow-xs">
                     {project.sector}
                   </span>
-                  <span className="text-[11px] font-mono font-bold text-emerald-900 bg-emerald-50/95 backdrop-blur-md px-2.5 py-1 rounded-lg border border-emerald-300 shadow-xs">
+                  <span className="text-xs font-mono font-bold text-emerald-900 bg-emerald-50/95 backdrop-blur-md px-2.5 py-1 rounded-lg border border-emerald-300 shadow-xs">
                     {project.timeline}
                   </span>
                 </div>
@@ -167,7 +167,7 @@ export const ProjectsPortfolio: FC = () => {
               {/* Card Footer Parameters */}
               <div className="p-5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-slate-500 font-semibold block">
+                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500 block">
                     {project.metricLabel}
                   </span>
                   <span className="text-base font-extrabold text-vrnNavy font-mono">
@@ -201,7 +201,7 @@ export const ProjectsPortfolio: FC = () => {
             
             <div className="p-6 border-b border-slate-200 flex items-start justify-between bg-slate-50">
               <div>
-                <span className="text-xs font-mono text-vrnNavy uppercase tracking-wider font-bold">
+                <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">
                   {dossierProject.sector} Milestone
                 </span>
                 <h3 id="dossier-modal-title" className="text-xl font-black text-vrnNavy mt-1 font-display">
@@ -236,11 +236,11 @@ export const ProjectsPortfolio: FC = () => {
 
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-0.5">
-                  <span className="text-[10px] font-mono text-slate-500 uppercase font-semibold">Total Execution Scale</span>
+                  <span className="text-[12px] font-body font-medium text-slate-500 uppercase tracking-[0.04em]">Total Execution Scale</span>
                   <span className="text-sm font-bold text-vrnNavy block font-mono">{dossierProject.metric}</span>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-0.5">
-                  <span className="text-[10px] font-mono text-slate-500 uppercase font-semibold">Turnaround Speed</span>
+                  <span className="text-[12px] font-body font-medium text-slate-500 uppercase tracking-[0.04em]">Turnaround Speed</span>
                   <span className="text-sm font-bold text-emerald-800 block font-mono">{dossierProject.timeline}</span>
                 </div>
               </div>

@@ -140,7 +140,7 @@ export const EquipmentGrid: FC = () => {
               
               {/* Status Badge with Animated Pulse Dot */}
               <div className="absolute top-3 right-3">
-                <span className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full border backdrop-blur-md ${
+                <span className={`inline-flex items-center gap-1.5 text-[12px] font-body font-medium px-2.5 py-1 rounded-full border backdrop-blur-md ${
                   item.availability === 'Active Deployment'
                     ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                     : 'bg-white text-vrnNavy border-slate-300'
@@ -156,8 +156,8 @@ export const EquipmentGrid: FC = () => {
             {/* Card Body */}
             <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
               <div>
-                <div className="text-[10px] font-mono font-semibold uppercase text-slate-500">
-                  {item.capacity} Available
+                <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">
+                  <span className="font-mono font-bold">{item.capacity}</span> Available
                 </div>
                 <h3 className="text-base font-bold text-vrnNavy group-hover:text-vrnNavy-light transition-colors mt-0.5 leading-snug font-display">
                   {item.name}
@@ -168,14 +168,14 @@ export const EquipmentGrid: FC = () => {
               </div>
 
               {/* Unboxed Metadata Parameters */}
-              <div className="pt-3 border-t border-slate-100 space-y-1.5 text-xs font-mono">
+              <div className="pt-3 border-t border-slate-100 space-y-1.5 text-xs">
                 <div className="flex justify-between items-center text-slate-600">
-                  <span className="text-[10px] uppercase font-semibold">Rating</span>
-                  <span className="text-slate-900 font-bold">{item.pressureRating}</span>
+                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">Rating</span>
+                  <span className="text-slate-900 font-bold font-mono text-xs">{item.pressureRating}</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-600">
-                  <span className="text-[10px] uppercase font-semibold">Standard</span>
-                  <span className="text-vrnNavy font-bold text-[11px] truncate max-w-[130px]">{item.certifications}</span>
+                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">Standard</span>
+                  <span className="text-vrnNavy font-bold text-xs font-mono truncate max-w-[130px]">{item.certifications}</span>
                 </div>
               </div>
 
@@ -205,7 +205,7 @@ export const EquipmentGrid: FC = () => {
             {/* Modal Header */}
             <div className="p-6 border-b border-slate-200 flex items-start justify-between bg-slate-50">
               <div>
-                <span className="text-xs font-mono text-vrnNavy uppercase tracking-wider font-bold">
+                <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">
                   Machinery Inspection Dossier
                 </span>
                 <h3 id="machinery-modal-title" className="text-xl font-black text-vrnNavy mt-1 font-display">
@@ -241,12 +241,12 @@ export const EquipmentGrid: FC = () => {
 
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-0.5">
-                  <span className="text-[10px] font-mono text-slate-500 uppercase font-semibold">Pressure / Load</span>
-                  <span className="text-sm font-bold text-vrnNavy block">{inspectedItem.pressureRating}</span>
+                  <span className="text-[12px] font-body font-medium text-slate-500 uppercase tracking-[0.04em]">Pressure / Load</span>
+                  <span className="text-sm font-bold text-vrnNavy block font-mono">{inspectedItem.pressureRating}</span>
                 </div>
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-0.5">
-                  <span className="text-[10px] font-mono text-slate-500 uppercase font-semibold">Flow Rate / Capacity</span>
-                  <span className="text-sm font-bold text-vrnNavy block">{inspectedItem.flowOutput}</span>
+                  <span className="text-[12px] font-body font-medium text-slate-500 uppercase tracking-[0.04em]">Flow Rate / Capacity</span>
+                  <span className="text-sm font-bold text-vrnNavy block font-mono">{inspectedItem.flowOutput}</span>
                 </div>
               </div>
 

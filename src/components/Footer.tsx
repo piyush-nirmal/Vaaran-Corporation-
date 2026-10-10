@@ -76,7 +76,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 <span className="text-xl font-black tracking-tight text-vrnNavy uppercase block font-display">
                   Varan Corporation
                 </span>
-                <span className="text-[10px] font-bold text-vrnNavy uppercase tracking-widest block -mt-1 font-mono">
+                <span className="text-[12px] font-medium font-body text-vrnNavy uppercase tracking-[0.04em] block -mt-0.5">
                   Infrastructure Group
                 </span>
               </div>
@@ -86,8 +86,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
               Certified infrastructure contractor delivering heavy industrial coating, structural gantry fabrication, and transit workforce logistics across high-density corridors.
             </p>
 
-            <div className="text-xs font-mono text-slate-600 pt-1">
-              Registered Contractor ID: <span className="text-vrnNavy font-bold">VRN-IND-9001</span>
+            <div className="text-[12px] sm:text-[13px] font-body text-slate-600 pt-1">
+              Registered Contractor ID: <span className="text-vrnNavy font-bold font-mono text-xs">VRN-IND-9001</span>
             </div>
 
             {/* Lead Magnet Download Button */}
@@ -105,7 +105,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Quick Operations Links (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-vrnNavy">Operations</h4>
+            <h4 className="text-[12px] sm:text-[13px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">Operations</h4>
             <ul className="space-y-3 text-xs text-slate-700 font-sans">
               {[
                 { to: '/operations', label: 'All Capabilities' },
@@ -129,7 +129,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Infrastructure Governance & Tenders (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-vrnNavy">Navigation</h4>
+            <h4 className="text-[12px] sm:text-[13px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">Navigation</h4>
             <ul className="space-y-3 text-xs text-slate-700 font-sans">
               {[
                 { to: '/', label: 'Overview & Highlights' },
@@ -153,7 +153,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Newsletter / Bulletin using submitLead (Col span 4) */}
           <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-vrnNavy">Tender & Milestone Bulletin</h4>
+            <h4 className="text-[12px] sm:text-[13px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">Tender & Milestone Bulletin</h4>
             <p className="text-xs text-slate-600 leading-relaxed font-sans">
               Receive quarterly technical bulletins on protective coating specifications, transit deployment schedules, and plant mobilization alerts.
             </p>
@@ -193,16 +193,16 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 {error && (
                   <p className="text-[11px] text-red-600 font-sans">{error}</p>
                 )}
-                <span className="text-[10px] text-slate-600 block font-mono">
+                <span className="text-[12px] text-slate-500 block font-body">
                   Strictly confidential. No spam. You may opt out anytime.
                 </span>
               </form>
             )}
 
             {/* Quick Contact Line */}
-            <div className="pt-2 text-xs font-mono text-slate-600 space-y-1">
-              <div>Tender Inquiries: <a href={`mailto:${companyConfig.email}`} className="text-vrnNavy hover:underline font-bold">{companyConfig.email}</a></div>
-              <div>Direct Desk: <a href={`tel:${companyConfig.phoneRaw}`} className="text-vrnNavy hover:underline font-bold">{companyConfig.phone}</a></div>
+            <div className="pt-2 text-[12px] sm:text-[13px] font-body text-slate-600 space-y-1">
+              <div>Tender Inquiries: <a href={`mailto:${companyConfig.email}`} className="text-vrnNavy hover:underline font-bold font-mono text-xs">{companyConfig.email}</a></div>
+              <div>Direct Desk: <a href={`tel:${companyConfig.phoneRaw}`} className="text-vrnNavy hover:underline font-bold font-mono text-xs">{companyConfig.phone}</a></div>
             </div>
           </div>
 
@@ -249,9 +249,9 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-600 font-mono">
+        <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[12px] sm:text-[13px] text-slate-600 font-body">
           <p>
-            &copy; {CURRENT_YEAR} Varan Corporation Infrastructure Group. All Rights Reserved.
+            &copy; <span className="font-mono">{CURRENT_YEAR}</span> Varan Corporation Infrastructure Group. All Rights Reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link to="/contact" className="hover:text-vrnNavy transition-colors cursor-pointer">Procurement Terms</Link>

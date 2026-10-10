@@ -59,7 +59,7 @@ export const ProcessTimeline: FC = () => {
               </div>
 
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-vrnNavy font-bold block">
+                <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy block">
                   {step.subtitle}
                 </span>
                 <h4 className="text-sm font-bold text-slate-900 group-hover:text-vrnNavy transition-colors mt-0.5 font-display">
@@ -70,7 +70,7 @@ export const ProcessTimeline: FC = () => {
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-slate-200/70 flex items-center gap-1.5 text-[11px] text-emerald-700 font-semibold font-mono">
+              <div className="pt-2 border-t border-slate-200/70 flex items-center gap-1.5 text-[12px] text-emerald-800 font-medium font-body">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span>Audited QA/QC Checkpoint</span>
               </div>

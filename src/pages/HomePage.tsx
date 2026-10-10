@@ -61,7 +61,7 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className={`text-[10px] font-mono font-bold tracking-widest uppercase px-2.5 py-1 rounded-md ${
+                    <span className={`text-[12px] font-body font-medium tracking-[0.04em] uppercase px-2.5 py-1 rounded-md ${
                       div.isFlagship ? 'bg-white/15 text-cyan-300' : 'bg-slate-200/70 text-slate-600'
                     }`}>
                       {div.isFlagship ? 'Flagship Division' : 'Core Discipline'}
@@ -137,15 +137,15 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-mono font-bold text-emerald-700 border border-slate-200 shadow-2xs">
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md text-[12px] font-body font-medium text-emerald-800 border border-slate-200 shadow-2xs">
                     {item.availability}
                   </div>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <div className="text-[11px] font-mono font-bold uppercase text-slate-500">
-                      {item.category.toUpperCase()} · {item.capacity}
+                    <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">
+                      {item.category.toUpperCase()} · <span className="font-mono">{item.capacity}</span>
                     </div>
                     <h3 className="text-lg font-bold text-vrnNavy font-display group-hover:text-vrnOrange transition-colors">
                       {item.name}
@@ -155,8 +155,8 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
-                    <span>{item.certifications}</span>
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span className="font-body text-[12px]">{item.certifications}</span>
                     <Link to="/fleet" className="font-bold text-vrnNavy hover:text-vrnOrange flex items-center gap-1 font-sans">
                       Specs <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
@@ -210,7 +210,7 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <span className="text-[11px] font-mono font-bold uppercase text-cyan-300 block">
+                    <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-cyan-300 block">
                       {m.corridor}
                     </span>
                     <h3 className="text-base font-bold font-display text-white">
@@ -220,11 +220,11 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                  <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-500">{m.metricLabel}:</span>
-                    <span className="font-bold text-vrnNavy">{m.metricValue}</span>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-slate-500 font-body text-[12px]">{m.metricLabel}:</span>
+                    <span className="font-bold text-vrnNavy font-mono">{m.metricValue}</span>
                   </div>
-                  <div className="text-[11px] font-mono text-slate-600 line-clamp-1">
+                  <div className="text-xs text-slate-600 font-sans line-clamp-1">
                     {m.coatingSpec}
                   </div>
                   <div className="pt-2 border-t border-slate-100">

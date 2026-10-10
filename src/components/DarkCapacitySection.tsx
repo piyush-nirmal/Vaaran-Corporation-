@@ -71,14 +71,14 @@ export const DarkCapacitySection: FC = () => {
           {darkBandContent.stats.map((stat, i) => (
             <Reveal key={i} delay={i * 0.1} variant="fadeUp">
               <div className="p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xs space-y-2 hover:bg-white/10 transition-colors">
-                <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyan-300">
+                <div className="text-3xl sm:text-4xl font-bold text-white font-heading tracking-[-0.01em] leading-[1.05]">
                   <CountUp value={stat.value} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-display">
+                  <h4 className="text-[12px] sm:text-[13px] font-medium uppercase tracking-[0.04em] text-amber-400 font-body">
                     {stat.label}
                   </h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 font-mono">
+                  <p className="text-[12px] text-slate-300 mt-0.5 font-body">
                     {stat.sublabel}
                   </p>
                 </div>
@@ -88,12 +88,12 @@ export const DarkCapacitySection: FC = () => {
         </div>
 
         {/* Regulatory Footer Guarantee */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
-          <div className="flex items-center gap-2 text-emerald-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white/5 border border-white/10 text-[12px] text-slate-300 font-body">
+          <div className="flex items-center gap-2 text-emerald-400 font-medium">
             <ShieldCheck className="w-4 h-4 shrink-0" />
             <span>Guaranteed compliance with Central & State Public Procurement Rules (PPR).</span>
           </div>
-          <span className="text-slate-400 text-[11px]">
+          <span className="text-slate-300 text-[12px]">
             Audited SLA: ISO 9001:2015 · PASARA · DGR
           </span>
         </div>

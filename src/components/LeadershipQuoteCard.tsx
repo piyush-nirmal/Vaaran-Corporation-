@@ -24,14 +24,14 @@ export const LeadershipQuoteCard: FC = () => {
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
             />
           </div>
-          <span className="absolute -bottom-2 -right-2 bg-vrnNavy text-white text-[9px] font-mono font-bold px-2 py-0.5 rounded shadow-xs">
+          <span className="absolute -bottom-2 -right-2 bg-vrnNavy text-white text-[12px] font-body font-medium uppercase tracking-[0.04em] px-2 py-0.5 rounded shadow-xs">
             LEADERSHIP
           </span>
         </div>
 
         {/* Text */}
         <div className="space-y-3 text-center md:text-left flex-1">
-          <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-bold">
+          <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">
             Executive Governance Directive
           </div>
           
@@ -44,12 +44,12 @@ export const LeadershipQuoteCard: FC = () => {
               <div className="text-base font-extrabold text-vrnNavy font-display">
                 {leadershipQuote.author}
               </div>
-              <div className="text-xs text-slate-600 font-mono">
+              <div className="text-xs text-slate-600 font-sans">
                 {leadershipQuote.role} · {leadershipQuote.credentials}
               </div>
             </div>
 
-            <div className="text-[11px] font-mono font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-lg self-center sm:self-auto">
+            <div className="text-[12px] font-body font-medium tracking-[0.04em] text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-lg self-center sm:self-auto">
               Statutory Board Sign-Off
             </div>
           </div>
