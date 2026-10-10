@@ -46,3 +46,11 @@ export const WhatsAppProvider = ({ children }: { children: ReactNode }) => {
 
   return <WhatsAppContext.Provider value={value}>{children}</WhatsAppContext.Provider>;
 };
+
+export const useWhatsApp = () => {
+  const context = useContext(WhatsAppContext);
+  if (!context) {
+    throw new Error('useWhatsApp must be used within a WhatsAppProvider');
+  }
+  return context;
+};
