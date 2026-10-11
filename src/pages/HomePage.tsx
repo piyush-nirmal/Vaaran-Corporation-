@@ -31,17 +31,17 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
               <SectionLabel number="01" name="DIVISION OVERVIEW" />
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-slate-900 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
-                Four Specialized Engineering <span className="text-vrnNavy">Divisions</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-950 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
+                Four Specialized Engineering <span className="text-[#0F2942]">Divisions</span>
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-[1.65] font-body">
-                Engineered surface protection, heavy structural gantry erection, precision barrier fabrication, and licensed site technical teams.
+              <p className="text-base sm:text-lg text-slate-700 max-w-2xl leading-[1.65] font-medium font-body">
+                Engineered surface protection, structural gantry erection, barrier fabrication, and site teams.
               </p>
             </div>
 
             <Link
               to="/operations"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0F2942] hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.04em] font-heading shadow-sm transition-all hover:gap-3 shrink-0"
             >
               <span>Explore All Capabilities & Sandbox</span>
               <ArrowRight className="w-4 h-4 text-white" />
@@ -55,36 +55,36 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                 key={div.id}
                 className={`p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between group ${
                   div.isFlagship
-                    ? 'bg-vrnNavy text-white border-vrnNavy shadow-navy-md'
-                    : 'bg-slate-50 hover:bg-white border-slate-200/90 hover:border-vrnNavy/40 hover:shadow-navy-sm text-slate-800'
+                    ? 'bg-[#0F2942] text-white border-[#0F2942] shadow-xl'
+                    : 'bg-white hover:bg-slate-50 border-slate-300 hover:border-[#0F2942]/60 hover:shadow-md text-slate-900 shadow-2xs'
                 }`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className={`text-[11px] font-body font-medium tracking-wider uppercase px-2.5 py-1 rounded-md ${
-                      div.isFlagship ? 'bg-white/15 text-cyan-300' : 'bg-slate-200/70 text-slate-600'
+                    <span className={`text-[11px] font-body font-bold tracking-wider uppercase px-2.5 py-1 rounded-md ${
+                      div.isFlagship ? 'bg-white/15 text-cyan-300' : 'bg-slate-100 border border-slate-200 text-slate-800'
                     }`}>
                       {div.isFlagship ? 'Flagship Division' : 'Core Discipline'}
                     </span>
-                    <span className={`font-mono text-xs font-semibold ${div.isFlagship ? 'text-amber-400' : 'text-vrnOrange'}`}>
+                    <span className={`font-mono text-xs font-bold ${div.isFlagship ? 'text-amber-400' : 'text-[#C25E00]'}`}>
                       {div.highlightMetric}
                     </span>
                   </div>
 
-                  <h3 className={`text-lg font-semibold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-vrnNavy'}`}>
+                  <h3 className={`text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-slate-950 group-hover:text-[#0F2942]'}`}>
                     {div.title}
                   </h3>
 
-                  <p className={`text-xs leading-relaxed font-body ${div.isFlagship ? 'text-slate-300' : 'text-slate-600'}`}>
+                  <p className={`text-xs leading-relaxed font-body ${div.isFlagship ? 'text-slate-200' : 'text-slate-700 font-medium'}`}>
                     {div.summary}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-4 border-t border-current/10">
+                <div className="pt-6 mt-4 border-t border-current/15">
                   <Link
                     to="/operations"
-                    className={`inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider font-heading group-hover:gap-2 transition-all ${
-                      div.isFlagship ? 'text-white' : 'text-vrnNavy hover:text-vrnOrange'
+                    className={`inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider font-heading group-hover:gap-2 transition-all ${
+                      div.isFlagship ? 'text-cyan-300 hover:text-white' : 'text-[#0F2942] hover:text-[#C25E00]'
                     }`}
                   >
                     <span>Division Details</span>
@@ -101,23 +101,28 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       {/* ------------------------------------------------------------- */}
       {/* SECTION 2: FLEET & ASSETS TEASER */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200/90 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-20 lg:py-24 bg-slate-50 text-slate-900 border-b border-slate-200 w-full relative overflow-hidden">
+        {/* Ambient Glows to match logo vibe */}
+        <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-[#8ACFF8]/15 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
-              <SectionLabel number="02" name="MACHINERY DECK" />
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-slate-900 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
-                Heavy Machinery & Dedicated <span className="text-vrnNavy">Yard Fleet</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white text-slate-900 font-mono text-xs font-bold uppercase tracking-wider shadow-2xs border border-slate-300">
+                <span className="text-orange-600 font-bold">02</span> MACHINERY DECK
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-950 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
+                Heavy Machinery & Dedicated <span className="text-[#0F2942]">Yard Fleet</span>
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-[1.65] font-body">
-                Over 42 heavy contractor units mobilized across rail and expressway corridors with real-time calibration compliance.
+              <p className="text-base sm:text-lg text-slate-700 max-w-2xl leading-[1.65] font-medium font-body">
+                Over 42 heavy contractor units mobilized with real-time calibration compliance.
               </p>
             </div>
 
             <Link
               to="/fleet"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0F2942] hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
             >
               <span>Inspect Full Machinery Roster</span>
               <ArrowRight className="w-4 h-4 text-white" />
@@ -129,7 +134,7 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
             {equipmentData.slice(0, 3).map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-navy-sm transition-all duration-300 flex flex-col group"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col group"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -137,27 +142,27 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-body font-medium text-emerald-800 border border-slate-200 shadow-2xs">
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-body font-bold text-emerald-800 border border-slate-200 shadow-2xs">
                     {item.availability}
                   </div>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <div className="text-[11px] font-body font-medium uppercase tracking-wider text-slate-500">
-                      {item.category.toUpperCase()} · <span className="font-mono">{item.capacity}</span>
+                    <div className="text-[11px] font-body font-bold uppercase tracking-wider text-slate-600">
+                      {item.category.toUpperCase()} · <span className="font-mono text-slate-800 font-bold">{item.capacity}</span>
                     </div>
-                    <h3 className="text-base font-semibold text-slate-900 font-heading group-hover:text-vrnNavy transition-colors">
+                    <h3 className="text-base font-bold text-slate-950 font-heading group-hover:text-[#0F2942] transition-colors">
                       {item.name}
                     </h3>
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-slate-700 font-medium line-clamp-2 leading-relaxed">
                       {item.application}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                    <span className="font-body text-[11px]">{item.certifications}</span>
-                    <Link to="/fleet" className="font-semibold text-vrnNavy hover:text-vrnOrange flex items-center gap-1 font-heading text-xs">
+                  <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+                    <span className="font-body text-[11px] font-semibold text-slate-700">{item.certifications}</span>
+                    <Link to="/fleet" className="font-bold text-[#0F2942] hover:text-[#C25E00] flex items-center gap-1 font-heading text-xs">
                       Specs <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -178,17 +183,17 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
               <SectionLabel number="03" name="PROVEN TRACK RECORD" />
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-slate-900 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
-                Executed Infrastructure <span className="text-vrnNavy">Milestones</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-950 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
+                Executed Infrastructure <span className="text-[#0F2942]">Milestones</span>
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-[1.65] font-body">
-                Documented site case studies across elevated viaducts, expressway corridors, and transit hubs.
+              <p className="text-base sm:text-lg text-slate-700 max-w-2xl leading-[1.65] font-medium font-body">
+                Documented site case studies across elevated viaducts and transit hubs.
               </p>
             </div>
 
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0F2942] hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
             >
               <span>View All 120+ Documented Projects</span>
               <ArrowRight className="w-4 h-4 text-white" />
@@ -200,7 +205,7 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
             {heroMilestones.map((m) => (
               <div
                 key={m.id}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-navy-sm transition-all duration-300 flex flex-col group"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col group"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -208,12 +213,12 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                     alt={m.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <span className="text-[11px] font-body font-medium uppercase tracking-wider text-cyan-300 block">
+                    <span className="text-[11px] font-body font-bold uppercase tracking-wider text-cyan-300 block">
                       {m.corridor}
                     </span>
-                    <h3 className="text-base font-semibold font-heading text-white">
+                    <h3 className="text-base font-bold font-heading text-white">
                       {m.name}
                     </h3>
                   </div>
@@ -221,14 +226,14 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
 
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-500 font-body text-[11px]">{m.metricLabel}:</span>
-                    <span className="font-semibold text-vrnNavy font-mono">{m.metricValue}</span>
+                    <span className="text-slate-600 font-body text-[11px] font-semibold">{m.metricLabel}:</span>
+                    <span className="font-bold text-[#0F2942] font-mono">{m.metricValue}</span>
                   </div>
-                  <div className="text-xs text-slate-600 font-body line-clamp-1 leading-relaxed">
+                  <div className="text-xs text-slate-700 font-medium font-body line-clamp-1 leading-relaxed">
                     {m.coatingSpec}
                   </div>
-                  <div className="pt-2 border-t border-slate-100">
-                    <Link to="/projects" className="text-xs font-semibold text-vrnNavy hover:text-vrnOrange flex items-center justify-between group/link font-heading">
+                  <div className="pt-2 border-t border-slate-200">
+                    <Link to="/projects" className="text-xs font-bold text-[#0F2942] hover:text-[#C25E00] flex items-center justify-between group/link font-heading">
                       <span>Explore Project Specs</span>
                       <ChevronRight className="w-4 h-4 group-link-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -242,7 +247,7 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       </section>
 
       {/* Leadership Governance Section */}
-      <section className="py-16 bg-slate-50 border-b border-slate-200/90 w-full">
+      <section className="py-16 bg-vrnNavy-subtle border-b border-vrnNavy-tint w-full">
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
           <LeadershipQuoteCard />
         </div>
@@ -256,42 +261,42 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       {/* ------------------------------------------------------------- */}
       <section className="py-20 bg-white border-b border-slate-200/90 w-full">
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-slate-900 text-white relative overflow-hidden shadow-navy-lg border border-slate-800">
+          <div className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-slate-50 text-slate-900 relative overflow-hidden shadow-sm border border-slate-200">
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-vrnOrange/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-vrnCyan/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#8ACFF8]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#8ACFF8]/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-between">
               <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 text-cyan-300 font-mono text-xs font-semibold uppercase tracking-wider">
-                  <FileText className="w-3.5 h-3.5 text-amber-400" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-200/50 text-slate-700 font-mono text-xs font-semibold uppercase tracking-wider">
+                  <FileText className="w-3.5 h-3.5 text-[#8ACFF8]" />
                   <span>Interactive Technical Stepper</span>
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold font-heading leading-[1.15] text-white text-balance">
-                  Configure Your Project Parameters in Our <span className="text-vrnOrange">RFP Portal</span>
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold font-heading leading-[1.15] text-slate-900 text-balance">
+                  Configure Your Project Parameters in Our <span className="text-[#8ACFF8]">RFP Portal</span>
                 </h2>
-                <p className="text-base text-slate-300 max-w-2xl font-normal leading-[1.65]">
-                  Select your infrastructure corridor, define required DFT and surface blasting profile, configure fleet assets, and receive a formal technical bid within 24 hours.
+                <p className="text-base text-slate-600 max-w-2xl font-normal leading-[1.65]">
+                  Select your corridor, define DFT, configure fleet assets, and receive a technical bid within 24 hours.
                 </p>
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-300 pt-2">
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> ISO 12944 Compliant</span>
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Verified Audit Token</span>
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Zero Obligation</span>
+                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-600 pt-2">
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> ISO 12944 Compliant</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Verified Audit Token</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Zero Obligation</span>
                 </div>
               </div>
 
               <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
                 <Link
                   to="/rfp-portal"
-                  className="w-full py-4 px-6 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 font-heading transition-all"
+                  className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#8ACFF8] to-sky-300 hover:to-sky-400 text-slate-900 font-semibold text-xs uppercase tracking-[0.04em] flex items-center justify-center gap-2 shadow-sm shadow-[#8ACFF8]/30 font-heading transition-all"
                 >
                   <span>Launch RFP Portal</span>
-                  <ArrowRight className="w-4 h-4 text-slate-950" />
+                  <ArrowRight className="w-4 h-4 text-slate-900" />
                 </Link>
                 <button
                   type="button"
                   onClick={onOpenCapabilityModal}
-                  className="w-full py-3.5 px-6 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs uppercase tracking-[0.04em] flex items-center justify-center gap-2 font-heading transition-all cursor-pointer"
+                  className="w-full py-3.5 px-6 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-900 font-semibold text-xs uppercase tracking-[0.04em] flex items-center justify-center gap-2 font-heading transition-all cursor-pointer shadow-sm"
                 >
                   <span>Download Capability PDF</span>
                 </button>

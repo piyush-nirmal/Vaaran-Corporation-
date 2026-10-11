@@ -136,10 +136,10 @@ export const clientPartners: ClientPartner[] = [
 // TODO: Replace with verified Chairman / Managing Director quote and portrait
 // -------------------------------------------------------------
 export const leadershipQuote: LeadershipQuote = {
-  quote: 'Public utility infrastructure demands absolute execution discipline. We engineer every square meter of surface coating and structural gantry to endure decades of extreme environmental stress.',
+  quote: 'Infrastructure demands execution discipline. We engineer to endure.',
   author: 'R. V. Nirmal',
   role: 'Managing Director',
-  credentials: '30+ Years Infrastructure Engineering Experience',
+  credentials: '30+ Yrs Exp.',
   imagePlaceholder: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', // TODO: replace with verified photo
 };
 
@@ -148,10 +148,10 @@ export const leadershipQuote: LeadershipQuote = {
 // TODO: Replace with audited completion numbers
 // -------------------------------------------------------------
 export const heroMetrics: MetricProof[] = [
-  { label: 'Surface Coated', value: '45,000', unit: 'm²', subtext: 'Metro Viaducts & Bridges' },
-  { label: 'Steel Erected', value: '18,500', unit: 'MT', subtext: 'Expressway Gantries & Trusses' },
-  { label: 'Projects Delivered', value: '120+', unit: 'Sites', subtext: 'Transit & Highways Delivered' },
-  { label: 'Zero LTI Record', value: '100%', unit: 'Safety', subtext: 'Zero Incident Safety Record' },
+  { label: 'Surface Coated', value: '45,000', unit: 'm²', subtext: 'Metro & Bridges' },
+  { label: 'Steel Erected', value: '18,500', unit: 'MT', subtext: 'Expressway Gantries' },
+  { label: 'Projects Delivered', value: '120+', unit: 'Sites', subtext: 'Transit & Highways' },
+  { label: 'Zero LTI Record', value: '100%', unit: 'Safety', subtext: 'Zero Incidents' },
 ];
 
 // -------------------------------------------------------------
@@ -159,12 +159,12 @@ export const heroMetrics: MetricProof[] = [
 // TODO: Replace with verified certificate registration IDs
 // -------------------------------------------------------------
 export const certificationBadges: CertificationChip[] = [
-  { id: 'iso-12944', name: 'ISO 12944 (C5-I)', authority: 'Protective Coatings', scope: 'Corrosive Industrial & Marine Standard' },
-  { id: 'iso-9001', name: 'ISO 9001:2015', authority: 'Quality Management', scope: 'Certified Contractor Operations' },
-  { id: 'pasara', name: 'PASARA Certified', authority: 'Statutory License', scope: 'Audited Personnel Security' },
-  { id: 'dgr', name: 'DGR Registered', authority: 'Labor Compliant', scope: 'Ex-Servicemen Deployment Ready' },
-  { id: 'esic-pf', name: 'ESIC & PF 100%', authority: 'Statutory Labor Code', scope: 'Workforce Insurance & Benefits' },
-  { id: 'aws-d1', name: 'AWS D1.1 Certified', authority: 'American Welding Society', scope: 'Structural Steel Fusion Welding' },
+  { id: 'iso-12944', name: 'ISO 12944 (C5-I)', authority: 'Protective Coatings', scope: 'Corrosive Standard' },
+  { id: 'iso-9001', name: 'ISO 9001:2015', authority: 'Quality Management', scope: 'Certified Operations' },
+  { id: 'pasara', name: 'PASARA Certified', authority: 'Statutory License', scope: 'Audited Security' },
+  { id: 'dgr', name: 'DGR Registered', authority: 'Labor Compliant', scope: 'Ex-Servicemen Ready' },
+  { id: 'esic-pf', name: 'ESIC & PF 100%', authority: 'Statutory Labor Code', scope: 'Workforce Benefits' },
+  { id: 'aws-d1', name: 'AWS D1.1', authority: 'American Welding Society', scope: 'Fusion Welding' },
 ];
 
 // -------------------------------------------------------------
@@ -175,27 +175,27 @@ export const divisionHighlights: DivisionHighlight[] = [
   {
     id: 'industrial-infra-painting',
     title: 'Industrial & Infra Painting',
-    summary: 'High-volume protective coatings for metro tracks, bridge girders, and chemical corridors.',
+    summary: 'High-volume coatings for metro tracks and bridges.',
     highlightMetric: '45,000 m² Completed',
     isFlagship: true,
   },
   {
     id: 'display-fabrication',
     title: 'Display & Gantry Fabrication',
-    summary: 'Overhead highway gantries, toll signage structures, and CNC-cut exterior brand installations.',
+    summary: 'Overhead gantries and structural signage.',
     highlightMetric: '180 km/h Wind Tolerance',
   },
   {
     id: 'civil-structures',
     title: 'Civil Structures & Barriers',
-    summary: 'Reinforced concrete foundations, high-security perimeter fencing, and W-beam crash barriers.',
+    summary: 'Concrete foundations and perimeter fencing.',
     highlightMetric: '1,200 Tons Processed',
   },
   {
     id: 'enterprise-manpower',
     title: 'Enterprise Technical Manpower',
-    summary: 'Certified riggers, industrial painters, and licensed site supervisory personnel.',
-    highlightMetric: '1,200+ Active Personnel',
+    summary: 'Certified riggers and industrial painters.',
+    highlightMetric: '1,200+ Personnel',
   },
 ];
 
@@ -206,45 +206,42 @@ export const divisionHighlights: DivisionHighlight[] = [
 export const heroMilestones: HeroMilestone[] = [
   {
     id: 'metro-line-3',
-    name: 'Mumbai Metro Line 3 Corridor',
+    name: 'Mumbai Metro Line 3',
     corridor: 'Elevated Viaduct Span 14–28',
-    coatingSpec: 'Sa 2.5 Near-White Blast · 180µm Polyurethane',
+    coatingSpec: 'Sa 2.5 Blast · 180µm Polyurethane',
     metricLabel: 'Coating Area',
     metricValue: '45,000 m²',
-    safetyStatus: '100% Zero-Incident Logged',
+    safetyStatus: '100% Zero-Incident',
     image: heroViaductImg,
-    stage: 'Phase IV Active',
-    isVerified: false, // Flagged false: badges hidden until verified by site team
-    // TODO: Replace with confirmed site photography caption
-    photoCaption: 'Representative high-build protective coating application on elevated transit viaduct',
+    stage: 'Phase IV',
+    isVerified: false,
+    photoCaption: 'Protective coating on transit viaduct',
   },
   {
     id: 'highway-gantry',
-    name: 'Western Expressway High-Speed Gantries',
-    corridor: 'KM 18.2 Toll Plaza Alignment',
-    coatingSpec: 'AWS D1.1 Certified Welds · Epoxy MIO Barrier',
+    name: 'Western Expressway Gantries',
+    corridor: 'KM 18.2 Toll Plaza',
+    coatingSpec: 'AWS D1.1 Welds · Epoxy MIO',
     metricLabel: 'Steel Tonnage',
     metricValue: '18,500 MT',
-    safetyStatus: 'HSE Safety Cleared',
+    safetyStatus: 'HSE Cleared',
     image: steelFabImg,
-    stage: 'Fabrication Verified',
-    isVerified: false, // Flagged false: badges hidden until verified by site team
-    // TODO: Replace with confirmed site photography caption
-    photoCaption: 'Representative structural steel gantry fabrication and anti-corrosive primer coating',
+    stage: 'Fabrication',
+    isVerified: false,
+    photoCaption: 'Structural steel gantry fabrication',
   },
   {
     id: 'bkc-transit',
-    name: 'BKC Intermodal Corporate Terminal',
+    name: 'BKC Intermodal Terminal',
     corridor: 'Sky-Gantry Elevation 180 ft',
-    coatingSpec: 'Dual-Coat Fluoropolymer · Wind-Load Rated',
+    coatingSpec: 'Dual-Coat Fluoropolymer',
     metricLabel: 'Curtain Truss',
-    metricValue: '12.4 km Line',
-    safetyStatus: 'Structural Signoff Logged',
+    metricValue: '12.4 km',
+    safetyStatus: 'Structural Signoff',
     image: transitCoatingImg,
-    stage: 'Site Mobilization',
-    isVerified: false, // Flagged false: badges hidden until verified by site team
-    // TODO: Replace with confirmed site photography caption
-    photoCaption: 'Representative high-altitude commercial facade access and architectural coating system',
+    stage: 'Mobilization',
+    isVerified: false,
+    photoCaption: 'Commercial facade access & coating',
   },
 ];
 
@@ -255,50 +252,50 @@ export const heroMilestones: HeroMilestone[] = [
 export const equipmentData: EquipmentItem[] = [
   {
     id: 'airless-spray',
-    name: 'Heavy Industrial Airless Spray Plants',
+    name: 'Airless Spray Plants',
     category: 'coating',
-    capacity: '4 Mobile Units',
-    application: 'High-volume infrastructure & viaduct coating',
+    capacity: '4 Units',
+    application: 'High-volume coating',
     availability: 'Active Deployment',
-    pressureRating: '3,300 PSI (227 Bar)',
-    flowOutput: '8.3 Liters / Min Continuous',
-    certifications: 'ATEX Zone 1 Explosion Proof',
+    pressureRating: '3,300 PSI',
+    flowOutput: '8.3 L/Min',
+    certifications: 'ATEX Zone 1',
     image: sprayRigImg,
   },
   {
     id: 'sand-blasting',
-    name: 'Mobile Pressurized Sand Blasting Rigs',
+    name: 'Pressurized Blasting Rigs',
     category: 'blasting',
     capacity: '2 Heavy Rigs',
-    application: 'Sa 2.5 and Sa 3.0 surface profile preparation',
+    application: 'Sa 2.5 / Sa 3.0 profiling',
     availability: 'Ready in Yard',
     pressureRating: '175 CFM @ 125 PSI',
-    flowOutput: '450 sq.ft. / Hour',
-    certifications: 'ASME Section VIII Pressure Vessel',
+    flowOutput: '450 sq.ft./Hr',
+    certifications: 'ASME Sec VIII',
     image: facilityImg,
   },
   {
     id: 'mig-tig-welding',
-    name: 'Structural MIG / TIG Inverter Stations',
+    name: 'MIG/TIG Inverter Stations',
     category: 'welding',
-    capacity: '8 Heavy Stations',
-    application: 'Display gantries, trusses, and structural joint fabrication',
+    capacity: '8 Stations',
+    application: 'Structural joint fabrication',
     availability: 'Active Deployment',
-    pressureRating: '400 Amp @ 60% Duty Cycle',
-    flowOutput: '0.8mm – 1.6mm Wire Feed',
-    certifications: 'AWS D1.1 Structural Certified',
+    pressureRating: '400A @ 60%',
+    flowOutput: '0.8–1.6mm Wire',
+    certifications: 'AWS D1.1',
     image: steelFabImg,
   },
   {
     id: 'aluminum-scaffolding',
-    name: 'Modular Aluminum High-Altitude Systems',
+    name: 'Modular Scaffolding Systems',
     category: 'access',
     capacity: '2,500 m² Decking',
-    application: 'Elevated transit viaducts and sky-gantry work',
+    application: 'Elevated sky-gantry work',
     availability: 'Ready in Yard',
-    pressureRating: 'Safe Working Load 200 kg/m²',
-    flowOutput: 'Up to 24m Elevation Reach',
-    certifications: 'EN 1004 & OSHA Compliant',
+    pressureRating: 'SWL 200 kg/m²',
+    flowOutput: '24m Elevation',
+    certifications: 'EN 1004 & OSHA',
     image: transitCoatingImg,
   },
 ];
@@ -318,55 +315,55 @@ export const equipmentCategoryLabels: Record<string, string> = {
 export const projectsData: ProjectItem[] = [
   {
     id: 'metro-viaduct',
-    title: 'Metro Line 3 Viaduct Structural Protective Coating',
+    title: 'Metro Line 3 Viaduct Coating',
     sector: 'Transit Infrastructure',
     metric: '45,000 m²',
     metricLabel: 'Surface Treated',
     image: transitCoatingImg,
-    location: 'Mumbai Metro Line 3 Corridor',
-    specification: 'Sa 2.5 Blast · 180µm Polyurethane Topcoat · ISO 12944 C5',
-    timeline: 'Completed in 90 Days',
-    substrate: 'Pre-stressed Reinforced Concrete (RCC) & Steel Brackets',
-    safetyStatus: '100% Zero-Incident Logged',
+    location: 'Mumbai Metro Line 3',
+    specification: 'Sa 2.5 Blast · 180µm PU',
+    timeline: '90 Days',
+    substrate: 'RCC & Steel',
+    safetyStatus: '100% Zero-Incident',
   },
   {
     id: 'highway-gantry',
-    title: 'High-Speed Expressway Gantry Alignment & Fabrication',
+    title: 'High-Speed Expressway Gantries',
     sector: 'Civil Highways',
     metric: '18,500 MT',
     metricLabel: 'Structural Steel',
     image: steelFabImg,
-    location: 'Western Express Highway Toll Concourse',
-    specification: 'AWS D1.1 Full Penetration Welds · Hot-Dip Galvanized Base',
-    timeline: '60-Day Turnaround',
-    substrate: 'High-Strength Structural Hollow Sections (SHS)',
-    safetyStatus: 'Structural Certification Logged',
+    location: 'WEH Toll Concourse',
+    specification: 'AWS D1.1 · Hot-Dip Galvanized',
+    timeline: '60 Days',
+    substrate: 'Steel Hollow Sections',
+    safetyStatus: 'Certified',
   },
   {
     id: 'bkc-intermodal',
-    title: 'BKC Intermodal Corporate Terminal & Sky-Sign Architecture',
+    title: 'BKC Intermodal Sky-Sign Architecture',
     sector: 'Commercial & Industrial',
     metric: '180 ft',
-    metricLabel: 'Elevation Reached',
+    metricLabel: 'Elevation',
     image: heroViaductImg,
-    location: 'Bandra-Kurla Complex Corporate Park',
-    specification: 'Modular Scaffolding Access · Wind Shear Tested (180 km/h)',
-    timeline: 'Delivered 2 Weeks Ahead',
-    substrate: 'Aluminium Composite Facades & Structural Trusses',
-    safetyStatus: 'High-Altitude Safety Clearance',
+    location: 'BKC Corporate Park',
+    specification: 'Modular Scaffolding · Wind Tested',
+    timeline: '2 Weeks Ahead',
+    substrate: 'Aluminium Facades',
+    safetyStatus: 'Cleared',
   },
   {
     id: 'industrial-staging',
-    title: 'Central Logistics Staging & Fleet Maintenance Hangar',
+    title: 'Logistics Staging & Fleet Hangar',
     sector: 'Commercial & Industrial',
     metric: '12,000 m²',
     metricLabel: 'Epoxy Decking',
     image: facilityImg,
-    location: 'Bhiwandi Freight & Distribution Hub',
-    specification: 'Self-Leveling Heavy Traffic Polyurethane Screed',
-    timeline: '45 Days Full Execution',
-    substrate: 'M35 Heavy Vehicle Industrial Flooring',
-    safetyStatus: 'HSE Safety Audit Approved',
+    location: 'Bhiwandi Hub',
+    specification: 'Self-Leveling PU Screed',
+    timeline: '45 Days',
+    substrate: 'M35 Flooring',
+    safetyStatus: 'HSE Approved',
   },
 ];
 
@@ -450,38 +447,38 @@ export interface ProcessStep {
 export const processTimelineSteps: ProcessStep[] = [
   {
     step: '01',
-    title: 'Site Survey & Substrate Profiling',
-    subtitle: 'NACE / SSPC Assessment',
-    description: 'Chloride salts titration, ultrasonic steel thickness gauges, and micro-climate environmental checks.',
-    specStandard: 'ISO 8502-6 Soluble Salts'
+    title: 'Site Survey',
+    subtitle: 'NACE / SSPC',
+    description: 'Chlorides, thickness, and micro-climate checks.',
+    specStandard: 'ISO 8502-6'
   },
   {
     step: '02',
-    title: 'Mechanized Abrasive Blasting',
-    subtitle: 'Sa 2.5 Near-White Metal',
-    description: 'Mobile pressurized garnet/copper slag blast rigs achieving 50–75 µm angular peak-to-valley profile.',
-    specStandard: 'ISO 8501-1 Sa 2.5'
+    title: 'Abrasive Blasting',
+    subtitle: 'Sa 2.5 Profile',
+    description: 'Pressurized blast rigs achieving 50–75 µm profile.',
+    specStandard: 'ISO 8501-1'
   },
   {
     step: '03',
-    title: 'High-Build Coating Application',
-    subtitle: 'Multi-Tier Barrier System',
-    description: 'Zinc-rich epoxy primer followed by polyamide adduct intermediate and aliphatic polyurethane topcoat.',
-    specStandard: 'ISO 12944 Part 5 C5'
+    title: 'Coating Application',
+    subtitle: 'Barrier System',
+    description: 'Zinc-rich primer, intermediate, and topcoat.',
+    specStandard: 'ISO 12944'
   },
   {
     step: '04',
-    title: 'NDT Inspection & DFT Audit',
-    subtitle: 'Calibrated Gauge Verification',
-    description: 'Magnetic dry-film thickness measurements, cross-hatch adhesion pulls, and 100% pinhole spark testing.',
-    specStandard: 'SSPC-PA 2 Compliance'
+    title: 'NDT & DFT Audit',
+    subtitle: 'Gauge Verification',
+    description: 'Thickness, adhesion, and pinhole testing.',
+    specStandard: 'SSPC-PA 2'
   },
   {
     step: '05',
-    title: 'Handover & Warranty Dossier',
-    subtitle: 'Contractor Milestone Signoff',
-    description: 'Digital QA/QC inspection binder, statutory labor compliance sign-off, and multi-year maintenance warranty.',
-    specStandard: 'ISO 9001:2015 Approved'
+    title: 'Handover',
+    subtitle: 'Signoff',
+    description: 'QA/QC binder and maintenance warranty.',
+    specStandard: 'ISO 9001'
   }
 ];
 
@@ -491,13 +488,13 @@ export const processTimelineSteps: ProcessStep[] = [
 // -------------------------------------------------------------
 export const darkBandContent = {
   sectionLabel: 'CAPACITY / SPEED',
-  headline: 'Mobilization Scale for Critical Corridors',
-  subtext: 'Turnkey industrial capability with certified equipment fleets and multi-shift engineering crews deployed within 72 hours of site clearance.',
+  headline: 'Rapid Mobilization',
+  subtext: 'Turnkey fleets and crews deployed within 72 hours.',
   stats: [
-    { value: '72 Hrs', label: 'Site Mobilization SLA', sublabel: 'Across Pan-India Transit Hubs' },
-    { value: '1,200+', label: 'Active Riggers & Painters', sublabel: '100% ESIC, PF & PASARA Cleared' },
-    { value: '0.00', label: 'Lost Time Incident Rate', sublabel: 'Zero Safety Violations in 2025-26' },
-    { value: '100 MT', label: 'Daily Gantry Throughput', sublabel: 'Automated MIG/TIG Production' }
+    { value: '72 Hrs', label: 'Site SLA', sublabel: 'Pan-India Transit' },
+    { value: '1,200+', label: 'Active Riggers', sublabel: '100% Cleared' },
+    { value: '0.00', label: 'LTI Rate', sublabel: 'Zero Safety Violations' },
+    { value: '100 MT', label: 'Daily Gantry', sublabel: 'Automated MIG/TIG' }
   ]
 };
 

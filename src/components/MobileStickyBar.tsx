@@ -20,7 +20,7 @@ export const MobileStickyBar: FC = () => {
   return (
     <aside
       aria-label="Quick contact actions"
-      className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-4 py-2.5 shadow-lg shadow-slate-900/10"
+      className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-white/80 backdrop-blur-xl border-t border-white/60 px-4 py-2.5 shadow-[0_-8px_30px_rgba(15,41,66,0.08)]"
     >
       <div className="max-w-md mx-auto grid grid-cols-2 gap-3">
         {/* Call CTA */}

@@ -27,10 +27,10 @@ export const RfpPage: FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={`tel:${companyConfig.phoneRaw}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-md shadow-orange-500/15 hover:shadow-lg hover:shadow-orange-500/25 transition-all"
             >
-              <Phone className="w-3.5 h-3.5 text-vrnOrange" />
-              <span>Need Urgent Quote? {companyConfig.phone}</span>
+              <Phone className="w-4 h-4 text-slate-950" />
+              <span>Urgent Quote Call: {companyConfig.phone}</span>
             </a>
           </div>
         }
@@ -39,7 +39,7 @@ export const RfpPage: FC = () => {
       {/* Statutory Badges Bar */}
       <div className="w-full bg-white border-b border-slate-200/90 py-4">
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-          <div className="flex items-center gap-2 text-slate-500 font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-slate-600 font-bold uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span>Audited Statutory Compliance Standards:</span>
           </div>
@@ -58,7 +58,7 @@ export const RfpPage: FC = () => {
       </div>
 
       {/* Main RFP Configurator Stepper Container */}
-      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <QuoteRequest />
       </div>
     </div>

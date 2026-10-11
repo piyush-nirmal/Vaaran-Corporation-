@@ -7,15 +7,21 @@ import { WhatsAppProvider } from './context/WhatsAppContext';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { ScrollToTop } from './components/ScrollToTop';
+import { GlassScrollTop } from './components/ui/GlassScrollTop';
+import { AmbientGlassBackground } from './components/ui/AmbientGlassBackground';
 import { track } from './services/analytics';
 
 // Lazy-load pages for optimal performance and instant route transitions
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
+const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
+const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
+const SitemapPage = lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const OperationsPage = lazy(() => import('./pages/OperationsPage').then(m => ({ default: m.OperationsPage })));
 const FleetPage = lazy(() => import('./pages/FleetPage').then(m => ({ default: m.FleetPage })));
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
 const RfpPage = lazy(() => import('./pages/RfpPage').then(m => ({ default: m.RfpPage })));
-const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 
 // Modals
 const CapabilityProfileModal = lazy(() => import('./components/CapabilityProfileModal').then(m => ({ default: m.CapabilityProfileModal })));
@@ -40,14 +46,17 @@ function MainApp() {
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.8,
+      infinite: false,
     });
+
+    (window as unknown as { __lenis?: typeof lenis }).__lenis = lenis;
 
     let animationFrameId: number;
     function raf(time: number) {
@@ -60,6 +69,7 @@ function MainApp() {
     return () => {
       cancelAnimationFrame(animationFrameId);
       lenis.destroy();
+      delete (window as unknown as { __lenis?: typeof lenis }).__lenis;
     };
   }, []);
 
@@ -74,8 +84,11 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col font-sans text-slate-800 selection:bg-vrnNavy selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50/50 flex flex-col font-sans text-slate-800 selection:bg-vrnNavy selection:text-white overflow-x-hidden relative">
       
+      {/* Ambient glass luminous gradient mesh */}
+      <AmbientGlassBackground />
+
       {/* Scroll restoration helper */}
       <ScrollToTop />
 
@@ -83,12 +96,63 @@ function MainApp() {
       <Navbar onOpenPortal={handleOpenPortal} />
 
       {/* Multi-Page Routes */}
-      <main className="w-full flex-grow flex flex-col bg-white">
+      <main className="w-full flex-grow flex flex-col bg-transparent">
         <Suspense fallback={<PageFallback />}>
           <Routes>
+            {/* Exactly the 7 pages from User's Navigation Bar Reference */}
             <Route 
               path="/" 
               element={<HomePage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+            />
+            <Route 
+              path="/about" 
+              element={<AboutPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+            />
+            <Route 
+              path="/about-us" 
+              element={<AboutPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+            />
+            <Route 
+              path="/projects" 
+              element={<ProjectsPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+            />
+            <Route 
+              path="/careers" 
+              element={<CareersPage />} 
+            />
+            <Route 
+              path="/gallery" 
+              element={<GalleryPage />} 
+            />
+            <Route 
+              path="/photo-gallery" 
+              element={<GalleryPage />} 
+            />
+            <Route 
+              path="/sitemap" 
+              element={<SitemapPage />} 
+            />
+            <Route 
+              path="/site-map" 
+              element={<SitemapPage />} 
+            />
+            <Route 
+              path="/contact" 
+              element={<ContactPage />} 
+            />
+            <Route 
+              path="/contact-us" 
+              element={<ContactPage />} 
+            />
+
+            {/* Action / Enquiry / Operations Routes */}
+            <Route 
+              path="/enquiry" 
+              element={<RfpPage />} 
+            />
+            <Route 
+              path="/rfp-portal" 
+              element={<RfpPage />} 
             />
             <Route 
               path="/operations" 
@@ -98,18 +162,7 @@ function MainApp() {
               path="/fleet" 
               element={<FleetPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
             />
-            <Route 
-              path="/projects" 
-              element={<ProjectsPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
-            />
-            <Route 
-              path="/rfp-portal" 
-              element={<RfpPage />} 
-            />
-            <Route 
-              path="/contact" 
-              element={<ContactPage />} 
-            />
+
             {/* Fallback to Home */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
@@ -118,6 +171,9 @@ function MainApp() {
 
       {/* Global Persistent Footer */}
       <Footer onOpenCapabilityModal={handleOpenCapabilityProfile} />
+
+      {/* Smooth Scroll Floating Glass Back-to-Top Button */}
+      <GlassScrollTop />
 
       {/* Floating Contextual WhatsApp Button (All pages) */}
       <WhatsAppFloatingButton />
