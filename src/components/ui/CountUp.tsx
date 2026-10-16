@@ -17,14 +17,11 @@ export const CountUp = ({
   suffix = '',
 }: CountUpProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-40px' });
+  const isInView = useInView(ref, { once: true, margin: '50px' });
   
   const stringVal = String(value);
 
-  const [displayValue, setDisplayValue] = useState<string>(() => {
-    const match = stringVal.replace(/,/g, '').match(/[\d.]+/);
-    return !match ? stringVal : '0';
-  });
+  const [displayValue, setDisplayValue] = useState<string>(() => stringVal);
 
   useEffect(() => {
     const match = stringVal.replace(/,/g, '').match(/[\d.]+/);

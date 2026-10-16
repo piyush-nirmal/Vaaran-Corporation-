@@ -35,10 +35,6 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -53,10 +49,6 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-stopped {
   overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
 }
 
 /* Subtle Engineering Grid Texture */
@@ -86,45 +78,20 @@ html.lenis, html.lenis body {
   width: 100%;
 }
 
-/* Glassmorphic Panel (Crisp Frosted Glass) */
+/* Glassmorphic Panel */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 10px 30px -5px rgba(15, 41, 66, 0.06), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
 }
 
-/* Glassmorphic Card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px) saturate(190%);
-  -webkit-backdrop-filter: blur(20px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 14px 40px -10px rgba(15, 41, 66, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
-}
-
-/* Glass Floating Pill / Dock */
-.glass-pill {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 25px -4px rgba(15, 41, 66, 0.1), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-/* Glass Specular Reflection Highlight */
-.glass-specular {
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
-}
-
-/* Glassmorphic HUD on Imagery (Dark Glass) */
+/* Glassmorphic HUD on Imagery */
 .hud-glass {
-  background: rgba(15, 41, 66, 0.75);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 16px 40px -10px rgba(8, 23, 38, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  background: rgba(12, 23, 61, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Interactive Magnetic Button Sweep */
@@ -150,28 +117,22 @@ html.lenis, html.lenis body {
   transform: translateX(200%);
 }
 
-/* Precision Frosted Glass Scrollbar */
+/* Precision Scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(241, 245, 249, 0.65);
-  backdrop-filter: blur(8px);
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 9999px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
-  transition: background 0.2s ease;
+  background: #CBD5E1;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(15, 41, 66, 0.75);
+  background: #203182;
 }
 
 /* Reduced Motion Override */

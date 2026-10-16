@@ -6,12 +6,12 @@ interface SectionLabelProps {
 
 export const SectionLabel = ({ number, name, className = '' }: SectionLabelProps) => {
   return (
-    <div className={`inline-flex items-center gap-2.5 text-xs font-bold tracking-wider uppercase ${className}`}>
-      <span className="font-mono text-orange-700 bg-orange-100/90 border border-orange-300 px-2 py-0.5 rounded text-[11px] font-bold">
+    <div className={`inline-flex items-center gap-2.5 text-xs font-semibold tracking-wider uppercase ${className}`}>
+      <span className="font-mono text-vrnOrange bg-orange-50/90 border border-orange-200/80 px-2 py-0.5 rounded text-[11px] font-semibold">
         {number}
       </span>
-      <span className="text-slate-900 tracking-[0.06em] text-[11px] sm:text-xs font-bold">{name}</span>
-      <div className="h-[1.5px] bg-slate-300 w-8 sm:w-12 shrink-0" aria-hidden="true" />
+      <span className="text-slate-700 tracking-[0.05em] text-[11px] sm:text-xs">{name}</span>
+      <div className="h-[1px] bg-slate-200 w-8 sm:w-12 shrink-0" aria-hidden="true" />
     </div>
   );
 };

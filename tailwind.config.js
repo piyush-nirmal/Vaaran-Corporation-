@@ -8,18 +8,12 @@ export default {
     extend: {
       colors: {
         vrnNavy: {
-          DEFAULT: '#0F2942', // Deep high-contrast executive navy for accessible text & dark elements
-          deep: '#0F2942',
-          dark: '#081726',
-          light: '#1E3A5F',
-          tint: '#F0F5FA',
-          subtle: '#E2EAF2',
-        },
-        vrnSky: {
-          DEFAULT: '#8ACFF8', // Brand sky blue accent
-          light: '#BAE6FD',
-          dark: '#0284C7',
-          deep: '#0369A1',
+          DEFAULT: '#203182',
+          deep: '#0C173D',
+          dark: '#14205C',
+          light: '#2E43A8',
+          tint: '#F1F4FD',
+          subtle: '#E8ECFA',
         },
         vrnOrange: {
           DEFAULT: '#F58220',

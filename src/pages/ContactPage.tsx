@@ -27,16 +27,16 @@ export const ContactPage: FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={`tel:${companyConfig.phoneRaw}`}
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-md shadow-orange-500/15 hover:shadow-lg hover:shadow-orange-500/25 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-colors"
             >
-              <Phone className="w-4 h-4 text-slate-950" />
+              <Phone className="w-3.5 h-3.5 text-vrnOrange" />
               <span>Call Direct: {companyConfig.phone}</span>
             </a>
             <a
               href={`mailto:${companyConfig.email}`}
-              className="inline-flex items-center gap-2 px-6 py-4 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-2xs transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] font-heading transition-colors"
             >
-              <Mail className="w-4 h-4 text-vrnNavy" />
+              <Mail className="w-3.5 h-3.5 text-vrnNavy" />
               <span>{companyConfig.email}</span>
             </a>
           </div>

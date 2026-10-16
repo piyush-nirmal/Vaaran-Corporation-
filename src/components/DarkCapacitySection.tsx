@@ -1,101 +1,66 @@
 import type { FC } from 'react';
-import { ArrowRight, Phone, ShieldCheck, Zap } from 'lucide-react';
-import { darkBandContent, companyConfig } from '../data/content';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { darkBandContent } from '../data/content';
 import { CountUp } from './ui/CountUp';
-import { MagneticButton } from './ui/MagneticButton';
-import { Reveal } from './ui/Reveal';
 import { track } from '../services/analytics';
 
 export const DarkCapacitySection: FC = () => {
-  const handleRequestBid = () => {
-    track('cta_click', { location: 'dark_capacity_band', target: 'rfp-quote' });
-    document.getElementById('rfp-quote')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const navigate = useNavigate();
 
-  const handleCall = () => {
-    track('call_click', { location: 'dark_capacity_band' });
-    window.location.href = `tel:${companyConfig.phoneRaw}`;
+  const handleRequestBid = () => {
+    track('cta_click', { location: 'dark_capacity_band', target: '/rfp-portal' });
+    navigate('/rfp-portal');
   };
 
   return (
-    <section className="relative bg-slate-50 text-slate-900 py-20 sm:py-24 overflow-hidden border-y border-slate-200">
+    <section className="relative bg-slate-950 text-white py-16 sm:py-20 overflow-hidden border-y border-white/10">
       
-      {/* Engineered Grid Texture on Dark (Reused for light with adjusted opacity) */}
-      <div className="absolute inset-0 bg-grid-blueprint opacity-10 pointer-events-none mix-blend-overlay" aria-hidden="true" />
-      
-      {/* Ambient Glows */}
-      <div className="absolute -top-32 right-10 w-96 h-96 bg-[#8ACFF8]/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
-      <div className="absolute -bottom-32 left-10 w-96 h-96 bg-[#8ACFF8]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      {/* Subtle ambient lighting */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-vrnOrange/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-vrnNavy/30 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-14">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 space-y-12">
         
-        {/* Top Header Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end justify-between">
-          <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono font-medium tracking-wider text-slate-600 uppercase">
-              <Zap className="w-3.5 h-3.5 text-[#8ACFF8]" />
-              <span>{darkBandContent.sectionLabel}</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold tracking-[-0.02em] text-slate-900 font-heading leading-[1.15] text-balance">
-              {darkBandContent.headline}
+        {/* Clean Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <span className="text-xs font-mono font-medium tracking-wider text-vrnOrange uppercase">
+              Execution Scale
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-heading">
+              Nationwide Mobilization
             </h2>
-
-            <p className="text-base text-slate-600 max-w-2xl font-body leading-[1.65]">
-              {darkBandContent.subtext}
+            <p className="text-sm sm:text-base text-slate-300 font-light">
+              40+ specialized units and 1,200+ certified personnel ready for immediate corridor deployment.
             </p>
           </div>
 
-          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 justify-end">
-            <MagneticButton
-              onClick={handleRequestBid}
-              className="w-full bg-gradient-to-r from-[#8ACFF8] to-sky-300 hover:to-sky-400 text-slate-900 font-semibold text-xs uppercase tracking-[0.04em] py-4 px-6 rounded-xl transition-all shadow-sm shadow-[#8ACFF8]/20 flex items-center justify-center gap-2 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ACFF8]"
-            >
-              <span>Request Priority Bid</span>
-              <ArrowRight className="w-4 h-4 text-slate-900" />
-            </MagneticButton>
-
-            <button
-              type="button"
-              onClick={handleCall}
-              className="w-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-semibold text-xs uppercase tracking-[0.04em] py-3.5 px-6 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#8ACFF8]" />
-              <span>Direct Dispatch Wire</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={handleRequestBid}
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-orange-500/20 shrink-0"
+          >
+            <span>Request a Bid</span>
+            <ArrowRight className="w-4 h-4 text-slate-950" />
+          </button>
         </div>
 
-        {/* 4 Quantitative Scale Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4 border-t border-slate-200/80">
+        {/* 4 Clean Scale Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-white/10">
           {darkBandContent.stats.map((stat, i) => (
-            <Reveal key={i} delay={i * 0.1} variant="fadeUp">
-              <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all">
-                <div className="text-3xl sm:text-4xl font-semibold text-slate-900 font-heading tracking-tight leading-none tabular-nums">
-                  <CountUp value={stat.value} />
-                </div>
-                <div className="mt-2">
-                  <h4 className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#8ACFF8] font-body">
-                    {stat.label}
-                  </h4>
-                  <p className="text-xs text-slate-500 mt-1 font-body">
-                    {stat.sublabel}
-                  </p>
-                </div>
+            <div key={i} className="p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xs space-y-1 hover:bg-white/10 transition-colors">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-heading tracking-tight leading-none tabular-nums">
+                <CountUp value={stat.value} />
               </div>
-            </Reveal>
+              <div className="text-xs font-semibold uppercase tracking-wider text-amber-400 font-mono pt-2">
+                {stat.label}
+              </div>
+              <p className="text-xs text-slate-400">
+                {stat.sublabel}
+              </p>
+            </div>
           ))}
-        </div>
-
-        {/* Regulatory Footer Guarantee */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white border border-slate-200 text-[12px] text-slate-600 font-body shadow-sm">
-          <div className="flex items-center gap-2 text-emerald-600 font-medium">
-            <ShieldCheck className="w-4 h-4 shrink-0" />
-            <span className="text-slate-700">Guaranteed compliance with Central & State Public Procurement Rules (PPR).</span>
-          </div>
-          <span className="text-slate-500 text-[12px]">
-            Audited SLA: ISO 9001:2015 · PASARA · DGR
-          </span>
         </div>
 
       </div>

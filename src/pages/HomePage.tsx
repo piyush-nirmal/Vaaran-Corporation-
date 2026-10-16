@@ -2,15 +2,8 @@ import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { DarkCapacitySection } from '../components/DarkCapacitySection';
-import { LeadershipQuoteCard } from '../components/LeadershipQuoteCard';
-import { 
-  ArrowRight, 
-  FileText, 
-  ChevronRight,
-  CheckCircle2
-} from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { divisionHighlights, heroMilestones, equipmentData } from '../data/content';
-import { SectionLabel } from '../components/ui/SectionLabel';
 
 interface HomePageProps {
   onOpenCapabilityModal: () => void;
@@ -19,79 +12,67 @@ interface HomePageProps {
 export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
   return (
     <div className="w-full flex flex-col bg-white">
-      {/* Flagship Hero Section */}
+      {/* Full-Bleed Drone Video Hero */}
       <Hero onOpenCapabilityModal={onOpenCapabilityModal} />
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 1: OPERATIONS & CAPABILITIES TEASER */}
+      {/* SECTION 1: CORE CAPABILITIES */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/90 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-16 lg:py-20 bg-white border-b border-slate-100 w-full">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 space-y-10">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-3 max-w-3xl">
-              <SectionLabel number="01" name="DIVISION OVERVIEW" />
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-950 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
-                Four Specialized Engineering <span className="text-[#0F2942]">Divisions</span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold text-vrnOrange uppercase tracking-wider block font-mono">
+                Capabilities
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight font-heading mt-1">
+                Engineering Disciplines
               </h2>
-              <p className="text-base sm:text-lg text-slate-700 max-w-2xl leading-[1.65] font-medium font-body">
-                Engineered surface protection, structural gantry erection, barrier fabrication, and site teams.
-              </p>
             </div>
 
             <Link
               to="/operations"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0F2942] hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.04em] font-heading shadow-sm transition-all hover:gap-3 shrink-0"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-vrnNavy hover:text-vrnOrange transition-colors shrink-0"
             >
-              <span>Explore All Capabilities & Sandbox</span>
-              <ArrowRight className="w-4 h-4 text-white" />
+              <span>View All</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* 4 Division Highlights Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 4 Clean Division Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {divisionHighlights.map((div) => (
-              <div
+              <Link
                 key={div.id}
+                to="/operations"
                 className={`p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between group ${
                   div.isFlagship
-                    ? 'bg-[#0F2942] text-white border-[#0F2942] shadow-xl'
-                    : 'bg-white hover:bg-slate-50 border-slate-300 hover:border-[#0F2942]/60 hover:shadow-md text-slate-900 shadow-2xs'
+                    ? 'bg-slate-950 text-white border-slate-900 shadow-lg shadow-slate-950/20'
+                    : 'bg-slate-50 hover:bg-white border-slate-200/80 hover:border-vrnNavy/30 hover:shadow-md text-slate-900'
                 }`}
               >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className={`text-[11px] font-body font-bold tracking-wider uppercase px-2.5 py-1 rounded-md ${
-                      div.isFlagship ? 'bg-white/15 text-cyan-300' : 'bg-slate-100 border border-slate-200 text-slate-800'
-                    }`}>
-                      {div.isFlagship ? 'Flagship Division' : 'Core Discipline'}
-                    </span>
-                    <span className={`font-mono text-xs font-bold ${div.isFlagship ? 'text-amber-400' : 'text-[#C25E00]'}`}>
-                      {div.highlightMetric}
-                    </span>
-                  </div>
+                <div className="space-y-3">
+                  <span className={`text-xs font-mono font-medium ${div.isFlagship ? 'text-amber-400' : 'text-vrnOrange'}`}>
+                    {div.highlightMetric}
+                  </span>
 
-                  <h3 className={`text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-slate-950 group-hover:text-[#0F2942]'}`}>
+                  <h3 className={`text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-slate-900 group-hover:text-vrnNavy'}`}>
                     {div.title}
                   </h3>
 
-                  <p className={`text-xs leading-relaxed font-body ${div.isFlagship ? 'text-slate-200' : 'text-slate-700 font-medium'}`}>
+                  <p className={`text-xs leading-relaxed ${div.isFlagship ? 'text-slate-300' : 'text-slate-600'}`}>
                     {div.summary}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-4 border-t border-current/15">
-                  <Link
-                    to="/operations"
-                    className={`inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider font-heading group-hover:gap-2 transition-all ${
-                      div.isFlagship ? 'text-cyan-300 hover:text-white' : 'text-[#0F2942] hover:text-[#C25E00]'
-                    }`}
-                  >
-                    <span>Division Details</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
+                <div className="pt-6 mt-4 border-t border-current/10 flex items-center justify-between">
+                  <span className={`text-xs font-semibold uppercase tracking-wider ${div.isFlagship ? 'text-slate-300' : 'text-vrnNavy'}`}>
+                    Explore
+                  </span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -99,42 +80,37 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       </section>
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 2: FLEET & ASSETS TEASER */}
+      {/* SECTION 2: FLEET & ASSETS */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-20 lg:py-24 bg-slate-50 text-slate-900 border-b border-slate-200 w-full relative overflow-hidden">
-        {/* Ambient Glows to match logo vibe */}
-        <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-[#8ACFF8]/15 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+      <section className="py-16 lg:py-20 bg-slate-50 border-b border-slate-100 w-full">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 space-y-10">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-3 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white text-slate-900 font-mono text-xs font-bold uppercase tracking-wider shadow-2xs border border-slate-300">
-                <span className="text-orange-600 font-bold">02</span> MACHINERY DECK
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-950 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
-                Heavy Machinery & Dedicated <span className="text-[#0F2942]">Yard Fleet</span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold text-vrnOrange uppercase tracking-wider block font-mono">
+                Fleet
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight font-heading mt-1">
+                Machinery & Equipment
               </h2>
-              <p className="text-base sm:text-lg text-slate-700 max-w-2xl leading-[1.65] font-medium font-body">
-                Over 42 heavy contractor units mobilized with real-time calibration compliance.
-              </p>
             </div>
 
             <Link
               to="/fleet"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0F2942] hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-vrnNavy hover:text-vrnOrange transition-colors shrink-0"
             >
-              <span>Inspect Full Machinery Roster</span>
-              <ArrowRight className="w-4 h-4 text-white" />
+              <span>Full Machinery Roster</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Quick 3 Fleet Cards Preview */}
+          {/* Clean 3 Fleet Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {equipmentData.slice(0, 3).map((item) => (
-              <div
+              <Link
                 key={item.id}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col group"
+                to="/fleet"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -142,32 +118,27 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-body font-bold text-emerald-800 border border-slate-200 shadow-2xs">
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-medium text-emerald-800 border border-slate-200 shadow-2xs">
                     {item.availability}
                   </div>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="space-y-2">
-                    <div className="text-[11px] font-body font-bold uppercase tracking-wider text-slate-600">
-                      {item.category.toUpperCase()} · <span className="font-mono text-slate-800 font-bold">{item.capacity}</span>
-                    </div>
-                    <h3 className="text-base font-bold text-slate-950 font-heading group-hover:text-[#0F2942] transition-colors">
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
+                      {item.capacity}
+                    </span>
+                    <h3 className="text-base font-bold text-slate-900 font-heading group-hover:text-vrnNavy transition-colors mt-0.5">
                       {item.name}
                     </h3>
-                    <p className="text-xs text-slate-700 font-medium line-clamp-2 leading-relaxed">
-                      {item.application}
-                    </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
-                    <span className="font-body text-[11px] font-semibold text-slate-700">{item.certifications}</span>
-                    <Link to="/fleet" className="font-bold text-[#0F2942] hover:text-[#C25E00] flex items-center gap-1 font-heading text-xs">
-                      Specs <ChevronRight className="w-3.5 h-3.5" />
-                    </Link>
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-vrnNavy group-hover:text-vrnOrange">
+                    <span>View Specifications</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -175,37 +146,37 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       </section>
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 3: PROJECTS DESK TEASER */}
+      {/* SECTION 3: KEY PROJECTS */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/90 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-16 lg:py-20 bg-white border-b border-slate-100 w-full">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 space-y-10">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-3 max-w-3xl">
-              <SectionLabel number="03" name="PROVEN TRACK RECORD" />
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-950 tracking-[-0.02em] font-heading leading-[1.15] text-balance">
-                Executed Infrastructure <span className="text-[#0F2942]">Milestones</span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold text-vrnOrange uppercase tracking-wider block font-mono">
+                Portfolio
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight font-heading mt-1">
+                Featured Projects
               </h2>
-              <p className="text-base sm:text-lg text-slate-700 max-w-2xl leading-[1.65] font-medium font-body">
-                Documented site case studies across elevated viaducts and transit hubs.
-              </p>
             </div>
 
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0F2942] hover:bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all hover:gap-3 shrink-0"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-vrnNavy hover:text-vrnOrange transition-colors shrink-0"
             >
-              <span>View All 120+ Documented Projects</span>
-              <ArrowRight className="w-4 h-4 text-white" />
+              <span>View All 120+ Projects</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           {/* Quick Projects Preview Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {heroMilestones.map((m) => (
-              <div
+            {heroMilestones.slice(0, 3).map((m) => (
+              <Link
                 key={m.id}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col group"
+                to="/projects"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <img
@@ -213,9 +184,9 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                     alt={m.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <span className="text-[11px] font-body font-bold uppercase tracking-wider text-cyan-300 block">
+                    <span className="text-[11px] font-medium uppercase tracking-wider text-cyan-300 block">
                       {m.corridor}
                     </span>
                     <h3 className="text-base font-bold font-heading text-white">
@@ -224,83 +195,49 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
                   </div>
                 </div>
 
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-600 font-body text-[11px] font-semibold">{m.metricLabel}:</span>
-                    <span className="font-bold text-[#0F2942] font-mono">{m.metricValue}</span>
-                  </div>
-                  <div className="text-xs text-slate-700 font-medium font-body line-clamp-1 leading-relaxed">
-                    {m.coatingSpec}
-                  </div>
-                  <div className="pt-2 border-t border-slate-200">
-                    <Link to="/projects" className="text-xs font-bold text-[#0F2942] hover:text-[#C25E00] flex items-center justify-between group/link font-heading">
-                      <span>Explore Project Specs</span>
-                      <ChevronRight className="w-4 h-4 group-link-hover:translate-x-1 transition-transform" />
-                    </Link>
+                <div className="p-4 flex items-center justify-between text-xs font-semibold text-vrnNavy group-hover:text-vrnOrange">
+                  <span className="font-mono">{m.metricValue}</span>
+                  <div className="flex items-center gap-1">
+                    <span>Project Details</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
         </div>
       </section>
 
-      {/* Leadership Governance Section */}
-      <section className="py-16 bg-vrnNavy-subtle border-b border-vrnNavy-tint w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
-          <LeadershipQuoteCard />
-        </div>
-      </section>
-
-      {/* Dark High-Contrast Section */}
+      {/* Dark Capacity Scale Stats */}
       <DarkCapacitySection />
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 4: RFP CALLOUT BANNER */}
+      {/* SECTION 4: MINIMAL CALLOUT BANNER */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-20 bg-white border-b border-slate-200/90 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-slate-50 text-slate-900 relative overflow-hidden shadow-sm border border-slate-200">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#8ACFF8]/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#8ACFF8]/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-16 bg-white w-full">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="p-8 sm:p-12 lg:p-14 rounded-3xl bg-slate-950 text-white relative overflow-hidden shadow-xl border border-slate-900 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 max-w-2xl">
+              <span className="text-xs font-mono font-medium text-vrnOrange uppercase tracking-wider">
+                Partner With Varan
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white">
+                Ready to Build Your Next Project?
+              </h2>
+              <p className="text-sm text-slate-300 font-normal">
+                Connect directly with our engineering team for proposal reviews, equipment allocation, and rapid site mobilization.
+              </p>
+            </div>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-between">
-              <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-200/50 text-slate-700 font-mono text-xs font-semibold uppercase tracking-wider">
-                  <FileText className="w-3.5 h-3.5 text-[#8ACFF8]" />
-                  <span>Interactive Technical Stepper</span>
-                </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold font-heading leading-[1.15] text-slate-900 text-balance">
-                  Configure Your Project Parameters in Our <span className="text-[#8ACFF8]">RFP Portal</span>
-                </h2>
-                <p className="text-base text-slate-600 max-w-2xl font-normal leading-[1.65]">
-                  Select your corridor, define DFT, configure fleet assets, and receive a technical bid within 24 hours.
-                </p>
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-600 pt-2">
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> ISO 12944 Compliant</span>
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Verified Audit Token</span>
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Zero Obligation</span>
-                </div>
-              </div>
-
-              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
-                <Link
-                  to="/rfp-portal"
-                  className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#8ACFF8] to-sky-300 hover:to-sky-400 text-slate-900 font-semibold text-xs uppercase tracking-[0.04em] flex items-center justify-center gap-2 shadow-sm shadow-[#8ACFF8]/30 font-heading transition-all"
-                >
-                  <span>Launch RFP Portal</span>
-                  <ArrowRight className="w-4 h-4 text-slate-900" />
-                </Link>
-                <button
-                  type="button"
-                  onClick={onOpenCapabilityModal}
-                  className="w-full py-3.5 px-6 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-900 font-semibold text-xs uppercase tracking-[0.04em] flex items-center justify-center gap-2 font-heading transition-all cursor-pointer shadow-sm"
-                >
-                  <span>Download Capability PDF</span>
-                </button>
-              </div>
+            <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+              <Link
+                to="/rfp-portal"
+                className="w-full sm:w-auto py-3.5 px-8 rounded-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 transition-all"
+              >
+                <span>Request a Bid</span>
+                <ArrowRight className="w-4 h-4 text-slate-950" />
+              </Link>
             </div>
           </div>
         </div>

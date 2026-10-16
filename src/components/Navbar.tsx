@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { VrnLogo } from './VrnLogo';
-import { Menu, X, Phone, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, ChevronDown } from 'lucide-react';
 import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
 
@@ -11,26 +11,67 @@ interface NavbarProps {
   onOpenPortal?: () => void;
 }
 
-export interface NavRoute {
-  path: string;
+export interface NavDropdownItem {
   label: string;
+  path: string;
+  desc?: string;
 }
 
-// Exactly the pages specified by the user in the reference navigation bar
-export const navRoutes: NavRoute[] = [
-  { path: '/', label: 'HOME' },
-  { path: '/about', label: 'ABOUT US' },
-  { path: '/projects', label: 'PROJECTS' },
-  { path: '/careers', label: 'CAREERS' },
-  { path: '/gallery', label: 'PHOTO GALLERY' },
-  { path: '/sitemap', label: 'SITE MAP' },
-  { path: '/contact', label: 'CONTACT US' },
+export interface NavItem {
+  path: string;
+  label: string;
+  dropdown?: NavDropdownItem[];
+}
+
+const navItems: NavItem[] = [
+  { path: '/', label: 'Home' },
+  { 
+    path: '/about', 
+    label: 'About Us',
+    dropdown: [
+      { label: 'Mission, Vision', path: '/about#mission' },
+      { label: 'Board Members', path: '/about#board' },
+      { label: 'Our Esteemed Clients', path: '/about#clients' },
+      { label: 'Financials', path: '/about#financials' },
+      { label: 'Infrastructure', path: '/about#infrastructure' },
+      { label: 'Machinery & Equipment', path: '/about#machinery' },
+      { label: 'SPVs', path: '/about#spvs' },
+      { label: 'Corporate Policy & Accreditation', path: '/about#policy' },
+    ]
+  },
+  { 
+    path: '/operations', 
+    label: 'Service Sectors',
+    dropdown: [
+      { label: 'Highways & Expressways', path: '/operations', desc: 'Turnkey roadway and corridor execution' },
+      { label: 'Bridges & Marine Structures', path: '/operations', desc: 'River barrages and substructure works' },
+      { label: 'Tunnels & Rail Viaducts', path: '/operations', desc: 'Mountain portals and elevated transit' },
+      { label: 'Structural Steel & Gantries', path: '/operations', desc: 'Overhead highway signage and trusses' },
+      { label: 'Heavy Machinery & Fleet', path: '/fleet', desc: '40+ specialized mobilized units' },
+    ]
+  },
+  { 
+    path: '/projects', 
+    label: 'Projects',
+    dropdown: [
+      { label: 'National Expressways', path: '/projects', desc: '142+ km corridor execution' },
+      { label: 'Elevated Transit Viaducts', path: '/projects', desc: 'Metro corridors and rail spans' },
+      { label: 'Highway Gantries & Steel', path: '/projects', desc: 'Heavy overhead gantry fabrication' },
+      { label: 'All Documented Projects', path: '/projects', desc: '120+ landmark infrastructure deliveries' },
+    ]
+  },
+  { path: '/operations', label: 'Sustainability' },
+  { path: '/contact', label: 'Life @ Varan' },
+  { path: '/contact', label: 'Careers' },
 ];
 
 export const Navbar: FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -44,12 +85,28 @@ export const Navbar: FC<NavbarProps> = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 35);
+      const currentScrollY = window.scrollY;
+      
+      // Frosted glass trigger
+      setIsScrolled(currentScrollY > 40);
+
+      // Hide on scroll down, show on scroll up
+      if (currentScrollY > 120) {
+        if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
+          setIsVisible(false); // scrolling down
+        } else if (lastScrollY - currentScrollY > 6) {
+          setIsVisible(true); // scrolling up
+        }
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // Escape to close mobile menu
   useEffect(() => {
@@ -61,8 +118,8 @@ export const Navbar: FC<NavbarProps> = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMobileMenuOpen]);
 
-  const handleEnquiryClick = () => {
-    track('cta_click', { location: 'navbar_enquiry', target: '/rfp-portal' });
+  const handleRequestBidClick = () => {
+    track('cta_click', { location: 'navbar_request_bid', target: '/rfp-portal' });
     navigate('/rfp-portal');
   };
 
@@ -73,145 +130,188 @@ export const Navbar: FC<NavbarProps> = () => {
     return location.pathname.startsWith(path);
   };
 
+  const isHomePage = location.pathname === '/';
+  const isTransparent = isHomePage && !isScrolled;
+
   return (
     <>
-      {/* Scroll Progress Bar at very top with luminous glow */}
+      {/* Scroll Progress Bar at very top */}
       <motion.div
         style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-vrnNavy via-[#00AEEF] to-[#F58220] origin-left z-50 pointer-events-none shadow-[0_0_12px_rgba(0,174,239,0.55)]"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-vrnOrange origin-left z-50 pointer-events-none"
       />
 
-      <header className="fixed top-0 left-0 right-0 z-40 flex flex-col w-full shadow-md">
-        
-        {/* Tier 1: Brand Top Bar (Clean White / Frosted Glass) */}
-        <div className={`w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 ${
-          isScrolled ? 'h-0 py-0 overflow-hidden opacity-0' : 'h-14 sm:h-16 py-2 opacity-100'
-        }`}>
-          <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-            {/* Logo & Wordmark */}
-            <Link
-              to="/"
-              className="flex items-center gap-3 text-left bg-transparent border-none cursor-pointer group p-0 focus-visible:outline-none"
-            >
-              <VrnLogo size={32} className="shrink-0 transition-transform duration-300 group-hover:scale-105 text-[#0F2942]" />
-              <div>
-                <span className="text-base sm:text-lg font-bold tracking-tight text-slate-950 uppercase block font-heading leading-tight">
-                  Varan Corporation
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 uppercase tracking-wider block font-body">
-                  Infrastructure Group · Since 2000
-                </span>
-              </div>
-            </Link>
-
-            {/* Quick Contact & Credentials on Desktop */}
-            <div className="hidden md:flex items-center gap-6 text-xs text-slate-600 font-medium font-body">
-              <a
-                href={`tel:${companyConfig.phoneRaw}`}
-                className="flex items-center gap-1.5 text-slate-800 hover:text-[#0F2942] font-semibold transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#0F2942]" />
-                <span className="font-mono">{companyConfig.phone}</span>
-              </a>
-              <a
-                href="mailto:contracts@varancorp.com"
-                className="hidden lg:flex items-center gap-1.5 text-slate-700 hover:text-slate-950 transition-colors"
-              >
-                <Mail className="w-3.5 h-3.5 text-slate-400" />
-                <span>contracts@varancorp.com</span>
-              </a>
-              <div className="hidden xl:flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>ISO 12944 Certified</span>
-              </div>
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          isVisible ? 'translate-y-0' : '-translate-y-full'
+        } ${
+          isTransparent
+            ? 'bg-transparent py-3 border-b border-white/10'
+            : isScrolled
+            ? 'bg-slate-950/90 backdrop-blur-md shadow-navy-sm py-0 border-b border-white/15'
+            : 'bg-white/95 backdrop-blur-md py-2 border-b border-slate-200/80 shadow-2xs'
+        }`}
+      >
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          
+          {/* Logo & Wordmark (Redirects to Home) */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-3 text-left bg-transparent border-none cursor-pointer group p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
+          >
+            <VrnLogo size={40} className="shrink-0 transition-transform duration-300 group-hover:scale-105" />
+            <div>
+              <span className={`text-lg font-semibold tracking-tight uppercase block font-heading leading-tight transition-colors ${
+                isTransparent || (isHomePage && isScrolled) ? 'text-white' : 'text-vrnNavy'
+              }`}>
+                Varan Corporation
+              </span>
+              <span className={`text-[11px] font-medium uppercase tracking-wider block font-body transition-colors ${
+                isTransparent || (isHomePage && isScrolled) ? 'text-slate-300' : 'text-slate-500'
+              }`}>
+                Infrastructure Group
+              </span>
             </div>
-          </div>
-        </div>
+          </Link>
+          
+          {/* Desktop Navigation Links matching user reference */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] font-medium font-sans relative">
+            {navItems.map((link) => {
+              const isActive = isLinkActive(link.path);
+              const textDarkTheme = isTransparent || (isHomePage && isScrolled);
+              const hasDropdown = Boolean(link.dropdown);
+              const isDropdownOpen = activeDropdown === link.label;
 
-        {/* Tier 2: Dedicated Navigation Strip (Exact User Reference Design in Brand Navy) */}
-        <div className="w-full bg-[#0F2942] text-white border-b border-black/20 shadow-lg">
-          <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-            
-            {/* Mobile: Logo mini show if scrolled */}
-            <div className="flex items-center lg:hidden">
-              <Link to="/" className="flex items-center gap-2 text-white font-bold font-heading text-sm uppercase tracking-wider">
-                <VrnLogo size={24} className="text-[#8ACFF8]" />
-                <span>Varan Corp</span>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-bold tracking-wider uppercase font-heading">
-              {navRoutes.map((link) => {
-                const isActive = isLinkActive(link.path);
-                return (
+              return (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => hasDropdown && setActiveDropdown(link.label)}
+                  onMouseLeave={() => hasDropdown && setActiveDropdown(null)}
+                >
                   <Link
-                    key={link.path}
                     to={link.path}
-                    className={`relative py-3.5 transition-colors cursor-pointer focus-visible:outline-none ${
-                      isActive
-                        ? 'text-[#8ACFF8] font-black'
-                        : 'text-white hover:text-[#8ACFF8] font-bold'
+                    className={`relative px-3.5 py-2 rounded-lg transition-colors cursor-pointer flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange ${
+                      textDarkTheme
+                        ? isActive 
+                          ? 'text-white font-semibold' 
+                          : 'text-slate-200 hover:text-white hover:bg-white/10'
+                        : isActive 
+                          ? 'text-vrnNavy font-semibold' 
+                          : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-50'
                     }`}
                   >
-                    <span>{link.label}</span>
+                    <span className="relative z-10">{link.label}</span>
+                    {hasDropdown && (
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        isDropdownOpen ? 'rotate-180 text-vrnOrange' : 'opacity-70'
+                      }`} />
+                    )}
+
                     {isActive && (
                       <motion.div
-                        layoutId="activeNavIndicatorBrand"
-                        transition={{ type: 'spring', stiffness: 450, damping: 35 }}
-                        className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#8ACFF8] rounded-t-sm"
+                        layoutId="activeNavIndicator"
+                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                        className="absolute bottom-0 left-3 right-3 h-[2px] bg-vrnOrange rounded-full"
                       />
                     )}
                   </Link>
-                );
-              })}
-            </nav>
 
-            {/* Right Action: Brand Orange "Enquiry" CTA Button */}
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={handleEnquiryClick}
-                className="bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-bold text-xs uppercase tracking-wider px-6 py-2.5 rounded-sm shadow-md transition-all active:scale-95 cursor-pointer font-heading"
-              >
-                <span>Enquiry</span>
-              </button>
+                  {/* Dropdown Menu */}
+                  <AnimatePresence>
+                    {hasDropdown && isDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.18, ease: 'easeOut' }}
+                        className="absolute top-full left-0 pt-2 z-50"
+                      >
+                        <div className="bg-vrnOrange rounded-xl shadow-2xl overflow-hidden border border-orange-400/30 text-white min-w-[270px]">
+                          {link.dropdown?.map((item) => (
+                            <Link
+                              key={item.label}
+                              to={item.path}
+                              onClick={() => setActiveDropdown(null)}
+                              className="block px-5 py-3 text-white font-bold text-xs tracking-wide hover:bg-vrnOrange-hover hover:pl-6 transition-all border-b border-white/20 last:border-b-0"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </nav>
 
-              {/* Mobile Hamburger Menu Button */}
-              <button
-                type="button"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-                className="lg:hidden p-2 text-white hover:text-[#8ACFF8] focus:outline-none cursor-pointer"
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+          {/* Action Hub */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* Click-to-call phone */}
+            <a
+              href={`tel:${companyConfig.phoneRaw}`}
+              className={`hidden md:inline-flex items-center gap-1.5 text-xs font-mono font-medium transition-colors py-1.5 px-2.5 rounded-lg ${
+                isTransparent || (isHomePage && isScrolled)
+                  ? 'text-slate-200 hover:text-white hover:bg-white/10'
+                  : 'text-slate-700 hover:text-vrnNavy hover:bg-slate-100/80'
+              }`}
+              title="Direct Engineering Desk"
+            >
+              <Phone className="w-3.5 h-3.5 text-vrnOrange shrink-0" />
+              <span>{companyConfig.phone}</span>
+            </a>
 
+
+
+            {/* Primary Action Button */}
+            <button 
+              type="button"
+              onClick={handleRequestBidClick}
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-[0.04em] text-slate-950 bg-vrnOrange hover:bg-vrnOrange-hover shadow-sm transition-all hover:shadow-md cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
+            >
+              <span>Request Bid</span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
+            </button>
+
+            {/* Mobile Hamburger Toggle */}
+            <button 
+              type="button"
+              className={`lg:hidden p-2 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange ${
+                isTransparent || (isHomePage && isScrolled)
+                  ? 'text-white hover:text-amber-300'
+                  : 'text-vrnNavy hover:text-vrnNavy-light'
+              }`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Navigation Menu"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
-        </div>
 
+        </div>
       </header>
 
-      {/* Full-Screen Mobile Drawer with the Exact 7 Pages */}
+      {/* Full-Screen Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-[#0F2942] text-white lg:hidden flex flex-col justify-between p-6 sm:p-10 pt-20 overflow-y-auto"
+            className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl text-white lg:hidden flex flex-col justify-between p-6 sm:p-10 overflow-y-auto"
           >
-            {/* Top Close Bar inside overlay */}
-            <div className="flex items-center justify-between pb-6 border-b border-white/10">
-              <Link
-                to="/"
+            {/* Top Bar inside overlay */}
+            <div className="flex items-center justify-between">
+              <Link 
+                to="/" 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center gap-3"
               >
-                <VrnLogo size={32} className="text-[#8ACFF8]" />
-                <span className="text-lg font-bold uppercase tracking-tight text-white font-heading">
+                <VrnLogo size={36} />
+                <span className="text-xl font-bold uppercase tracking-[-0.01em] text-white font-heading">
                   Varan Corporation
                 </span>
               </Link>
@@ -219,60 +319,57 @@ export const Navbar: FC<NavbarProps> = () => {
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close navigation menu"
-                className="p-2 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                className="p-2 text-slate-300 hover:text-white transition-colors"
               >
                 <X className="w-7 h-7" />
               </button>
             </div>
 
-            {/* Exact 7 Navigation Links */}
-            <div className="space-y-4 my-auto py-8">
-              {navRoutes.map((link, idx) => {
+            {/* Staggered Links */}
+            <div className="space-y-3 my-auto py-6">
+              {navItems.map((link, idx) => {
                 const isActive = isLinkActive(link.path);
                 return (
                   <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: -20 }}
+                    key={link.label}
+                    initial={{ opacity: 0, x: -24 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05, duration: 0.25 }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
                   >
                     <Link
                       to={link.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`text-xl sm:text-2xl font-bold uppercase tracking-wider font-heading flex items-center justify-between w-full py-2.5 transition-colors ${
-                        isActive ? 'text-[#8ACFF8] font-black' : 'text-slate-200 hover:text-[#8ACFF8]'
+                      className={`text-xl sm:text-2xl font-bold uppercase tracking-tight font-heading flex items-center justify-between w-full py-2 transition-colors ${
+                        isActive ? 'text-vrnOrange' : 'text-slate-200 hover:text-vrnOrange'
                       }`}
                     >
                       <span>{link.label}</span>
-                      <ArrowRight className={`w-5 h-5 ${isActive ? 'text-[#8ACFF8]' : 'text-slate-500'}`} />
+                      <ArrowRight className="w-4 h-4 text-slate-500" />
                     </Link>
                   </motion.div>
                 );
               })}
             </div>
 
-            {/* Mobile Drawer Bottom Actions */}
+            {/* Action Buttons in Mobile Menu */}
             <div className="space-y-3 pt-6 border-t border-white/10">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  handleEnquiryClick();
-                }}
-                className="w-full py-3.5 bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 rounded-lg font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2 font-heading shadow-md"
-              >
-                <span>Make an Enquiry</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
-              </button>
               <a
                 href={`tel:${companyConfig.phoneRaw}`}
-                className="w-full py-3 bg-white/10 hover:bg-white/15 text-white rounded-lg font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2 font-heading"
+                className="w-full py-3 bg-white/10 hover:bg-white/15 text-white rounded-xl font-bold uppercase text-xs tracking-[0.04em] flex items-center justify-center gap-2 font-heading"
               >
-                <Phone className="w-4 h-4 text-[#8ACFF8]" />
-                <span>Call Desk: {companyConfig.phone}</span>
+                <Phone className="w-4 h-4 text-vrnOrange" />
+                <span>Call Direct: {companyConfig.phone}</span>
               </a>
-            </div>
 
+              <button
+                type="button"
+                onClick={() => { setIsMobileMenuOpen(false); handleRequestBidClick(); }}
+                className="w-full py-4 bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 rounded-xl font-bold uppercase text-xs tracking-[0.04em] flex items-center justify-center gap-2 shadow-lg font-heading"
+              >
+                <span>Request Technical Bid</span>
+                <ArrowRight className="w-4 h-4 text-slate-950" />
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
