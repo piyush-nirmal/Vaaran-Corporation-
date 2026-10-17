@@ -35,10 +35,10 @@ export const ProjectsPage: FC<ProjectsPageProps> = ({ onOpenCapabilityModal }) =
           { label: 'Permanent Staff', value: '150+', unit: 'Personnel' },
         ]}
         actions={
-          <>
+          <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 w-full">
             <Link
               to="/rfp-portal"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-sm hover:shadow-md transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-sm hover:shadow-md transition-all text-center btn-smooth"
             >
               <span>Submit Similar Project RFP</span>
               <ArrowRight className="w-4 h-4 text-slate-950" />
@@ -46,12 +46,12 @@ export const ProjectsPage: FC<ProjectsPageProps> = ({ onOpenCapabilityModal }) =
             <button
               type="button"
               onClick={onOpenCapabilityModal}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] font-heading transition-colors cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] font-heading transition-colors cursor-pointer text-center btn-smooth"
             >
               <Download className="w-4 h-4 text-vrnNavy" />
               <span>Download Project Dossier</span>
             </button>
-          </>
+          </div>
         }
       />
 

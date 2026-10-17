@@ -107,17 +107,23 @@ export const PageHeader: FC<PageHeaderProps> = ({
 
           {/* Key Metrics: Inter tabular numerals, JetBrains Mono units */}
           {metrics && metrics.length > 0 && (
-            <div className="lg:col-span-4 grid grid-cols-2 gap-3">
+            <div className="lg:col-span-4 grid grid-cols-2 gap-2.5 sm:gap-3">
               {metrics.map((m, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col justify-between"
+                  className="p-3 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col justify-between"
                 >
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-semibold font-heading tracking-tight leading-tight text-vrnNavy tabular-nums flex items-baseline flex-wrap gap-x-1.5 gap-y-0.5">
-                    <span>{m.value}</span>
-                    {m.unit && <span className="text-xs font-mono font-medium text-slate-500 shrink-0">{m.unit}</span>}
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:flex-wrap gap-0.5 sm:gap-x-1.5 leading-none">
+                    <span className="text-xl sm:text-2xl lg:text-3xl font-bold font-heading tracking-tight text-vrnNavy tabular-nums">
+                      {m.value}
+                    </span>
+                    {m.unit && (
+                      <span className="text-[11px] sm:text-xs font-mono font-medium text-slate-500 leading-tight">
+                        {m.unit}
+                      </span>
+                    )}
                   </div>
-                  <div className="text-[11px] sm:text-xs font-medium font-body uppercase tracking-wider text-slate-500 mt-1.5 truncate">
+                  <div className="text-[10px] sm:text-[11px] font-semibold font-body uppercase tracking-wider text-slate-500 mt-2 leading-snug break-words">
                     {m.label}
                   </div>
                 </div>
