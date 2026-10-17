@@ -104,20 +104,19 @@ export const ContactForm: FC = () => {
             {/* Structured Contact Cards */}
             <div className="space-y-3.5">
               
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-vrnNavy/30 transition-colors">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-vrnNavy/30 hover-card-smooth transition-colors">
                 <div className="p-2.5 bg-white border border-slate-200 rounded-lg text-vrnNavy shrink-0 shadow-xs">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Central Operations Hub</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Office Address</h4>
                   <p className="text-xs text-slate-700 mt-1 leading-relaxed font-sans">
-                    {companyConfig.headquarters.address}<br />
-                    {companyConfig.headquarters.city}, {companyConfig.headquarters.state} {companyConfig.headquarters.postalCode}
+                    {companyConfig.headquarters.address}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-vrnNavy/30 transition-colors">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-vrnNavy/30 hover-card-smooth transition-colors">
                 <div className="p-2.5 bg-white border border-slate-200 rounded-lg text-vrnNavy shrink-0 shadow-xs">
                   <Phone className="w-5 h-5" />
                 </div>
@@ -128,7 +127,7 @@ export const ContactForm: FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-vrnNavy/30 transition-colors">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-vrnNavy/30 hover-card-smooth transition-colors">
                 <div className="p-2.5 bg-white border border-slate-200 rounded-lg text-emerald-700 shrink-0 shadow-xs">
                   <Mail className="w-5 h-5" />
                 </div>
@@ -307,7 +306,7 @@ export const ContactForm: FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-xl transition-all hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer mt-2 font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy disabled:opacity-60"
+                  className="w-full bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-xl btn-smooth flex items-center justify-center gap-2 cursor-pointer mt-2 font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy disabled:opacity-60"
                 >
                   {isLoading ? (
                     <>

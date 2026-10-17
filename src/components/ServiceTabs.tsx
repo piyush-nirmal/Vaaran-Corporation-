@@ -24,14 +24,19 @@ import gantryImg from '../assets/images/structural_steel_fabrication_17910323835
 import civilImg from '../assets/images/metro_transit_coating_1791032395039.jpg';
 import facilityImg from '../assets/images/industrial_facility_hub_1791032407824.jpg';
 
-const iconMap = {
+const iconMap: Record<string, any> = {
   Paintbrush,
   Layers,
   Hammer,
   Users,
+  Sparkles,
 };
 
 const divisionImages: Record<string, string> = {
+  'commercial-industrial-painting': viaductImg,
+  'civil-works-infrastructure': civilImg,
+  'structural-fabrication-safety': gantryImg,
+  'urban-roadway-beautification': facilityImg,
   'painting-coating': viaductImg,
   'display-fabrication': gantryImg,
   'civil-structures': civilImg,
@@ -106,7 +111,7 @@ export const ServiceTabs: FC = () => {
           {/* Large Flagship Tile (Col Span 7) */}
           <div
             onClick={() => handleCategorySwitch(flagshipCategory.id)}
-            className={`lg:col-span-7 relative rounded-3xl overflow-hidden border cursor-pointer transition-all duration-300 min-h-[360px] sm:min-h-[420px] flex flex-col justify-between group shadow-navy-sm hover:shadow-navy-lg ${
+            className={`lg:col-span-7 relative rounded-3xl overflow-hidden border cursor-pointer transition-all duration-300 min-h-[360px] sm:min-h-[420px] flex flex-col justify-between group shadow-navy-sm hover:shadow-navy-lg hover-card-smooth ${
               activeCategoryId === flagshipCategory.id
                 ? 'border-vrnNavy ring-2 ring-vrnNavy/20'
                 : 'border-slate-200/90 hover:border-vrnNavy/40'
@@ -173,7 +178,7 @@ export const ServiceTabs: FC = () => {
                 <div
                   key={cat.id}
                   onClick={() => handleCategorySwitch(cat.id)}
-                  className={`relative p-5 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex-1 flex flex-col justify-between group shadow-2xs hover:shadow-navy-md ${
+                  className={`relative p-5 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex-1 flex flex-col justify-between group shadow-2xs hover:shadow-navy-md hover-card-smooth ${
                     isSelected
                       ? 'bg-vrnNavy text-white border-vrnNavy'
                       : 'bg-white hover:bg-slate-50 border-slate-200/90 text-slate-900'

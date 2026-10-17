@@ -3,10 +3,17 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { QuoteRequest } from '../components/QuoteRequest';
 import { ShieldCheck, Phone } from 'lucide-react';
 import { companyConfig, certificationBadges } from '../data/content';
+import { SeoHead } from '../components/SeoHead';
 
 export const RfpPage: FC = () => {
   return (
     <div className="w-full flex flex-col bg-slate-50">
+      {/* Dynamic SEO Meta Tags */}
+      <SeoHead
+        title="Get a Quote & Request Tender Bid | Varan Corporation"
+        description="Request a formal engineering proposal or quote for commercial painting, civil works, structural fabrication, and urban beautification across India. 24-hour turnaround."
+        keywords="Get a quote Varan Corporation, request tender bid, civil contracting quote, commercial painting estimate, structural fabrication tender, MSRDC, L&T, TATA tender"
+      />
       {/* Engineered Page Header */}
       <PageHeader
         badgeNumber="04"

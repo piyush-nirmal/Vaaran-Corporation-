@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -34,6 +35,7 @@ function PageFallback() {
 function MainApp() {
   const [isPortalOpen, setIsPortalOpen] = useState(false);
   const [isCapabilityModalOpen, setIsCapabilityModalOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Respect prefers-reduced-motion for accessibility
@@ -83,45 +85,56 @@ function MainApp() {
       {/* Global Persistent Header with Navigation */}
       <Navbar onOpenPortal={handleOpenPortal} />
 
-      {/* Multi-Page Routes */}
+      {/* Multi-Page Routes with Smooth Page Transitions */}
       <main className="w-full flex-grow flex flex-col bg-white">
         <Suspense fallback={<PageFallback />}>
-          <Routes>
-            <Route 
-              path="/" 
-              element={<HomePage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
-            />
-            <Route 
-              path="/operations" 
-              element={<OperationsPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
-            />
-            <Route 
-              path="/fleet" 
-              element={<FleetPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
-            />
-            <Route 
-              path="/projects" 
-              element={<ProjectsPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
-            />
-            <Route 
-              path="/rfp-portal" 
-              element={<RfpPage />} 
-            />
-            <Route 
-              path="/contact" 
-              element={<ContactPage />} 
-            />
-            <Route 
-              path="/about" 
-              element={<AboutPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
-            />
-            <Route 
-              path="/about-us" 
-              element={<Navigate to="/about" replace />} 
-            />
-            {/* Fallback to Home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full flex-grow flex flex-col"
+            >
+              <Routes location={location} key={location.pathname}>
+                <Route 
+                  path="/" 
+                  element={<HomePage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/operations" 
+                  element={<OperationsPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/fleet" 
+                  element={<FleetPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/projects" 
+                  element={<ProjectsPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/rfp-portal" 
+                  element={<RfpPage />} 
+                />
+                <Route 
+                  path="/contact" 
+                  element={<ContactPage />} 
+                />
+                <Route 
+                  path="/about" 
+                  element={<AboutPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/about-us" 
+                  element={<Navigate to="/about" replace />} 
+                />
+                {/* Fallback to Home */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </motion.div>
+          </AnimatePresence>
         </Suspense>
       </main>
 

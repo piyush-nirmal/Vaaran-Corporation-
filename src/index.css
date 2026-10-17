@@ -135,6 +135,33 @@ html.lenis, html.lenis body {
   background: #203182;
 }
 
+/* Smooth Interactive Utilities */
+.smooth-transition {
+  transition: all 0.35s var(--ease-precision);
+}
+
+.hover-card-smooth {
+  transition: transform 0.35s var(--ease-precision), box-shadow 0.35s var(--ease-precision), border-color 0.25s ease;
+  will-change: transform;
+}
+
+.hover-card-smooth:hover {
+  transform: translateY(-4px);
+}
+
+.btn-smooth {
+  transition: transform 0.25s var(--ease-precision), background-color 0.2s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.btn-smooth:hover {
+  transform: translateY(-1px) scale(1.015);
+}
+
+.btn-smooth:active {
+  transform: translateY(0px) scale(0.98);
+}
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

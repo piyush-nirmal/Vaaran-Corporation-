@@ -4,6 +4,7 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { EquipmentGrid } from '../components/EquipmentGrid';
 import { ArrowRight, Download, Phone } from 'lucide-react';
 import { companyConfig } from '../data/content';
+import { SeoHead } from '../components/SeoHead';
 
 interface FleetPageProps {
   onOpenCapabilityModal: () => void;
@@ -12,6 +13,12 @@ interface FleetPageProps {
 export const FleetPage: FC<FleetPageProps> = ({ onOpenCapabilityModal }) => {
   return (
     <div className="w-full flex flex-col bg-white">
+      {/* Dynamic SEO Meta Tags */}
+      <SeoHead
+        title="Industrial Machinery & Equipment Fleet | Varan Corporation"
+        description="Explore Varan Corporation's specialized machinery fleet: mobile airless spray plants, pressurized abrasive blasting rigs, AWS D1.1 welding stations, and high-altitude aluminum access systems."
+        keywords="industrial coating machinery, airless spray plants, sand blasting rigs, MIG TIG welding stations, aluminum scaffolding, contractor fleet India, Varan Corporation equipment"
+      />
       {/* Engineered Page Header */}
       <PageHeader
         badgeNumber="02"

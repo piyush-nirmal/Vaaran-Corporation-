@@ -90,27 +90,33 @@ export const Hero: FC<HeroProps> = () => {
       {/* ------------------------------------------------------------- */}
       {/* 2. MINIMALIST, HIGH-AESTHETIC HERO CONTENT */}
       {/* ------------------------------------------------------------- */}
-      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 pt-36 pb-16 relative z-10 flex-1 flex flex-col justify-end">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-6 sm:pb-10 lg:pb-16 relative z-10 flex-1 flex flex-col justify-end">
         
-        <div className="max-w-3xl space-y-6">
+        <div className="max-w-3xl space-y-4 sm:space-y-6">
           
-          {/* Main Title: 50% Reduced Font Size */}
+          {/* Main Title & Tagline from User Specification */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-2"
+            className="space-y-2.5 sm:space-y-3"
           >
+            {/* Tagline */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs text-amber-300 font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-vrnOrange animate-pulse" />
+              <span>&ldquo;Work is Worship&rdquo; (कर्म ही पूजा है)</span>
+            </div>
+
             <h1 className="text-2xl sm:text-3xl md:text-[34px] lg:text-[38px] font-bold tracking-tight text-white font-heading leading-tight text-balance">
-              Building India’s Modern{' '}
+              Building Infrastructure,{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-300 to-vrnOrange">
-                Highways
+                Enhancing Horizons.
               </span>
             </h1>
 
-            {/* Tagline: 50% Reduced Font Size */}
-            <p className="text-xs sm:text-sm md:text-base text-slate-200 font-normal tracking-wide">
-              Highways · Bridges · Tunnels · Structural Steel
+            {/* Sub-headline */}
+            <p className="text-xs sm:text-sm md:text-base text-slate-200 font-normal tracking-wide max-w-2xl leading-relaxed">
+              Trusted Civil Construction, Commercial Painting, and Specialized Structural Fabrication Services Across India.
             </p>
           </motion.div>
 
@@ -124,18 +130,18 @@ export const Hero: FC<HeroProps> = () => {
             <button
               type="button"
               onClick={handleRequestBid}
-              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-heading font-semibold text-xs uppercase tracking-wider shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange hover:gap-2.5"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-heading font-semibold text-xs uppercase tracking-wider shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange hover:gap-2.5 btn-smooth"
             >
-              <span>Request a Bid</span>
+              <span>Get a Quote</span>
               <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
             </button>
 
             <button
               type="button"
               onClick={handleExploreProjects}
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full border border-white/25 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-heading font-medium text-xs uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full border border-white/25 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-heading font-medium text-xs uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white btn-smooth"
             >
-              <span>Explore Projects</span>
+              <span>View Our Projects</span>
               <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
             </button>
           </motion.div>
@@ -147,20 +153,20 @@ export const Hero: FC<HeroProps> = () => {
       {/* ------------------------------------------------------------- */}
       {/* 3. SUBTLE FROSTED STATS BAR AT BASE OF HERO */}
       {/* ------------------------------------------------------------- */}
-      <div className="w-full border-t border-white/15 bg-slate-950/70 backdrop-blur-md py-4 relative z-10">
+      <div className="w-full border-t border-white/15 bg-slate-950/80 backdrop-blur-md py-3.5 sm:py-4 relative z-10">
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12">
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2.5 sm:gap-6 items-center pr-12 sm:pr-14 lg:pr-0">
             {heroMetrics.map((m, i) => (
               <div 
                 key={i} 
-                className="flex items-center gap-3 border-r border-white/10 last:border-none pr-3"
+                className="flex flex-col md:flex-row md:items-center gap-0.5 sm:gap-1.5 md:gap-3 border-r border-white/10 last:border-none pr-2 sm:pr-3"
               >
-                <div className="font-heading text-2xl sm:text-3xl font-extrabold text-white tabular-nums tracking-tight leading-none flex items-baseline gap-1">
+                <div className="font-heading text-lg sm:text-2xl md:text-3xl font-extrabold text-white tabular-nums tracking-tight leading-none flex items-baseline gap-1 shrink-0">
                   <CountUp value={m.value} />
-                  <span className="text-xs font-mono font-semibold text-amber-400">{m.unit}</span>
+                  <span className="text-[11px] sm:text-xs font-mono font-semibold text-amber-400">{m.unit}</span>
                 </div>
-                <div className="text-[11px] sm:text-xs font-medium tracking-wider text-slate-300 uppercase leading-tight">
+                <div className="text-[10px] sm:text-[11px] md:text-xs font-medium tracking-wider text-slate-300 uppercase leading-snug">
                   {m.label}
                 </div>
               </div>

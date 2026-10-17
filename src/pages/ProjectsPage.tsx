@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PageHeader } from '../components/ui/PageHeader';
 import { ProjectsPortfolio } from '../components/ProjectsPortfolio';
 import { ArrowRight, Download } from 'lucide-react';
+import { SeoHead } from '../components/SeoHead';
 
 interface ProjectsPageProps {
   onOpenCapabilityModal: () => void;
@@ -11,6 +12,12 @@ interface ProjectsPageProps {
 export const ProjectsPage: FC<ProjectsPageProps> = ({ onOpenCapabilityModal }) => {
   return (
     <div className="w-full flex flex-col bg-white">
+      {/* Dynamic SEO Meta Tags */}
+      <SeoHead
+        title="Documented Infrastructure Projects | Varan Corporation"
+        description="Review landmark project deliveries across India: Bandra–Worli Sea Link marine coating, Goa bridge painting, Delhi toll civil works, 29 flyovers, Vashi flyover, and Metro Rail corridor."
+        keywords="Bandra Worli Sea Link marine coating, Goa bridge painting, Delhi toll civil infrastructure, 29 flyovers coating, Vashi flyover, Bandra Versova, TATA metro rail corridor, MSRDC, L&T, MEP Infrastructure"
+      />
       {/* Engineered Page Header */}
       <PageHeader
         badgeNumber="03"
@@ -22,10 +29,10 @@ export const ProjectsPage: FC<ProjectsPageProps> = ({ onOpenCapabilityModal }) =
           { label: 'Projects Desk' }
         ]}
         metrics={[
-          { label: 'Executed Projects', value: '120+', unit: 'Sites' },
-          { label: 'Transit Corridors', value: '14', unit: 'Spans' },
-          { label: 'Safety Record', value: '100%', unit: 'Zero LTI' },
-          { label: 'Statutory Audits', value: 'Zero', unit: 'Citations' },
+          { label: 'Executed Projects', value: '₹30+', unit: 'Crore' },
+          { label: 'Industry Experience', value: '25+', unit: 'Years' },
+          { label: 'Marine Elevation', value: '100', unit: 'Ft Sea' },
+          { label: 'Permanent Staff', value: '150+', unit: 'Personnel' },
         ]}
         actions={
           <>

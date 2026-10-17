@@ -55,7 +55,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
   };
 
   return (
-    <footer className="bg-slate-50 pt-20 pb-12 border-t border-slate-200 text-slate-700 relative overflow-hidden">
+    <footer className="bg-slate-50 pt-20 pb-24 lg:pb-12 border-t border-slate-200 text-slate-700 relative overflow-hidden">
       
       {/* Blueprint Grid Watermark in Footer */}
       <div className="absolute inset-0 bg-grid-blueprint opacity-40 pointer-events-none" aria-hidden="true" />
@@ -83,7 +83,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             </Link>
             
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm font-body">
-              Certified infrastructure contractor delivering heavy industrial coating, structural gantry fabrication, and transit workforce logistics across high-density corridors.
+              Trusted civil construction, commercial painting, and specialized structural fabrication services across India. Founded in 1997 on the ethos of &ldquo;Work is Worship&rdquo; (कर्म ही पूजा है).
             </p>
 
             <div className="text-xs font-body text-slate-500 pt-1">
@@ -235,7 +235,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             <div>
               <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Scale & Continuous Mobilization</h5>
               <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
-                Managing 1,200+ certified personnel across 2M+ sq.ft. of municipal infrastructure.
+                Delivered ₹30+ Crore projects with 150+ permanent personnel across Maharashtra, Goa, Delhi & Bangalore.
               </p>
             </div>
           </div>

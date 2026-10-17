@@ -32,7 +32,7 @@ export const DarkCapacitySection: FC = () => {
               Nationwide Mobilization
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-light">
-              40+ specialized units and 1,200+ certified personnel ready for immediate corridor deployment.
+              ₹30+ Crore projects delivered with 150+ permanent personnel across Maharashtra, Goa, Delhi & Bangalore.
             </p>
           </div>
 

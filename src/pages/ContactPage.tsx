@@ -3,10 +3,17 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { ContactForm } from '../components/ContactForm';
 import { Phone, Mail } from 'lucide-react';
 import { companyConfig } from '../data/content';
+import { SeoHead } from '../components/SeoHead';
 
 export const ContactPage: FC = () => {
   return (
     <div className="w-full flex flex-col bg-white">
+      {/* Dynamic SEO Meta Tags */}
+      <SeoHead
+        title="Contact Us & Tender Inquiries | Varan Corporation"
+        description="Direct contact desk for Varan Corporation. Phone: 8104158309, Email: varancorporation@gmail.com. Reach out for corporate communications, tender inquiries, and project specifications."
+        keywords="Contact Varan Corporation, phone 8104158309, email varancorporation@gmail.com, tender desk, civil contractor contact, Mumbai headquarters"
+      />
       {/* Engineered Page Header */}
       <PageHeader
         badgeNumber="05"
