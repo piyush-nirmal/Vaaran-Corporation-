@@ -3,15 +3,16 @@ import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronRight, Pause, Play } from 'lucide-react';
-import { heroMetrics } from '../data/content';
 import { track } from '../services/analytics';
 import { CountUp } from './ui/CountUp';
+import { useContent } from '../context/ContentContext';
 
 interface HeroProps {
   onOpenCapabilityModal: () => void;
 }
 
 export const Hero: FC<HeroProps> = () => {
+  const { company, heroMetrics } = useContent();
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -104,19 +105,16 @@ export const Hero: FC<HeroProps> = () => {
             {/* Tagline */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs text-amber-300 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-vrnOrange animate-pulse" />
-              <span>&ldquo;Work is Worship&rdquo; (कर्म ही पूजा है)</span>
+              <span>&ldquo;{company.taglineEnglish || 'Work is Worship'}&rdquo; ({company.taglineHindi || 'कर्म ही पूजा है'})</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-[34px] lg:text-[38px] font-bold tracking-tight text-white font-heading leading-tight text-balance">
-              Building Infrastructure,{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-300 to-vrnOrange">
-                Enhancing Horizons.
-              </span>
+              {company.headline || 'Building Infrastructure, Enhancing Horizons.'}
             </h1>
 
             {/* Sub-headline */}
             <p className="text-xs sm:text-sm md:text-base text-slate-200 font-normal tracking-wide max-w-2xl leading-relaxed">
-              Trusted Civil Construction, Commercial Painting, and Specialized Structural Fabrication Services Across India.
+              {company.subHeadline || 'Trusted Civil Construction, Commercial Painting, and Specialized Structural Fabrication Services Across India.'}
             </p>
           </motion.div>
 

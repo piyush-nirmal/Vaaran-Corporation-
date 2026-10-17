@@ -2,10 +2,13 @@ import { useState } from 'react';
 import type { FC, FormEvent } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, ShieldCheck, AlertCircle, Loader2 } from 'lucide-react';
 import { contactSubjects, companyConfig } from '../data/content';
+import { useContent } from '../context/ContentContext';
 import { submitLead, validateEmail, validatePhone, validateRequired } from '../services/leadService';
 import { track } from '../services/analytics';
 
 export const ContactForm: FC = () => {
+  const { company } = useContent();
+  const currentCompany = company || companyConfig;
   const [activeSubject, setActiveSubject] = useState(contactSubjects[0]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -111,7 +114,7 @@ export const ContactForm: FC = () => {
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Office Address</h4>
                   <p className="text-xs text-slate-700 mt-1 leading-relaxed font-sans">
-                    {companyConfig.headquarters.address}
+                    {currentCompany.headquarters.address || 'Mumbai, Maharashtra, India'}
                   </p>
                 </div>
               </div>
@@ -122,8 +125,8 @@ export const ContactForm: FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Engineering Dispatch Wire</h4>
-                  <p className="text-xs text-slate-900 font-mono font-bold mt-1">{companyConfig.phone}</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">{companyConfig.hours}</p>
+                  <p className="text-xs text-slate-900 font-mono font-bold mt-1">{currentCompany.phone}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{currentCompany.hours}</p>
                 </div>
               </div>
 
@@ -133,7 +136,7 @@ export const ContactForm: FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-vrnNavy font-display">Official Tender Email</h4>
-                  <p className="text-xs text-slate-900 font-mono font-bold mt-1">{companyConfig.email}</p>
+                  <p className="text-xs text-slate-900 font-mono font-bold mt-1">{currentCompany.email}</p>
                   <p className="text-[11px] text-slate-500 mt-0.5">Encrypted tender & compliance desk</p>
                 </div>
               </div>

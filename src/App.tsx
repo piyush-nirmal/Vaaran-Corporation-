@@ -18,6 +18,10 @@ const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ defa
 const RfpPage = lazy(() => import('./pages/RfpPage').then(m => ({ default: m.RfpPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const AdminPage = lazy(() => import('./pages/AdminPage').then(m => ({ default: m.AdminPage })));
+
+import { ContentProvider } from './context/ContentContext';
+import { useAdminShortcut } from './hooks/useAdminShortcut';
 
 // Modals
 const CapabilityProfileModal = lazy(() => import('./components/CapabilityProfileModal').then(m => ({ default: m.CapabilityProfileModal })));
@@ -36,6 +40,8 @@ function MainApp() {
   const [isPortalOpen, setIsPortalOpen] = useState(false);
   const [isCapabilityModalOpen, setIsCapabilityModalOpen] = useState(false);
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+  const { showToast } = useAdminShortcut();
 
   useEffect(() => {
     // Respect prefers-reduced-motion for accessibility
@@ -79,11 +85,27 @@ function MainApp() {
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans text-slate-800 selection:bg-vrnNavy selection:text-white overflow-x-hidden">
       
+      {/* 3-Shift Shortcut Activation Toast */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: -50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -50, scale: 0.95 }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl border border-vrnOrange/60 flex items-center gap-3 font-mono text-xs"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-vrnOrange animate-ping" />
+            <span className="text-vrnOrange font-bold">3-Shift Shortcut Detected:</span>
+            <span>Unlocking Admin Portal...</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Scroll restoration helper */}
       <ScrollToTop />
 
-      {/* Global Persistent Header with Navigation */}
-      <Navbar onOpenPortal={handleOpenPortal} />
+      {/* Global Persistent Header with Navigation (Hidden on /admin) */}
+      {!isAdminRoute && <Navbar onOpenPortal={handleOpenPortal} />}
 
       {/* Multi-Page Routes with Smooth Page Transitions */}
       <main className="w-full flex-grow flex flex-col bg-white">
@@ -130,6 +152,10 @@ function MainApp() {
                   path="/about-us" 
                   element={<Navigate to="/about" replace />} 
                 />
+                <Route 
+                  path="/admin" 
+                  element={<AdminPage />} 
+                />
                 {/* Fallback to Home */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
@@ -138,14 +164,14 @@ function MainApp() {
         </Suspense>
       </main>
 
-      {/* Global Persistent Footer */}
-      <Footer onOpenCapabilityModal={handleOpenCapabilityProfile} />
+      {/* Global Persistent Footer (Hidden on /admin) */}
+      {!isAdminRoute && <Footer onOpenCapabilityModal={handleOpenCapabilityProfile} />}
 
-      {/* Floating Contextual WhatsApp Button (All pages) */}
-      <WhatsAppFloatingButton />
+      {/* Floating Contextual WhatsApp Button (Hidden on /admin) */}
+      {!isAdminRoute && <WhatsAppFloatingButton />}
 
-      {/* Mobile Sticky Bar ("Call" and "Request Bid") */}
-      <MobileStickyBar />
+      {/* Mobile Sticky Bar ("Call" and "Request Bid") (Hidden on /admin) */}
+      {!isAdminRoute && <MobileStickyBar />}
 
       {/* Capability Profile Download Modal (Lead Magnet) */}
       <Suspense fallback={null}>
@@ -170,9 +196,11 @@ function MainApp() {
 function App() {
   return (
     <BrowserRouter>
-      <WhatsAppProvider>
-        <MainApp />
-      </WhatsAppProvider>
+      <ContentProvider>
+        <WhatsAppProvider>
+          <MainApp />
+        </WhatsAppProvider>
+      </ContentProvider>
     </BrowserRouter>
   );
 }

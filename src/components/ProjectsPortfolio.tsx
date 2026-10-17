@@ -3,23 +3,24 @@ import type { FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, ArrowUpRight, X, CheckCircle2, MessageSquare, ArrowRight } from 'lucide-react';
 import { 
-  projectsData, 
   projectSectorCategories, 
   type ProjectItem 
 } from '../data/content';
 import { track } from '../services/analytics';
 import { useWhatsApp } from '../context/WhatsAppContext';
+import { useContent } from '../context/ContentContext';
 import { SectionLabel } from './ui/SectionLabel';
 
 export const ProjectsPortfolio: FC = () => {
+  const { projects } = useContent();
   const [activeSector, setActiveSector] = useState<typeof projectSectorCategories[number]>('All Sectors');
   const [dossierProject, setDossierProject] = useState<ProjectItem | null>(null);
   const modalCloseBtnRef = useRef<HTMLButtonElement>(null);
   const { openWhatsApp } = useWhatsApp();
 
   const filteredProjects = activeSector === 'All Sectors'
-    ? projectsData
-    : projectsData.filter(p => p.sector === activeSector);
+    ? projects
+    : projects.filter(p => p.sector === activeSector);
 
   const handleFilterChange = (sector: typeof projectSectorCategories[number]) => {
     setActiveSector(sector);

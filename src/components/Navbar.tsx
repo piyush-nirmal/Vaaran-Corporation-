@@ -6,6 +6,7 @@ import { VrnLogo } from './VrnLogo';
 import { Menu, X, ArrowRight, Phone } from 'lucide-react';
 import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
+import { useContent } from '../context/ContentContext';
 
 interface NavbarProps {
   onOpenPortal?: () => void;
@@ -26,6 +27,8 @@ const navItems: NavItem[] = [
 ];
 
 export const Navbar: FC<NavbarProps> = () => {
+  const { company } = useContent();
+  const currentCompany = company || companyConfig;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -171,7 +174,7 @@ export const Navbar: FC<NavbarProps> = () => {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Click-to-call phone */}
             <a
-              href={`tel:${companyConfig.phoneRaw}`}
+              href={`tel:${currentCompany.phoneRaw}`}
               className={`hidden md:inline-flex items-center gap-1.5 text-xs font-mono font-medium transition-colors py-1.5 px-2.5 rounded-lg ${
                 isTransparent || (isHomePage && isScrolled)
                   ? 'text-slate-200 hover:text-white hover:bg-white/10'
@@ -180,7 +183,7 @@ export const Navbar: FC<NavbarProps> = () => {
               title="Direct Engineering Desk"
             >
               <Phone className="w-3.5 h-3.5 text-vrnOrange shrink-0" />
-              <span>{companyConfig.phone}</span>
+              <span>{currentCompany.phone}</span>
             </a>
 
 
@@ -274,11 +277,11 @@ export const Navbar: FC<NavbarProps> = () => {
             {/* Action Buttons in Mobile Menu */}
             <div className="space-y-3 pt-6 border-t border-white/10">
               <a
-                href={`tel:${companyConfig.phoneRaw}`}
+                href={`tel:${currentCompany.phoneRaw}`}
                 className="w-full py-3 bg-white/10 hover:bg-white/15 text-white rounded-xl font-bold uppercase text-xs tracking-[0.04em] flex items-center justify-center gap-2 font-heading"
               >
                 <Phone className="w-4 h-4 text-vrnOrange" />
-                <span>Call Direct: {companyConfig.phone}</span>
+                <span>Call Direct: {currentCompany.phone}</span>
               </a>
 
               <button

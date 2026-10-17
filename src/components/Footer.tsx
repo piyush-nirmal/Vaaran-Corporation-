@@ -6,6 +6,7 @@ import { VrnLogo } from './VrnLogo';
 import { submitLead, validateEmail } from '../services/leadService';
 import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
+import { useContent } from '../context/ContentContext';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -14,6 +15,8 @@ interface FooterProps {
 }
 
 export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
+  const { company } = useContent();
+  const currentCompany = company || companyConfig;
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -201,8 +204,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
             {/* Quick Contact Line */}
             <div className="pt-2 text-xs font-body text-slate-600 space-y-1">
-              <div>Tender Inquiries: <a href={`mailto:${companyConfig.email}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{companyConfig.email}</a></div>
-              <div>Direct Desk: <a href={`tel:${companyConfig.phoneRaw}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{companyConfig.phone}</a></div>
+              <div>Tender Inquiries: <a href={`mailto:${currentCompany.email}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{currentCompany.email}</a></div>
+              <div>Direct Desk: <a href={`tel:${currentCompany.phoneRaw}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{currentCompany.phone}</a></div>
             </div>
           </div>
 
@@ -250,6 +253,13 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             <Link to="/contact" className="hover:text-vrnNavy transition-colors cursor-pointer">Procurement Terms</Link>
             <Link to="/operations" className="hover:text-vrnNavy transition-colors cursor-pointer">HSE Policy</Link>
             <Link to="/" className="hover:text-vrnNavy transition-colors cursor-pointer">Sitemap</Link>
+            <Link 
+              to="/admin" 
+              className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer text-[11px] font-mono opacity-60 hover:opacity-100"
+              title="Admin Portal (Secret: 3 Shift presses or Shift-Click)"
+            >
+              Portal [Shift×3]
+            </Link>
           </div>
         </div>
 

@@ -139,7 +139,6 @@ export async function submitLead(payload: LeadPayload): Promise<LeadSubmissionRe
         throw new Error(`Lead delivery failed (${response.status}): ${errorText}`);
       }
     } else {
-      // In development / before VITE_LEAD_ENDPOINT is configured:
       // Persist in localStorage queue so no user lead is ever lost during testing
       if (typeof window !== 'undefined') {
         try {
@@ -152,6 +151,18 @@ export async function submitLead(payload: LeadPayload): Promise<LeadSubmissionRe
       }
       // Add small network simulation latency for realistic UI state feedback
       await new Promise((resolve) => setTimeout(resolve, 600));
+    }
+
+    // Always record to Firebase Firestore for the Admin Portal Leads Inbox
+    try {
+      const { recordLeadToFirestore } = await import('./contentCmsService');
+      await recordLeadToFirestore({
+        ...submissionBody,
+        timestamp,
+        status: 'new'
+      });
+    } catch (e) {
+      console.warn('[leadService] Firestore background recording notification:', e);
     }
 
     // Track successful event

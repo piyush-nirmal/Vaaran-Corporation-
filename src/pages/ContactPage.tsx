@@ -3,9 +3,12 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { ContactForm } from '../components/ContactForm';
 import { Phone, Mail } from 'lucide-react';
 import { companyConfig } from '../data/content';
+import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 
 export const ContactPage: FC = () => {
+  const { company } = useContent();
+  const currentCompany = company || companyConfig;
   return (
     <div className="w-full flex flex-col bg-white">
       {/* Dynamic SEO Meta Tags */}
@@ -33,18 +36,18 @@ export const ContactPage: FC = () => {
         actions={
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href={`tel:${companyConfig.phoneRaw}`}
+              href={`tel:${currentCompany.phoneRaw}`}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-vrnOrange" />
-              <span>Call Direct: {companyConfig.phone}</span>
+              <span>Call Direct: {currentCompany.phone}</span>
             </a>
             <a
-              href={`mailto:${companyConfig.email}`}
+              href={`mailto:${currentCompany.email}`}
               className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] font-heading transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-vrnNavy" />
-              <span>{companyConfig.email}</span>
+              <span>{currentCompany.email}</span>
             </a>
           </div>
         }

@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { PageHeader } from '../components/ui/PageHeader';
 import { companyConfig, companyJourney, clientsByCategory, workforceData, aboutUsContent } from '../data/content';
+import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection';
 
@@ -26,6 +27,8 @@ interface AboutPageProps {
 }
 
 export const AboutPage: FC<AboutPageProps> = () => {
+  const { company } = useContent();
+  const currentCompany = company || companyConfig;
   const location = useLocation();
 
   // Smooth scroll to anchor if URL has hash
@@ -664,7 +667,7 @@ export const AboutPage: FC<AboutPageProps> = () => {
               Request a Bid
             </Link>
             <a
-              href={`tel:${companyConfig.phoneRaw}`}
+              href={`tel:${currentCompany.phoneRaw}`}
               className="px-5 py-3 rounded-full border border-white/20 hover:bg-white/10 text-white font-medium text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-vrnOrange" />
