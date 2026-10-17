@@ -26,7 +26,7 @@ export const ContactPage: FC = () => {
         ]}
         metrics={[
           { label: 'Response Window', value: '< 2h', unit: 'Business Hours' },
-          { label: 'Registered CIN', value: companyConfig.cinNumber.slice(0, 10), unit: 'Active' },
+          { label: 'Registered CIN', value: 'Active', unit: 'MCA Verified' },
           { label: 'Tender Desk', value: 'Direct', unit: 'Landline' },
           { label: 'Workforce Hub', value: 'Mumbai', unit: 'HQ' },
         ]}

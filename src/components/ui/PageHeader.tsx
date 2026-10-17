@@ -111,11 +111,11 @@ export const PageHeader: FC<PageHeaderProps> = ({
               {metrics.map((m, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs"
+                  className="p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col justify-between"
                 >
-                  <div className="text-2xl sm:text-3xl font-semibold font-heading tracking-tight leading-none text-vrnNavy tabular-nums">
-                    {m.value}
-                    {m.unit && <span className="text-xs font-mono font-medium text-slate-500 ml-1.5">{m.unit}</span>}
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-semibold font-heading tracking-tight leading-tight text-vrnNavy tabular-nums flex items-baseline flex-wrap gap-x-1.5 gap-y-0.5">
+                    <span>{m.value}</span>
+                    {m.unit && <span className="text-xs font-mono font-medium text-slate-500 shrink-0">{m.unit}</span>}
                   </div>
                   <div className="text-[11px] sm:text-xs font-medium font-body uppercase tracking-wider text-slate-500 mt-1.5 truncate">
                     {m.label}
