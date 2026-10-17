@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { VrnLogo } from './VrnLogo';
-import { Menu, X, ArrowRight, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone } from 'lucide-react';
 import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
 
@@ -11,57 +11,17 @@ interface NavbarProps {
   onOpenPortal?: () => void;
 }
 
-export interface NavDropdownItem {
-  label: string;
-  path: string;
-  desc?: string;
-}
-
 export interface NavItem {
   path: string;
   label: string;
-  dropdown?: NavDropdownItem[];
 }
 
 const navItems: NavItem[] = [
   { path: '/', label: 'Home' },
-  { 
-    path: '/about', 
-    label: 'About Us',
-    dropdown: [
-      { label: 'Excellence Over Decades', path: '/about#story', desc: 'Founded in 1997 · 25+ years experience' },
-      { label: 'Company Journey', path: '/about#journey', desc: 'From commercial painting to national infra' },
-      { label: 'Our Esteemed Clients', path: '/about#clients', desc: 'MSRDC, L&T, TATA, MEP, Godrej & more' },
-      { label: 'Workforce', path: '/about#workforce', desc: '150+ permanent engineers & technicians' },
-      { label: 'Financials', path: '/about#financials', desc: '₹30+ Crore delivered projects' },
-      { label: 'Engineering Facilities', path: '/about#infrastructure', desc: 'Yards & fabrication centers' },
-      { label: 'Policies & Accreditation', path: '/about#policy', desc: 'ISO 12944, ISO 9001, PASARA certified' },
-    ]
-  },
-  { 
-    path: '/operations', 
-    label: 'Service Sectors',
-    dropdown: [
-      { label: 'Commercial & Specialized Painting', path: '/operations', desc: 'Marine coating, anti-carbonation & flyovers' },
-      { label: 'Civil Works & Infrastructure', path: '/operations', desc: 'Toll plazas, RCC, roads & paving' },
-      { label: 'Structural Fabrication & Safety Netting', path: '/operations', desc: 'Heavy steel, marine nets & fencing' },
-      { label: 'Urban & Roadway Beautification', path: '/operations', desc: 'Highway dividers, parks & restoration' },
-      { label: 'Machinery & Equipment Fleet', path: '/fleet', desc: 'Airless spray, blasting & welding rigs' },
-    ]
-  },
-  { 
-    path: '/projects', 
-    label: 'Projects',
-    dropdown: [
-      { label: 'Bandra–Worli Sea Link', path: '/projects', desc: '100 ft sea level marine coating (MSRDC)' },
-      { label: 'Delhi Toll Infrastructure', path: '/projects', desc: 'Turnkey civil construction (MEP Infra)' },
-      { label: '29 Flyovers & Vashi Flyover', path: '/projects', desc: 'Anti-carbonation protective coating (L&T)' },
-      { label: 'Metro Rail Corridor', path: '/projects', desc: 'Vikhroli-Ghatkopar & BKC (TATA)' },
-      { label: 'All Featured Projects', path: '/projects', desc: '₹30+ Crore executed nationwide portfolio' },
-    ]
-  },
+  { path: '/about', label: 'About Us' },
+  { path: '/operations', label: 'Service Sectors' },
+  { path: '/projects', label: 'Projects' },
   { path: '/operations', label: 'Sustainability' },
-  { path: '/contact', label: 'Life @ Varan' },
   { path: '/contact', label: 'Careers' },
 ];
 
@@ -70,7 +30,6 @@ export const Navbar: FC<NavbarProps> = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -179,70 +138,31 @@ export const Navbar: FC<NavbarProps> = () => {
             {navItems.map((link) => {
               const isActive = isLinkActive(link.path);
               const textDarkTheme = isTransparent || (isHomePage && isScrolled);
-              const hasDropdown = Boolean(link.dropdown);
-              const isDropdownOpen = activeDropdown === link.label;
 
               return (
-                <div
+                <Link
                   key={link.label}
-                  className="relative"
-                  onMouseEnter={() => hasDropdown && setActiveDropdown(link.label)}
-                  onMouseLeave={() => hasDropdown && setActiveDropdown(null)}
+                  to={link.path}
+                  className={`relative px-3.5 py-2 rounded-lg transition-colors cursor-pointer flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange ${
+                    textDarkTheme
+                      ? isActive 
+                        ? 'text-white font-semibold' 
+                        : 'text-slate-200 hover:text-white hover:bg-white/10'
+                      : isActive 
+                        ? 'text-vrnNavy font-semibold' 
+                        : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-50'
+                  }`}
                 >
-                  <Link
-                    to={link.path}
-                    className={`relative px-3.5 py-2 rounded-lg transition-colors cursor-pointer flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange ${
-                      textDarkTheme
-                        ? isActive 
-                          ? 'text-white font-semibold' 
-                          : 'text-slate-200 hover:text-white hover:bg-white/10'
-                        : isActive 
-                          ? 'text-vrnNavy font-semibold' 
-                          : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-50'
-                    }`}
-                  >
-                    <span className="relative z-10">{link.label}</span>
-                    {hasDropdown && (
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        isDropdownOpen ? 'rotate-180 text-vrnOrange' : 'opacity-70'
-                      }`} />
-                    )}
+                  <span className="relative z-10">{link.label}</span>
 
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavIndicator"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                        className="absolute bottom-0 left-3 right-3 h-[2px] bg-vrnOrange rounded-full"
-                      />
-                    )}
-                  </Link>
-
-                  {/* Dropdown Menu */}
-                  <AnimatePresence>
-                    {hasDropdown && isDropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                        transition={{ duration: 0.18, ease: 'easeOut' }}
-                        className="absolute top-full left-0 pt-2 z-50"
-                      >
-                        <div className="bg-vrnOrange rounded-xl shadow-2xl overflow-hidden border border-orange-400/30 text-white min-w-[270px]">
-                          {link.dropdown?.map((item) => (
-                            <Link
-                              key={item.label}
-                              to={item.path}
-                              onClick={() => setActiveDropdown(null)}
-                              className="block px-5 py-3 text-white font-bold text-xs tracking-wide hover:bg-vrnOrange-hover hover:pl-6 transition-all border-b border-white/20 last:border-b-0"
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavIndicator"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-vrnOrange rounded-full"
+                    />
+                  )}
+                </Link>
               );
             })}
           </nav>
