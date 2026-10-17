@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useMemo, useCallback } from 'react
 import type { ReactNode } from 'react';
 import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
+import { CONTACT_KEYS } from '../config/keys';
 
 interface WhatsAppContextType {
   contextMessage: string;
@@ -17,7 +18,7 @@ export const WhatsAppProvider = ({ children }: { children: ReactNode }) => {
     'Hi Varan Corporation, I am looking for a B2B technical bid for an infrastructure project.'
   );
 
-  const rawNumber = import.meta.env.VITE_WHATSAPP_NUMBER || companyConfig.whatsappNumber || '919876543210';
+  const rawNumber = CONTACT_KEYS.whatsappNumber || companyConfig.whatsappNumber || '919876543210';
   const cleanNumber = rawNumber.replace(/\D/g, '') || '919876543210';
 
   const openWhatsApp = useCallback((overrideText?: string, location: string = 'floating_button') => {

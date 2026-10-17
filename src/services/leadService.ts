@@ -3,6 +3,7 @@
 // Captures UTM parameters, honeypot spam protection, and guarantees verified reference tokens
 
 import { track } from './analytics';
+import { CONTACT_KEYS } from '../config/keys';
 
 export interface LeadPayload {
   name: string;
@@ -105,7 +106,7 @@ export async function submitLead(payload: LeadPayload): Promise<LeadSubmissionRe
     }
   }
 
-  const endpoint = import.meta.env.VITE_LEAD_ENDPOINT;
+  const endpoint = CONTACT_KEYS.leadEndpoint;
   const utmParams = getUtmParameters();
   const timestamp = new Date().toISOString();
   

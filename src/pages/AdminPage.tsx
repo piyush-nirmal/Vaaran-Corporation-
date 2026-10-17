@@ -32,6 +32,7 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../context/ContentContext';
 import { fetchLeads, updateLeadStatus, resetContentToDefaults, type LeadRecord } from '../services/contentCmsService';
 import { firebaseConfig } from '../services/firebase';
+import { ADMIN_KEYS } from '../config/keys';
 import type { ProjectItem, MetricProof } from '../data/content';
 
 // Preset infrastructure images
@@ -122,14 +123,7 @@ export function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const envPasscode = import.meta.env.VITE_ADMIN_PASSCODE;
-    // Default master passcodes for Varan Corporation Admin
-    if (
-      passcode === 'varan1997' || 
-      passcode === 'admin1997' || 
-      passcode === 'varan@2026' ||
-      (envPasscode && passcode === envPasscode)
-    ) {
+    if (ADMIN_KEYS.allowedPasscodes.includes(passcode)) {
       sessionStorage.setItem('vrn_admin_auth', 'true');
       setIsAuthenticated(true);
       setAuthError('');

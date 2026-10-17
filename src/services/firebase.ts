@@ -5,16 +5,9 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { FIREBASE_KEYS } from "../config/keys";
 
-export const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyAAAIDUoLioOO-0e7itEBDgCwS07clSebA",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "varan-corp.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "varan-corp",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "varan-corp.firebasestorage.app",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "912276716647",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:912276716647:web:9b13005626edcbc4e828c2",
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-W4LSZRWT97"
-};
+export const firebaseConfig = FIREBASE_KEYS;
 
 // Initialize Firebase App safely (singleton pattern)
 export const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
