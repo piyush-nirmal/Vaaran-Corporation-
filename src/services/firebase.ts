@@ -7,13 +7,13 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAAAIDUoLioOO-0e7itEBDgCwS07clSebA",
-  authDomain: "varan-corp.firebaseapp.com",
-  projectId: "varan-corp",
-  storageBucket: "varan-corp.firebasestorage.app",
-  messagingSenderId: "912276716647",
-  appId: "1:912276716647:web:9b13005626edcbc4e828c2",
-  measurementId: "G-W4LSZRWT97"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyAAAIDUoLioOO-0e7itEBDgCwS07clSebA",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "varan-corp.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "varan-corp",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "varan-corp.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "912276716647",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:912276716647:web:9b13005626edcbc4e828c2",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-W4LSZRWT97"
 };
 
 // Initialize Firebase App safely (singleton pattern)

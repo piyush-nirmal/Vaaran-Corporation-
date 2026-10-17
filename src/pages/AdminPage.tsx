@@ -122,8 +122,14 @@ export function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const envPasscode = import.meta.env.VITE_ADMIN_PASSCODE;
     // Default master passcodes for Varan Corporation Admin
-    if (passcode === 'varan1997' || passcode === 'admin1997' || passcode === 'varan@2026') {
+    if (
+      passcode === 'varan1997' || 
+      passcode === 'admin1997' || 
+      passcode === 'varan@2026' ||
+      (envPasscode && passcode === envPasscode)
+    ) {
       sessionStorage.setItem('vrn_admin_auth', 'true');
       setIsAuthenticated(true);
       setAuthError('');
