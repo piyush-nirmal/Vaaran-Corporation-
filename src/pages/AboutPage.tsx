@@ -159,21 +159,21 @@ export const AboutPage: FC<AboutPageProps> = () => {
 
             {/* Scale & Landmark Deliveries */}
             <StaggerItem>
-              <div className="p-8 rounded-3xl bg-slate-950 text-white space-y-4 shadow-xl flex flex-col justify-between hover-card-smooth h-full">
+              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 space-y-4 hover:border-vrnNavy/40 transition-colors flex flex-col justify-between hover-card-smooth h-full">
                 <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center">
-                    <Award className="w-6 h-6 text-amber-400" />
+                  <div className="w-12 h-12 rounded-2xl bg-vrnNavy text-white flex items-center justify-center">
+                    <Award className="w-6 h-6 text-vrnOrange" />
                   </div>
                   <div className="text-xs font-mono text-vrnOrange font-semibold uppercase">₹30+ Crores Executed</div>
-                  <h3 className="text-lg font-bold text-white font-heading">Major Landmark Works</h3>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <h3 className="text-lg font-bold text-slate-900 font-heading">Major Landmark Works</h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                     Driven by precision, adaptability, and quality, building infrastructure across India.
                   </p>
                 </div>
-                <ul className="space-y-2 pt-4 border-t border-white/10 text-xs font-medium text-slate-200">
+                <ul className="space-y-2 pt-4 border-t border-slate-200/80 text-xs font-medium text-slate-700">
                   {aboutUsContent.majorWorks.map((work, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-vrnOrange shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                       <span>{work}</span>
                     </li>
                   ))}
