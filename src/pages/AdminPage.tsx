@@ -23,13 +23,35 @@ import {
   ShieldCheck,
   ChevronRight,
   Database,
-  Loader2
+  Loader2,
+  Upload,
+  Image as ImageIcon,
+  Link2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useContent } from '../context/ContentContext';
 import { fetchLeads, updateLeadStatus, resetContentToDefaults, type LeadRecord } from '../services/contentCmsService';
 import { firebaseConfig } from '../services/firebase';
 import type { ProjectItem, MetricProof } from '../data/content';
+
+// Preset infrastructure images
+import heroViaductImg from '../assets/images/hero_infrastructure_viaduct_1791032354735.jpg';
+import transitCoatingImg from '../assets/images/metro_transit_coating_1791032395039.jpg';
+import steelFabImg from '../assets/images/structural_steel_fabrication_1791032383584.jpg';
+import sprayRigImg from '../assets/images/machinery_airless_spray_1791032370111.jpg';
+import facilityImg from '../assets/images/industrial_facility_hub_1791032407824.jpg';
+import expresswayDamImg from '../assets/images/hero_apco_expressway_dam_1791896243948.jpg';
+import tunnelViaductImg from '../assets/images/hero_transit_tunnel_viaduct_1791896269073.jpg';
+
+const PRESET_PROJECT_IMAGES = [
+  { name: 'Marine Sea Link / Offshore', url: expresswayDamImg },
+  { name: 'Highway Viaduct Bridge', url: heroViaductImg },
+  { name: 'Structural Steel Fab', url: steelFabImg },
+  { name: 'Metro Transit Viaduct', url: transitCoatingImg },
+  { name: 'Industrial Hub & Yards', url: facilityImg },
+  { name: 'Expressway Tunnel Viaduct', url: tunnelViaductImg },
+  { name: 'Airless Coating Rig', url: sprayRigImg },
+];
 
 export function AdminPage() {
   // Authentication State
@@ -165,6 +187,27 @@ export function AdminPage() {
     await deleteProjectItem(id);
     setSaveStatus(`✓ Project "${title}" deleted from Firebase & portfolio.`);
     setTimeout(() => setSaveStatus(null), 3500);
+  };
+
+  const handleImageFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !editingProject) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Selected image is large (>5MB). A compressed image is recommended.');
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const result = event.target?.result as string;
+      if (result) {
+        setEditingProject({
+          ...editingProject,
+          image: result,
+        });
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleLeadStatusChange = async (id: string, status: LeadRecord['status']) => {
@@ -741,8 +784,26 @@ export function AdminPage() {
               {projects.map((project) => (
                 <div 
                   key={project.id}
-                  className="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow"
+                  className="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow group"
                 >
+                  {project.image ? (
+                    <div className="w-full h-36 bg-slate-900 overflow-hidden relative border-b border-slate-200">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                      />
+                      <span className="absolute bottom-2 left-2 text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-900/80 text-white backdrop-blur-xs">
+                        {project.sector}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="w-full h-24 bg-slate-200 border-b border-slate-200 flex items-center justify-center text-slate-400 text-xs gap-1.5 font-mono">
+                      <ImageIcon className="w-4 h-4 text-slate-400" />
+                      <span>No image set</span>
+                    </div>
+                  )}
+
                   <div className="p-4 space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-vrnNavy text-white">
@@ -1141,6 +1202,95 @@ export function AdminPage() {
                     className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
                     placeholder="e.g. Marine High-Performance Concrete Pylons & Cable Anchors"
                   />
+                </div>
+
+                {/* PROJECT IMAGE SECTION */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                      <ImageIcon className="w-4 h-4 text-vrnNavy" />
+                      Project Photo / Cover Image
+                    </label>
+                    {editingProject.image && (
+                      <button
+                        type="button"
+                        onClick={() => setEditingProject({ ...editingProject, image: '' })}
+                        className="text-[11px] text-rose-600 hover:underline font-medium cursor-pointer"
+                      >
+                        Remove Image
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Image Preview */}
+                  {editingProject.image ? (
+                    <div className="relative w-full h-44 bg-slate-900 rounded-lg overflow-hidden border border-slate-300 shadow-inner">
+                      <img src={editingProject.image} alt="Preview" className="w-full h-full object-cover" />
+                      <div className="absolute bottom-2 right-2 px-2.5 py-1 bg-black/75 backdrop-blur-xs text-white rounded text-[10px] font-mono font-bold">
+                        Active Project Cover
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-full h-24 border-2 border-dashed border-slate-300 rounded-lg flex flex-col items-center justify-center text-slate-400 text-xs bg-white">
+                      <ImageIcon className="w-6 h-6 mb-1 text-slate-300" />
+                      <span>No cover image selected yet</span>
+                    </div>
+                  )}
+
+                  {/* 1. File Upload */}
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-700 mb-1 flex items-center gap-1.5">
+                      <Upload className="w-3.5 h-3.5 text-vrnOrange" />
+                      Option A: Upload Image from Computer / Phone:
+                    </label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageFileUpload}
+                      className="block w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-vrnNavy file:text-white hover:file:bg-slate-800 cursor-pointer bg-white p-1 rounded-lg border border-slate-200"
+                    />
+                  </div>
+
+                  {/* 2. Web URL */}
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-700 mb-1 flex items-center gap-1.5">
+                      <Link2 className="w-3.5 h-3.5 text-vrnNavy" />
+                      Option B: Or Paste Image Web URL:
+                    </label>
+                    <input
+                      type="url"
+                      value={editingProject.image}
+                      onChange={(e) => setEditingProject({ ...editingProject, image: e.target.value })}
+                      placeholder="https://images.unsplash.com/... or https://..."
+                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs focus:ring-2 focus:ring-vrnNavy focus:outline-none"
+                    />
+                  </div>
+
+                  {/* 3. Preset Gallery */}
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-700 mb-1.5">
+                      Option C: Or Select from Pre-Verified Infrastructure Photos:
+                    </label>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {PRESET_PROJECT_IMAGES.map((preset, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setEditingProject({ ...editingProject, image: preset.url })}
+                          className={`relative rounded-lg overflow-hidden border p-1 text-left transition-all cursor-pointer ${
+                            editingProject.image === preset.url
+                              ? 'border-vrnOrange ring-2 ring-vrnOrange bg-orange-50/50'
+                              : 'border-slate-200 bg-white hover:border-slate-400'
+                          }`}
+                        >
+                          <img src={preset.url} alt={preset.name} className="w-full h-12 object-cover rounded" />
+                          <div className="text-[10px] font-medium text-slate-700 truncate mt-1">
+                            {preset.name}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="pt-4 border-t border-slate-100 flex justify-end gap-3">
