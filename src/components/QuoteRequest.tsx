@@ -174,91 +174,91 @@ export const QuoteRequest: FC = () => {
 
   return (
     <div id="rfp-quote" className="w-full space-y-4">
-      <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 text-slate-900 shadow-navy-md overflow-hidden relative">
+      <div className="bg-white border border-[#E2E9F4] rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 text-[#20242D] shadow-xs overflow-hidden relative">
         
         {/* Subtle Ambient Brand Tint */}
-        <div className="absolute top-0 right-1/4 w-80 h-80 bg-vrnNavy/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#3F73F5]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
         {/* Section Heading & Trust Chip */}
-        <div className="border-b border-slate-200 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="border-b border-[#E2E9F4] pb-5 sm:pb-6 mb-6 sm:mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <SectionLabel number="04" name="RFP PORTAL" className="mb-2" />
-            <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-[-0.02em] font-heading">
+            <SectionLabel number="04" name="RFP PORTAL" className="mb-1.5 sm:mb-2" />
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#20242D] tracking-[-0.02em] font-heading">
               Configure Technical Bid Packet
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-body leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#687386] mt-1 max-w-xl font-body leading-relaxed">
               Instant scope calculator for municipal infrastructure, highway alignments, and corporate tenders.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={handleWhatsAppWithScope}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-vrnNavy text-xs font-semibold font-heading transition-colors cursor-pointer border border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+              className="inline-flex items-center justify-center gap-2 px-3.5 py-2 sm:py-1.5 min-h-[40px] sm:min-h-0 rounded-xl bg-white hover:bg-[#F8FAFF] text-[#20242D] text-xs font-semibold font-heading transition-colors cursor-pointer border border-[#E2E9F4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-700" />
+              <MessageSquare className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Chat on WhatsApp</span>
             </button>
 
-            <div className="flex items-center gap-2 text-xs font-mono font-medium text-vrnNavy bg-vrnNavy/5 border border-vrnNavy/20 px-3.5 py-1.5 rounded-lg shrink-0">
-              <ShieldCheck className="w-4 h-4 text-vrnNavy" />
+            <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs font-mono font-medium text-[#3F73F5] bg-[#EAF2FF] border border-[#3F73F5]/25 px-3 py-1.5 rounded-lg shrink-0">
+              <ShieldCheck className="w-4 h-4 text-[#3F73F5] shrink-0" />
               <span>24h Engineering Review SLA</span>
             </div>
           </div>
         </div>
 
-        {/* Stepper Progress Bar (Task 5) */}
+        {/* Stepper Progress Bar */}
         {!submittedRef && (
-          <div className="mb-8 space-y-2">
-            <div className="flex items-center justify-between text-[12px] sm:text-[13px] font-body font-medium tracking-[0.04em] text-slate-600">
-              <span className={isStep1Done ? 'text-vrnNavy' : ''}>1. Division Scope</span>
-              <span className={isStep2Done ? 'text-vrnNavy' : ''}>2. Volume & Mobilization</span>
-              <span className={isStep3Done ? 'text-vrnNavy' : ''}>3. Enterprise Lead</span>
+          <div className="mb-6 sm:mb-8 space-y-2">
+            <div className="flex items-center justify-between text-[11px] sm:text-[13px] font-body font-medium tracking-[0.02em] sm:tracking-[0.04em] text-[#687386]">
+              <span className={isStep1Done ? 'text-[#3F73F5] font-bold' : ''}>1. Scope</span>
+              <span className={isStep2Done ? 'text-[#3F73F5] font-bold' : ''}>2. Volume & Timeline</span>
+              <span className={isStep3Done ? 'text-[#3F73F5] font-bold' : ''}>3. Lead Info</span>
             </div>
-            <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+            <div className="w-full h-1.5 bg-[#EAF2FF] rounded-full overflow-hidden border border-[#E2E9F4]">
               <motion.div
                 animate={{ width: `${progressPercent}%` }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="h-full bg-gradient-to-r from-vrnNavy via-vrnOrange to-vrnCyan"
+                className="h-full bg-gradient-to-r from-[#3F73F5] via-[#65B5FF] to-[#3F73F5]"
               />
             </div>
           </div>
         )}
 
         {/* Statutory Certification Badges as small icon chips */}
-        <div className="mb-8 p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl">
+        <div className="mb-6 sm:mb-8 p-3 sm:p-3.5 bg-[#F8FAFF] border border-[#E2E9F4] rounded-xl sm:rounded-2xl">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500 flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-vrnNavy" />
+            <span className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] flex items-center gap-1.5">
+              <Award className="w-3.5 h-3.5 text-[#3F73F5] shrink-0" />
               <span>Audited Statutory & Engineering Standards</span>
             </span>
-            <span className="text-[12px] text-slate-500 hidden sm:inline font-body">
+            <span className="text-[11px] sm:text-[12px] text-[#687386] hidden sm:inline font-body">
               Valid for State & Central Tenders
             </span>
           </div>
           
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {certificationBadges.map((badge) => (
               <div 
                 key={badge.id}
                 title={`${badge.authority}: ${badge.scope}`}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-[12px] font-body font-medium shadow-2xs hover:border-vrnNavy/40 transition-colors"
+                className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-white border border-[#E2E9F4] text-[#20242D] text-[11px] sm:text-[12px] font-body font-medium shadow-2xs hover:border-[#3F73F5]/40 transition-colors"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                <span className="text-slate-900 font-bold">{badge.name}</span>
-                <span className="text-slate-400 text-[11px] hidden md:inline">({badge.authority})</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3F73F5] shrink-0" />
+                <span className="text-[#20242D] font-bold">{badge.name}</span>
+                <span className="text-[#687386] text-[10px] sm:text-[11px] hidden md:inline">({badge.authority})</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Success State with Checkmark Draw Animation & Typewriter Token Reveal (Task 5) */}
+        {/* Success State */}
         {submittedRef ? (
-          <div className="bg-slate-50 border border-emerald-300 rounded-3xl p-8 sm:p-12 text-center space-y-6 max-w-2xl mx-auto shadow-navy-sm animate-fadeIn">
+          <div className="bg-[#F8FAFF] border border-[#3F73F5]/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 text-center space-y-4 sm:space-y-6 max-w-2xl mx-auto shadow-xs animate-fadeIn">
             {/* Animated SVG Checkmark Drawing */}
-            <div className="w-20 h-20 bg-emerald-100 border border-emerald-300 text-emerald-800 rounded-full flex items-center justify-center mx-auto shadow-md">
-              <svg className="w-10 h-10 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#EAF2FF] border border-[#3F73F5]/30 text-[#3F73F5] rounded-full flex items-center justify-center mx-auto shadow-sm">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-[#3F73F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <motion.path
                   d="M20 6L9 17l-5-5"
                   initial={{ pathLength: 0 }}
@@ -269,58 +269,58 @@ export const QuoteRequest: FC = () => {
             </div>
 
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 block font-bold">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#3F73F5] block font-bold">
                 Bid Submission Dispatched
               </span>
-              <h3 className="text-2xl font-black text-vrnNavy mt-1 font-display">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#20242D] mt-1 font-heading">
                 Technical RFP Dossier Logged
               </h3>
               
               {/* Typewriter Token Reveal */}
-              <div className="mt-3">
-                <span className="text-xs text-slate-500 font-mono block mb-1">Verified Reference Token:</span>
-                <span className="inline-block font-mono font-black text-lg text-vrnNavy bg-white border border-slate-300 px-4 py-1.5 rounded-xl shadow-xs tracking-wider">
+              <div className="mt-2.5 sm:mt-3">
+                <span className="text-[11px] sm:text-xs text-[#687386] font-mono block mb-1">Verified Reference Token:</span>
+                <span className="inline-block font-mono font-bold text-base sm:text-lg text-[#3F73F5] bg-white border border-[#E2E9F4] px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-xl shadow-xs tracking-wider">
                   {displayedToken || '...'}
                   <span className="animate-pulse">|</span>
                 </span>
               </div>
             </div>
 
-            <div className="p-5 bg-white border border-slate-200 rounded-2xl text-left text-xs space-y-2 font-mono shadow-2xs">
-              <div className="flex justify-between text-slate-700">
+            <div className="p-3.5 sm:p-5 bg-white border border-[#E2E9F4] rounded-xl sm:rounded-2xl text-left text-xs space-y-2 font-mono shadow-xs">
+              <div className="flex justify-between text-[#687386]">
                 <span>Enterprise:</span>
-                <span className="font-bold text-slate-900">{companyName}</span>
+                <span className="font-bold text-[#20242D]">{companyName}</span>
               </div>
-              <div className="flex justify-between text-slate-700">
+              <div className="flex justify-between text-[#687386]">
                 <span>Selected Scope:</span>
-                <span className="text-vrnNavy font-bold">{selectedScope.name}</span>
+                <span className="text-[#3F73F5] font-bold">{selectedScope.name}</span>
               </div>
-              <div className="flex justify-between text-slate-700">
+              <div className="flex justify-between text-[#687386]">
                 <span>Estimated Target Volume:</span>
-                <span className="text-vrnNavy font-bold">{scaleValue.toLocaleString()} {selectedScope.unit}</span>
+                <span className="text-[#3F73F5] font-bold">{scaleValue.toLocaleString()} {selectedScope.unit}</span>
               </div>
-              <div className="flex justify-between text-slate-700">
+              <div className="flex justify-between text-[#687386]">
                 <span>Target Timeline:</span>
-                <span className="text-slate-900 font-bold">{targetTimeline} Calendar Days</span>
+                <span className="text-[#20242D] font-bold">{targetTimeline} Calendar Days</span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-700 max-w-md mx-auto leading-relaxed font-sans">
-              Our Chief Estimation Engineer is conducting preliminary specification review for <strong className="text-slate-900">{contactPerson}</strong>. Official commercial rates and mobilization schedule will be sent to <strong>{email}</strong>.
+            <p className="text-xs text-[#687386] max-w-md mx-auto leading-relaxed font-body">
+              Our Chief Estimation Engineer is conducting preliminary specification review for <strong className="text-[#20242D]">{contactPerson}</strong>. Official commercial rates and mobilization schedule will be sent to <strong>{email}</strong>.
             </p>
 
             <button
               type="button"
               onClick={handleReset}
-              className="inline-flex items-center gap-2 bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-xl transition-all shadow-md cursor-pointer font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#3F73F5] hover:bg-[#2454C6] text-white font-bold text-xs uppercase tracking-wider px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all shadow-md shadow-[#3F73F5]/25 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
             >
-              <RotateCcw className="w-4 h-4 text-amber-400" />
+              <RotateCcw className="w-4 h-4 text-white" />
               <span>Configure Another RFP</span>
             </button>
           </div>
         ) : (
           /* Interactive 3-Step Bid Builder Form */
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
             
             {/* Honeypot field */}
             <div className="hidden" aria-hidden="true">
@@ -336,7 +336,7 @@ export const QuoteRequest: FC = () => {
 
             {/* Server Error with Retry Button */}
             {submissionError && (
-              <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-rose-800 animate-fadeIn">
+              <div className="p-3.5 sm:p-4 bg-rose-50 border border-rose-200 rounded-xl sm:rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-rose-800 animate-fadeIn">
                 <div className="flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
                   <span>{submissionError}</span>
@@ -344,7 +344,7 @@ export const QuoteRequest: FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold uppercase text-[11px] tracking-wider shrink-0 cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold uppercase text-[11px] tracking-wider shrink-0 cursor-pointer text-center"
                 >
                   Retry Submission
                 </button>
@@ -352,15 +352,15 @@ export const QuoteRequest: FC = () => {
             )}
 
             {/* Step 1: Select Operational Sector */}
-            <div className="space-y-3">
+            <div className="space-y-2.5 sm:space-y-3">
               <div className="flex items-center justify-between text-xs font-mono">
-                <span className="font-bold uppercase tracking-wider text-slate-800">
+                <span className="font-bold uppercase tracking-wider text-[#20242D] text-[11px] sm:text-xs">
                   Step 1: Select Targeted Engineering Sector
                 </span>
-                <span className="text-vrnNavy font-semibold">Pick division</span>
+                <span className="text-[#3F73F5] font-semibold text-[11px] sm:text-xs">Pick division</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" role="radiogroup" aria-label="Targeted Sector">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3" role="radiogroup" aria-label="Targeted Sector">
                 {rfpScopeOptions.map((opt) => {
                   const Icon = iconMap[opt.id as keyof typeof iconMap] || Paintbrush;
                   const isChosen = opt.id === selectedScope.id;
@@ -371,18 +371,18 @@ export const QuoteRequest: FC = () => {
                       role="radio"
                       aria-checked={isChosen}
                       onClick={() => handleScopeChange(opt)}
-                      className={`p-4 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[96px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
+                      className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[82px] sm:min-h-[96px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] ${
                         isChosen
-                          ? 'bg-vrnNavy text-white border-vrnNavy shadow-navy-sm'
-                          : 'bg-slate-50 border-slate-200/80 text-slate-700 hover:text-slate-900 hover:bg-slate-100 hover:border-slate-300'
+                          ? 'bg-[#3F73F5] text-white border-[#3F73F5] shadow-xs'
+                          : 'bg-[#F8FAFF] border-[#E2E9F4] text-[#20242D] hover:text-[#3F73F5] hover:bg-white hover:border-[#3F73F5]/40'
                       }`}
                     >
-                      <Icon className={`w-5 h-5 ${isChosen ? 'text-amber-400' : 'text-slate-400'}`} />
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${isChosen ? 'text-white' : 'text-[#3F73F5]'}`} />
                       <div>
-                        <div className={`font-bold text-xs leading-tight mt-2 font-display ${isChosen ? 'text-white' : 'text-slate-900'}`}>
+                        <div className={`font-bold text-xs leading-tight mt-1.5 sm:mt-2 font-heading ${isChosen ? 'text-white' : 'text-[#20242D]'}`}>
                           {opt.name}
                         </div>
-                        <div className={`text-[10px] font-mono mt-0.5 ${isChosen ? 'text-slate-300' : 'text-slate-500'}`}>
+                        <div className={`text-[10px] font-mono mt-0.5 ${isChosen ? 'text-white/80' : 'text-[#687386]'}`}>
                           {opt.unit}
                         </div>
                       </div>
@@ -395,14 +395,14 @@ export const QuoteRequest: FC = () => {
             {/* Step 2: Dynamic Scale & Timeline Sliders */}
             <div 
               onFocus={handleFocusStep2}
-              className="p-6 sm:p-7 bg-slate-50 border border-slate-200/90 rounded-2xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+              className="p-4 sm:p-6 lg:p-7 bg-[#F8FAFF] border border-[#E2E9F4] rounded-xl sm:rounded-2xl grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 items-center"
             >
               
               {/* Scale Slider */}
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 <div className="flex justify-between items-center text-xs">
-                  <label htmlFor="rfp-scale-slider" className="font-bold text-slate-700">Target Project Scale</label>
-                  <span className="font-mono font-bold text-vrnNavy text-sm bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">
+                  <label htmlFor="rfp-scale-slider" className="font-bold text-[#20242D]">Target Project Scale</label>
+                  <span className="font-mono font-bold text-[#3F73F5] text-xs sm:text-sm bg-white px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg border border-[#E2E9F4] shadow-xs">
                     {scaleValue.toLocaleString()} {selectedScope.unit}
                   </span>
                 </div>
@@ -418,19 +418,19 @@ export const QuoteRequest: FC = () => {
                   aria-valuemax={selectedScope.maxScale}
                   aria-valuenow={scaleValue}
                   onChange={(e) => setScaleValue(Number(e.target.value))}
-                  className="w-full accent-vrnNavy h-2 bg-slate-200 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                  className="w-full accent-[#3F73F5] h-2.5 sm:h-2 bg-[#E2E9F4] rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-slate-500">
+                <div className="flex justify-between text-[10px] font-mono text-[#687386]">
                   <span>Min: {selectedScope.minScale.toLocaleString()}</span>
                   <span>Max: {selectedScope.maxScale.toLocaleString()}</span>
                 </div>
               </div>
 
               {/* Timeline Slider */}
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 <div className="flex justify-between items-center text-xs">
-                  <label htmlFor="rfp-timeline-slider" className="font-bold text-slate-700">Mobilization & Target Window</label>
-                  <span className="font-mono font-bold text-vrnNavy text-sm bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">
+                  <label htmlFor="rfp-timeline-slider" className="font-bold text-[#20242D]">Mobilization & Target Window</label>
+                  <span className="font-mono font-bold text-[#3F73F5] text-xs sm:text-sm bg-white px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg border border-[#E2E9F4] shadow-xs">
                     {targetTimeline} Calendar Days
                   </span>
                 </div>
@@ -446,12 +446,12 @@ export const QuoteRequest: FC = () => {
                   aria-valuemax={180}
                   aria-valuenow={targetTimeline}
                   onChange={(e) => setTargetTimeline(Number(e.target.value))}
-                  className="w-full accent-vrnNavy h-2 bg-slate-200 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                  className="w-full accent-[#3F73F5] h-2.5 sm:h-2 bg-[#E2E9F4] rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-slate-500">
-                  <span>30 Days (Fast-Track)</span>
-                  <span>90 Days (Standard)</span>
-                  <span>180 Days (Phased)</span>
+                <div className="flex justify-between text-[10px] font-mono text-[#687386]">
+                  <span>30d (Fast-Track)</span>
+                  <span>90d (Standard)</span>
+                  <span>180d (Phased)</span>
                 </div>
               </div>
 
@@ -460,15 +460,15 @@ export const QuoteRequest: FC = () => {
             {/* Step 3: Enterprise Contact & Details */}
             <div 
               onFocus={handleFocusStep3}
-              className="space-y-4"
+              className="space-y-3.5 sm:space-y-4"
             >
-              <span className="font-bold uppercase tracking-wider text-xs text-slate-800 block font-heading">
+              <span className="font-bold uppercase tracking-wider text-xs text-[#20242D] block font-heading">
                 Step 3: Enterprise Point of Contact
               </span>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 <div className="space-y-1">
-                  <label htmlFor="rfp-company" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label htmlFor="rfp-company" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Enterprise / EPC *
                   </label>
                   <input
@@ -480,15 +480,15 @@ export const QuoteRequest: FC = () => {
                       if (errors.company) setErrors({ ...errors, company: '' });
                     }}
                     placeholder="e.g. Metro Rail Authority"
-                    className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                      errors.company ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                    className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                      errors.company ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                     }`}
                   />
                   {errors.company && <p className="text-[10px] text-rose-600 font-medium">{errors.company}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="rfp-contact-person" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label htmlFor="rfp-contact-person" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Designated Lead *
                   </label>
                   <input
@@ -500,15 +500,15 @@ export const QuoteRequest: FC = () => {
                       if (errors.contactPerson) setErrors({ ...errors, contactPerson: '' });
                     }}
                     placeholder="e.g. Chief Engineer Sharma"
-                    className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                      errors.contactPerson ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                    className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                      errors.contactPerson ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                     }`}
                   />
                   {errors.contactPerson && <p className="text-[10px] text-rose-600 font-medium">{errors.contactPerson}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="rfp-email" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label htmlFor="rfp-email" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Corporate Email *
                   </label>
                   <input
@@ -520,15 +520,15 @@ export const QuoteRequest: FC = () => {
                       if (errors.email) setErrors({ ...errors, email: '' });
                     }}
                     placeholder="lead@organization.gov.in"
-                    className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                      errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                    className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                      errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                     }`}
                   />
                   {errors.email && <p className="text-[10px] text-rose-600 font-medium">{errors.email}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="rfp-phone" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label htmlFor="rfp-phone" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Direct Phone *
                   </label>
                   <input
@@ -540,8 +540,8 @@ export const QuoteRequest: FC = () => {
                       if (errors.phone) setErrors({ ...errors, phone: '' });
                     }}
                     placeholder="+91 XXXXX XXXXX"
-                    className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                      errors.phone ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                    className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                      errors.phone ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                     }`}
                   />
                   {errors.phone && <p className="text-[10px] text-rose-600 font-medium">{errors.phone}</p>}
@@ -549,7 +549,7 @@ export const QuoteRequest: FC = () => {
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="rfp-directives" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                <label htmlFor="rfp-directives" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                   Site Directives or Blast Criteria (Optional)
                 </label>
                 <input
@@ -558,31 +558,31 @@ export const QuoteRequest: FC = () => {
                   value={specialDirectives}
                   onChange={(e) => setSpecialDirectives(e.target.value)}
                   placeholder="e.g. Night shift operations mandatory between 01:00 and 05:00 hrs..."
-                  className="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors"
+                  className="w-full p-2.5 sm:p-3 min-h-[44px] bg-white border border-[#E2E9F4] rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors"
                 />
               </div>
             </div>
 
             {/* Submission CTA Bar */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
-              <div className="text-[12px] text-slate-600 font-body">
+            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 border-t border-[#E2E9F4]">
+              <div className="text-[11px] sm:text-[12px] text-[#687386] font-body text-center sm:text-left">
                 Mandates adherence to standard ISO 9001 and PASARA labor codes.
               </div>
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full sm:w-auto bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs uppercase tracking-[0.04em] py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer shrink-0 font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange disabled:opacity-60"
+                className="w-full sm:w-auto min-h-[48px] bg-[#3F73F5] hover:bg-[#2454C6] text-white font-semibold text-xs uppercase tracking-[0.04em] py-3.5 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-200 shadow-md shadow-[#3F73F5]/25 hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer shrink-0 font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] active:scale-[0.99] disabled:opacity-60"
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
                     <span>Dispatching Bid Packet...</span>
                   </>
                 ) : (
                   <>
                     <span>Dispatch Technical Bid Packet</span>
-                    <Send className="w-4 h-4 text-slate-950" />
+                    <Send className="w-4 h-4 text-white" />
                   </>
                 )}
               </button>

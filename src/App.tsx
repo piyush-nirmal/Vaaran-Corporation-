@@ -18,6 +18,7 @@ const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ defa
 const RfpPage = lazy(() => import('./pages/RfpPage').then(m => ({ default: m.RfpPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
 const AdminPage = lazy(() => import('./pages/AdminPage').then(m => ({ default: m.AdminPage })));
 
 import { ContentProvider } from './context/ContentContext';
@@ -29,8 +30,8 @@ const ClientPortalModal = lazy(() => import('./components/ClientPortalModal').th
 
 function PageFallback() {
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center py-24 text-xs font-mono text-slate-500 space-y-3">
-      <div className="w-8 h-8 border-2 border-vrnNavy border-t-vrnOrange rounded-full animate-spin" />
+    <div className="min-h-[60vh] flex flex-col items-center justify-center py-24 text-xs font-mono text-[#687386] space-y-3">
+      <div className="w-8 h-8 border-2 border-[#3F73F5] border-t-transparent rounded-full animate-spin" />
       <span>Loading engineering module...</span>
     </div>
   );
@@ -41,7 +42,7 @@ function MainApp() {
   const [isCapabilityModalOpen, setIsCapabilityModalOpen] = useState(false);
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
-  const { showToast } = useAdminShortcut();
+  useAdminShortcut();
 
   useEffect(() => {
     // Respect prefers-reduced-motion for accessibility
@@ -83,23 +84,9 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col font-sans text-slate-800 selection:bg-vrnNavy selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white flex flex-col font-sans text-[#20242D] selection:bg-[#3F73F5] selection:text-white overflow-x-hidden">
       
-      {/* 3-Shift Shortcut Activation Toast */}
-      <AnimatePresence>
-        {showToast && (
-          <motion.div
-            initial={{ opacity: 0, y: -50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -50, scale: 0.95 }}
-            className="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl border border-vrnOrange/60 flex items-center gap-3 font-mono text-xs"
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-vrnOrange animate-ping" />
-            <span className="text-vrnOrange font-bold">3-Shift Shortcut Detected:</span>
-            <span>Unlocking Admin Portal...</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
       {/* Scroll restoration helper */}
       <ScrollToTop />
@@ -151,6 +138,10 @@ function MainApp() {
                 <Route 
                   path="/about-us" 
                   element={<Navigate to="/about" replace />} 
+                />
+                <Route 
+                  path="/careers" 
+                  element={<CareersPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
                 />
                 <Route 
                   path="/admin" 

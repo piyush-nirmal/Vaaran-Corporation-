@@ -13,7 +13,7 @@ interface HomePageProps {
 
 export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
   return (
-    <div className="w-full flex flex-col bg-white">
+    <div className="w-full flex flex-col bg-[#F8FAFD]">
       {/* Dynamic SEO Meta Tags */}
       <SeoHead
         title="Varan Corporation | Building Infrastructure, Enhancing Horizons"
@@ -27,58 +27,55 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       {/* ------------------------------------------------------------- */}
       {/* SECTION 1: CORE CAPABILITIES */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-16 lg:py-20 bg-white border-b border-slate-100 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 space-y-10">
+      <section className="py-12 sm:py-20 lg:py-24 bg-[#F8FAFD] border-b border-[#E2EAF8] w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
           
           <AnimatedSection direction="up" delay={0.1}>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
               <div>
-                <span className="text-xs font-semibold text-vrnOrange uppercase tracking-wider block font-mono">
-                  Capabilities
-                </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight font-heading mt-1">
+                <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] tracking-tight font-heading">
                   Engineering Disciplines
                 </h2>
               </div>
 
               <Link
                 to="/operations"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-vrnNavy hover:text-vrnOrange transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#3F73F5] hover:text-[#2454C6] transition-colors shrink-0"
               >
                 <span>View All</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </AnimatedSection>
 
-          {/* 4 Clean Division Cards with Smooth Stagger Animation */}
-          <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 4 Clean Division Cards with Smooth Stagger Animation in Blue & White */}
+          <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
             {divisionHighlights.map((div) => (
               <StaggerItem key={div.id}>
                 <Link
                   to="/operations"
-                  className={`p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between group h-full hover-card-smooth ${
+                  className={`p-4 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between group h-full hover-card-smooth ${
                     div.isFlagship
-                      ? 'bg-slate-950 text-white border-slate-900 shadow-lg shadow-slate-950/20'
-                      : 'bg-slate-50 hover:bg-white border-slate-200/80 hover:border-vrnNavy/30 hover:shadow-md text-slate-900'
+                      ? 'bg-gradient-to-br from-[#3F73F5] to-[#2454C6] text-white border-transparent shadow-lg shadow-[#3F73F5]/20'
+                      : 'bg-white/90 hover:bg-[#F0F5FE] border-[#E2EAF8] hover:border-[#3F73F5]/40 hover:shadow-md text-[#20242D]'
                   }`}
                 >
-                  <div className="space-y-3">
-                    <span className={`text-xs font-mono font-medium ${div.isFlagship ? 'text-amber-400' : 'text-vrnOrange'}`}>
+                  <div className="space-y-2.5 sm:space-y-3">
+                    <span className={`text-[11px] sm:text-xs font-mono font-semibold ${div.isFlagship ? 'text-sky-200' : 'text-[#3F73F5]'}`}>
                       {div.highlightMetric}
                     </span>
 
-                    <h3 className={`text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-slate-900 group-hover:text-vrnNavy'}`}>
+                    <h3 className={`text-base sm:text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-[#20242D] group-hover:text-[#3F73F5]'}`}>
                       {div.title}
                     </h3>
 
-                    <p className={`text-xs leading-relaxed ${div.isFlagship ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <p className={`text-xs leading-relaxed ${div.isFlagship ? 'text-white/90' : 'text-[#687386]'}`}>
                       {div.summary}
                     </p>
                   </div>
 
-                  <div className="pt-6 mt-4 border-t border-current/10 flex items-center justify-between">
-                    <span className={`text-xs font-semibold uppercase tracking-wider ${div.isFlagship ? 'text-slate-300' : 'text-vrnNavy'}`}>
+                  <div className="pt-4 sm:pt-6 mt-3 sm:mt-4 border-t border-current/10 flex items-center justify-between">
+                    <span className={`text-xs font-semibold uppercase tracking-wider ${div.isFlagship ? 'text-white' : 'text-[#3F73F5]'}`}>
                       Explore
                     </span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -94,60 +91,60 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       {/* ------------------------------------------------------------- */}
       {/* SECTION 2: FLEET & ASSETS */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-16 lg:py-20 bg-slate-50 border-b border-slate-100 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 space-y-10">
+      <section className="py-12 sm:py-20 lg:py-24 bg-[#F1F6FE] border-b border-[#DCE8F8] w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
           
           <AnimatedSection direction="up" delay={0.1}>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
               <div>
-                <span className="text-xs font-semibold text-vrnOrange uppercase tracking-wider block font-mono">
+                <span className="text-[11px] sm:text-xs font-semibold text-[#2563EB] uppercase tracking-wider block font-mono bg-[#E0ECFD] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-md w-fit mb-1.5 sm:mb-2 border border-[#D0E2FC]">
                   Fleet
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight font-heading mt-1">
+                <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] tracking-tight font-heading mt-0.5">
                   Machinery & Equipment
                 </h2>
               </div>
 
               <Link
                 to="/fleet"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-vrnNavy hover:text-vrnOrange transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#3F73F5] hover:text-[#2454C6] transition-colors shrink-0"
               >
                 <span>Full Machinery Roster</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </AnimatedSection>
 
-          {/* Clean 3 Fleet Cards with Stagger Reveal */}
-          <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Clean 3 Fleet Cards in Soft White-Blue with Light Borders */}
+          <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {equipmentData.slice(0, 3).map((item) => (
               <StaggerItem key={item.id}>
                 <Link
                   to="/fleet"
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group hover-card-smooth h-full"
+                  className="bg-white/95 rounded-2xl overflow-hidden border border-[#DCE8F8] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group hover-card-smooth h-full"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#EBF2FC]">
                     <img
                       src={item.image}
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-medium text-emerald-800 border border-slate-200 shadow-2xs">
+                    <div className="absolute top-2.5 right-2.5 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-semibold text-[#2563EB] border border-[#DCE8F8] shadow-xs">
                       {item.availability}
                     </div>
                   </div>
 
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
                     <div>
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500">
+                      <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#687386]">
                         {item.capacity}
                       </span>
-                      <h3 className="text-base font-bold text-slate-900 font-heading group-hover:text-vrnNavy transition-colors mt-0.5">
+                      <h3 className="text-sm sm:text-base font-bold text-[#20242D] font-heading group-hover:text-[#2563EB] transition-colors mt-0.5">
                         {item.name}
                       </h3>
                     </div>
 
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-vrnNavy group-hover:text-vrnOrange">
+                    <div className="pt-2 border-t border-[#E8F0FA] flex items-center justify-between text-xs font-semibold text-[#2563EB] group-hover:text-[#1D4ED8]">
                       <span>View Specifications</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -163,58 +160,58 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
       {/* ------------------------------------------------------------- */}
       {/* SECTION 3: KEY PROJECTS */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-16 lg:py-20 bg-white border-b border-slate-100 w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12 space-y-10">
+      <section className="py-12 sm:py-20 lg:py-24 bg-[#F8FAFD] border-b border-[#E2EAF8] w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
           
           <AnimatedSection direction="up" delay={0.1}>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
               <div>
-                <span className="text-xs font-semibold text-vrnOrange uppercase tracking-wider block font-mono">
+                <span className="text-[11px] sm:text-xs font-semibold text-[#2563EB] uppercase tracking-wider block font-mono bg-[#E0ECFD] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-md w-fit mb-1.5 sm:mb-2 border border-[#D0E2FC]">
                   Portfolio
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight font-heading mt-1">
+                <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] tracking-tight font-heading mt-0.5">
                   Featured Projects
                 </h2>
               </div>
 
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-vrnNavy hover:text-vrnOrange transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#3F73F5] hover:text-[#2454C6] transition-colors shrink-0"
               >
                 <span>View All Featured Projects</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </AnimatedSection>
 
           {/* Quick Projects Preview Grid with Stagger Reveal */}
-          <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {heroMilestones.slice(0, 3).map((m) => (
               <StaggerItem key={m.id}>
                 <Link
                   to="/projects"
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group hover-card-smooth h-full"
+                  className="bg-white/95 rounded-2xl overflow-hidden border border-[#DCE8F8] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group hover-card-smooth h-full"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#EBF2FC]">
                     <img
                       src={m.image}
                       alt={m.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <span className="text-[11px] font-medium uppercase tracking-wider text-cyan-300 block">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#20242D]/85 via-transparent to-transparent" />
+                    <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 text-white">
+                      <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#65B5FF] block">
                         {m.corridor}
                       </span>
-                      <h3 className="text-base font-bold font-heading text-white">
+                      <h3 className="text-sm sm:text-base font-bold font-heading text-white truncate">
                         {m.name}
                       </h3>
                     </div>
                   </div>
 
-                  <div className="p-4 flex items-center justify-between text-xs font-semibold text-vrnNavy group-hover:text-vrnOrange">
-                    <span className="font-mono">{m.metricValue}</span>
-                    <div className="flex items-center gap-1">
+                  <div className="p-3.5 sm:p-4 flex items-center justify-between text-xs font-semibold text-[#20242D] group-hover:text-[#2563EB] transition-colors">
+                    <span className="font-mono text-[#687386] text-[11px] sm:text-xs">{m.metricValue}</span>
+                    <div className="flex items-center gap-1 text-[#2563EB]">
                       <span>Project Details</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -227,35 +224,38 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
         </div>
       </section>
 
-      {/* Dark Capacity Scale Stats */}
+      {/* Dark Capacity Scale Stats -> Now Bright Capacity Scale Stats */}
       <DarkCapacitySection />
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 4: MINIMAL CALLOUT BANNER */}
+      {/* SECTION 4: CALLOUT BANNER IN PRIMARY BLUE GRADIENT */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-16 bg-white w-full">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-12">
+      <section className="py-12 sm:py-20 bg-[#F1F6FE] w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection direction="up" delay={0.1}>
-            <div className="p-8 sm:p-12 lg:p-14 rounded-3xl bg-slate-950 text-white relative overflow-hidden shadow-xl border border-slate-900 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="space-y-2 max-w-2xl">
-                <span className="text-xs font-mono font-medium text-vrnOrange uppercase tracking-wider">
+            <div className="p-6 sm:p-10 lg:p-14 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white relative overflow-hidden shadow-xl shadow-blue-600/20 border border-blue-400/30 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+              {/* Subtle background glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="space-y-2 sm:space-y-2.5 max-w-2xl relative z-10 text-center md:text-left">
+                <span className="text-[11px] sm:text-xs font-mono font-semibold text-sky-200 uppercase tracking-wider bg-white/15 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-md">
                   Partner With Varan
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white">
+                <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold font-heading text-white">
                   Ready to Build Your Next Project?
                 </h2>
-                <p className="text-sm text-slate-300 font-normal">
+                <p className="text-xs sm:text-base text-white/90 font-normal">
                   Connect directly with our engineering team for proposal reviews, equipment allocation, and rapid site mobilization.
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+              <div className="flex items-center gap-3 shrink-0 w-full md:w-auto relative z-10">
                 <Link
                   to="/rfp-portal"
-                  className="w-full sm:w-auto py-3.5 px-8 rounded-full bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 transition-all btn-smooth"
+                  className="w-full md:w-auto py-3.5 px-8 lg:h-[48px] rounded-xl sm:rounded-full bg-white hover:bg-[#F8FAFF] active:scale-98 text-[#2563EB] hover:text-[#1D4ED8] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all btn-smooth"
                 >
                   <span>Request a Bid</span>
-                  <ArrowRight className="w-4 h-4 text-slate-950" />
+                  <ArrowRight className="w-4 h-4 text-[#2563EB]" />
                 </Link>
               </div>
             </div>

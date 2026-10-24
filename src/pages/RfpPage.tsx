@@ -7,7 +7,7 @@ import { SeoHead } from '../components/SeoHead';
 
 export const RfpPage: FC = () => {
   return (
-    <div className="w-full flex flex-col bg-slate-50">
+    <div className="w-full flex flex-col bg-[#F8FAFF]">
       {/* Dynamic SEO Meta Tags */}
       <SeoHead
         title="Get a Quote & Request Tender Bid | Varan Corporation"
@@ -31,12 +31,12 @@ export const RfpPage: FC = () => {
           { label: 'Labor Code', value: '100%', unit: 'Compliant' },
         ]}
         actions={
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             <a
               href={`tel:${companyConfig.phoneRaw}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-sm shadow-[#3F73F5]/25 transition-all min-h-[44px]"
             >
-              <Phone className="w-3.5 h-3.5 text-vrnOrange" />
+              <Phone className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Need Urgent Quote? {companyConfig.phone}</span>
             </a>
           </div>
@@ -44,17 +44,17 @@ export const RfpPage: FC = () => {
       />
 
       {/* Statutory Badges Bar */}
-      <div className="w-full bg-white border-b border-slate-200/90 py-4">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-          <div className="flex items-center gap-2 text-slate-500 font-bold uppercase tracking-wider">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+      <div className="w-full bg-white border-b border-[#E2E9F4] py-3.5 sm:py-4">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-3 text-xs font-mono">
+          <div className="flex items-center gap-2 text-[#687386] font-bold uppercase tracking-wider text-[11px] sm:text-xs">
+            <ShieldCheck className="w-4 h-4 text-[#3F73F5] shrink-0" />
             <span>Audited Statutory Compliance Standards:</span>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {certificationBadges.map((cert) => (
               <span
                 key={cert.id}
-                className="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-md font-bold text-vrnNavy text-[11px]"
+                className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#EAF2FF] border border-[#3F73F5]/20 rounded-md font-bold text-[#3F73F5] text-[10px] sm:text-[11px]"
                 title={cert.scope}
               >
                 {cert.name}
@@ -65,7 +65,7 @@ export const RfpPage: FC = () => {
       </div>
 
       {/* Main RFP Configurator Stepper Container */}
-      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <QuoteRequest />
       </div>
     </div>

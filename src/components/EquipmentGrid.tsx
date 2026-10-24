@@ -9,7 +9,6 @@ import {
 import { track } from '../services/analytics';
 import { useWhatsApp } from '../context/WhatsAppContext';
 import { TiltCard } from './ui/TiltCard';
-import { SectionLabel } from './ui/SectionLabel';
 
 export const EquipmentGrid: FC = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -74,19 +73,18 @@ export const EquipmentGrid: FC = () => {
     <div className="space-y-8">
       
       {/* Section Header with Clean Filter Controls */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 border-b border-[#E2E9F4] pb-4 sm:pb-6">
         <div>
-          <SectionLabel number="02" name="MACHINERY FLEET" className="mb-2" />
-          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-[-0.02em] font-heading">
+          <h2 className="text-xl sm:text-3xl font-semibold text-[#20242D] tracking-[-0.02em] font-heading">
             Operational Fleet & Machinery Deck
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl font-body leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#687386] mt-1 max-w-xl font-body leading-relaxed">
             Mechanized asset inventory deployed for municipal transit, surface preparation, and structural erection.
           </p>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none p-1 bg-slate-100 border border-slate-200/80 rounded-xl shrink-0" role="group" aria-label="Fleet Categories">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none p-1 bg-[#F8FAFF] border border-[#E2E9F4] rounded-xl shrink-0 -mx-1 px-1" role="group" aria-label="Fleet Categories">
           {Object.entries(equipmentCategoryLabels).map(([key, label]) => {
             const isSelected = selectedFilter === key;
             return (
@@ -94,10 +92,10 @@ export const EquipmentGrid: FC = () => {
                 key={key}
                 type="button"
                 onClick={() => handleFilterChange(key)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer whitespace-nowrap font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy ${
+                className={`px-2.5 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-semibold rounded-lg transition-all cursor-pointer whitespace-nowrap font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] ${
                   isSelected
-                    ? 'bg-vrnNavy text-white shadow-xs'
-                    : 'text-slate-600 hover:text-vrnNavy hover:bg-slate-200/60'
+                    ? 'bg-[#3F73F5] text-white shadow-xs'
+                    : 'text-[#687386] hover:text-[#3F73F5] hover:bg-white'
                 }`}
               >
                 {label}
@@ -107,8 +105,8 @@ export const EquipmentGrid: FC = () => {
         </div>
       </div>
 
-      {/* Grid of Equipment Cards with 3D Tilt Effect (Task 4) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Grid of Equipment Cards with 3D Tilt Effect */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {filteredItems.map((item) => (
           <TiltCard
             key={item.id}
@@ -123,7 +121,7 @@ export const EquipmentGrid: FC = () => {
               }
             }}
             onClick={() => handleOpenModal(item)}
-            className="group relative bg-white border border-slate-200/90 rounded-2xl overflow-hidden hover:border-vrnNavy hover:shadow-navy-lg transition-all duration-300 cursor-pointer flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy h-full"
+            className="group relative bg-white border border-[#E2E9F4] rounded-2xl overflow-hidden hover:border-[#3F73F5] hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] h-full shadow-xs"
           >
             {/* Visual Media Header with loading="lazy" */}
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
@@ -142,11 +140,11 @@ export const EquipmentGrid: FC = () => {
               <div className="absolute top-3 right-3">
                 <span className={`inline-flex items-center gap-1.5 text-[12px] font-body font-medium px-2.5 py-1 rounded-full border backdrop-blur-md ${
                   item.availability === 'Active Deployment'
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                    : 'bg-white text-vrnNavy border-slate-300'
+                    ? 'bg-[#EAF2FF] text-[#3F73F5] border-[#3F73F5]/25'
+                    : 'bg-white text-[#20242D] border-[#E2E9F4]'
                 }`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${
-                    item.availability === 'Active Deployment' ? 'bg-emerald-500 animate-pulse' : 'bg-cyan-500'
+                    item.availability === 'Active Deployment' ? 'bg-[#3F73F5] animate-pulse' : 'bg-[#65B5FF]'
                   }`} />
                   <span>{item.availability}</span>
                 </span>
@@ -156,31 +154,31 @@ export const EquipmentGrid: FC = () => {
             {/* Card Body */}
             <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
               <div>
-                <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">
-                  <span className="font-mono font-bold">{item.capacity}</span> Available
+                <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386]">
+                  <span className="font-mono font-bold text-[#3F73F5]">{item.capacity}</span> Available
                 </div>
-                <h3 className="text-base font-semibold text-slate-900 group-hover:text-vrnNavy transition-colors mt-0.5 leading-snug font-heading">
+                <h3 className="text-base font-semibold text-[#20242D] group-hover:text-[#3F73F5] transition-colors mt-0.5 leading-snug font-heading">
                   {item.name}
                 </h3>
-                <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed font-sans">
+                <p className="text-xs text-[#687386] mt-1 line-clamp-2 leading-relaxed font-body">
                   {item.application}
                 </p>
               </div>
 
               {/* Unboxed Metadata Parameters */}
-              <div className="pt-3 border-t border-slate-100 space-y-1.5 text-xs">
-                <div className="flex justify-between items-center text-slate-600">
-                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">Rating</span>
-                  <span className="text-slate-900 font-bold font-mono text-xs">{item.pressureRating}</span>
+              <div className="pt-3 border-t border-[#E2E9F4] space-y-1.5 text-xs">
+                <div className="flex justify-between items-center text-[#687386]">
+                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386]">Rating</span>
+                  <span className="text-[#20242D] font-bold font-mono text-xs">{item.pressureRating}</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-600">
-                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-500">Standard</span>
-                  <span className="text-vrnNavy font-bold text-xs font-mono truncate max-w-[130px]">{item.certifications}</span>
+                <div className="flex justify-between items-center text-[#687386]">
+                  <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386]">Standard</span>
+                  <span className="text-[#3F73F5] font-bold text-xs font-mono truncate max-w-[130px]">{item.certifications}</span>
                 </div>
               </div>
 
               {/* Interactive Inspect Cue */}
-              <div className="pt-2 flex items-center justify-between text-xs text-vrnNavy font-bold">
+              <div className="pt-2 flex items-center justify-between text-xs text-[#3F73F5] font-bold">
                 <span className="text-[11px]">Inspect Specifications</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -195,20 +193,20 @@ export const EquipmentGrid: FC = () => {
           role="dialog"
           aria-modal="true"
           aria-labelledby="machinery-modal-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn"
           onClick={(e) => {
             if (e.target === e.currentTarget) setInspectedItem(null);
           }}
         >
-          <div className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full text-slate-900 overflow-hidden shadow-2xl space-y-0">
+          <div className="bg-white border border-[#E2E9F4] rounded-2xl sm:rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto text-[#20242D] shadow-2xl space-y-0">
             
             {/* Modal Header */}
-            <div className="p-6 border-b border-slate-200 flex items-start justify-between bg-slate-50">
+            <div className="p-4 sm:p-6 border-b border-[#E2E9F4] flex items-start justify-between bg-[#F8FAFF]">
               <div>
-                <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnNavy">
+                <span className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#3F73F5]">
                   Machinery Inspection Dossier
                 </span>
-                <h3 id="machinery-modal-title" className="text-xl font-black text-vrnNavy mt-1 font-display">
+                <h3 id="machinery-modal-title" className="text-lg sm:text-xl font-bold text-[#20242D] mt-0.5 sm:mt-1 font-heading">
                   {inspectedItem.name}
                 </h3>
               </div>
@@ -217,16 +215,16 @@ export const EquipmentGrid: FC = () => {
                 type="button"
                 onClick={() => setInspectedItem(null)}
                 aria-label="Close machinery modal"
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                className="w-9 h-9 flex items-center justify-center rounded-lg text-[#687386] hover:text-[#20242D] hover:bg-[#EAF2FF] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 space-y-5">
+            <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
               
-              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-slate-200 bg-slate-100">
+              <div className="relative aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-[#E2E9F4] bg-slate-100">
                 <img
                   src={inspectedItem.image}
                   alt={inspectedItem.name}
@@ -234,50 +232,50 @@ export const EquipmentGrid: FC = () => {
                   height={340}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded text-xs font-mono font-bold text-vrnNavy border border-slate-200">
+                <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 bg-white/95 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 rounded text-[11px] sm:text-xs font-mono font-bold text-[#3F73F5] border border-[#E2E9F4]">
                   {inspectedItem.capacity}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-0.5">
-                  <span className="text-[12px] font-body font-medium text-slate-500 uppercase tracking-[0.04em]">Pressure / Load</span>
-                  <span className="text-sm font-bold text-vrnNavy block font-mono">{inspectedItem.pressureRating}</span>
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3 text-xs">
+                <div className="p-2.5 sm:p-3 bg-[#F8FAFF] border border-[#E2E9F4] rounded-xl space-y-0.5">
+                  <span className="text-[10px] sm:text-[11px] font-body font-medium text-[#687386] uppercase tracking-[0.04em]">Pressure / Load</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#3F73F5] block font-mono">{inspectedItem.pressureRating}</span>
                 </div>
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-0.5">
-                  <span className="text-[12px] font-body font-medium text-slate-500 uppercase tracking-[0.04em]">Flow Rate / Capacity</span>
-                  <span className="text-sm font-bold text-vrnNavy block font-mono">{inspectedItem.flowOutput}</span>
+                <div className="p-2.5 sm:p-3 bg-[#F8FAFF] border border-[#E2E9F4] rounded-xl space-y-0.5">
+                  <span className="text-[10px] sm:text-[11px] font-body font-medium text-[#687386] uppercase tracking-[0.04em]">Flow Rate / Capacity</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#3F73F5] block font-mono">{inspectedItem.flowOutput}</span>
                 </div>
               </div>
 
-              <div className="space-y-2 text-xs">
-                <div className="flex items-center gap-2 text-emerald-800 font-bold">
-                  <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-700" />
+              <div className="space-y-1.5 sm:space-y-2 text-xs">
+                <div className="flex items-center gap-2 text-[#3F73F5] font-bold">
+                  <ShieldCheck className="w-4 h-4 shrink-0 text-[#3F73F5]" />
                   <span>Compliance: {inspectedItem.certifications}</span>
                 </div>
-                <p className="text-slate-600 leading-relaxed font-sans">
+                <p className="text-[11px] sm:text-xs text-[#687386] leading-relaxed font-body">
                   Deployed under strict HSE supervision with certified operators, calibrated pressure safety valves, and daily maintenance logs.
                 </p>
               </div>
 
               {/* Modal Actions */}
-              <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="pt-1 sm:pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 <button
                   type="button"
                   onClick={handleChatWhatsApp}
-                  className="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold uppercase text-vrnNavy transition-colors cursor-pointer flex items-center justify-center gap-2 font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                  className="min-h-[44px] py-2.5 px-4 rounded-xl bg-white hover:bg-[#F8FAFF] border border-[#E2E9F4] text-xs font-bold uppercase text-[#20242D] transition-colors cursor-pointer flex items-center justify-center gap-2 font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-700" />
+                  <MessageSquare className="w-4 h-4 text-emerald-600" />
                   <span>Chat on WhatsApp</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={handleAllocateToRFP}
-                  className="py-3 px-4 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-xs font-black uppercase text-slate-950 transition-all shadow-md shadow-orange-500/20 flex items-center justify-center gap-2 cursor-pointer font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnOrange"
+                  className="min-h-[44px] py-2.5 px-4 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-xs font-bold uppercase text-white transition-all shadow-md shadow-[#3F73F5]/25 flex items-center justify-center gap-2 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
                 >
                   <span>Attach to RFP</span>
-                  <ArrowRight className="w-4 h-4 text-slate-950" />
+                  <ArrowRight className="w-4 h-4 text-white" />
                 </button>
               </div>
 

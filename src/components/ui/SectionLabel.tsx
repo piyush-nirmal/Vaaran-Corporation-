@@ -7,11 +7,11 @@ interface SectionLabelProps {
 export const SectionLabel = ({ number, name, className = '' }: SectionLabelProps) => {
   return (
     <div className={`inline-flex items-center gap-2.5 text-xs font-semibold tracking-wider uppercase ${className}`}>
-      <span className="font-mono text-vrnOrange bg-orange-50/90 border border-orange-200/80 px-2 py-0.5 rounded text-[11px] font-semibold">
+      <span className="font-mono text-[#3F73F5] bg-[#EAF2FF] border border-[#3F73F5]/25 px-2.5 py-0.5 rounded-full text-[11px] font-bold">
         {number}
       </span>
-      <span className="text-slate-700 tracking-[0.05em] text-[11px] sm:text-xs">{name}</span>
-      <div className="h-[1px] bg-slate-200 w-8 sm:w-12 shrink-0" aria-hidden="true" />
+      <span className="text-[#20242D] font-semibold tracking-[0.05em] text-[11px] sm:text-xs">{name}</span>
+      <div className="h-[1px] bg-[#E2E9F4] w-8 sm:w-12 shrink-0" aria-hidden="true" />
     </div>
   );
 };

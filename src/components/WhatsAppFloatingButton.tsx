@@ -33,10 +33,10 @@ export const WhatsAppFloatingButton: FC = () => {
   }, []);
 
   return (
-    <div className={`fixed ${hasStickyBar ? 'bottom-[68px]' : 'bottom-3 sm:bottom-5'} sm:bottom-20 lg:bottom-6 right-3 sm:right-5 z-40 flex items-center group transition-all duration-300`}>
+    <div className={`fixed ${hasStickyBar ? 'bottom-[84px]' : 'bottom-4 sm:bottom-6'} sm:bottom-24 lg:bottom-20 right-3.5 sm:right-6 z-40 flex items-center group transition-all duration-300`}>
       {/* Tooltip on hover (when collapsed) */}
       {!isExpanded && (
-        <div className="hidden sm:block mr-2 px-3 py-1.5 bg-slate-900 text-white text-xs font-semibold rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap font-sans">
+        <div className="hidden sm:block mr-2 px-3 py-1.5 bg-[#20242D] text-white text-xs font-semibold rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap font-sans border border-[#E2E9F4]/20">
           Chat with us
         </div>
       )}
@@ -45,7 +45,7 @@ export const WhatsAppFloatingButton: FC = () => {
         type="button"
         onClick={() => openWhatsApp(undefined, 'floating_widget')}
         className={`relative rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40 cursor-pointer overflow-hidden ${
-          isExpanded ? 'px-3 sm:px-4 py-2.5 sm:py-3 gap-2 h-12 sm:h-14' : 'w-12 h-12 sm:w-14 sm:h-14 justify-center'
+          isExpanded ? 'px-3 sm:px-4 py-2.5 sm:py-3 gap-2 h-[48px] sm:h-14' : 'w-[48px] h-[48px] sm:w-14 sm:h-14 justify-center'
         }`}
         aria-label="Chat on WhatsApp with Varan Corporation"
       >

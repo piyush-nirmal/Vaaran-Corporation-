@@ -34,19 +34,19 @@ export const ContactPage: FC = () => {
           { label: 'Workforce Hub', value: 'Mumbai', unit: 'HQ' },
         ]}
         actions={
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <a
               href={`tel:${currentCompany.phoneRaw}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-sm shadow-[#3F73F5]/25 transition-all min-h-[44px]"
             >
-              <Phone className="w-3.5 h-3.5 text-vrnOrange" />
+              <Phone className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Call Direct: {currentCompany.phone}</span>
             </a>
             <a
               href={`mailto:${currentCompany.email}`}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-vrnNavy font-semibold text-xs uppercase tracking-[0.04em] font-heading transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-[#E2E9F4] bg-white hover:bg-[#EAF2FF]/50 text-[#20242D] font-semibold text-xs uppercase tracking-[0.04em] font-heading transition-colors min-h-[44px]"
             >
-              <Mail className="w-3.5 h-3.5 text-vrnNavy" />
+              <Mail className="w-3.5 h-3.5 text-[#3F73F5] shrink-0" />
               <span>{currentCompany.email}</span>
             </a>
           </div>
@@ -54,7 +54,7 @@ export const ContactPage: FC = () => {
       />
 
       {/* Main Corporate Contact & Channels Container */}
-      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12">
         <ContactForm />
       </div>
     </div>

@@ -72,64 +72,64 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
       role="dialog"
       aria-modal="true"
       aria-labelledby="portal-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#20242D]/50 backdrop-blur-sm animate-fadeIn"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-2xl max-w-lg w-full border border-slate-200 shadow-2xl overflow-hidden text-slate-900"
+        className="bg-white rounded-2xl max-w-lg w-full border border-[#E2E9F4] shadow-2xl overflow-hidden text-[#20242D] max-h-[90vh] flex flex-col"
       >
-        <div className="bg-slate-50 p-6 flex items-center justify-between border-b border-slate-200">
-          <div className="flex items-center gap-3">
-            <VrnLogo size={32} />
+        <div className="bg-[#F8FAFF] p-4 sm:p-6 flex items-center justify-between border-b border-[#E2E9F4] shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <VrnLogo size={28} />
             <div>
-              <h3 id="portal-modal-title" className="font-extrabold uppercase tracking-wide text-sm text-vrnNavy font-display">
+              <h3 id="portal-modal-title" className="font-extrabold uppercase tracking-wide text-xs sm:text-sm text-[#20242D] font-display">
                 Client Portal (Coming Soon)
               </h3>
-              <p className="text-[12px] text-slate-500 font-body">Secured Contractor Extranet · In Development</p>
+              <p className="text-[11px] sm:text-[12px] text-[#687386] font-body">Secured Contractor Extranet · In Development</p>
             </div>
           </div>
           <button 
             type="button"
             onClick={onClose}
             aria-label="Close portal modal"
-            className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-200 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+            className="text-[#687386] hover:text-[#20242D] p-1.5 rounded-lg hover:bg-[#EAF2FF] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] min-w-[36px] min-h-[36px] flex items-center justify-center"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
         
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto">
           {isSuccess ? (
-            <div className="text-center py-6 space-y-4 animate-fadeIn">
-              <div className="w-14 h-14 bg-emerald-100 border border-emerald-300 text-emerald-800 rounded-full flex items-center justify-center mx-auto shadow-xs">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="text-center py-4 sm:py-6 space-y-3.5 sm:space-y-4 animate-fadeIn">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-xs">
+                <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
-              <h4 className="text-xl font-black text-vrnNavy font-display">Priority Access Registered</h4>
-              <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
+              <h4 className="text-lg sm:text-xl font-black text-[#20242D] font-display">Priority Access Registered</h4>
+              <p className="text-xs text-[#687386] max-w-sm mx-auto leading-relaxed">
                 Thank you. We have registered <strong>{email}</strong> for encrypted client extranet onboarding once portal verification is live.
               </p>
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2.5 bg-vrnNavy hover:bg-vrnNavy-dark text-white rounded-xl text-xs font-bold uppercase tracking-wider font-display cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 bg-[#3F73F5] hover:bg-[#2454C6] text-white rounded-xl text-xs font-bold uppercase tracking-wider font-display cursor-pointer shadow-md shadow-[#3F73F5]/25 min-h-[44px]"
                 >
                   Return to Site
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Task 5: Notice with no fake worksite or safety data */}
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
-                <div className="flex items-center gap-2 text-[12px] font-bold text-vrnNavy font-body uppercase tracking-[0.04em]">
-                  <HardHat className="w-4 h-4 text-vrnNavy" />
+            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+              {/* Deployment notice */}
+              <div className="bg-[#EAF2FF]/60 border border-[#E2E9F4] rounded-xl p-3.5 sm:p-4 space-y-1.5 sm:space-y-2">
+                <div className="flex items-center gap-2 text-[11px] sm:text-[12px] font-bold text-[#3F73F5] font-body uppercase tracking-[0.04em]">
+                  <HardHat className="w-4 h-4 text-[#3F73F5] shrink-0" />
                   <span>Deployment Notice</span>
                 </div>
-                <p className="text-xs text-slate-700 leading-relaxed font-sans">
+                <p className="text-xs text-[#20242D] leading-relaxed font-sans">
                   The Varan Contractor Extranet is currently undergoing security hardening and single-sign-on integration for EPC partners. Once live, authorized contractors will access daily telemetry logs, coating dry-film verification certificates, and biometric workforce clearance.
                 </p>
               </div>
@@ -154,12 +154,12 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
               )}
 
               <div className="space-y-3">
-                <span className="text-xs font-bold text-slate-800 block">
+                <span className="text-xs font-bold text-[#20242D] block">
                   Notify me when portal launches:
                 </span>
                 
                 <div className="space-y-1">
-                  <label htmlFor="portal-email" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label htmlFor="portal-email" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Corporate Email *
                   </label>
                   <input
@@ -169,12 +169,12 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="engineer@contractor.com"
-                    className="w-full p-3 bg-white border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors"
+                    className="w-full p-2.5 sm:p-3 min-h-[44px] bg-[#F8FAFF] focus:bg-white border border-[#E2E9F4] rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="portal-company" className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label htmlFor="portal-company" className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Enterprise / EPC Authority (Optional)
                   </label>
                   <input
@@ -183,33 +183,33 @@ export const ClientPortalModal: FC<ClientPortalModalProps> = ({ isOpen, onClose 
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     placeholder="e.g. State Highway Development Corp"
-                    className="w-full p-3 bg-white border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors"
+                    className="w-full p-2.5 sm:p-3 min-h-[44px] bg-[#F8FAFF] focus:bg-white border border-[#E2E9F4] rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors"
                   />
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-3">
+              <div className="pt-2 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer font-display"
+                  className="px-4 py-2.5 min-h-[44px] bg-[#EAF2FF] hover:bg-[#EAF2FF]/80 text-[#3F73F5] text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer font-display text-center"
                 >
                   Dismiss
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="px-5 py-2.5 bg-vrnNavy hover:bg-vrnNavy-dark text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer font-display flex items-center gap-2 disabled:opacity-60"
+                  className="px-5 py-2.5 min-h-[44px] bg-[#3F73F5] hover:bg-[#2454C6] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#3F73F5]/25 cursor-pointer font-display flex items-center justify-center gap-2 disabled:opacity-60"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
+                      <Loader2 className="w-4 h-4 animate-spin text-white" />
                       <span>Registering...</span>
                     </>
                   ) : (
                     <>
                       <span>Notify Me</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+                      <ArrowRight className="w-3.5 h-3.5 text-white" />
                     </>
                   )}
                 </button>

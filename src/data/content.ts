@@ -494,7 +494,9 @@ export const clientPartners: ClientPartner[] = [
 
 export const clientsByCategory = {
   government: [
-    { name: 'MSRDC', subtitle: 'Maharashtra State Road Development Corporation' },
+    { name: 'MSRDC', subtitle: 'Maharashtra State Road Development Corporation', highlight: 'Bandra-Worli Sea Link & Vashi Flyover' },
+    { name: 'PWD Maharashtra', subtitle: 'Public Works Department (State Highways & Infrastructure)', highlight: 'State Highway Corridors & Grade Separators' },
+    { name: 'Statutory Highway Authorities', subtitle: 'National Expressway & Toll Infrastructure Concessions', highlight: 'Delhi-Gurgaon & Transit Corridors' },
   ],
   infrastructure: [
     { name: 'Larsen & Toubro (L&T)', subtitle: 'Vashi Flyover Protective Coating' },

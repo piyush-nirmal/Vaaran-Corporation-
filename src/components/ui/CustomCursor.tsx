@@ -59,7 +59,7 @@ export const CustomCursor = () => {
           translateX: '-50%',
           translateY: '-50%',
         }}
-        className="w-2 h-2 rounded-full bg-vrnNavy absolute"
+        className="w-2 h-2 rounded-full bg-[#3F73F5] absolute"
       />
 
       {/* Trailing Responsive Ring */}
@@ -72,10 +72,10 @@ export const CustomCursor = () => {
         }}
         animate={{
           scale: isHovered ? 1.7 : 1,
-          borderColor: isHovered ? 'rgba(245, 130, 32, 0.7)' : 'rgba(32, 49, 130, 0.25)',
+          borderColor: isHovered ? 'rgba(63, 115, 245, 0.85)' : 'rgba(63, 115, 245, 0.3)',
         }}
         transition={{ duration: 0.15 }}
-        className="w-8 h-8 rounded-full border border-vrnNavy/30 absolute"
+        className="w-8 h-8 rounded-full border border-[#3F73F5]/30 absolute"
       />
     </div>
   );

@@ -96,26 +96,26 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
       role="dialog"
       aria-modal="true"
       aria-labelledby="capability-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#20242D]/50 backdrop-blur-sm animate-fadeIn"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div
         ref={modalRef}
-        className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full text-slate-900 overflow-hidden shadow-2xl space-y-0"
+        className="bg-white border border-[#E2E9F4] rounded-2xl max-w-lg w-full text-[#20242D] overflow-hidden shadow-2xl space-y-0 max-h-[90vh] flex flex-col"
       >
         {/* Header */}
-        <div className="p-6 border-b border-slate-200 flex items-start justify-between bg-slate-50">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-vrnNavy text-white rounded-xl shadow-xs">
-              <FileText className="w-5 h-5 text-vrnOrange" />
+        <div className="p-4 sm:p-6 border-b border-[#E2E9F4] flex items-start justify-between bg-[#F8FAFF] shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="p-2 sm:p-2.5 bg-[#EAF2FF] text-[#3F73F5] rounded-xl border border-[#E2E9F4] shadow-xs">
+              <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
             </div>
             <div>
-              <span className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-vrnOrange block">
+              <span className="text-[11px] sm:text-[12px] font-body font-semibold uppercase tracking-[0.04em] text-[#3F73F5] block">
                 Technical Contractor Dossier
               </span>
-              <h3 id="capability-modal-title" className="text-lg font-black text-vrnNavy font-display">
+              <h3 id="capability-modal-title" className="text-base sm:text-lg font-black text-[#20242D] font-display">
                 Download Capability Profile
               </h3>
             </div>
@@ -124,7 +124,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+            className="p-1.5 rounded-lg text-[#687386] hover:text-[#20242D] hover:bg-[#EAF2FF] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] min-w-[36px] min-h-[36px] flex items-center justify-center"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -132,16 +132,16 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-5">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-y-auto">
           {isSuccess ? (
-            <div className="text-center py-6 space-y-4 animate-fadeIn">
-              <div className="w-14 h-14 bg-emerald-100 border border-emerald-300 text-emerald-700 rounded-full flex items-center justify-center mx-auto shadow-xs">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="text-center py-4 sm:py-6 space-y-3.5 sm:space-y-4 animate-fadeIn">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-xs">
+                <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
 
               <div>
-                <h4 className="text-xl font-black text-vrnNavy font-display">Authorization Verified</h4>
-                <p className="text-xs text-slate-600 max-w-sm mx-auto mt-1">
+                <h4 className="text-lg sm:text-xl font-black text-[#20242D] font-display">Authorization Verified</h4>
+                <p className="text-xs text-[#687386] max-w-sm mx-auto mt-1">
                   Thank you, <strong>{name}</strong>. Your copy of the 2026 Varan Infrastructure Capability Profile is ready.
                 </p>
               </div>
@@ -151,20 +151,20 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                   href="/capability-profile.pdf"
                   download="Varan-Corporation-Capability-Profile-2026.pdf"
                   onClick={() => track('profile_download', { action: 'file_downloaded' })}
-                  className="inline-flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-xl bg-vrnOrange hover:bg-vrnOrange-hover text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-md shadow-orange-500/25 cursor-pointer font-display"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-white font-black text-xs uppercase tracking-wider transition-all shadow-md shadow-[#3F73F5]/25 cursor-pointer font-display min-h-[44px]"
                 >
-                  <Download className="w-4 h-4 text-slate-950" />
+                  <Download className="w-4 h-4 text-white" />
                   <span>Download PDF Dossier (4.2 MB)</span>
                 </a>
               </div>
 
-              <p className="text-[12px] text-slate-500 font-body">
-                Direct link also logged for enterprise domain: <span className="font-semibold text-slate-700">{company}</span>
+              <p className="text-[11px] sm:text-[12px] text-[#687386] font-body">
+                Direct link also logged for enterprise domain: <span className="font-semibold text-[#20242D]">{company}</span>
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <p className="text-xs text-slate-600 leading-relaxed font-sans">
+            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+              <p className="text-xs text-[#687386] leading-relaxed font-sans">
                 Access equipment fleet tolerances, Sa 2.5 protective blast procedures, past viaduct milestones, and HSE statutory certificates.
               </p>
 
@@ -188,7 +188,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
               )}
 
               <div className="space-y-1">
-                <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                <label className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                   Full Name *
                 </label>
                 <input
@@ -200,15 +200,15 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                     if (errors.name) setErrors({ ...errors, name: '' });
                   }}
                   placeholder="e.g. Vikram Sharma"
-                  className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                    errors.name ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                  className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-[#F8FAFF] focus:bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                    errors.name ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                   }`}
                 />
                 {errors.name && <p className="text-[10px] text-rose-600 font-medium">{errors.name}</p>}
               </div>
 
               <div className="space-y-1">
-                <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                <label className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                   Company / Organization *
                 </label>
                 <input
@@ -219,8 +219,8 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                     if (errors.company) setErrors({ ...errors, company: '' });
                   }}
                   placeholder="e.g. Larsen & Toubro / Metro Authority"
-                  className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                    errors.company ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                  className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-[#F8FAFF] focus:bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                    errors.company ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                   }`}
                 />
                 {errors.company && <p className="text-[10px] text-rose-600 font-medium">{errors.company}</p>}
@@ -228,7 +228,7 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Corporate Email *
                   </label>
                   <input
@@ -239,15 +239,15 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                       if (errors.email) setErrors({ ...errors, email: '' });
                     }}
                     placeholder="name@organization.com"
-                    className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                      errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                    className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-[#F8FAFF] focus:bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                      errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                     }`}
                   />
                   {errors.email && <p className="text-[10px] text-rose-600 font-medium">{errors.email}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-slate-600 block">
+                  <label className="text-[11px] sm:text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386] block">
                     Direct Phone *
                   </label>
                   <input
@@ -258,8 +258,8 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                       if (errors.phone) setErrors({ ...errors, phone: '' });
                     }}
                     placeholder="+91 XXXXX XXXXX"
-                    className={`w-full p-3 bg-white border rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-vrnNavy transition-colors ${
-                      errors.phone ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                    className={`w-full p-2.5 sm:p-3 min-h-[44px] bg-[#F8FAFF] focus:bg-white border rounded-xl text-xs text-[#20242D] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] transition-colors ${
+                      errors.phone ? 'border-rose-400 bg-rose-50/20' : 'border-[#E2E9F4]'
                     }`}
                   />
                   {errors.phone && <p className="text-[10px] text-rose-600 font-medium">{errors.phone}</p>}
@@ -270,23 +270,23 @@ export const CapabilityProfileModal: FC<CapabilityProfileModalProps> = ({ isOpen
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 px-4 rounded-xl bg-vrnNavy hover:bg-vrnNavy-dark text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-blue-900/15 flex items-center justify-center gap-2 cursor-pointer font-display disabled:opacity-60"
+                  className="w-full min-h-[48px] py-3.5 px-4 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#3F73F5]/25 flex items-center justify-center gap-2 cursor-pointer font-display active:scale-[0.99] disabled:opacity-60"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-vrnOrange" />
+                      <Loader2 className="w-4 h-4 animate-spin text-white" />
                       <span>Authorizing Access...</span>
                     </>
                   ) : (
                     <>
-                      <Download className="w-4 h-4 text-vrnOrange" />
+                      <Download className="w-4 h-4 text-white" />
                       <span>Instant Access to Capability Profile</span>
                     </>
                   )}
                 </button>
               </div>
 
-              <p className="text-[12px] text-slate-400 text-center font-body">
+              <p className="text-[11px] sm:text-[12px] text-[#687386] text-center font-body">
                 Zero spam promise. Strictly for formal procurement and tender verification.
               </p>
             </form>

@@ -4,12 +4,11 @@
 // 2. 3 consecutive presses of the Shift key within 1 second
 // 3. Ctrl + Shift + A shortcut
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function useAdminShortcut() {
   const navigate = useNavigate();
-  const [showToast, setShowToast] = useState(false);
 
   // Track shift key presses
   const shiftKeyTimes = useRef<number[]>([]);
@@ -50,11 +49,7 @@ export function useAdminShortcut() {
     };
 
     const triggerAdminAccess = () => {
-      setShowToast(true);
-      setTimeout(() => {
-        setShowToast(false);
-        navigate('/admin');
-      }, 700);
+      navigate('/admin');
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -65,6 +60,4 @@ export function useAdminShortcut() {
       window.removeEventListener('click', handleClick);
     };
   }, [navigate]);
-
-  return { showToast };
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FC, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Award, CheckCircle2, Check, Download, Loader2, ArrowRight } from 'lucide-react';
+import { Check, Download, Loader2, ArrowRight } from 'lucide-react';
 import { VrnLogo } from './VrnLogo';
 import { submitLead, validateEmail } from '../services/leadService';
 import { track } from '../services/analytics';
@@ -58,39 +58,43 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
   };
 
   return (
-    <footer className="bg-slate-50 pt-20 pb-24 lg:pb-12 border-t border-slate-200 text-slate-700 relative overflow-hidden">
-      
-      {/* Blueprint Grid Watermark in Footer */}
-      <div className="absolute inset-0 bg-grid-blueprint opacity-40 pointer-events-none" aria-hidden="true" />
+    <footer className="bg-gradient-to-b from-[#F0F5FF] via-[#EAF2FF] to-[#E4EEFF] pt-12 sm:pt-16 lg:pt-20 pb-28 sm:pb-28 lg:pb-12 border-t border-[#D6E4F7] text-[#687386] relative overflow-hidden">
 
-      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
-        
+      {/* Blueprint Grid Watermark in Footer */}
+      <div className="absolute inset-0 bg-grid-blueprint opacity-35 pointer-events-none" aria-hidden="true" />
+
+      {/* Subtle Light Blue Ambient Glows */}
+      <div className="absolute -top-24 right-1/4 w-96 h-96 bg-[#65B5FF]/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute -bottom-24 left-10 w-96 h-96 bg-[#3F73F5]/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-14">
+
         {/* Main Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+
           {/* Brand & Proposition (Col span 4) */}
-          <div className="lg:col-span-4 space-y-5">
-            <Link 
-              to="/" 
-              className="flex items-center gap-3 cursor-pointer group inline-flex text-left bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+          <div className="lg:col-span-4 space-y-4 sm:space-y-5">
+            <Link
+              to="/"
+              className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group inline-flex text-left bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5]"
             >
-              <VrnLogo size={38} />
+              <VrnLogo size={36} />
               <div>
-                <span className="text-lg font-semibold tracking-tight text-vrnNavy uppercase block font-heading">
+                <span className="text-base sm:text-lg font-bold tracking-tight text-[#20242D] uppercase block font-heading">
                   Varan Corporation
                 </span>
-                <span className="text-[11px] font-medium font-body text-slate-500 uppercase tracking-wider block -mt-0.5">
+                <span className="text-[10px] sm:text-[11px] font-semibold font-body text-[#3F73F5] uppercase tracking-wider block -mt-0.5">
                   Infrastructure Group
                 </span>
               </div>
             </Link>
-            
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm font-body">
+
+            <p className="text-[#687386] text-xs sm:text-sm leading-relaxed max-w-sm font-body">
               Trusted civil construction, commercial painting, and specialized structural fabrication services across India. Founded in 1997 on the ethos of &ldquo;Work is Worship&rdquo; (कर्म ही पूजा है).
             </p>
 
-            <div className="text-xs font-body text-slate-500 pt-1">
-              Registered Contractor ID: <span className="text-vrnNavy font-semibold font-mono text-xs">VRN-IND-9001</span>
+            <div className="text-xs font-body text-[#687386] pt-0.5">
+              Registered Contractor ID: <span className="text-[#3F73F5] font-semibold font-mono text-xs">VRN-IND-9001</span>
             </div>
 
             {/* Lead Magnet Download Button */}
@@ -98,9 +102,9 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
               <button
                 type="button"
                 onClick={onOpenCapabilityModal}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-vrnNavy text-xs font-semibold font-heading uppercase tracking-[0.04em] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy shadow-2xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-[#E2E9F4] hover:border-[#3F73F5]/40 bg-white hover:bg-[#EAF2FF]/50 text-[#3F73F5] text-xs font-semibold font-heading uppercase tracking-[0.04em] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] shadow-xs hover:shadow-sm min-h-[44px]"
               >
-                <Download className="w-4 h-4 shrink-0 text-vrnNavy" />
+                <Download className="w-4 h-4 shrink-0 text-[#3F73F5]" />
                 <span>Download Capability Profile (PDF)</span>
               </button>
             </div>
@@ -108,8 +112,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Quick Operations Links (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Operations</h4>
-            <ul className="space-y-3 text-xs text-slate-600 font-body">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Operations</h4>
+            <ul className="space-y-3 text-xs text-[#687386] font-body">
               {[
                 { to: '/operations', label: 'All Capabilities' },
                 { to: '/operations', label: 'Protective Coatings' },
@@ -120,10 +124,10 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 <li key={i}>
                   <Link
                     to={item.to}
-                    className="relative group text-slate-600 hover:text-vrnNavy transition-colors text-left cursor-pointer inline-block"
+                    className="relative group text-[#687386] hover:text-[#3F73F5] transition-colors text-left cursor-pointer inline-block"
                   >
                     <span>{item.label}</span>
-                    <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-vrnNavy transition-all duration-200 group-hover:w-full" />
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-[#3F73F5] transition-all duration-200 group-hover:w-full" />
                   </Link>
                 </li>
               ))}
@@ -132,8 +136,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Infrastructure Governance & Tenders (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Navigation</h4>
-            <ul className="space-y-3 text-xs text-slate-600 font-body">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Navigation</h4>
+            <ul className="space-y-3 text-xs text-[#687386] font-body">
               {[
                 { to: '/', label: 'Overview & Highlights' },
                 { to: '/projects', label: 'Projects Portfolio' },
@@ -144,10 +148,10 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 <li key={i}>
                   <Link
                     to={item.to}
-                    className="relative group text-slate-600 hover:text-vrnNavy transition-colors text-left cursor-pointer inline-block"
+                    className="relative group text-[#687386] hover:text-[#3F73F5] transition-colors text-left cursor-pointer inline-block"
                   >
                     <span>{item.label}</span>
-                    <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-vrnNavy transition-all duration-200 group-hover:w-full" />
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-[#3F73F5] transition-all duration-200 group-hover:w-full" />
                   </Link>
                 </li>
               ))}
@@ -156,8 +160,8 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
 
           {/* Newsletter / Bulletin using submitLead (Col span 4) */}
           <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Tender & Milestone Bulletin</h4>
-            <p className="text-xs text-slate-600 leading-relaxed font-body">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Tender & Milestone Bulletin</h4>
+            <p className="text-xs text-[#687386] leading-relaxed font-body">
               Receive quarterly technical bulletins on protective coating specifications, transit deployment schedules, and plant mobilization alerts.
             </p>
 
@@ -168,7 +172,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="space-y-2">
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="email"
                     required
@@ -176,12 +180,12 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter corporate email..."
                     aria-label="Corporate Email for Tender Bulletin"
-                    className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-vrnNavy focus:border-vrnNavy font-body"
+                    className="flex-1 bg-white border border-[#E2E9F4] rounded-xl px-3.5 py-2.5 min-h-[44px] text-xs text-[#20242D] placeholder:text-[#687386] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] focus:border-[#3F73F5] font-body shadow-xs"
                   />
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-4 py-2.5 bg-vrnNavy hover:bg-vrnNavy-dark text-white rounded-xl text-xs font-semibold font-heading uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50 shrink-0 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vrnNavy"
+                    className="px-5 py-2.5 min-h-[44px] bg-[#3F73F5] hover:bg-[#2454C6] text-white rounded-xl text-xs font-semibold font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50 shrink-0 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] active:scale-[0.99]"
                   >
                     {loading ? (
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -196,66 +200,72 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
                 {error && (
                   <p className="text-[11px] text-red-600 font-body">{error}</p>
                 )}
-                <span className="text-[11px] text-slate-400 block font-body">
+                <span className="text-[10px] sm:text-[11px] text-[#687386] block font-body">
                   Strictly confidential. No spam. You may opt out anytime.
                 </span>
               </form>
             )}
 
             {/* Quick Contact Line */}
-            <div className="pt-2 text-xs font-body text-slate-600 space-y-1">
-              <div>Tender Inquiries: <a href={`mailto:${currentCompany.email}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{currentCompany.email}</a></div>
-              <div>Direct Desk: <a href={`tel:${currentCompany.phoneRaw}`} className="text-vrnNavy hover:underline font-semibold font-mono text-xs">{currentCompany.phone}</a></div>
+            <div className="pt-2 text-xs font-body text-[#687386] space-y-1">
+              <div>Tender Inquiries: <a href={`mailto:${currentCompany.email}`} className="text-[#3F73F5] hover:underline font-semibold font-mono text-xs">{currentCompany.email}</a></div>
+              <div>Direct Desk: <a href={`tel:${currentCompany.phoneRaw}`} className="text-[#3F73F5] hover:underline font-semibold font-mono text-xs">{currentCompany.phone}</a></div>
             </div>
           </div>
 
         </div>
 
-        {/* Corporate Trust Matrix */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white p-6 sm:p-8 border border-slate-200/90 rounded-2xl shadow-navy-sm">
-          <div className="flex items-start gap-3.5">
-            <Shield className="w-5 h-5 text-vrnNavy shrink-0 mt-0.5" />
+        {/* Corporate Trust Matrix in Pure White Cards */}
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 bg-white p-4 sm:p-6 lg:p-8 border border-[#E2E9F4] rounded-xl sm:rounded-2xl shadow-sm">
+          <div className="flex items-start gap-3 sm:gap-3.5">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EAF2FF] flex items-center justify-center shrink-0">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
+            </div>
             <div>
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Statutory Labor Compliance</h5>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
+              <h5 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Statutory Labor Compliance</h5>
+              <p className="text-xs text-[#687386] mt-0.5 sm:mt-1 leading-relaxed font-body">
                 100% compliance with PASARA, DGR, ESIC, and PF regulatory labor code audits.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4 md:border-t-0 md:pt-0 md:border-x md:border-slate-200 md:px-6">
-            <Award className="w-5 h-5 text-vrnNavy shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 sm:gap-3.5 border-t border-[#E2E9F4] pt-3.5 md:border-t-0 md:pt-0 md:border-x md:border-[#E2E9F4] md:px-6">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EAF2FF] flex items-center justify-center shrink-0">
+              <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
+            </div>
             <div>
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">ISO 12944 Certified Standards</h5>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
+              <h5 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">ISO 12944 Certified Standards</h5>
+              <p className="text-xs text-[#687386] mt-0.5 sm:mt-1 leading-relaxed font-body">
                 Sa 2.5 near-white blast profiles and high-durability C5-I corrosive environments.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4 md:border-t-0 md:pt-0">
-            <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 sm:gap-3.5 border-t border-[#E2E9F4] pt-3.5 md:border-t-0 md:pt-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EAF2FF] flex items-center justify-center shrink-0">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
+            </div>
             <div>
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-900 font-heading">Scale & Continuous Mobilization</h5>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed font-body">
+              <h5 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Scale & Continuous Mobilization</h5>
+              <p className="text-xs text-[#687386] mt-0.5 sm:mt-1 leading-relaxed font-body">
                 Delivered ₹30+ Crore projects with 150+ permanent personnel across Maharashtra, Goa, Delhi & Bangalore.
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[12px] sm:text-[13px] text-slate-600 font-body">
+        <div className="border-t border-[#D6E4F7] pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[11px] sm:text-[13px] text-[#687386] font-body text-center sm:text-left">
           <p>
             &copy; <span className="font-mono">{CURRENT_YEAR}</span> Varan Corporation Infrastructure Group. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <Link to="/contact" className="hover:text-vrnNavy transition-colors cursor-pointer">Procurement Terms</Link>
-            <Link to="/operations" className="hover:text-vrnNavy transition-colors cursor-pointer">HSE Policy</Link>
-            <Link to="/" className="hover:text-vrnNavy transition-colors cursor-pointer">Sitemap</Link>
-            <Link 
-              to="/admin" 
-              className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer text-[11px] font-mono opacity-60 hover:opacity-100"
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link to="/contact" className="hover:text-[#3F73F5] transition-colors cursor-pointer">Procurement Terms</Link>
+            <Link to="/operations" className="hover:text-[#3F73F5] transition-colors cursor-pointer">HSE Policy</Link>
+            <Link to="/" className="hover:text-[#3F73F5] transition-colors cursor-pointer">Sitemap</Link>
+            <Link
+              to="/admin"
+              className="text-[#687386] hover:text-[#3F73F5] transition-colors cursor-pointer text-[10px] sm:text-[11px] font-mono opacity-60 hover:opacity-100"
               title="Admin Portal (Secret: 3 Shift presses or Shift-Click)"
             >
               Portal [Shift×3]
