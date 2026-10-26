@@ -3,236 +3,236 @@ import type { ServiceCategory } from '../types/domain';
 export const servicesData: ServiceCategory[] = [
   {
     id: 'commercial-industrial-painting',
-    title: 'Commercial, Industrial & Specialized Painting',
+    title: 'Industrial & Specialized Painting',
     icon: 'Paintbrush',
-    description: 'High-performance protective coatings, marine-grade systems, anti-carbonation barriers, and specialized commercial painting across critical transit corridors and industrial assets.',
+    description: 'Long-lasting protective paints and coatings for bridges, flyovers, highways, and industrial facilities that stop rust and weather damage.',
     services: [
       {
         id: 'marine-offshore-coating',
-        title: 'Marine & Offshore High-Risk Coating',
-        description: 'Specialized protective coating engineered for extreme marine salinity, high-humidity offshore zones, and high-altitude structures up to 100 ft above sea level.',
+        title: 'Bridge & Coastal Protective Coating',
+        description: 'Tough protective coatings for sea links, coastal bridges, and tall structures exposed to harsh salt air, humidity, and weather.',
         keyDeliverables: [
-          'High-salinity barrier coating systems (ISO 12944 C5-M)',
-          '100 Ft above sea level marine execution',
-          'Offshore corrosion inhibitors & zinc primers',
-          'High-risk access rigging & certified safety protocols'
+          'Rust & salt-resistant protective coating',
+          'Safe execution up to 100 ft above water',
+          'Corrosion protection primers & sealers',
+          'Trained safety crew with certified gear'
         ],
-        targetSectors: ['Sea Links & Maritime Authorities', 'Port Trusts', 'Coastal Infrastructure'],
+        targetSectors: ['Sea Links & Coastal Bridges', 'Port Authorities', 'Highway Concessions'],
         metrics: [
-          { label: 'Elevation', value: '100 Ft Above Sea' },
-          { label: 'Standard', value: 'ISO 12944 C5' },
-          { label: 'Corrosion Shield', value: '25+ Years' }
+          { label: 'Work Height', value: 'Up to 100 Ft' },
+          { label: 'Quality', value: 'Marine Grade' },
+          { label: 'Protection', value: '25+ Years' }
         ]
       },
       {
         id: 'bridge-flyover-coating',
-        title: 'Bridge Protective / Anti-Carbonation & Flyover Coating',
-        description: 'Heavy protective coatings and anti-carbonation concrete sealants preventing chemical ingress, moisture damage, and rebar oxidation across bridges, flyovers, and elevated corridors.',
+        title: 'Flyover & Concrete Protective Painting',
+        description: 'Protective coatings that seal concrete and steel on flyovers and bridges, preventing cracks, water damage, and chemical wear.',
         keyDeliverables: [
-          'Anti-carbonation protective coatings for RCC structures',
-          'Bridge protective / anti-corrosive painting',
-          'Flyover protective coating & elastomeric waterproofing',
-          'Expansion joint sealing and weather-resistant elastomeric topcoats'
+          'Anti-carbonation protective paint for concrete',
+          'Rust prevention for steel beams & piers',
+          'Waterproof sealants for bridge joints',
+          'Durable finish that withstands heavy traffic'
         ],
-        targetSectors: ['National Highway Authorities', 'MSRDC & State PWDs', 'Metro Rail Corporations'],
+        targetSectors: ['National Highways (NHAI)', 'State PWDs & MSRDC', 'Metro Rail Projects'],
         metrics: [
           { label: 'Flyovers Coated', value: '29 Flyovers' },
-          { label: 'Barrier Rating', value: 'Class A' },
+          { label: 'Protection', value: 'Heavy Duty' },
           { label: 'Durability', value: '10+ Years' }
         ]
       },
       {
         id: 'highway-divider-commercial-painting',
-        title: 'Highway Divider & Commercial Building Painting',
-        description: 'Precision painting of highway dividers, medians, commercial complexes, and industrial workspaces with high-visibility, anti-abrasive, and weather-resistant coatings.',
+        title: 'Highway Dividers & Building Painting',
+        description: 'High-visibility painting for road dividers and medians, plus full exterior and interior painting for commercial buildings and factories.',
         keyDeliverables: [
-          'Highway divider & median reflective painting',
-          'Commercial building exterior & interior painting',
-          'Industrial space coating & protective epoxy flooring',
-          'Outdoor structural painting for weather-exposed frameworks'
+          'Reflective paints for road medians & kerbs',
+          'Exterior & interior painting for commercial complexes',
+          'Heavy-duty floor epoxy for warehouses & plants',
+          'All-weather protective outdoor coatings'
         ],
-        targetSectors: ['State Highway Boards', 'Commercial Real Estate', 'Industrial Facilities'],
+        targetSectors: ['Highway Boards', 'Commercial Real Estate', 'Industrial Facilities'],
         metrics: [
           { label: 'Coverage', value: 'Pan-India' },
-          { label: 'Finish Standard', value: 'Heavy Duty' },
-          { label: 'Reflectivity', value: 'High Vis' }
+          { label: 'Visibility', value: 'High Reflective' },
+          { label: 'Finish', value: 'Weather Proof' }
         ]
       }
     ]
   },
   {
     id: 'civil-works-infrastructure',
-    title: 'Civil Works & Infrastructure Construction',
+    title: 'Civil Works & Road Construction',
     icon: 'Hammer',
-    description: 'Turnkey civil engineering and construction capabilities covering toll plazas, highway works, reinforced concrete structures, roads, plastering, and perimeter foundations.',
+    description: 'Complete civil construction—from toll plazas and arterial roads to reinforced concrete foundations and boundary walls.',
     services: [
       {
         id: 'toll-plaza-highway-civil',
-        title: 'Toll Plaza Construction & Highway Civil Works',
-        description: 'Comprehensive civil construction of multi-lane highway toll plazas, toll concourse slabs, administrative buildings, and heavy arterial highway civil packages.',
+        title: 'Toll Plaza & Highway Civil Works',
+        description: 'Complete construction of multi-lane toll plazas, toll booths, heavy concrete approach slabs, and highway drainage systems.',
         keyDeliverables: [
-          'Toll plaza construction & canopy civil foundations',
-          'Highway civil works, lane grading & culvert works',
-          'Heavy-duty concrete pavement slabs (M40 grade)',
-          'Integrated drainage channels and utility ducting'
+          'Toll plaza booths & canopy foundations',
+          'Heavy-duty concrete pavement slabs',
+          'Highway lane leveling & culvert work',
+          'Underground utility channels & rainwater drainage'
         ],
-        targetSectors: ['Highway Concessionaires', 'NHAI Contractors', 'Toll Infrastructure Operators'],
+        targetSectors: ['Highway Developers', 'Toll Operators', 'National Highways'],
         metrics: [
-          { label: 'Delivered Sites', value: 'Delhi Toll & Corridors' },
-          { label: 'Concrete Grade', value: 'M35 - M40' },
-          { label: 'Execution', value: 'Turnkey' }
+          { label: 'Sites Delivered', value: 'Delhi & Expressways' },
+          { label: 'Concrete', value: 'High Strength' },
+          { label: 'Delivery', value: 'Turnkey Contract' }
         ]
       },
       {
         id: 'rcc-structural-concrete',
-        title: 'RCC Works & Structural Concrete Work',
-        description: 'Engineered reinforced cement concrete (RCC) works, structural columns, foundation footings, and load-bearing concrete assemblies for critical transit and civic infrastructure.',
+        title: 'Reinforced Concrete & Foundations',
+        description: 'Strong reinforced concrete works, support columns, foundation footings, and solid boundary walls built to last decades.',
         keyDeliverables: [
-          'Reinforced cement concrete (RCC) framework & pouring',
-          'Structural concrete work for transit and industrial bases',
-          'Boundary wall construction & perimeter retaining structures',
-          'Vibration-resistant foundation pads and equipment bases'
+          'Reinforced concrete (RCC) casting & framework',
+          'Heavy machine foundation bases',
+          'Strong perimeter boundary & retaining walls',
+          'Full strength and quality testing on site'
         ],
-        targetSectors: ['Metro Rail Infrastructure', 'Industrial Parks', 'Municipal Corporations'],
+        targetSectors: ['Metro Rail', 'Industrial Parks', 'Municipal Corporations'],
         metrics: [
-          { label: 'Projects Executed', value: '₹30+ Cr' },
-          { label: 'Compliance', value: 'IS 456 / IRC' },
-          { label: 'QA/QC Audit', value: '100% Passed' }
+          { label: 'Projects Done', value: '₹30+ Crore' },
+          { label: 'Standards', value: 'IS / IRC Codes' },
+          { label: 'Quality Test', value: '100% Passed' }
         ]
       },
       {
         id: 'road-construction-pavers',
-        title: 'Road Construction, Maintenance & Paver Blocks',
-        description: 'Full-spectrum roadway construction, periodic highway resurfacing and maintenance, specialized structural plastering, and heavy interlocking paver block installation.',
+        title: 'Road Paving, Repairs & Interlocking Pavers',
+        description: 'Building new roads, fixing potholes and cracks, laying smooth asphalt, and installing heavy-duty interlocking paver blocks.',
         keyDeliverables: [
-          'Road construction & arterial road paving',
-          'Periodic road maintenance, patch repair & crack sealing',
-          'High-density interlocking paver block installation',
-          'High-grade plastering & cosmetic masonry finishing'
+          'New road construction & asphalt paving',
+          'Pothole repairs, crack sealing & maintenance',
+          'Heavy interlocking paver blocks for heavy vehicles',
+          'Smooth surface plastering & kerb alignment'
         ],
-        targetSectors: ['Smart Cities', 'Industrial Corridors', 'Public Works Departments'],
+        targetSectors: ['Smart Cities', 'Industrial Areas', 'Public Works'],
         metrics: [
           { label: 'Paver Load', value: 'Heavy Duty 80-100mm' },
-          { label: 'Corridor Uptime', value: '99.8%' },
-          { label: 'Quality', value: 'Zero Rework' }
+          { label: 'Road Uptime', value: '99.8%' },
+          { label: 'Delivery', value: 'Zero Rework' }
         ]
       }
     ]
   },
   {
     id: 'structural-fabrication-safety',
-    title: 'Structural Fabrication & Safety Netting',
+    title: 'Steel Fabrication & Safety Netting',
     icon: 'Layers',
-    description: 'Heavy structural steel fabrication, high-altitude and marine safety net installations, perimeter fencing, safety grills, and customized metal enclosures.',
+    description: 'Heavy steel structures, bridge safety nets, perimeter fencing, and protective metal enclosures built with certified welding.',
     services: [
       {
         id: 'heavy-structural-steel',
-        title: 'Heavy Structural Steel Fabrication',
-        description: 'Precision structural steel fabrication of highway trusses, toll plaza frames, industrial sheds, and support structures built in accordance with AWS and BIS standards.',
+        title: 'Heavy Structural Steel Work',
+        description: 'Custom steel fabrication of overhead highway gantries, toll plaza frames, industrial factory sheds, and heavy support trusses.',
         keyDeliverables: [
-          'Heavy structural steel fabrication & precision assembly',
-          'Certified MIG/ARC welding as per AWS D1.1 standards',
-          'Overhead gantry framing and cantilever structures',
-          'Hot-dip galvanized and anti-rust primer finish'
+          'Steel cutting, shaping & precision assembly',
+          'Certified high-strength welding',
+          'Overhead highway sign gantries & frames',
+          'Rust-proof galvanized & primer finish'
         ],
-        targetSectors: ['National Expressways', 'Heavy Manufacturing Plants', 'Metro Depots'],
+        targetSectors: ['Expressways', 'Manufacturing Plants', 'Metro Depots'],
         metrics: [
-          { label: 'Welding Standard', value: 'AWS D1.1 Certified' },
-          { label: 'Structural Steel', value: 'IS 2062 Grade' },
-          { label: 'Wind Tolerance', value: '180 km/h' }
+          { label: 'Welding', value: 'Certified Grade' },
+          { label: 'Steel Type', value: 'High Strength IS' },
+          { label: 'Wind Resistance', value: '180 km/h' }
         ]
       },
       {
         id: 'marine-high-altitude-netting',
-        title: 'Marine & High-Altitude Safety Net Systems',
-        description: 'Certified fall-prevention and safety netting systems deployed on marine bridges, elevated transit viaducts, and high-altitude civil construction sites.',
+        title: 'Bridge & High-Altitude Safety Nets',
+        description: 'Tested safety netting systems installed under marine bridges and high-rise construction to protect workers and catch debris.',
         keyDeliverables: [
-          'Marine safety net systems engineered for coastal wind shear',
-          'High-altitude safety net installation & anchor load testing',
-          'Fall-arrest debris nets complying with EN 1263-1',
-          'Rapid mobilization by certified high-altitude technicians'
+          'Heavy-duty safety nets built for high winds',
+          'Installed securely by trained height technicians',
+          'Tested anchor points & load-bearing cables',
+          'Quick setup to keep work moving safely'
         ],
-        targetSectors: ['Sea Links & Coastal Bridges', 'High-Rise Infrastructure', 'Transit Corridors'],
+        targetSectors: ['Sea Links & Bridges', 'Tall Construction', 'Transit Corridors'],
         metrics: [
-          { label: 'Safety Record', value: 'Zero LTI' },
-          { label: 'Standard', value: 'EN 1263 / OSHA' },
-          { label: 'Technicians', value: 'High-Altitude Certified' }
+          { label: 'Safety Record', value: 'Zero Incidents' },
+          { label: 'Standard', value: 'OSHA / EN Safety' },
+          { label: 'Riggers', value: 'Certified Experts' }
         ]
       },
       {
         id: 'fencing-grills-enclosures',
-        title: 'Safety Grills, Protective Fencing & Metal Enclosures',
-        description: 'Fabrication and on-site erection of heavy-duty safety grills, perimeter fencing, protective metal enclosures, and anti-intrusion physical security barriers.',
+        title: 'Protective Fencing & Safety Grills',
+        description: 'Strong boundary fencing, security grills, and metal barriers to secure highways, railway lines, and industrial facilities.',
         keyDeliverables: [
-          'Perimeter fabrication & security boundary fencing',
-          'Custom heavy-duty safety grills and metal enclosures',
-          'Protective fencing for highways, railways, and utility sites',
-          'Anti-corrosive powder-coated and galvanized barrier finishes'
+          'Strong perimeter boundary fencing',
+          'Heavy-duty metal grills & equipment enclosures',
+          'Highway divider anti-glare & safety screens',
+          'Rust-proof powder-coated & galvanized finish'
         ],
-        targetSectors: ['Highway Corridors', 'Utility Substations', 'Corporate Campuses'],
+        targetSectors: ['Highways & Railways', 'Power Stations', 'Corporate Campuses'],
         metrics: [
-          { label: 'Installation', value: 'Perimeter Wide' },
-          { label: 'Corrosion Shield', value: 'Galvanized' },
-          { label: 'Security Grade', value: 'Industrial Spec' }
+          { label: 'Perimeter', value: 'Full Boundary' },
+          { label: 'Coating', value: 'Galvanized' },
+          { label: 'Strength', value: 'Industrial Spec' }
         ]
       }
     ]
   },
   {
     id: 'urban-roadway-beautification',
-    title: 'Urban & Roadway Beautification',
+    title: 'Road & Urban Beautification',
     icon: 'Sparkles',
-    description: 'Transforming public roadways, city dividers, gardens, and roadside corridors through integrated landscaping, divider beautification, and civic restoration.',
+    description: 'Making roads, medians, and public areas cleaner and greener through reflective painting, garden development, and tree planting.',
     services: [
       {
         id: 'highway-divider-beautification',
         title: 'Highway & City Divider Beautification',
-        description: 'Aesthetic enhancement of major highway corridors and urban dividers through reflective median painting, landscaping, and architectural median treatments.',
+        description: 'Improving road appearance with reflective kerb painting, decorative planter boxes, and green medians that make driving safer.',
         keyDeliverables: [
-          'Highway beautification & median curb stone painting',
-          'City divider beautification with durable reflective finishes',
-          'Decorative planter installations and green median integration',
-          'Ongoing infrastructure maintenance and periodic upkeep'
+          'Reflective kerb and divider painting',
+          'Attractive road medians with green plants',
+          'Durable paint that stays bright in rain & sun',
+          'Ongoing cleaning and touch-up maintenance'
         ],
-        targetSectors: ['MSRDC', 'Municipal Corporations', 'Smart City Projects'],
+        targetSectors: ['State Road Corporations (MSRDC)', 'City Municipalities', 'Smart City Projects'],
         metrics: [
-          { label: 'Key Client', value: 'MSRDC Verified' },
-          { label: 'Corridors', value: 'High-Density Routes' },
-          { label: 'Aesthetics', value: 'Modern Civic Finish' }
+          { label: 'Trusted Client', value: 'MSRDC Verified' },
+          { label: 'Locations', value: 'Busy Highways' },
+          { label: 'Look', value: 'Clean & Modern' }
         ]
       },
       {
         id: 'garden-park-development',
-        title: 'Garden Infrastructure & Park Development',
-        description: 'End-to-end development of public parks, garden infrastructure, pedestrian walking tracks, civil garden structures, and urban green spaces.',
+        title: 'Public Parks & Garden Landscaping',
+        description: 'End-to-end development of public parks, walking tracks, garden seating, flower beds, and green public open spaces.',
         keyDeliverables: [
-          'Garden infrastructure planning, civil pathways & seating',
-          'Park development, boundary civil works & illuminated features',
-          'Irrigation trenches, paver walkways & recreational hardscaping',
-          'Sustainable civic landscape engineering'
+          'Park planning, smooth walking tracks & seating',
+          'Tree planting, green lawns & flowering plants',
+          'Underground watering lines & pathway pavers',
+          'Clean, sustainable community green spaces'
         ],
-        targetSectors: ['Urban Local Bodies', 'Township Developers', 'Public Parks Authorities'],
+        targetSectors: ['City Municipalities', 'Township Builders', 'Public Parks'],
         metrics: [
-          { label: 'Development', value: 'End-to-End' },
-          { label: 'Civil Hardscaping', value: 'Grade-A Pavers' },
-          { label: 'Green Index', value: 'Eco-Compliant' }
+          { label: 'Service', value: 'Start-to-Finish' },
+          { label: 'Walkways', value: 'Durable Pavers' },
+          { label: 'Environment', value: 'Eco-Friendly' }
         ]
       },
       {
         id: 'roadside-restoration',
-        title: 'Roadside Restoration & Civic Infrastructure Maintenance',
-        description: 'Comprehensive restoration of roadside verges, slope stabilization, stormwater curb upkeep, and aesthetic rehabilitation along national and state routes.',
+        title: 'Roadside Cleanup & Maintenance',
+        description: 'Restoring damaged roadside verges, clearing rainwater gutters, repairing curbs, and keeping road corridors neat and safe.',
         keyDeliverables: [
-          'Roadside restoration and soil stabilization civil works',
-          'Stormwater curb rehabilitation and cosmetic repair',
-          'Long-term corridor maintenance & beautification contracts',
-          'Rapid response repair teams for damaged dividers and kerbs'
+          'Fixing damaged roadside edges & slopes',
+          'Cleaning and repairing rainwater drainage curbs',
+          'Long-term road upkeep & maintenance contracts',
+          'Fast-response repair teams on call'
         ],
-        targetSectors: ['National Highway Authorities', 'State PWDs', 'Toll Operators'],
+        targetSectors: ['Highway Authorities', 'State PWDs', 'Toll Road Operators'],
         metrics: [
-          { label: 'Response', value: '< 24 Hours' },
-          { label: 'Durability', value: 'Multi-Season' },
-          { label: 'Compliance', value: 'IRC Standards' }
+          { label: 'Response', value: 'Under 24 Hours' },
+          { label: 'Durability', value: 'All Seasons' },
+          { label: 'Care', value: 'Year-Round' }
         ]
       }
     ]

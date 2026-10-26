@@ -20,6 +20,7 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { ScrollCardReveal } from '../components/ui/ScrollCardReveal';
 import { LeadershipQuoteCard } from '../components/LeadershipQuoteCard';
+import { getClientLogoComponent } from '../components/ClientLogos';
 
 const getClientMonogram = (name: string): string => {
   const customMap: Record<string, string> = {
@@ -632,34 +633,51 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-                {clientsByCategory.government.map((client) => (
-                  <div
-                    key={client.name}
-                    className="p-5 sm:p-5.5 rounded-xl bg-gradient-to-br from-[#EFF6FF] via-[#E4EFFE] to-[#D4E6FD] border border-[#BDD8FD] hover:border-[#93C5FD] shadow-2xs hover:shadow-xs transition-all duration-200 flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-start gap-3.5">
-                        <div className="w-10 h-10 rounded-lg bg-white/90 border border-[#BDD8FD] flex items-center justify-center text-[#2563EB] shrink-0 mt-0.5 shadow-2xs">
-                          <Building2 className="w-5 h-5 text-[#2563EB]" />
+                {clientsByCategory.government.map((client) => {
+                  const Logo = getClientLogoComponent(client.name);
+                  return (
+                    <div
+                      key={client.name}
+                      className="group relative p-5 sm:p-5.5 rounded-xl bg-gradient-to-br from-[#EFF6FF] via-[#E4EFFE] to-[#D4E6FD] border border-[#BDD8FD] hover:border-[#93C5FD] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                    >
+                      {/* Background Watermark Company Logo (Full Brand Colors & Highly Visible) */}
+                      {Logo && (
+                        <div
+                          className="absolute -right-4 -bottom-4 sm:-right-2 sm:-bottom-2 w-36 h-36 sm:w-44 sm:h-44 pointer-events-none select-none opacity-35 sm:opacity-45 group-hover:opacity-85 transition-all duration-500 ease-out transform group-hover:scale-105 group-hover:-rotate-2"
+                          aria-hidden="true"
+                        >
+                          <Logo variant="watermark" className="w-full h-full" />
                         </div>
-                        <div className="min-w-0 flex-1">
-                          <h4 className="font-bold text-[#1E3A8A] text-[15px] sm:text-[16px] font-heading leading-snug">
-                            {client.name}
-                          </h4>
-                          <p className="text-[12.5px] sm:text-[13px] text-[#3B5478] font-body mt-1 leading-relaxed">
-                            {client.subtitle}
-                          </p>
+                      )}
+
+                      <div className="relative z-10">
+                        <div className="flex items-start gap-3.5">
+                          <div className="w-10 h-10 rounded-lg bg-white/95 border border-[#BDD8FD] flex items-center justify-center text-[#2563EB] shrink-0 mt-0.5 shadow-2xs group-hover:border-[#93C5FD] transition-colors p-1.5">
+                            {Logo ? (
+                              <Logo variant="badge" className="w-6 h-6" />
+                            ) : (
+                              <Building2 className="w-5 h-5 text-[#2563EB]" />
+                            )}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="font-bold text-[#1E3A8A] text-[15px] sm:text-[16px] font-heading leading-snug">
+                              {client.name}
+                            </h4>
+                            <p className="text-[12.5px] sm:text-[13px] text-[#3B5478] font-body mt-1 leading-relaxed">
+                              {client.subtitle}
+                            </p>
+                          </div>
                         </div>
                       </div>
+                      {client.highlight && (
+                        <div className="relative z-10 mt-4 pt-3 border-t border-[#CEE0FC] flex items-center gap-2 text-[12px] sm:text-[12.5px] font-body">
+                          <span className="text-[#2563EB] font-medium shrink-0">Key Delivery:</span>
+                          <span className="font-semibold text-[#1E3A8A] truncate">{client.highlight}</span>
+                        </div>
+                      )}
                     </div>
-                    {client.highlight && (
-                      <div className="mt-4 pt-3 border-t border-[#CEE0FC] flex items-center gap-2 text-[12px] sm:text-[12.5px] font-body">
-                        <span className="text-[#2563EB] font-medium shrink-0">Key Delivery:</span>
-                        <span className="font-semibold text-[#1E3A8A] truncate">{client.highlight}</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -681,14 +699,26 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4.5">
                 {clientsByCategory.infrastructure.map((client) => {
                   const monogram = getClientMonogram(client.name);
+                  const Logo = getClientLogoComponent(client.name);
                   return (
                     <div
                       key={client.name}
-                      className="p-4.5 sm:p-5 rounded-xl bg-gradient-to-br from-[#EEF9F2] via-[#E0F5E7] to-[#CEEFDB] border border-[#A4E7BE] hover:border-[#6EE7B7] shadow-2xs hover:shadow-xs transition-all duration-200 flex flex-col justify-between"
+                      className="group relative p-4.5 sm:p-5 rounded-xl bg-gradient-to-br from-[#EEF9F2] via-[#E0F5E7] to-[#CEEFDB] border border-[#A4E7BE] hover:border-[#6EE7B7] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                     >
-                      <div className="space-y-2.5">
-                        <div className="h-7 px-2.5 min-w-[32px] rounded-md bg-white/90 border border-[#A4E7BE] text-[#047857] font-heading font-bold text-[11px] tracking-wider inline-flex items-center justify-center w-fit shrink-0 shadow-2xs">
-                          {monogram}
+                      {/* Background Watermark Company Logo (Full Brand Colors & Highly Visible) */}
+                      {Logo && (
+                        <div
+                          className="absolute -right-3 -bottom-3 sm:-right-2 sm:-bottom-2 w-32 h-32 sm:w-38 sm:h-38 pointer-events-none select-none opacity-35 sm:opacity-45 group-hover:opacity-85 transition-all duration-500 ease-out transform group-hover:scale-105 group-hover:translate-x-1"
+                          aria-hidden="true"
+                        >
+                          <Logo variant="watermark" className="w-full h-full" />
+                        </div>
+                      )}
+
+                      <div className="relative z-10 space-y-2.5">
+                        <div className="h-8 px-2.5 min-w-[34px] rounded-md bg-white/95 border border-[#A4E7BE] text-[#047857] font-heading font-bold text-[11px] tracking-wider inline-flex items-center gap-2 justify-center w-fit shrink-0 shadow-2xs group-hover:border-[#6EE7B7] transition-colors">
+                          {Logo && <Logo variant="badge" className="w-5 h-5 shrink-0" />}
+                          <span>{monogram}</span>
                         </div>
                         <div>
                           <h4 className="font-bold text-[#064E3B] text-[14.5px] sm:text-[15px] font-heading leading-snug">
@@ -699,7 +729,7 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
                           </p>
                         </div>
                       </div>
-                      <div className="mt-3.5 pt-2.5 border-t border-[#B7ECCB] flex items-center gap-1.5 text-[12px] text-[#065F46] font-body font-medium">
+                      <div className="relative z-10 mt-3.5 pt-2.5 border-t border-[#B7ECCB] flex items-center gap-1.5 text-[12px] text-[#065F46] font-body font-medium">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#059669] shrink-0" />
                         <span>Verified EPC Partner</span>
                       </div>
@@ -727,14 +757,26 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
                 {clientsByCategory.corporate.map((client) => {
                   const monogram = getClientMonogram(client.name);
+                  const Logo = getClientLogoComponent(client.name);
                   return (
                     <div
                       key={client.name}
-                      className="p-4 sm:p-4.5 rounded-xl bg-gradient-to-br from-[#FFF5EC] via-[#FEE8D6] to-[#FEDCC2] border border-[#FED0A7] hover:border-[#FDBA74] shadow-2xs hover:shadow-xs transition-all duration-200 flex flex-col justify-between"
+                      className="group relative p-4 sm:p-4.5 rounded-xl bg-gradient-to-br from-[#FFF5EC] via-[#FEE8D6] to-[#FEDCC2] border border-[#FED0A7] hover:border-[#FDBA74] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                     >
-                      <div>
-                        <div className="h-7 px-2.5 min-w-[32px] rounded-md bg-white/90 border border-[#FED0A7] text-[#C2410C] font-heading font-bold text-[11px] tracking-wider inline-flex items-center justify-center w-fit shrink-0 mb-3 shadow-2xs">
-                          {monogram}
+                      {/* Background Watermark Company Logo (Full Brand Colors & Highly Visible) */}
+                      {Logo && (
+                        <div
+                          className="absolute -right-3 -bottom-3 sm:-right-2 sm:-bottom-2 w-28 h-28 sm:w-34 sm:h-34 pointer-events-none select-none opacity-35 sm:opacity-45 group-hover:opacity-85 transition-all duration-500 ease-out transform group-hover:scale-105 group-hover:-translate-y-1"
+                          aria-hidden="true"
+                        >
+                          <Logo variant="watermark" className="w-full h-full" />
+                        </div>
+                      )}
+
+                      <div className="relative z-10">
+                        <div className="h-8 px-2.5 min-w-[34px] rounded-md bg-white/95 border border-[#FED0A7] text-[#C2410C] font-heading font-bold text-[11px] tracking-wider inline-flex items-center gap-2 justify-center w-fit shrink-0 mb-3 shadow-2xs group-hover:border-[#FDBA74] transition-colors">
+                          {Logo && <Logo variant="badge" className="w-5 h-5 shrink-0" />}
+                          <span>{monogram}</span>
                         </div>
                         <h4 className="font-bold text-[#833116] text-[13.5px] sm:text-[14.5px] font-heading leading-snug">
                           {client.name}

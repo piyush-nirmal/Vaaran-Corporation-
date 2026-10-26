@@ -44,10 +44,10 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'Inter', 'sans-serif'],
-        display: ['var(--font-heading)', 'Inter', 'sans-serif'],
-        body: ['var(--font-body)', 'Inter', 'sans-serif'],
-        sans: ['var(--font-body)', 'Inter', 'sans-serif'],
+        heading: ['var(--font-heading)', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        display: ['var(--font-heading)', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        body: ['var(--font-body)', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        sans: ['var(--font-body)', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
         mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
       },
       letterSpacing: {

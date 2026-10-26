@@ -30,17 +30,17 @@ export const LayeredCoatingGraphic = ({
           <div className="flex items-center gap-1.5 sm:gap-2">
             <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3F73F5] shrink-0" />
             <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[#3F73F5] truncate">
-              Cross-Section Schematic
+              Protective Coating Layers
             </span>
           </div>
           <h5 className="text-xs sm:text-sm font-bold font-heading text-[#20242D] truncate">
-            Multi-Tier Barrier Architecture
+            How We Protect Steel & Metal Surfaces
           </h5>
         </div>
         <div className="text-right shrink-0">
           <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-[#2454C6] bg-[#EAF2FF] px-2 sm:px-2.5 py-1 rounded-lg border border-[#D0E2FF] shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3F73F5] animate-pulse" />
-            <span>Total {totalDft} µm</span>
+            <span>Thickness: {totalDft} µm</span>
           </span>
         </div>
       </div>
@@ -56,9 +56,9 @@ export const LayeredCoatingGraphic = ({
         >
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white shrink-0" />
-            <span className="font-bold text-white truncate font-body">Tier 3: {topcoatType}</span>
+            <span className="font-bold text-white truncate font-body">Layer 3: {topcoatType}</span>
             <span className="hidden md:inline-block text-[10px] bg-white/20 text-white px-2 py-0.5 rounded font-mono font-semibold">
-              UV & Weather Barrier
+              Sun & Rain Protection
             </span>
           </div>
           <span className="shrink-0 font-mono font-bold text-white text-[11px] sm:text-xs pl-2">{topcoatDft} µm</span>
@@ -72,9 +72,9 @@ export const LayeredCoatingGraphic = ({
         >
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/70 shrink-0" />
-            <span className="font-bold text-white truncate font-body">Tier 2: High-Build Epoxy MIO</span>
+            <span className="font-bold text-white truncate font-body">Layer 2: Epoxy Moisture Shield</span>
             <span className="hidden md:inline-block text-[10px] bg-white/15 text-white/90 px-2 py-0.5 rounded font-mono font-semibold">
-              Impermeable Shield
+              Waterproof Barrier
             </span>
           </div>
           <span className="shrink-0 font-mono font-bold text-[#EAF2FF] text-[11px] sm:text-xs pl-2">{intermediateDft} µm</span>
@@ -88,9 +88,9 @@ export const LayeredCoatingGraphic = ({
         >
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/80 shrink-0" />
-            <span className="font-bold text-white truncate font-body">Tier 1: Zinc-Rich Primer</span>
+            <span className="font-bold text-white truncate font-body">Layer 1: Zinc Anti-Rust Primer</span>
             <span className="hidden md:inline-block text-[10px] bg-white/20 text-white px-2 py-0.5 rounded font-mono font-semibold">
-              Cathodic Protection
+              Rust Prevention
             </span>
           </div>
           <span className="shrink-0 font-mono font-bold text-white text-[11px] sm:text-xs pl-2">{primerDft} µm</span>
@@ -101,10 +101,10 @@ export const LayeredCoatingGraphic = ({
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <span className="w-2 h-2 rounded-sm bg-[#64748B] shrink-0" />
             <span className="font-bold text-[#334155] font-body truncate">
-              Steel Base ({blastStandard === 'Sa 3.0' ? 'Sa 3.0 White' : 'Sa 2.5 Near-White'})
+              Base: Shot-Blasted Steel Metal
             </span>
           </div>
-          <span className="shrink-0 text-[10px] sm:text-xs font-mono font-bold text-[#475569] pl-1.5">65 µm Profile</span>
+          <span className="shrink-0 text-[10px] sm:text-xs font-mono font-bold text-[#475569] pl-1.5">{blastStandard} Profile</span>
         </div>
 
       </div>
@@ -113,19 +113,19 @@ export const LayeredCoatingGraphic = ({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-1.5 pt-0.5 text-[10px] sm:text-[11px] font-mono text-[#687386]">
         <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
           <span className="w-2 h-2 rounded-sm bg-[#65B5FF] shrink-0" />
-          <span className="truncate">Tier 3: Topcoat</span>
+          <span className="truncate">Topcoat</span>
         </div>
         <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
           <span className="w-2 h-2 rounded-sm bg-[#2454C6] shrink-0" />
-          <span className="truncate">Tier 2: Epoxy MIO</span>
+          <span className="truncate">Epoxy Barrier</span>
         </div>
         <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
           <span className="w-2 h-2 rounded-sm bg-[#3F73F5] shrink-0" />
-          <span className="truncate">Tier 1: Zinc Primer</span>
+          <span className="truncate">Anti-Rust Primer</span>
         </div>
         <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
           <span className="w-2 h-2 rounded-sm bg-[#64748B] shrink-0" />
-          <span className="truncate">Base: Steel Plate</span>
+          <span className="truncate">Clean Steel Base</span>
         </div>
       </div>
     </div>
