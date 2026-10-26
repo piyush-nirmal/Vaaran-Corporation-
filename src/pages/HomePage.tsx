@@ -50,33 +50,38 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
 
           {/* 4 Clean Division Cards with Smooth Stagger Animation in Blue & White */}
           <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
-            {divisionHighlights.map((div) => (
+            {divisionHighlights.map((div, idx) => (
               <StaggerItem key={div.id}>
                 <Link
                   to="/operations"
                   className={`p-4 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between group h-full hover-card-smooth ${
                     div.isFlagship
-                      ? 'bg-gradient-to-br from-[#3F73F5] to-[#2454C6] text-white border-transparent shadow-lg shadow-[#3F73F5]/20'
-                      : 'bg-white/90 hover:bg-[#F0F5FE] border-[#E2EAF8] hover:border-[#3F73F5]/40 hover:shadow-md text-[#20242D]'
+                      ? 'bg-[#15315B] text-white border-[#15315B] shadow-md hover:shadow-xl'
+                      : 'bg-white hover:bg-[#F8FAFD] border-[#E2EAF8] hover:border-[#2864F0]/40 hover:shadow-md text-[#15315B]'
                   }`}
                 >
-                  <div className="space-y-2.5 sm:space-y-3">
-                    <span className={`text-[11px] sm:text-xs font-mono font-semibold ${div.isFlagship ? 'text-sky-200' : 'text-[#3F73F5]'}`}>
-                      {div.highlightMetric}
-                    </span>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between pb-2.5 border-b border-current/15">
+                      <span className={`text-[11px] font-mono font-bold tracking-wider ${div.isFlagship ? 'text-sky-300' : 'text-[#2864F0]'}`}>
+                        DIVISION 0{idx + 1}
+                      </span>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${div.isFlagship ? 'bg-white/10 text-white border border-white/20' : 'bg-[#EAF1FF] text-[#2864F0] border border-[#DCE4EF]'}`}>
+                        {div.highlightMetric}
+                      </span>
+                    </div>
 
-                    <h3 className={`text-base sm:text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-[#20242D] group-hover:text-[#3F73F5]'}`}>
+                    <h3 className={`text-base sm:text-lg font-bold font-heading leading-snug ${div.isFlagship ? 'text-white' : 'text-[#15315B] group-hover:text-[#2864F0] transition-colors'}`}>
                       {div.title}
                     </h3>
 
-                    <p className={`text-xs leading-relaxed ${div.isFlagship ? 'text-white/90' : 'text-[#687386]'}`}>
+                    <p className={`text-xs leading-relaxed ${div.isFlagship ? 'text-slate-300' : 'text-[#66748A]'}`}>
                       {div.summary}
                     </p>
                   </div>
 
-                  <div className="pt-4 sm:pt-6 mt-3 sm:mt-4 border-t border-current/10 flex items-center justify-between">
-                    <span className={`text-xs font-semibold uppercase tracking-wider ${div.isFlagship ? 'text-white' : 'text-[#3F73F5]'}`}>
-                      Explore
+                  <div className="pt-4 sm:pt-5 mt-4 border-t border-current/10 flex items-center justify-between">
+                    <span className={`text-xs font-semibold uppercase tracking-wider ${div.isFlagship ? 'text-white' : 'text-[#2864F0]'}`}>
+                      Inspect Sector
                     </span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>

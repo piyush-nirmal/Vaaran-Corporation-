@@ -3,12 +3,7 @@ import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '../data/services';
 import { 
-  Paintbrush, 
-  Layers, 
-  Hammer, 
-  Users, 
   ArrowRight, 
-  Sparkles, 
   CheckCircle2,
   ShieldCheck,
   Truck,
@@ -24,14 +19,6 @@ import viaductImg from '../assets/images/hero_infrastructure_viaduct_17910323547
 import gantryImg from '../assets/images/structural_steel_fabrication_1791032383584.jpg';
 import civilImg from '../assets/images/metro_transit_coating_1791032395039.jpg';
 import facilityImg from '../assets/images/industrial_facility_hub_1791032407824.jpg';
-
-const iconMap: Record<string, any> = {
-  Paintbrush,
-  Layers,
-  Hammer,
-  Users,
-  Sparkles,
-};
 
 const divisionImages: Record<string, string> = {
   'commercial-industrial-painting': viaductImg,
@@ -94,13 +81,13 @@ export const ServiceTabs: FC = () => {
           {/* Large Flagship Tile (Col Span 7) */}
           <div
             onClick={() => handleCategorySwitch(flagshipCategory.id)}
-            className={`lg:col-span-7 relative p-[1.5px] rounded-2xl sm:rounded-3xl cursor-pointer transition-all duration-300 min-h-[300px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col justify-between group ${
+            className={`lg:col-span-7 relative rounded-2xl sm:rounded-3xl cursor-pointer transition-all duration-300 min-h-[300px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col justify-between group overflow-hidden border ${
               activeCategoryId === flagshipCategory.id
-                ? 'bg-gradient-to-r from-[#2563EB] via-[#38BDF8] to-[#1D4ED8] shadow-lg shadow-blue-500/25 ring-2 ring-[#3F73F5]/30'
-                : 'bg-gradient-to-br from-blue-200/80 via-slate-200/60 to-blue-300/80 hover:from-[#3F73F5] hover:to-[#60A5FA] shadow-xs hover:shadow-md'
+                ? 'border-[#2864F0] ring-2 ring-[#2864F0]/30 shadow-lg'
+                : 'border-[#E2EAF8] hover:border-[#2864F0]/60 shadow-xs hover:shadow-md'
             }`}
           >
-            <div className="relative w-full h-full rounded-[14.5px] sm:rounded-[22.5px] overflow-hidden flex flex-col justify-between">
+            <div className="relative w-full h-full flex flex-col justify-between">
               {/* Background Image with Zoom */}
               <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
                 <img
@@ -117,11 +104,11 @@ export const ServiceTabs: FC = () => {
 
               {/* Top Badge */}
               <div className="relative z-10 p-4 sm:p-6 flex items-center justify-between">
-                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white text-[10px] sm:text-[11px] font-body font-semibold uppercase tracking-wider shadow-sm border border-blue-300/30">
-                  <Sparkles className="w-3.5 h-3.5 text-white" />
-                  <span>Primary Expertise</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2864F0] text-white text-[10px] sm:text-[11px] font-heading font-semibold uppercase tracking-wider shadow-xs border border-white/20">
+                  <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                  <span>Flagship Division // ISO Spec</span>
                 </div>
-                <span className="text-[11px] sm:text-xs font-mono text-white bg-black/40 backdrop-blur-md px-2 sm:px-2.5 py-1 rounded-lg border border-white/20">
+                <span className="text-[11px] sm:text-xs font-mono text-white bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
                   45,000 m² Completed
                 </span>
               </div>
@@ -129,8 +116,8 @@ export const ServiceTabs: FC = () => {
               {/* Bottom Content */}
               <div className="relative z-10 p-4 sm:p-6 lg:p-8 space-y-2.5 sm:space-y-3 text-white">
                 <div className="space-y-1">
-                  <span className="text-[10px] sm:text-[11px] font-body font-medium uppercase tracking-wider text-[#65B5FF] block">
-                    01 / INDUSTRIAL & INFRASTRUCTURE
+                  <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider text-[#65B5FF] block">
+                    DIVISION 01 // COATINGS &amp; ANTI-CORROSION
                   </span>
                   <h4 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white font-heading group-hover:text-[#65B5FF] transition-colors">
                     {flagshipCategory.title}
@@ -143,10 +130,10 @@ export const ServiceTabs: FC = () => {
                 <div className="pt-2 flex items-center justify-between border-t border-white/20">
                   <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-xs shadow-emerald-400/50" />
-                    <span>Long-Lasting Weather & Rust Shield</span>
+                    <span>MoRTH &amp; IRC Standard Protective Systems</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-xs font-semibold text-white group-hover:translate-x-1 transition-transform">
-                    <span>Explore Details</span>
+                    <span>Inspect Division</span>
                     <ArrowRight className="w-4 h-4 text-[#65B5FF]" />
                   </div>
                 </div>
@@ -157,61 +144,56 @@ export const ServiceTabs: FC = () => {
           {/* 3 Smaller Complementary Tiles (Col Span 5 Stack) */}
           <div className="lg:col-span-5 flex flex-col gap-4 justify-between">
             {secondaryCategories.map((cat, idx) => {
-              const Icon = iconMap[cat.icon as keyof typeof iconMap] || Layers;
               const isSelected = activeCategoryId === cat.id;
               return (
                 <div
                   key={cat.id}
                   onClick={() => handleCategorySwitch(cat.id)}
-                  className={`relative p-[1.5px] rounded-2xl transition-all duration-300 cursor-pointer flex-1 flex flex-col group ${
+                  className={`relative rounded-2xl transition-all duration-300 cursor-pointer flex-1 flex flex-col group overflow-hidden border ${
                     isSelected
-                      ? 'bg-gradient-to-r from-[#2563EB] via-[#38BDF8] to-[#1D4ED8] shadow-lg shadow-blue-500/25 scale-[1.01]'
-                      : 'bg-gradient-to-br from-blue-200/90 via-slate-200/50 to-blue-300/80 hover:from-[#3F73F5] hover:via-[#60A5FA] hover:to-[#38BDF8] shadow-xs hover:shadow-md hover:shadow-blue-500/15 hover:-translate-y-0.5'
+                      ? 'border-[#2864F0] ring-2 ring-[#2864F0]/30 shadow-md bg-white'
+                      : 'border-[#E2EAF8] hover:border-[#2864F0]/50 shadow-2xs hover:shadow-sm bg-white'
                   }`}
                 >
-                  <div className={`relative w-full h-full p-5 rounded-[14.5px] flex flex-col justify-between overflow-hidden transition-all duration-300 ${
+                  <div className={`relative w-full h-full p-4 sm:p-5 rounded-2xl flex flex-col justify-between transition-all duration-300 ${
                     isSelected
-                      ? 'bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] text-white'
-                      : 'bg-gradient-to-br from-white via-[#F8FBFF] to-[#EFF6FF] text-[#20242D]'
+                      ? 'bg-gradient-to-br from-[#15315B] to-[#1E3A8A] text-white'
+                      : 'bg-white text-[#20242D]'
                   }`}>
-                    {/* Ambient Glow */}
-                    <div className={`absolute -top-10 -right-10 w-28 h-28 rounded-full blur-xl pointer-events-none transition-opacity duration-300 ${
-                      isSelected ? 'bg-cyan-400/20' : 'bg-blue-400/10 group-hover:bg-blue-400/20'
-                    }`} />
 
                     <div className="relative z-10 flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <div className={`p-2.5 rounded-xl transition-all duration-200 ${
+                        <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${
                           isSelected 
-                            ? 'bg-white/20 text-white shadow-xs' 
-                            : 'bg-gradient-to-br from-[#EAF2FF] to-[#DCEBFF] text-[#2563EB] border border-blue-200/70 group-hover:scale-105'
+                            ? 'bg-white/20 text-white border-white/30' 
+                            : 'bg-[#F0F5FF] text-[#2864F0] border-[#DCE4EF]'
                         }`}>
-                          <Icon className="w-4 h-4" />
-                        </div>
+                          DIV // 0{idx + 2}
+                        </span>
                         <div>
-                          <span className={`text-[11px] font-body font-semibold uppercase tracking-wider block ${
-                            isSelected ? 'text-blue-100' : 'text-[#687386]'
+                          <span className={`text-[10px] font-mono font-semibold uppercase tracking-wider block ${
+                            isSelected ? 'text-blue-200' : 'text-[#687386]'
                           }`}>
-                            0{idx + 2} / Service
+                            Infrastructure Discipline
                           </span>
-                          <h4 className={`text-base font-semibold font-heading transition-colors ${
-                            isSelected ? 'text-white' : 'text-[#1E293B] group-hover:text-[#2563EB]'
+                          <h4 className={`text-base font-bold font-heading transition-colors ${
+                            isSelected ? 'text-white' : 'text-[#15315B] group-hover:text-[#2864F0]'
                           }`}>
                             {cat.title}
                           </h4>
                         </div>
                       </div>
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
                         isSelected 
                           ? 'bg-white/20 text-white' 
-                          : 'bg-white/80 border border-blue-100 text-[#687386] group-hover:bg-[#2563EB] group-hover:text-white group-hover:border-[#2563EB]'
+                          : 'bg-[#F0F5FF] text-[#2864F0] group-hover:bg-[#2864F0] group-hover:text-white'
                       }`}>
                         <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
                       </div>
                     </div>
 
                     <p className={`relative z-10 text-xs mt-2.5 line-clamp-2 leading-relaxed ${
-                      isSelected ? 'text-blue-50' : 'text-[#64748B]'
+                      isSelected ? 'text-blue-100' : 'text-[#64748B]'
                     }`}>
                       {cat.description}
                     </p>

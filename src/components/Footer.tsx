@@ -140,10 +140,11 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             <ul className="space-y-3 text-xs text-[#687386] font-body">
               {[
                 { to: '/', label: 'Overview & Highlights' },
+                { to: '/operations', label: 'Service Sectors' },
                 { to: '/projects', label: 'Projects Portfolio' },
+                { to: '/sustainability', label: 'Sustainability & ESG' },
                 { to: '/rfp-portal', label: 'Technical RFP Portal' },
                 { to: '/contact', label: 'Executive Tender Desk' },
-                { to: '/operations', label: 'HSE & ISO Audits' },
               ].map((item, i) => (
                 <li key={i}>
                   <Link

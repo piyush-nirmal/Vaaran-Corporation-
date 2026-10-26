@@ -317,10 +317,13 @@ export const CareersPage: FC<CareersPageProps> = () => {
               <div className="space-y-4 relative z-10">
                 {/* Header Badge & Spec Pill */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 group-hover:scale-105 transition-transform">
-                    <Building2 className="w-5 h-5 text-white" />
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-bold text-white bg-blue-600/90 px-2.5 py-1 rounded-md border border-blue-400/30">
+                      DISCIPLINE 01
+                    </span>
+                    <Building2 className="w-4 h-4 text-blue-300" />
                   </div>
-                  <span className="text-[11px] font-heading font-semibold bg-blue-950/80 backdrop-blur-md text-blue-300 border border-blue-400/40 px-3 py-1 rounded-md shadow-sm">
+                  <span className="text-[11px] font-mono font-semibold bg-blue-950/80 backdrop-blur-md text-blue-300 border border-blue-400/40 px-3 py-1 rounded-md shadow-sm">
                     ₹30+ Cr Execution
                   </span>
                 </div>
@@ -386,10 +389,13 @@ export const CareersPage: FC<CareersPageProps> = () => {
               <div className="space-y-4 relative z-10">
                 {/* Header Badge & Spec Pill */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="w-11 h-11 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-lg shadow-amber-600/30 group-hover:scale-105 transition-transform">
-                    <Anchor className="w-5 h-5 text-white" />
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-bold text-white bg-slate-800 px-2.5 py-1 rounded-md border border-white/20">
+                      DISCIPLINE 02
+                    </span>
+                    <Anchor className="w-4 h-4 text-slate-300" />
                   </div>
-                  <span className="text-[11px] font-heading font-semibold bg-amber-950/80 backdrop-blur-md text-amber-300 border border-amber-400/40 px-3 py-1 rounded-md shadow-sm">
+                  <span className="text-[11px] font-mono font-semibold bg-slate-900/80 backdrop-blur-md text-slate-300 border border-white/20 px-3 py-1 rounded-md shadow-sm">
                     100 Ft Elevation Ready
                   </span>
                 </div>
@@ -455,10 +461,13 @@ export const CareersPage: FC<CareersPageProps> = () => {
               <div className="space-y-4 relative z-10">
                 {/* Header Badge & Spec Pill */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-600/30 group-hover:scale-105 transition-transform">
-                    <Paintbrush className="w-5 h-5 text-white" />
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-bold text-white bg-slate-800 px-2.5 py-1 rounded-md border border-white/20">
+                      DISCIPLINE 03
+                    </span>
+                    <Paintbrush className="w-4 h-4 text-slate-300" />
                   </div>
-                  <span className="text-[11px] font-heading font-semibold bg-emerald-950/80 backdrop-blur-md text-emerald-300 border border-emerald-400/40 px-3 py-1 rounded-md shadow-sm">
+                  <span className="text-[11px] font-mono font-semibold bg-slate-900/80 backdrop-blur-md text-slate-300 border border-white/20 px-3 py-1 rounded-md shadow-sm">
                     Master Applicators
                   </span>
                 </div>
@@ -524,142 +533,130 @@ export const CareersPage: FC<CareersPageProps> = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
               
               {/* Card 1: Statutory ESIC & PF */}
-              <div className="group relative p-[2px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-500 via-sky-300 to-indigo-500 hover:from-blue-600 hover:via-sky-400 hover:to-indigo-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/15 hover:-translate-y-1">
-                <div className="relative h-full p-5 sm:p-6 rounded-[14px] sm:rounded-[22px] bg-gradient-to-b from-white via-[#FCFDFF] to-blue-50/30 flex flex-col justify-between overflow-hidden">
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-blue-500/15 group-hover:bg-blue-500/25 blur-xl pointer-events-none transition-all duration-300" />
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/30 group-hover:scale-105 transition-transform">
-                        <ShieldCheck className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-50/80 text-blue-700 border border-blue-200/80 font-body backdrop-blur-xs">
-                        Day 1 Enrolled
-                      </span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-600/90 font-body block">
-                        01 / Social Security
-                      </span>
-                      <h4 className="font-bold text-slate-900 font-heading text-base group-hover:text-blue-600 transition-colors">
-                        100% Statutory ESIC & PF
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed font-body">
-                        All personnel are formally registered with Provident Fund (EPFO) and Employee State Insurance from Day 1 of deployment.
-                      </p>
-                    </div>
+              <div className="group relative rounded-2xl bg-white border border-[#E2EAF8] hover:border-[#2864F0]/60 p-5 sm:p-6 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#EAF1FF]">
+                    <span className="text-[11px] font-mono font-bold text-[#2864F0] tracking-wider">
+                      SEC-HR // 01
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EAF1FF] text-[#2864F0] border border-[#DCE4EF]">
+                      Day 1 Enrolled
+                    </span>
                   </div>
 
-                  <div className="pt-4 mt-3 border-t border-slate-100/80 flex items-center gap-2 text-[11px] text-slate-700 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                    <span>Direct biometric PF tracking</span>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#66748A]">
+                      <ShieldCheck className="w-4 h-4 text-[#2864F0]" />
+                      <span>Social Security &amp; PF</span>
+                    </div>
+                    <h4 className="font-bold text-[#15315B] font-heading text-base group-hover:text-[#2864F0] transition-colors">
+                      100% Statutory ESIC &amp; PF
+                    </h4>
+                    <p className="text-xs text-[#66748A] leading-relaxed font-body">
+                      All personnel are formally registered with Provident Fund (EPFO) and Employee State Insurance from Day 1 of deployment.
+                    </p>
                   </div>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#EAF1FF] flex items-center gap-2 text-[11px] text-[#15315B] font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Direct biometric PF tracking</span>
                 </div>
               </div>
 
               {/* Card 2: Permanent Employment */}
-              <div className="group relative p-[2px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-emerald-500 via-teal-300 to-green-500 hover:from-emerald-600 hover:via-teal-400 hover:to-green-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-emerald-500/15 hover:-translate-y-1">
-                <div className="relative h-full p-5 sm:p-6 rounded-[14px] sm:rounded-[22px] bg-gradient-to-b from-white via-[#FCFDFF] to-emerald-50/30 flex flex-col justify-between overflow-hidden">
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-emerald-500/15 group-hover:bg-emerald-500/25 blur-xl pointer-events-none transition-all duration-300" />
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white shadow-md shadow-emerald-500/30 group-hover:scale-105 transition-transform">
-                        <Award className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-50/80 text-emerald-700 border border-emerald-200/80 font-body backdrop-blur-xs">
-                        Zero Casualization
-                      </span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-600/90 font-body block">
-                        02 / Job Stability
-                      </span>
-                      <h4 className="font-bold text-slate-900 font-heading text-base group-hover:text-emerald-600 transition-colors">
-                        Permanent Employment
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed font-body">
-                        Long-term contracts, structured promotion ladders, skill grade uplifts, and seniority loyalty bonuses across multi-year project lifecycles.
-                      </p>
-                    </div>
+              <div className="group relative rounded-2xl bg-white border border-[#E2EAF8] hover:border-[#2864F0]/60 p-5 sm:p-6 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#EAF1FF]">
+                    <span className="text-[11px] font-mono font-bold text-[#2864F0] tracking-wider">
+                      SEC-HR // 02
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EAF1FF] text-[#2864F0] border border-[#DCE4EF]">
+                      Direct Payroll
+                    </span>
                   </div>
 
-                  <div className="pt-4 mt-3 border-t border-slate-100/80 flex items-center gap-2 text-[11px] text-slate-700 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span>Annual appraisals & career tiers</span>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#66748A]">
+                      <Award className="w-4 h-4 text-[#2864F0]" />
+                      <span>Career Longevity</span>
+                    </div>
+                    <h4 className="font-bold text-[#15315B] font-heading text-base group-hover:text-[#2864F0] transition-colors">
+                      Permanent Employment
+                    </h4>
+                    <p className="text-xs text-[#66748A] leading-relaxed font-body">
+                      Long-term contracts, structured promotion ladders, skill grade uplifts, and seniority loyalty bonuses across multi-year project lifecycles.
+                    </p>
                   </div>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#EAF1FF] flex items-center gap-2 text-[11px] text-[#15315B] font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Annual appraisals &amp; career tiers</span>
                 </div>
               </div>
 
               {/* Card 3: Certified PPE & Gear */}
-              <div className="group relative p-[2px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-amber-500 via-orange-300 to-amber-600 hover:from-amber-600 hover:via-orange-400 hover:to-amber-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-amber-500/15 hover:-translate-y-1">
-                <div className="relative h-full p-5 sm:p-6 rounded-[14px] sm:rounded-[22px] bg-gradient-to-b from-white via-[#FCFDFF] to-amber-50/30 flex flex-col justify-between overflow-hidden">
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-amber-500/15 group-hover:bg-amber-500/25 blur-xl pointer-events-none transition-all duration-300" />
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white shadow-md shadow-amber-500/30 group-hover:scale-105 transition-transform">
-                        <Anchor className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-50/80 text-amber-700 border border-amber-200/80 font-body backdrop-blur-xs">
-                        EN/CE Rated
-                      </span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-600/90 font-body block">
-                        03 / Workforce Safety
-                      </span>
-                      <h4 className="font-bold text-slate-900 font-heading text-base group-hover:text-amber-600 transition-colors">
-                        Certified PPE & Gear
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed font-body">
-                        Full-body shock-absorbing harnesses, organic vapor air respirators, high-altitude risk stipends, and mandatory periodic medical diagnostics.
-                      </p>
-                    </div>
+              <div className="group relative rounded-2xl bg-white border border-[#E2EAF8] hover:border-[#2864F0]/60 p-5 sm:p-6 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#EAF1FF]">
+                    <span className="text-[11px] font-mono font-bold text-[#2864F0] tracking-wider">
+                      SEC-HR // 03
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EAF1FF] text-[#2864F0] border border-[#DCE4EF]">
+                      EN / CE Certified
+                    </span>
                   </div>
 
-                  <div className="pt-4 mt-3 border-t border-slate-100/80 flex items-center gap-2 text-[11px] text-slate-700 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                    <span>Zero compromise on safety gear</span>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#66748A]">
+                      <Anchor className="w-4 h-4 text-[#2864F0]" />
+                      <span>Life Safety Protocols</span>
+                    </div>
+                    <h4 className="font-bold text-[#15315B] font-heading text-base group-hover:text-[#2864F0] transition-colors">
+                      Certified PPE &amp; Gear
+                    </h4>
+                    <p className="text-xs text-[#66748A] leading-relaxed font-body">
+                      Full-body shock-absorbing harnesses, organic vapor air respirators, high-altitude risk stipends, and mandatory periodic medical diagnostics.
+                    </p>
                   </div>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#EAF1FF] flex items-center gap-2 text-[11px] text-[#15315B] font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Zero compromise on safety gear</span>
                 </div>
               </div>
 
               {/* Card 4: Landmark Portfolios */}
-              <div className="group relative p-[2px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-purple-500 via-violet-300 to-indigo-500 hover:from-purple-600 hover:via-violet-400 hover:to-indigo-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-purple-500/15 hover:-translate-y-1">
-                <div className="relative h-full p-5 sm:p-6 rounded-[14px] sm:rounded-[22px] bg-gradient-to-b from-white via-[#FCFDFF] to-purple-50/30 flex flex-col justify-between overflow-hidden">
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-purple-500/15 group-hover:bg-purple-500/25 blur-xl pointer-events-none transition-all duration-300" />
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-500/30 group-hover:scale-105 transition-transform">
-                        <Briefcase className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-50/80 text-purple-700 border border-purple-200/80 font-body backdrop-blur-xs">
-                        Tier-1 Portfolios
-                      </span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-purple-600/90 font-body block">
-                        04 / Experience
-                      </span>
-                      <h4 className="font-bold text-slate-900 font-heading text-base group-hover:text-purple-600 transition-colors">
-                        Landmark Portfolios
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed font-body">
-                        Build your portfolio executing prestigious civil feats: Bandra-Worli Sea Link, Mumbai Metro viaducts, and major NHAI river bridges.
-                      </p>
-                    </div>
+              <div className="group relative rounded-2xl bg-white border border-[#E2EAF8] hover:border-[#2864F0]/60 p-5 sm:p-6 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#EAF1FF]">
+                    <span className="text-[11px] font-mono font-bold text-[#2864F0] tracking-wider">
+                      SEC-HR // 04
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EAF1FF] text-[#2864F0] border border-[#DCE4EF]">
+                      National Assets
+                    </span>
                   </div>
 
-                  <div className="pt-4 mt-3 border-t border-slate-100/80 flex items-center gap-2 text-[11px] text-slate-700 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-600 shrink-0" />
-                    <span>Nationally recognized work records</span>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#66748A]">
+                      <Briefcase className="w-4 h-4 text-[#2864F0]" />
+                      <span>Landmark Experience</span>
+                    </div>
+                    <h4 className="font-bold text-[#15315B] font-heading text-base group-hover:text-[#2864F0] transition-colors">
+                      Landmark Portfolios
+                    </h4>
+                    <p className="text-xs text-[#66748A] leading-relaxed font-body">
+                      Build your portfolio executing prestigious civil feats: Bandra-Worli Sea Link, Mumbai Metro viaducts, and major NHAI river bridges.
+                    </p>
                   </div>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#EAF1FF] flex items-center gap-2 text-[11px] text-[#15315B] font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Nationally recognized work records</span>
                 </div>
               </div>
             </div>

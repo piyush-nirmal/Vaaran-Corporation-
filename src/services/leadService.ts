@@ -5,6 +5,11 @@
 import { track } from './analytics';
 import { CONTACT_KEYS } from '../config/keys';
 
+// Sanitize user input: strip HTML tags and trim whitespace
+function sanitize(input: string): string {
+  return input.replace(/<[^>]*>/g, '').trim();
+}
+
 export interface LeadPayload {
   name: string;
   company: string;
@@ -114,8 +119,19 @@ export async function submitLead(payload: LeadPayload): Promise<LeadSubmissionRe
   const randomSuffix = Math.floor(100000 + Math.random() * 900000);
   const referenceToken = `VRN-RFP-${randomSuffix}`;
 
-  const submissionBody = {
+  // 3. Sanitize all user-controlled string fields
+  const sanitizedPayload = {
     ...payload,
+    name: sanitize(payload.name),
+    company: sanitize(payload.company),
+    phone: sanitize(payload.phone),
+    email: sanitize(payload.email),
+    specialDirectives: payload.specialDirectives ? sanitize(payload.specialDirectives) : undefined,
+    selectedMachinery: payload.selectedMachinery ? sanitize(payload.selectedMachinery) : undefined,
+  };
+
+  const submissionBody = {
+    ...sanitizedPayload,
     utmParams,
     timestamp,
     referenceToken,

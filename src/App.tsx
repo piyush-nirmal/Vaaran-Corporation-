@@ -19,6 +19,7 @@ const RfpPage = lazy(() => import('./pages/RfpPage').then(m => ({ default: m.Rfp
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
+const SustainabilityPage = lazy(() => import('./pages/SustainabilityPage').then(m => ({ default: m.SustainabilityPage })));
 const AdminPage = lazy(() => import('./pages/AdminPage').then(m => ({ default: m.AdminPage })));
 
 import { ContentProvider } from './context/ContentContext';
@@ -49,14 +50,17 @@ function MainApp() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 1.0,
+      touchMultiplier: isTouchDevice ? 1.0 : 1.2,
+      syncTouch: false,
     });
 
     let animationFrameId: number;
@@ -87,7 +91,6 @@ function MainApp() {
     <div className="min-h-screen bg-white flex flex-col font-sans text-[#20242D] selection:bg-[#3F73F5] selection:text-white overflow-x-hidden">
       
 
-
       {/* Scroll restoration helper */}
       <ScrollToTop />
 
@@ -100,10 +103,10 @@ function MainApp() {
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
               className="w-full flex-grow flex flex-col"
             >
               <Routes location={location} key={location.pathname}>
@@ -142,6 +145,10 @@ function MainApp() {
                 <Route 
                   path="/careers" 
                   element={<CareersPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/sustainability" 
+                  element={<SustainabilityPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
                 />
                 <Route 
                   path="/admin" 

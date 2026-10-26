@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, ArrowUpRight, X, CheckCircle2, MessageSquare, ArrowRight } from 'lucide-react';
 import { 
@@ -12,6 +13,7 @@ import { useContent } from '../context/ContentContext';
 import { SectionLabel } from './ui/SectionLabel';
 
 export const ProjectsPortfolio: FC = () => {
+  const navigate = useNavigate();
   const { projects } = useContent();
   const [activeSector, setActiveSector] = useState<typeof projectSectorCategories[number]>('All Sectors');
   const [dossierProject, setDossierProject] = useState<ProjectItem | null>(null);
@@ -59,7 +61,7 @@ export const ProjectsPortfolio: FC = () => {
   const handleRequestBid = () => {
     setDossierProject(null);
     track('cta_click', { location: 'project_modal_rfp', target: 'rfp-quote' });
-    document.getElementById('rfp-quote')?.scrollIntoView({ behavior: 'smooth' });
+    navigate('/rfp-portal');
   };
 
   return (

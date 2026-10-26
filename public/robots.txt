@@ -1,0 +1,9 @@
+# Varan Corporation — robots.txt
+User-agent: *
+Allow: /
+
+# Block admin and internal routes from search indexing
+Disallow: /admin
+Disallow: /admin/
+
+Sitemap: https://vaarancorporation.com/sitemap.xml

@@ -22,6 +22,7 @@ const navItems: NavItem[] = [
   { path: '/about', label: 'About Us' },
   { path: '/operations', label: 'Service Sectors' },
   { path: '/projects', label: 'Projects' },
+  { path: '/sustainability', label: 'Sustainability' },
   { path: '/careers', label: 'Careers' },
 ];
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, X, ArrowRight, MessageSquare } from 'lucide-react';
 import { 
   equipmentData, 
@@ -11,6 +12,7 @@ import { useWhatsApp } from '../context/WhatsAppContext';
 import { TiltCard } from './ui/TiltCard';
 
 export const EquipmentGrid: FC = () => {
+  const navigate = useNavigate();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [inspectedItem, setInspectedItem] = useState<EquipmentItem | null>(null);
   const modalCloseBtnRef = useRef<HTMLButtonElement>(null);
@@ -55,10 +57,7 @@ export const EquipmentGrid: FC = () => {
       });
     }
     setInspectedItem(null);
-    const rfp = document.getElementById('rfp-quote');
-    if (rfp) {
-      rfp.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/rfp-portal');
   };
 
   const handleChatWhatsApp = () => {

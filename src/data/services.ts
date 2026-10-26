@@ -181,7 +181,7 @@ export const servicesData: ServiceCategory[] = [
   {
     id: 'urban-roadway-beautification',
     title: 'Road & Urban Beautification',
-    icon: 'Sparkles',
+    icon: 'Layers',
     description: 'Making roads, medians, and public areas cleaner and greener through reflective painting, garden development, and tree planting.',
     services: [
       {

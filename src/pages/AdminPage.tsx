@@ -66,6 +66,8 @@ export function AdminPage() {
   const [passcode, setPasscode] = useState('');
   const [showPasscode, setShowPasscode] = useState(false);
   const [authError, setAuthError] = useState('');
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [lockoutUntil, setLockoutUntil] = useState<number>(0);
 
   // Active Tab
   const [activeTab, setActiveTab] = useState<'company' | 'metrics' | 'projects' | 'leads' | 'settings'>('company');
@@ -129,12 +131,28 @@ export function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    // Brute-force lockout: 5 failed attempts → 60 second cooldown
+    const now = Date.now();
+    if (lockoutUntil > now) {
+      const secondsLeft = Math.ceil((lockoutUntil - now) / 1000);
+      setAuthError(`Too many attempts. Try again in ${secondsLeft}s.`);
+      return;
+    }
     if (ADMIN_KEYS.allowedPasscodes.includes(passcode)) {
       sessionStorage.setItem('vrn_admin_auth', 'true');
       setIsAuthenticated(true);
       setAuthError('');
+      setFailedAttempts(0);
     } else {
-      setAuthError('Invalid administrator credentials. Hint: default passcode is varan1997');
+      const newAttempts = failedAttempts + 1;
+      setFailedAttempts(newAttempts);
+      if (newAttempts >= 5) {
+        setLockoutUntil(Date.now() + 60_000);
+        setFailedAttempts(0);
+        setAuthError('Account locked for 60 seconds due to too many failed attempts.');
+      } else {
+        setAuthError(`Invalid administrator credentials. ${5 - newAttempts} attempt(s) remaining.`);
+      }
     }
   };
 
@@ -389,6 +407,7 @@ export function AdminPage() {
             <Link
               to="/"
               target="_blank"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-lg bg-[#EAF2FF] hover:bg-[#EAF2FF]/80 text-[#3F73F5] text-xs font-semibold flex items-center gap-1.5 border border-[#E2E9F4] transition-all shadow-xs"
               title="View Public Website"
             >

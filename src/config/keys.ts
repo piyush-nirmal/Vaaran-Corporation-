@@ -23,12 +23,10 @@ export const FIREBASE_KEYS = {
 export const ADMIN_KEYS = {
   // Master admin passcode configured in Vercel / .env (fallback: 'varan1997')
   passcode: import.meta.env.VITE_ADMIN_PASSCODE || "varan1997",
-  // Standard emergency administrator fallback passwords
+  // Only the env-configured passcode is valid (with founding-year fallback)
   allowedPasscodes: [
     import.meta.env.VITE_ADMIN_PASSCODE,
     "varan1997",
-    "admin1997",
-    "varan@2026"
   ].filter(Boolean) as string[],
 } as const;
 
