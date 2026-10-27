@@ -191,15 +191,14 @@ export const Navbar: FC<NavbarProps> = () => {
               <span>{currentCompany.phone}</span>
             </a>
 
-            {/* Primary Action Button in High-End Gradient with Sheen Hover */}
+            {/* Primary Action Button - Refined and proportionate */}
             <button 
               type="button"
               onClick={handleRequestBidClick}
-              className="group hidden sm:inline-flex relative items-center gap-2 px-5 sm:px-6 h-[42px] min-h-[42px] rounded-full text-[13px] font-bold uppercase tracking-[0.05em] text-white bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] hover:from-[#1D4ED8] hover:to-[#172554] shadow-[0_4px_14px_rgba(37,99,235,0.3)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer font-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] border-t border-white/30 overflow-hidden"
+              className="group hidden sm:inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-[35px] rounded-full text-xs sm:text-[12.5px] font-medium text-white bg-[#2563EB] hover:bg-[#1D4ED8] shadow-xs hover:shadow-sm active:scale-[0.98] transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
             >
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform ease-in-out pointer-events-none" />
-              <span className="relative z-10">Request Bid</span>
-              <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
+              <span>Request Bid</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white/90 group-hover:translate-x-0.5 transition-transform duration-200" />
             </button>
 
             {/* Mobile Hamburger Toggle (40x40 min touch target) */}
