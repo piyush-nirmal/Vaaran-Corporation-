@@ -941,22 +941,21 @@ export const SaiLogo: React.FC<LogoProps> = ({ className = '' }) => {
 
 /**
  * Image-backed Logo Component factory
+ * Uses crisp vector FallbackSvg for large watermark display to eliminate raster blur,
+/**
+ * Image-backed Logo Component factory
+ * Renders authentic client image logos with proper containment and crisp resolution.
  */
 export const createImageLogo = (
   imgSrc: string,
-  alt: string,
-  _FallbackSvg?: React.FC<LogoProps>
+  alt: string
 ): React.FC<LogoProps> => {
-  return ({ className = '', variant = 'badge' }) => {
+  return ({ className = '' }) => {
     return (
       <img
         src={imgSrc}
         alt={alt}
-        className={`object-contain transition-all duration-300 ${
-          variant === 'watermark'
-            ? 'w-full h-full drop-shadow-md select-none pointer-events-none'
-            : 'max-h-full max-w-full drop-shadow-2xs'
-        } ${className}`}
+        className={`max-h-full max-w-full object-contain select-none ${className}`}
         loading="lazy"
       />
     );
@@ -994,26 +993,26 @@ export const getClientLogoImage = (name: string): string | null => {
  */
 export const clientLogoMap: Record<string, React.FC<LogoProps>> = {
   // Tier 1 - Government
-  'MSRDC': createImageLogo(msrdcImg, 'MSRDC', MsrdcLogo),
-  'PWD Maharashtra': createImageLogo(pwdImg, 'PWD Maharashtra', PwdMaharashtraLogo),
-  'Statutory Highway Authorities': createImageLogo(nhaiImg, 'NHAI', HighwayAuthorityLogo),
+  'MSRDC': createImageLogo(msrdcImg, 'MSRDC'),
+  'PWD Maharashtra': createImageLogo(pwdImg, 'PWD Maharashtra'),
+  'Statutory Highway Authorities': createImageLogo(nhaiImg, 'NHAI'),
 
   // Tier 2 - National Infrastructure & EPC
-  'Larsen & Toubro (L&T)': createImageLogo(ltImg, 'Larsen & Toubro', LtLogo),
-  'HCC': createImageLogo(hccImg, 'Hindustan Construction Company', HccLogo),
-  'NCC Limited': createImageLogo(nccImg, 'NCC Limited', NccLogo),
-  'HMM Infra Limited': createImageLogo(hmmImg, 'HMM Infra Limited', HmmLogo),
-  'MEP Infrastructure': createImageLogo(mepImg, 'MEP Infrastructure', MepLogo),
-  'Roadway Solutions': createImageLogo(roadwayImg, 'Roadway Solutions', RoadwayLogo),
-  'Pragati Infra': createImageLogo(pragatiImg, 'Pragati Infra', PragatiLogo),
-  'Apco Infratech': createImageLogo(apcoImg, 'Apco Infratech', ApcoLogo),
+  'Larsen & Toubro (L&T)': createImageLogo(ltImg, 'Larsen & Toubro'),
+  'HCC': createImageLogo(hccImg, 'Hindustan Construction Company'),
+  'NCC Limited': createImageLogo(nccImg, 'NCC Limited'),
+  'HMM Infra Limited': createImageLogo(hmmImg, 'HMM Infra Limited'),
+  'MEP Infrastructure': createImageLogo(mepImg, 'MEP Infrastructure'),
+  'Roadway Solutions': createImageLogo(roadwayImg, 'Roadway Solutions'),
+  'Pragati Infra': createImageLogo(pragatiImg, 'Pragati Infra'),
+  'Apco Infratech': createImageLogo(apcoImg, 'Apco Infratech'),
 
   // Tier 3 - Corporate & Industrial
-  'TATA Group': createImageLogo(tataImg, 'TATA Group', TataLogo),
-  'Godrej': createImageLogo(godrejImg, 'Godrej', GodrejLogo),
-  'Amul (GCMMF)': createImageLogo(amulImg, 'Amul', AmulLogo),
-  'ASHMI': createImageLogo(ashmiImg, 'ASHMI Group', AshmiLogo),
-  'Sai Enterprises': createImageLogo(saiImg, 'Sai Enterprises', SaiLogo),
+  'TATA Group': createImageLogo(tataImg, 'TATA Group'),
+  'Godrej': createImageLogo(godrejImg, 'Godrej'),
+  'Amul (GCMMF)': createImageLogo(amulImg, 'Amul'),
+  'ASHMI': createImageLogo(ashmiImg, 'ASHMI Group'),
+  'Sai Enterprises': createImageLogo(saiImg, 'Sai Enterprises'),
 };
 
 /**
