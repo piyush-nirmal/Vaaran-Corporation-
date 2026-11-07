@@ -17,11 +17,11 @@ import { ServiceTabs } from '../components/ServiceTabs';
 
 // Images for sectors
 import viaductImg from '../assets/images/hero_infrastructure_viaduct_1791032354735.jpg';
-import tunnelImg from '../assets/images/hero_transit_tunnel_viaduct_1791896269073.jpg';
 import steelFabImg from '../assets/images/structural_steel_fabrication_1791032383584.jpg';
 import facilityImg from '../assets/images/industrial_facility_hub_1791032407824.jpg';
 import metroImg from '../assets/images/metro_transit_coating_1791032395039.jpg';
 import damImg from '../assets/images/hero_apco_expressway_dam_1791896243948.jpg';
+import signboardImg from '../assets/images/road_signage_highway.jpg';
 
 interface OperationsPageProps {
   onOpenCapabilityModal: () => void;
@@ -44,142 +44,119 @@ interface SectorItem {
 
 const SECTOR_DATA: SectorItem[] = [
   {
-    id: 'highways-expressways',
-    tag: 'DIVISION 01 // HIGHWAYS & VIADUCTS',
-    title: 'Highways & Expressways',
-    shortDesc: 'Design and execution of large-scale highways, expressways, bridges, and flyovers that strengthen national connectivity.',
-    fullDesc: 'Comprehensive execution covering elevated viaduct anti-carbonation coatings, flyover pier protection, roadway safety structures, and arterial bridge resurfacing across high-volume traffic corridors.',
+    id: 'painting',
+    tag: 'DIVISION 01 // PAINTING & PROTECTIVE COATINGS',
+    title: 'Painting',
+    shortDesc: 'Commercial, industrial, bridge, and marine painting with high-build anti-carbonation and weather-resistant protective coatings.',
+    fullDesc: 'Specialized painting operations covering flyover concrete viaducts, marine bridges up to 100 ft above water, industrial plant flooring epoxies, and high-visibility road median/kerb coatings that prevent rust, chemical degradation, and weather wear.',
     image: viaductImg,
-    category: 'Highways & Bridges',
-    specCode: 'MoRTH Section 1500 & 1600 / IRC:SP:84',
-    statutoryBadge: 'NHAI & MSRDC Approved Spec',
+    category: 'Painting',
+    specCode: 'MoRTH Section 1500 & 1600 / ISO 12944 (C5-I/M)',
+    statutoryBadge: 'Anti-Carbonation & Salt Spray Certified',
     deliverables: [
-      'Anti-carbonation protective paint for concrete viaducts',
-      'Rust prevention & coating for structural steel beams',
-      'Waterproof expansion joint sealants',
-      'High-reflective divider & kerb painting'
+      'Anti-carbonation protective paint for flyovers & viaducts',
+      'Marine-grade epoxy & polyurethane coatings (100 ft rigging)',
+      'High-reflective divider, kerb & median painting',
+      'Heavy-duty floor epoxy for industrial plants & warehouses'
     ],
     metrics: [
       { label: 'Flyovers Coated', value: '29 Completed' },
-      { label: 'Protection', value: '25+ Years' },
-      { label: 'Work Height', value: 'Up to 100 Ft' }
+      { label: 'Corrosion Shield', value: '25+ Years' },
+      { label: 'Rigging Height', value: '100ft+ Certified' }
     ],
-    targetAuthorities: ['National Highways (NHAI)', 'State PWDs & MSRDC', 'Expressway Concessions']
+    targetAuthorities: ['National Highways (NHAI)', 'State PWDs & MSRDC', 'Port Authorities', 'Metro Rail Corporations']
   },
   {
-    id: 'tunnels-metro',
-    tag: 'DIVISION 02 // TUNNELS & TRANSIT',
-    title: 'Tunnels & Transit Corridors',
-    shortDesc: 'Specialized structural protection and civil engineering for road & rail tunnels across challenging terrains.',
-    fullDesc: 'High-durability moisture-barrier coatings, fire-retardant concrete sealants, and precision civil retrofitting engineered for subterranean, mountain tunnel, and rail transit networks.',
-    image: tunnelImg,
-    category: 'Transit & Tunnels',
-    specCode: 'IRC:SP:87 / RDSO Tunnel Guidelines',
-    statutoryBadge: 'Class 1 Fire Retardant Tested',
-    deliverables: [
-      'Moisture-barrier sealers for tunnel interiors',
-      'Fire-retardant structural coatings',
-      'Emergency signage & high-visibility wall bands',
-      'Vibration-resistant structural reinforcement'
-    ],
-    metrics: [
-      { label: 'Durability', value: 'Heavy Duty' },
-      { label: 'Safety Index', value: '100% Zero Harm' },
-      { label: 'Standards', value: 'IRC / IS Codes' }
-    ],
-    targetAuthorities: ['Metro Rail Corporations', 'Railway Transit Authorities', 'Highway Tunnel Concessions']
-  },
-  {
-    id: 'marine-coastal',
-    tag: 'DIVISION 03 // MARINE INFRASTRUCTURE',
-    title: 'Marine & Coastal Infrastructure',
-    shortDesc: 'Development and protective engineering of sea links, coastal viaducts, ports, and marine bridges exposed to severe saline air.',
-    fullDesc: 'Specialized high-altitude rigging and marine-grade epoxy-polyurethane systems designed to withstand continuous saltwater splash, tidal abrasion, and high humidity.',
+    id: 'civil-repair',
+    tag: 'DIVISION 02 // CIVIL REPAIR & STRUCTURAL UPKEEP',
+    title: 'Civil Repair',
+    shortDesc: 'Structural rehabilitation, concrete crack injection, expansion joint refurbishment, pothole repairs, and curb restoration under live traffic.',
+    fullDesc: 'Rapid civil repair and restoration for damaged highway pavements, distressed bridge piers, stormwater channels, culverts, and municipal infrastructure—minimizing traffic disruption with rapid-cure materials.',
     image: metroImg,
-    category: 'Marine & Coastal',
-    specCode: 'ISO 12944-5 C5-M Marine Atmospheric',
-    statutoryBadge: 'Salt Spray Resistance Tested',
+    category: 'Civil Repair',
+    specCode: 'IRC:SP:40 / IRC:SP:84 Civil Maintenance Codes',
+    statutoryBadge: 'Structural Integrity Tested',
     deliverables: [
-      'Salt-resistant marine epoxy & polyurethane coating systems',
-      'Safe rigging execution up to 100 ft above open water',
-      'Zinc-rich corrosion inhibitors & primers',
-      'Trained coastal safety crew with certified marine netting'
+      'Concrete spall repair, crack sealing & pressure grouting',
+      'Bridge expansion joint refurbishment & elastomeric sealants',
+      'Highway pavement patching & rapid pothole restoration',
+      'Stormwater drain clearing, culvert repairs & curb realignment'
     ],
     metrics: [
-      { label: 'Salt Resistance', value: 'Marine Grade' },
-      { label: 'Execution', value: '100 Ft Rigging' },
-      { label: 'Lifespan', value: '25+ Years' }
+      { label: 'Turnaround', value: '24hr Fast Track' },
+      { label: 'Road Uptime', value: '99.8%' },
+      { label: 'Safety Standard', value: '100% Zero Harm' }
     ],
-    targetAuthorities: ['Port Authorities', 'State Maritime Boards', 'Sea Link Operators']
+    targetAuthorities: ['State PWDs & MSRDC', 'Municipal Corporations', 'Highway Concessionaires']
   },
   {
-    id: 'civil-toll-plazas',
-    tag: 'DIVISION 04 // CIVIL & TOLL INFRASTRUCTURE',
-    title: 'Civil Works & Toll Plazas',
-    shortDesc: 'Turnkey construction of multi-lane toll plazas, toll booths, reinforced concrete approach slabs, and drainage networks.',
-    fullDesc: 'Robust structural execution including heavy-duty concrete pavement slabs, toll plaza canopy footings, underground utility trenches, and rapid highway civil repair under continuous live traffic.',
-    image: facilityImg,
-    category: 'Civil & Toll',
-    specCode: 'IRC:SP:84 Toll Booths / M40 PQC Grade',
-    statutoryBadge: 'MoRTH Rigid Pavement Certified',
-    deliverables: [
-      'Turnkey toll plaza booths & canopy foundations',
-      'Heavy-duty concrete pavement slabs (PQC)',
-      'Highway lane leveling & stormwater culverts',
-      'Underground utility channels & rainwater drainage'
-    ],
-    metrics: [
-      { label: 'Projects Delivered', value: '₹30+ Crore' },
-      { label: 'Pavement', value: 'High Strength' },
-      { label: 'Contract', value: 'Turnkey EPC' }
-    ],
-    targetAuthorities: ['Toll Concessionaires', 'Highway Developers', 'Municipal Authorities']
-  },
-  {
-    id: 'structural-fabrication',
-    tag: 'DIVISION 05 // STRUCTURAL STEEL & SAFETY',
-    title: 'Structural Steel & Safety Netting',
-    shortDesc: 'Precision fabrication and erection of highway gantries, sign boards, cantilever trusses, and high-altitude bridge safety nets.',
-    fullDesc: 'Complete in-house steel cutting, certified welding, sandblasting, and hot-dip galvanizing for major highway infrastructure and industrial facilities across India.',
-    image: steelFabImg,
-    category: 'Steel & Safety',
-    specCode: 'IS 800:2007 / AWS D1.1 / ASNT Level II',
-    statutoryBadge: 'Ultrasonic NDT Weld Inspected',
-    deliverables: [
-      'Overhead highway sign gantries & cantilever trusses',
-      'Hot-dip galvanized bridge railings & crash barriers',
-      'High-altitude safety catch netting installation',
-      'Non-destructive testing (NDT) & ultrasonic weld inspection'
-    ],
-    metrics: [
-      { label: 'Welding', value: 'ASNT Certified' },
-      { label: 'Steel Weight', value: 'Heavy Duty' },
-      { label: 'Mobilization', value: 'Pan-India' }
-    ],
-    targetAuthorities: ['National Highways', 'Industrial EPC Firms', 'Smart City Missions']
-  },
-  {
-    id: 'urban-greenery',
-    tag: 'DIVISION 06 // URBAN & GREEN INFRASTRUCTURE',
-    title: 'Urban Beautification & Green Highways',
-    shortDesc: 'Highway median landscaping, automated drip-irrigation networks, acoustic noise barriers, and artistic city flyover murals.',
-    fullDesc: 'Transforming gray transport corridors into green, visually striking arteries that curb glare, lower ambient noise, and promote ecological sustainability in urban centers.',
+    id: 'beautification-maintenance',
+    tag: 'DIVISION 03 // BEAUTIFICATION & MAINTENANCE',
+    title: 'Beautification & Maintenance',
+    shortDesc: 'Highway median landscaping, automated solar drip irrigation, decorative cultural flyover murals, and civic corridor maintenance.',
+    fullDesc: 'Transforming transport corridors and city public spaces into vibrant, clean, and sustainable green corridors through median plantings, solar drip networks, anti-glare hedges, and ongoing routine corridor maintenance.',
     image: damImg,
-    category: 'Urban Ecology',
-    specCode: 'NGHM / MoRTH Green Highway Policy 2015',
+    category: 'Beautification & Maintenance',
+    specCode: 'MoRTH Green Highway Policy 2015 / NGHM Policy',
     statutoryBadge: 'Zero-Runoff Drip Network',
     deliverables: [
       'Median greenery with automated solar drip irrigation',
       'Aesthetic flyover murals & cultural pier artwork',
-      'Retroreflective microprismatic safety signage',
-      'Acoustic noise barrier fabrication & installation'
+      'Reflective kerb & median painting with routine touch-ups',
+      'Roadside verge clearing, garden upkeep & debris management'
     ],
     metrics: [
-      { label: 'Ecology', value: 'Zero-Waste Drip' },
-      { label: 'Aesthetics', value: 'Custom Murals' },
-      { label: 'Visibility', value: 'Class IV Reflective' }
+      { label: 'Corridor Care', value: '365 Days Upkeep' },
+      { label: 'Irrigation', value: 'Solar Drip Eco' },
+      { label: 'Trusted By', value: 'MSRDC & Smart Cities' }
     ],
-    targetAuthorities: ['Smart City Corporations', 'Urban Development Boards', 'Green Highway Authorities']
+    targetAuthorities: ['MSRDC & State Highways', 'Smart City Missions', 'Urban Development Authorities']
+  },
+  {
+    id: 'construction-work',
+    tag: 'DIVISION 04 // CIVIL & INFRASTRUCTURE CONSTRUCTION',
+    title: 'Construction Work',
+    shortDesc: 'Turnkey civil construction of multi-lane toll plazas, toll booths, reinforced concrete approach slabs, foundations, and boundary structures.',
+    fullDesc: 'End-to-end civil contracting from excavation and steel reinforcement to heavy PQC concrete pavements, building structural frameworks, boundary retaining walls, and underground utility conduits.',
+    image: facilityImg,
+    category: 'Construction Work',
+    specCode: 'MoRTH Section 600 & 1000 / IS 456 RCC Grade M40',
+    statutoryBadge: 'Heavy Rigid Pavement Certified',
+    deliverables: [
+      'Turnkey toll plaza booths, canopy footings & admin buildings',
+      'Heavy-duty concrete pavement slabs (PQC) & approach aprons',
+      'Reinforced concrete (RCC) foundations, retaining & boundary walls',
+      'Underground stormwater drainage networks & utility culverts'
+    ],
+    metrics: [
+      { label: 'Projects Delivered', value: '₹30+ Crore' },
+      { label: 'Concrete Spec', value: 'M40 PQC Grade' },
+      { label: 'Contract Mode', value: 'Turnkey EPC' }
+    ],
+    targetAuthorities: ['Highway Developers', 'Toll Concessionaires', 'National Highways (NHAI)', 'Industrial EPCs']
+  },
+  {
+    id: 'board-sign-work',
+    tag: 'DIVISION 05 // SIGNAGE & ROAD SAFETY BOARDS',
+    title: 'Board Sign Work',
+    shortDesc: 'Traffic, regulatory, cautionary & informatory road signboards (No Parking, Stop / Don’t Stop, Diversion Boards) and overhead gantries.',
+    fullDesc: 'Certified fabrication and erection of traffic signboards, regulatory signs (No Parking, Stop / Don’t Stop, Speed Limit), warning/diversion boards for detours & road works, and heavy overhead highway gantries compliant with IRC:67-2022 specifications.',
+    image: signboardImg,
+    category: 'Board Sign Work',
+    specCode: 'IRC:67-2022 Code of Practice for Road Signs / MoRTH Section 800',
+    statutoryBadge: 'Class IV / XI Microprismatic Retroreflective',
+    deliverables: [
+      'Regulatory signboards (No Parking, Stop / Don’t Stop, Speed Limits)',
+      'Warning & diversion boards for lane changes, road works & detours',
+      'Overhead highway directional gantries & cantilever sign trusses',
+      'Reflective blue highway guide boards & bilingual destination signage'
+    ],
+    metrics: [
+      { label: 'Sign Standard', value: 'IRC:67-2022' },
+      { label: 'Reflectivity', value: 'Microprismatic' },
+      { label: 'Wind Resistance', value: 'Up to 180 km/h' }
+    ],
+    targetAuthorities: ['National Highways (NHAI)', 'State PWDs & MSRDC', 'Traffic Police Departments', 'Smart City Missions']
   }
 ];
 
@@ -187,7 +164,7 @@ export const OperationsPage: FC<OperationsPageProps> = ({ onOpenCapabilityModal 
   const [selectedFilter, setSelectedFilter] = useState<string>('All');
   const [activeModalSector, setActiveModalSector] = useState<SectorItem | null>(null);
 
-  const categories = ['All', 'Highways & Bridges', 'Transit & Tunnels', 'Marine & Coastal', 'Civil & Toll', 'Steel & Safety', 'Urban Ecology'];
+  const categories = ['All', 'Painting', 'Civil Repair', 'Beautification & Maintenance', 'Construction Work', 'Board Sign Work'];
 
   const filteredSectors = selectedFilter === 'All' 
     ? SECTOR_DATA 
@@ -198,8 +175,8 @@ export const OperationsPage: FC<OperationsPageProps> = ({ onOpenCapabilityModal 
       {/* Dynamic SEO Meta Tags */}
       <SeoHead
         title="Service Sectors & Engineering Disciplines | Varan Corporation"
-        description="Explore Varan Corporation's core service sectors: Highways & Expressways, Tunnels & Transit, Marine Infrastructure, Civil Works & Toll Plazas, Structural Steel Fabrication, and Green Highway Ecology."
-        keywords="infrastructure service sectors, highway construction, protective bridge coating, civil toll plaza works, structural steel fabrication, marine safety netting, green highways India, Varan Corporation"
+        description="Explore Varan Corporation's core service sectors: Painting, Civil Repair, Beautification & Maintenance, Construction Work, and Board Sign Work."
+        keywords="painting, civil repair, beautification and maintenance, construction work, board sign work, road signs, no parking signboards, diversion boards, Varan Corporation"
       />
 
       {/* ------------------------------------------------------------- */}
@@ -238,12 +215,12 @@ export const OperationsPage: FC<OperationsPageProps> = ({ onOpenCapabilityModal 
                   <span className="text-[#2864F0]">Execution Excellence</span>
                 </h1>
                 <p className="text-sm sm:text-base font-semibold text-[#2864F0] tracking-normal leading-relaxed">
-                  Integrating engineering precision, protective coating systems, and turnkey civil execution.
+                  Integrating painting, civil repair, beautification &amp; maintenance, construction work, and board sign operations.
                 </p>
               </div>
 
               <p className="text-sm sm:text-base text-[#66748A] max-w-2xl font-normal leading-relaxed font-body">
-                Varan Corporation continuously integrates modern construction technologies, specialized surface preparation systems, and high-altitude rigging innovations to enhance efficiency, safety, and project delivery across India.
+                Varan Corporation delivers trusted execution across commercial &amp; industrial painting, civil repairs, highway beautification, turnkey construction, and IRC-compliant board sign works across India.
               </p>
 
               {/* 4 Core Quick Highlights with Animated Counters */}

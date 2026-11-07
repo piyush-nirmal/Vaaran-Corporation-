@@ -12,7 +12,7 @@ import Stepper, { Step } from './ui/Stepper';
 
 // High-resolution real showcase imagery from repository assets
 import step3CoatingImg from '../assets/images/process/step3_coating.jpg';
-import steelFabricationImg from '../assets/images/structural_steel_fabrication_1791032383584.jpg';
+import roadSignageImg from '../assets/images/road_signage_highway.jpg';
 import industrialHubImg from '../assets/images/industrial_facility_hub_1791032407824.jpg';
 import viaductFlyoverImg from '../assets/images/hero_infrastructure_viaduct_1791032354735.jpg';
 import metroTransitImg from '../assets/images/metro_transit_coating_1791032395039.jpg';
@@ -53,28 +53,28 @@ const milestones: MilestoneData[] = [
     ]
   },
   {
-    era: 'Advertising Phase',
+    era: '2003',
     phaseLabel: 'Phase 02 · Expansion',
-    stepTitle: 'Road Signboards',
+    stepTitle: '2003 Road Signboards',
     title: 'Highway Boards & Signage',
     tagline: 'Expanding into road signage & fabrication',
     story:
-      'As national highways expanded, we grew into building large blue road signboards and 3D display letters. We set up an in-house metal and acrylic workshop to fabricate strong, weather-proof signs.',
+      'As national highways expanded, we grew into building large directional highway signboards, overhead gantries, and reflective display panels. We set up an in-house metal and retroreflective sheeting workshop to fabricate durable, weather-proof signs.',
     statValue: '1,000+',
     statLabel: 'Highway & City Signboards Installed',
     location: 'NHAI Corridors & City Roads',
-    image: steelFabricationImg,
-    imageBadge: 'Steel Workshop & Signage',
+    image: roadSignageImg,
+    imageBadge: 'Highway Overhead Signboards',
     highlights: [
-      'Large blue highway information boards',
-      'Reflective sheeting for clear night visibility',
-      'In-house metal cutting & acrylic fabrication'
+      'Overhead & shoulder highway directional signboards',
+      'High-intensity retroreflective sheeting for night visibility',
+      'In-house metal cutting & gantry fabrication'
     ]
   },
   {
-    era: 'Infrastructure Transition',
+    era: '2007',
     phaseLabel: 'Phase 03 · Strategic Pivot',
-    stepTitle: 'Civil & Factories',
+    stepTitle: '2007 Civil & Factories',
     title: 'Civil Works & Factory Painting',
     tagline: 'Moving into heavy construction & industrial coating',
     story:
@@ -91,9 +91,9 @@ const milestones: MilestoneData[] = [
     ]
   },
   {
-    era: 'Growth Phase',
+    era: '2015',
     phaseLabel: 'Phase 04 · Scale Up',
-    stepTitle: 'Flyovers & Bridges',
+    stepTitle: '2015 Flyovers & Bridges',
     title: 'Flyovers & Highway Bridges',
     tagline: 'Protecting bridges and expressways from weather wear',
     story:
@@ -125,7 +125,7 @@ const milestones: MilestoneData[] = [
     highlights: [
       'High-altitude marine coating (100 ft above sea)',
       'Metro transit stations & highway bridges',
-      '150+ full-time certified permanent workers'
+      '75+ full-time certified permanent workers'
     ]
   }
 ];

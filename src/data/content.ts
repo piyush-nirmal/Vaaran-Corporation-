@@ -138,6 +138,9 @@ export const companyConfig = {
   phone: '8104158309',
   phoneFormatted: '+91 81041 58309',
   phoneRaw: '+918104158309',
+  phoneSecondary: '9324841946',
+  phoneSecondaryFormatted: '+91 93248 41946',
+  phoneSecondaryRaw: '+919324841946',
   email: 'varancorporation@gmail.com',
   whatsappNumber: '918104158309',
   hours: 'Mon–Sat · 08:00 – 19:00 IST',
@@ -167,8 +170,8 @@ export const aboutUsContent = {
 export const heroMetrics: MetricProof[] = [
   { label: 'Industry Experience', value: '25+', unit: 'Years', subtext: 'Established in 1997' },
   { label: 'Projects Executed', value: '₹30+', unit: 'Crore', subtext: 'Civil, Painting & Fabrication' },
-  { label: 'Marine Coating', value: '100', unit: 'Ft Sea', subtext: 'High-Risk Offshore Barrier' },
-  { label: 'Pan-India Operations', value: '4+', unit: 'Regions', subtext: 'Maharashtra, Goa, Delhi & Bangalore' },
+  { label: 'Marine Coating', value: '100ft+', unit: 'Sea Barrier', subtext: 'High-Risk Offshore Barrier' },
+  { label: 'Pan-India Operations', value: '5+', unit: 'Regions', subtext: 'Maharashtra, Goa, Delhi, Bangalore & Beyond' },
 ];
 
 // -------------------------------------------------------------
@@ -184,8 +187,9 @@ export const companyJourney: JourneyMilestone[] = [
     ],
   },
   {
-    era: 'Advertising Phase',
-    title: 'Outdoor Advertising & Signage',
+    era: '2003',
+    year: '2003',
+    title: 'Outdoor Advertising & Road Signboards',
     items: [
       'Traditional Blue Signboards',
       'Acrylic Boards',
@@ -194,8 +198,9 @@ export const companyJourney: JourneyMilestone[] = [
     ],
   },
   {
-    era: 'Infrastructure Transition',
-    title: 'Diversification Post-Regulation',
+    era: '2007',
+    year: '2007',
+    title: 'Civil & Factory Infrastructure',
     items: [
       'Civil Infrastructure',
       'Commercial & Industrial Painting',
@@ -203,8 +208,9 @@ export const companyJourney: JourneyMilestone[] = [
     ],
   },
   {
-    era: 'Growth Phase',
-    title: 'Highways & Flyover Scale',
+    era: '2015',
+    year: '2015',
+    title: 'Highways, Flyovers & Bridges Scale',
     items: [
       'Flyover Protective Coating',
       'Highway Infrastructure',
@@ -213,6 +219,7 @@ export const companyJourney: JourneyMilestone[] = [
   },
   {
     era: 'Present',
+    year: 'Present',
     title: 'Pan-India Infrastructure Delivery',
     items: [
       'Civil Engineering',
@@ -405,7 +412,7 @@ export const projectsData: ProjectItem[] = [
     timeline: '25+ Years of Proven Delivery',
     substrate: 'Structural Steel, Heavy Concrete Foundations & Metal Framing',
     safetyStatus: '100% Client Audited & Cleared',
-    client: 'NCC, HCC, HMM Infra Limited, Godrej',
+    client: 'NCC, HCC, HMM Infra Limited',
   },
 ];
 
@@ -486,10 +493,8 @@ export const clientPartners: ClientPartner[] = [
   { id: 'client-apco', name: 'Apco Infratech', category: 'Infrastructure', placeholderText: 'APCO INFRATECH' },
   // Corporate
   { id: 'client-tata', name: 'TATA Group', category: 'Corporate', placeholderText: 'TATA GROUP' },
-  { id: 'client-godrej', name: 'Godrej', category: 'Corporate', placeholderText: 'GODREJ' },
   { id: 'client-amul', name: 'Amul (GCMMF)', category: 'Corporate', placeholderText: 'AMUL (GCMMF)' },
   { id: 'client-ashmi', name: 'ASHMI', category: 'Corporate', placeholderText: 'ASHMI' },
-  { id: 'client-sai', name: 'Sai Enterprises', category: 'Corporate', placeholderText: 'SAI ENTERPRISES' },
 ];
 
 export const clientsByCategory = {
@@ -510,10 +515,8 @@ export const clientsByCategory = {
   ],
   corporate: [
     { name: 'TATA Group', subtitle: 'Metro Rail Corridor (Vikhroli–Ghatkopar & BKC)' },
-    { name: 'Godrej', subtitle: 'Commercial & Civil Facilities' },
     { name: 'Amul (GCMMF)', subtitle: 'Industrial & Facility Operations' },
     { name: 'ASHMI', subtitle: 'Corporate & Structural Works' },
-    { name: 'Sai Enterprises', subtitle: 'Infrastructure Services' },
   ],
 };
 
@@ -521,14 +524,14 @@ export const clientsByCategory = {
 // 8. WORKFORCE
 // -------------------------------------------------------------
 export const workforceData = {
-  total: '150+',
-  totalFormatted: '150+ Permanent Employees',
+  total: '75+',
+  totalFormatted: '75+ Permanent Employees',
   categories: [
     { role: 'Civil Engineers', desc: 'Site execution, quality assurance & structural calculations' },
     { role: 'High-Altitude Safety Technicians', desc: 'Rigging, marine net installation & high-risk elevated operations' },
     { role: 'Skilled Site Personnel', desc: 'Precision industrial coating, fabrication & heavy machinery operation' },
   ],
-  description: 'A dedicated team of 150+ permanent employees comprising experienced civil engineers, high-altitude safety technicians, and skilled site personnel ensuring zero-incident delivery across India.',
+  description: 'A dedicated team of 75+ permanent employees comprising experienced civil engineers, high-altitude safety technicians, and skilled site personnel ensuring zero-incident delivery across India.',
 };
 
 // -------------------------------------------------------------
@@ -562,7 +565,7 @@ export const equipmentData: EquipmentItem[] = [
     id: 'airless-spray',
     name: 'Heavy Industrial Airless Spray Plants',
     category: 'coating',
-    capacity: '4 Mobile Units',
+    capacity: 'High-Volume Commercial',
     application: 'High-volume infrastructure & viaduct coating',
     availability: 'Active Deployment',
     pressureRating: '3,300 PSI (227 Bar)',
@@ -574,7 +577,7 @@ export const equipmentData: EquipmentItem[] = [
     id: 'sand-blasting',
     name: 'Mobile Pressurized Sand Blasting Rigs',
     category: 'blasting',
-    capacity: '2 Heavy Rigs',
+    capacity: 'Heavy-Duty Industrial',
     application: 'Sa 2.5 and Sa 3.0 surface profile preparation',
     availability: 'Ready in Yard',
     pressureRating: '175 CFM @ 125 PSI',
@@ -586,7 +589,7 @@ export const equipmentData: EquipmentItem[] = [
     id: 'mig-tig-welding',
     name: 'Structural MIG / TIG Inverter Stations',
     category: 'welding',
-    capacity: '8 Heavy Stations',
+    capacity: 'Multi-Process Industrial',
     application: 'Highway frames, trusses, and structural joint fabrication',
     availability: 'Active Deployment',
     pressureRating: '400 Amp @ 60% Duty Cycle',
@@ -598,7 +601,7 @@ export const equipmentData: EquipmentItem[] = [
     id: 'aluminum-scaffolding',
     name: 'Modular High-Altitude Access Systems',
     category: 'access',
-    capacity: '2,500 m² Decking',
+    capacity: 'High-Altitude Modular',
     application: 'Elevated viaducts, bridge girders & safety net installation',
     availability: 'Ready in Yard',
     pressureRating: 'Safe Working Load 200 kg/m²',
@@ -720,11 +723,11 @@ export const processTimelineSteps: ProcessStep[] = [
 export const darkBandContent = {
   sectionLabel: 'SCALE & EXECUTION',
   headline: 'Nationwide Mobilization Across Critical Infrastructure',
-  subtext: 'Proven execution of ₹30+ Crore projects with 150+ permanent employees across Maharashtra, Goa, Delhi & Bangalore.',
+  subtext: 'Proven execution of ₹30+ Crore projects with 75+ permanent employees across Maharashtra, Goa, Delhi & Bangalore.',
   stats: [
     { value: '25+', label: 'Years Experience', sublabel: 'Founded in 1997' },
     { value: '₹30+', label: 'Crore Delivered', sublabel: 'Civil, Painting & Fabrication' },
-    { value: '100', label: 'Ft Sea Coating', sublabel: 'High-Altitude Marine Barrier' },
-    { value: '150+', label: 'Permanent Staff', sublabel: 'Engineers & Safety Technicians' },
+    { value: '100ft+', label: 'Ft Sea Coating', sublabel: 'High-Altitude Marine Barrier' },
+    { value: '75+', label: 'Permanent Staff', sublabel: 'Engineers & Safety Technicians' },
   ],
 };

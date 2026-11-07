@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { DarkCapacitySection } from '../components/DarkCapacitySection';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import { divisionHighlights, heroMilestones, equipmentData } from '../data/content';
+import { divisionHighlights, heroMilestones, equipmentData, equipmentCategoryLabels } from '../data/content';
 import { SeoHead } from '../components/SeoHead';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection';
 
@@ -141,8 +141,8 @@ export const HomePage: FC<HomePageProps> = ({ onOpenCapabilityModal }) => {
 
                   <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
                     <div>
-                      <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#687386]">
-                        {item.capacity}
+                      <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#2563EB] font-semibold">
+                        {equipmentCategoryLabels[item.category] || item.category}
                       </span>
                       <h3 className="text-sm sm:text-base font-bold text-[#20242D] font-heading group-hover:text-[#2563EB] transition-colors mt-0.5">
                         {item.name}

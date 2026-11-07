@@ -390,7 +390,7 @@ export const ServiceTabs: FC = () => {
               <div className="flex items-center justify-between text-[11px] text-[#687386] px-1 font-medium">
                 <span className="inline-flex items-center gap-1.5">
                   <PhoneCall className="w-3 h-3 text-[#3F73F5]" />
-                  Direct Desk: +91 8104158309
+                  Direct Desk: +91 8104158309 / 9324841946
                 </span>
                 <span>Fast 24h Response</span>
               </div>

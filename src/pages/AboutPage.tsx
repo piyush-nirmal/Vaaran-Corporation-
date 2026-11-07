@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { 
   Building2, 
-  TrendingUp, 
   Factory, 
   Wrench, 
   Briefcase, 
@@ -17,7 +16,8 @@ import {
   Truck,
   Gauge,
   Flame,
-  MapPin
+  MapPin,
+  ChevronDown
 } from 'lucide-react';
 import { companyConfig, clientsByCategory, workforceData } from '../data/content';
 import { useContent } from '../context/ContentContext';
@@ -83,8 +83,8 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
       'clients',
       'workforce',
       'board',
-      'financials',
       'infrastructure',
+      'machinery-spvs',
       'machinery',
       'spvs',
       'policy',
@@ -247,11 +247,11 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
                   {/* Cinematic Dark Gradient Overlays */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128]/95 via-[#0A1128]/45 to-[#0A1128]/55 pointer-events-none" />
 
-                  {/* Top Bar: Registered Contractor Badge & Founding Pill */}
+                  {/* Top Bar: Established & Operational Pill */}
                   <div className="relative z-10 flex items-center justify-between gap-2">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/55 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs font-mono font-medium shadow-xs">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                      <span className="truncate">VRN-IND-9001 · Active Govt Contractor</span>
+                      <span className="truncate">Civil Infrastructure & Industrial Coating</span>
                     </div>
                     <span className="px-2.5 py-1 rounded-xl bg-[#2864F0]/90 backdrop-blur-md text-white font-mono text-[11px] sm:text-xs font-bold border border-white/20 shadow-xs shrink-0">
                       Est. 1997
@@ -291,7 +291,7 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
 
                       <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-center">
                         <div className="text-lg sm:text-xl font-bold font-heading text-white">
-                          150+
+                          75+
                         </div>
                         <div className="text-[10px] text-white/80 font-body leading-tight mt-0.5">
                           Permanent Crew
@@ -314,54 +314,93 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
         </div>
       </section>
 
-      {/* Quick In-Page Sticky Navigation Bar - Refined Corporate Minimalist Header */}
+      {/* Quick In-Page Sticky Navigation Bar - Segregated Parts (Apco Infra Reference Style) */}
       <div className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-[#DFE6F0] shadow-xs">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <nav 
-            className="flex items-center gap-6 sm:gap-8 overflow-x-auto scrollbar-none py-3 text-[13px] sm:text-[14px] font-medium"
-            aria-label="About page section navigation"
-          >
-            {[
-              { id: 'story', label: 'Excellence Over Decades', href: '#story' },
-              { id: 'journey', label: 'Company Journey', href: '#journey' },
-              { id: 'clients', label: 'Esteemed Clients', href: '#clients' },
-              { id: 'workforce', label: 'Workforce', href: '#workforce' },
-              { id: 'board', label: 'Board Members', href: '#board' },
-              { id: 'financials', label: 'Financials', href: '#financials' },
-              { id: 'infrastructure', label: 'Infrastructure', href: '#infrastructure' },
-              { id: 'machinery', label: 'Machinery & Fleet', href: '#machinery' },
-              { id: 'policy', label: 'Accreditation', href: '#policy' },
-            ].map((tab) => {
-              const isActive = activeSection === tab.id;
-              return (
-                <a
-                  key={tab.id}
-                  href={tab.href}
-                  onClick={() => setActiveSection(tab.id)}
-                  className={`relative py-1 whitespace-nowrap transition-colors duration-200 cursor-pointer ${
-                    isActive 
-                      ? 'text-[#2563EB] font-bold' 
-                      : 'text-[#68758A] hover:text-[#242B38]'
-                  }`}
+          <div className="flex items-center justify-between py-2 sm:py-3 gap-3">
+            {/* Desktop Horizontal Segregated Parts Bar */}
+            <nav 
+              className="hidden lg:flex items-center gap-5 xl:gap-7 overflow-x-auto scrollbar-none py-1 text-[13px] sm:text-[13.5px] font-medium"
+              aria-label="About page section navigation"
+            >
+              {[
+                { id: 'story', label: 'Mission, Vision', href: '#story' },
+                { id: 'board', label: 'Board Members', href: '#board' },
+                { id: 'clients', label: 'Our Esteemed Clients', href: '#clients' },
+                { id: 'infrastructure', label: 'Infrastructure', href: '#infrastructure' },
+                { id: 'machinery-spvs', label: 'Machinery & Equipment Assets / SPVs', href: '#machinery-spvs' },
+                { id: 'policy', label: 'Corporate Governance & Accreditation', href: '#policy' },
+              ].map((tab) => {
+                const isActive = 
+                  activeSection === tab.id || 
+                  (tab.id === 'board' && activeSection === 'workforce') ||
+                  (tab.id === 'machinery-spvs' && (activeSection === 'machinery' || activeSection === 'spvs'));
+                return (
+                  <a
+                    key={tab.id}
+                    href={tab.href}
+                    onClick={() => setActiveSection(tab.id)}
+                    className={`relative py-1 whitespace-nowrap transition-colors duration-200 cursor-pointer ${
+                      isActive 
+                        ? 'text-[#2563EB] font-bold' 
+                        : 'text-[#68758A] hover:text-[#242B38]'
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    {isActive && (
+                      <span 
+                        className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#2563EB] rounded-full -mb-3" 
+                        aria-hidden="true" 
+                      />
+                    )}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Mobile / Tablet Dropdown Selector for Quick Segregated Navigation */}
+            <div className="lg:hidden w-full flex items-center justify-between gap-2.5">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#687386] shrink-0">
+                About Us Part:
+              </span>
+              <div className="relative flex-1 max-w-sm">
+                <select
+                  value={
+                    activeSection === 'workforce' 
+                      ? 'board' 
+                      : (activeSection === 'machinery' || activeSection === 'spvs') 
+                        ? 'machinery-spvs' 
+                        : activeSection
+                  }
+                  onChange={(e) => {
+                    const targetId = e.target.value;
+                    setActiveSection(targetId);
+                    const el = document.getElementById(targetId);
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className="w-full appearance-none px-3.5 py-2 text-xs font-bold text-[#15233E] bg-[#F8FAFF] border border-[#DFE6F0] rounded-xl font-heading focus:outline-none focus:ring-2 focus:ring-[#2563EB] pr-8 shadow-2xs"
                 >
-                  <span>{tab.label}</span>
-                  {isActive && (
-                    <span 
-                      className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#2563EB] rounded-full -mb-3" 
-                      aria-hidden="true" 
-                    />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
+                  <option value="story">1. Mission, Vision</option>
+                  <option value="board">2. Board Members</option>
+                  <option value="clients">3. Our Esteemed Clients</option>
+                  <option value="infrastructure">4. Infrastructure</option>
+                  <option value="machinery-spvs">5. Machinery & Equipment Assets / SPVs</option>
+                  <option value="policy">6. Corporate Governance & Accreditation</option>
+                </select>
+                <ChevronDown className="w-4 h-4 text-slate-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* ========================================================= */}
-      {/* 1. EXCELLENCE BUILT OVER DECADES — CLEAN VISUAL SHOWCASE */}
+      {/* 1. MISSION, VISION & EXCELLENCE BUILT OVER DECADES */}
       {/* ========================================================= */}
       <section id="story" className="scroll-mt-28 sm:scroll-mt-36 py-10 sm:py-16 lg:py-20 bg-white border-b border-[#E2E9F4] w-full relative">
+        <div id="mission" className="scroll-mt-28 sm:scroll-mt-36" />
         {/* Subtle Background Blueprint Grid */}
         <div className="absolute inset-0 bg-grid-blueprint opacity-10 pointer-events-none -z-10" aria-hidden="true" />
 
@@ -374,11 +413,11 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
               <div className="space-y-2.5">
                 <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider bg-[#EDF3FF] px-2.5 py-1 rounded-md border border-[#D9E6FF]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-                  <span>01 · Who We Are</span>
+                  <span>01 · Mission, Vision & Purpose</span>
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-[#20242D] font-heading leading-tight tracking-tight">
-                  Excellence Built Over Decades
+                  Mission, Vision & Excellence Over Decades
                 </h2>
                 
                 <p className="text-[#64748B] text-sm sm:text-base leading-relaxed font-body">
@@ -418,7 +457,7 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
                   <div className="text-[11px] text-[#64748B] font-medium mt-0.5">Delivered</div>
                 </div>
                 <div className="p-3 rounded-xl bg-[#F8FAFF] border border-[#E2E9F4] text-center">
-                  <div className="text-lg sm:text-xl font-bold text-[#2563EB] font-heading">150+</div>
+                  <div className="text-lg sm:text-xl font-bold text-[#2563EB] font-heading">75+</div>
                   <div className="text-[11px] text-[#64748B] font-medium mt-0.5">Direct Crew</div>
                 </div>
               </div>
@@ -643,7 +682,7 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
                         {/* Prominent Authentic Brand Logo Badge */}
                         <div className="h-12 px-3.5 min-w-[64px] rounded-xl bg-[#F8FAFF] border border-[#E2E9F4] inline-flex items-center justify-center p-2 shadow-2xs group-hover:border-[#2563EB]/40 group-hover:bg-white transition-all w-fit">
                           {Logo ? (
-                            <Logo className="h-8 w-auto max-w-[120px]" />
+                            <Logo className="h-8 w-auto max-w-[130px]" />
                           ) : (
                             <Building2 className="w-5 h-5 text-[#2563EB]" />
                           )}
@@ -684,7 +723,7 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
                   Commercial conglomerates, facility operations & industrial clients
                 </span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
                 {clientsByCategory.corporate.map((client) => {
                   const Logo = getClientLogoComponent(client.name);
                   return (
@@ -737,9 +776,10 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
       </section>
 
       {/* ========================================================= */}
-      {/* 4. WORKFORCE & GOVERNANCE — SOFT BLUE-GRAY SECTION BAND (#F8FAFF) */}
+      {/* 4. BOARD MEMBERS, WORKFORCE & GOVERNANCE — SOFT BLUE-GRAY SECTION BAND (#F8FAFF) */}
       {/* ========================================================= */}
-      <section id="workforce" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-[#F8FAFF] border-b border-[#E2E9F4] w-full">
+      <section id="workforce" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-[#F8FAFF] border-b border-[#E2E9F4] w-full relative">
+        <div id="board" className="scroll-mt-28 sm:scroll-mt-36" />
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
@@ -747,10 +787,10 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
             <div className="lg:col-span-4 space-y-4 sm:space-y-5">
               <div className="space-y-1.5 sm:space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider block bg-[#EAF2FF] px-2.5 py-0.5 rounded-md w-fit">
-                  04 · Human Capital & Operations
+                  04 · Board Members & Human Capital
                 </span>
                 <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] font-heading leading-tight tracking-tight mt-0.5">
-                  Permanent Workforce
+                  Board Members & Workforce
                 </h2>
               </div>
               <p className="text-[#687386] text-xs sm:text-sm leading-relaxed font-body">
@@ -771,7 +811,7 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
 
                 <div>
                   <div className="text-2xl sm:text-3xl font-bold text-[#20242D] font-heading tracking-tight">
-                    150+ Direct Staff
+                    75+ Direct Staff
                   </div>
                   <div className="text-xs text-[#2563EB] font-medium mt-0.5">
                     Permanent On-Roll Team · Zero Subcontracted Risk
@@ -874,64 +914,13 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
       </section>
 
       {/* ========================================================= */}
-      {/* 5. FINANCIAL STABILITY — WHITE SECTION BAND */}
-      {/* ========================================================= */}
-      <section id="financials" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-white border-b border-[#E2E9F4] w-full">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
-            <div className="space-y-1.5 sm:space-y-2 max-w-2xl">
-              <span className="text-[11px] sm:text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider block bg-[#EAF2FF] px-2.5 py-0.5 rounded-md w-fit">
-                05 · Balance Sheet Strength
-              </span>
-              <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] font-heading tracking-tight mt-0.5">
-                Financial Stability & Solvency
-              </h2>
-              <p className="text-xs sm:text-sm text-[#687386] font-body">
-                Robust balance sheet, high bonding capacity, and clean banking relationships enabling smooth execution of mega projects.
-              </p>
-            </div>
-            <div className="text-[11px] sm:text-xs font-mono font-semibold text-[#2454C6] px-3 py-1.5 rounded-lg bg-[#F8FAFF] border border-[#E2E9F4] shadow-2xs w-fit">
-              Consortium Lines: SBI · HDFC · ICICI
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
-            {[
-              { label: 'Active Order Book', value: '₹850+ Cr', desc: 'Secured national transit and highway contracts' },
-              { label: 'Credit Rating', value: 'A+ Stable', desc: 'Investment-grade solvency rating from premier agencies' },
-              { label: 'Bank Guarantee Lines', value: '₹150+ Cr', desc: 'Consortium backing from SBI, HDFC, and ICICI Bank' },
-              { label: 'Revenue Growth', value: '28% YoY', desc: 'Consistent 5-year compound annual expansion' },
-            ].map((fin, i) => (
-              <ScrollCardReveal
-                key={fin.label}
-                delay={0.06 + i * 0.08}
-                yOffset={28}
-                className="p-4 sm:p-6 rounded-2xl bg-[#F8FAFF] border border-[#E2E9F4] shadow-xs space-y-2.5 sm:space-y-3 hover:border-[#2563EB] hover:bg-white transition-all"
-              >
-                <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-mono text-[#2563EB] font-semibold uppercase truncate">
-                  <TrendingUp className="w-3 sm:w-3.5 h-3 sm:h-3.5 shrink-0" />
-                  <span className="truncate">{fin.label}</span>
-                </div>
-                <div className="text-xl sm:text-3xl font-extrabold text-[#20242D] font-heading tabular-nums">
-                  {fin.value}
-                </div>
-                <p className="text-[11px] sm:text-xs text-[#687386] leading-relaxed font-body line-clamp-2">
-                  {fin.desc}
-                </p>
-              </ScrollCardReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 6. INFRASTRUCTURE & FACILITIES — SOFT BLUE-GRAY SECTION BAND (#F8FAFF) */}
+      {/* 5. INFRASTRUCTURE & FACILITIES — SOFT BLUE-GRAY SECTION BAND (#F8FAFF) */}
       {/* ========================================================= */}
       <section id="infrastructure" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-[#F8FAFF] border-b border-[#E2E9F4] w-full">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
           <div className="space-y-2 sm:space-y-3 max-w-3xl">
             <span className="text-[11px] sm:text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider block bg-[#EAF2FF] px-2.5 py-0.5 rounded-md w-fit">
-              06 · Regional Footprint & Yards
+              05 · Regional Footprint & Yards
             </span>
             <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] font-heading tracking-tight mt-0.5">
               Engineering Yards & Facilities
@@ -1162,136 +1151,152 @@ export const AboutPage: FC<AboutPageProps> = ({ onOpenCapabilityModal }) => {
       </section>
 
       {/* ========================================================= */}
-      {/* 7. MACHINERY & FLEET ROSTER — WHITE SECTION BAND */}
+      {/* 6. MACHINERY & EQUIPMENT ASSETS / SPVs — UNIFIED SECTION BAND */}
       {/* ========================================================= */}
-      <section id="machinery" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-white border-b border-[#E2E9F4] w-full">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
-            <div className="space-y-1.5 sm:space-y-2 max-w-2xl">
-              <span className="text-[11px] sm:text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider block bg-[#EAF2FF] px-2.5 py-0.5 rounded-md w-fit">
-                07 · Mechanized Contractor Scale
-              </span>
-              <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] font-heading tracking-tight mt-0.5">
-                Machinery & Equipment Assets
-              </h2>
-              <p className="text-xs sm:text-sm text-[#687386] font-body">
-                Over 40+ specialized contractor machines maintained in company yards to eliminate project site mobilization delays.
-              </p>
-            </div>
-
-            <Link
-              to="/fleet"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 lg:h-[48px] rounded-xl bg-[#2563EB] text-white hover:bg-[#1D4ED8] text-xs font-bold uppercase tracking-wider transition-colors shrink-0 shadow-sm shadow-blue-600/25 w-full sm:w-auto"
-            >
-              <span>View Complete Fleet</span>
-              <ArrowRight className="w-4 h-4 text-white" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-            {[
-              { name: 'Airless Spray Plants', count: '4 Units', desc: 'Heavy high-volume coating systems' },
-              { name: 'Mobile Blasting Rigs', count: '2 Heavy Rigs', desc: 'Sa 2.5 profile surface preparation' },
-              { name: 'MIG/TIG Inverter Stations', count: '8 Stations', desc: 'AWS D1.1 certified structural welding' },
-              { name: 'Aluminum Scaffolding', count: '2,500 m²', desc: 'High-altitude viaduct access decking' },
-            ].map((eq, i) => (
-              <ScrollCardReveal
-                key={eq.name}
-                delay={0.06 + i * 0.08}
-                yOffset={26}
-                className="p-4 sm:p-5 rounded-2xl bg-[#F8FAFF] border border-[#E2E9F4] space-y-2 hover:border-[#2563EB] hover:bg-white transition-all shadow-2xs"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#2563EB]">{eq.count}</span>
-                  <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2563EB]" />
-                </div>
-                <h4 className="font-bold text-[#20242D] text-xs sm:text-sm font-heading">{eq.name}</h4>
-                <p className="text-[11px] sm:text-xs text-[#687386] line-clamp-2">{eq.desc}</p>
-              </ScrollCardReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 8. SPECIAL PURPOSE VEHICLES (SPVs) — SOFT BLUE-GRAY SECTION BAND (#F8FAFF) */}
-      {/* ========================================================= */}
-      <section id="spvs" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-[#F8FAFF] border-b border-[#E2E9F4] w-full">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
+      <section id="machinery-spvs" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-white border-b border-[#E2E9F4] w-full relative">
+        <div id="machinery" className="scroll-mt-24 sm:scroll-mt-36" />
+        <div id="spvs" className="scroll-mt-24 sm:scroll-mt-36" />
+        
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
+          {/* Main Unified Header */}
           <div className="space-y-2 sm:space-y-3 max-w-3xl">
             <span className="text-[11px] sm:text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider block bg-[#EAF2FF] px-2.5 py-0.5 rounded-md w-fit">
-              08 · Project Governance & SPVs
+              06 · Contractor Assets & Project SPVs
             </span>
             <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] font-heading tracking-tight mt-0.5">
-              Special Purpose Vehicles (SPVs)
+              Machinery & Equipment Assets / SPVs
             </h2>
             <p className="text-[#687386] text-xs sm:text-sm lg:text-base font-body">
-              Dedicated project companies incorporated for concession agreements, HAM models, and ring-fenced public infrastructure delivery.
+              Mechanized heavy contracting fleet infrastructure combined with ring-fenced Special Purpose Vehicles (SPVs) for turnkey execution and concession delivery.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
-            {[
-              {
-                name: 'Varan Expressway Infra SPV',
-                model: 'HAM & Concession Packages',
-                focus: 'Dedicated execution entity for national high-speed expressway alignments and river crossing bridges.',
-                status: 'Active Concession'
-              },
-              {
-                name: 'Varan Transit Viaducts JV',
-                model: 'Metro Rail EPC Consortium',
-                focus: 'Joint venture entity dedicated to urban elevated viaducts, transit portals, and specialized coating programs.',
-                status: 'Active EPC'
-              },
-              {
-                name: 'Varan Structural Steelworks SPV',
-                model: 'Turnkey Fabrication & Erection',
-                focus: 'Specialized vehicle for heavy toll plaza canopies, highway overhead gantries, and CNC fabricated trusses.',
-                status: 'Active Delivery'
-              },
-            ].map((spv, i) => (
-              <ScrollCardReveal
-                key={spv.name}
-                delay={0.08 + i * 0.1}
-                yOffset={28}
-                className="p-5 sm:p-7 rounded-2xl bg-white border border-[#E2E9F4] shadow-xs space-y-3 sm:space-y-4 flex flex-col justify-between hover-card-smooth"
-              >
-                <div className="space-y-2 sm:space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-[#EAF2FF] text-[#2454C6] font-semibold">
-                      {spv.model}
-                    </span>
-                    <span className="text-[10px] sm:text-xs font-mono text-[#2563EB] font-semibold">
-                      ● {spv.status}
-                    </span>
-                  </div>
-                  <h3 className="text-sm sm:text-base font-bold text-[#20242D] font-heading">
-                    {spv.name}
+          {/* Sub-Part A: Machinery & Equipment Assets */}
+          <div className="space-y-5 sm:space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 border-b border-[#E2E9F4] pb-3 sm:pb-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Wrench className="w-4 h-4 text-[#2563EB]" />
+                  <h3 className="text-base sm:text-lg font-bold text-[#20242D] font-heading">
+                    Machinery & Equipment Assets
                   </h3>
-                  <p className="text-xs text-[#687386] leading-relaxed font-body">
-                    {spv.focus}
-                  </p>
                 </div>
+                <p className="text-xs sm:text-sm text-[#687386] font-body">
+                  Over 40+ specialized contractor machines maintained in company yards to eliminate project site mobilization delays.
+                </p>
+              </div>
 
-                <div className="pt-3 sm:pt-4 border-t border-[#E2E9F4] flex items-center gap-1.5 text-[11px] sm:text-xs text-[#687386] font-medium">
-                  <Briefcase className="w-3.5 h-3.5 text-[#2563EB]" />
-                  <span>Ring-Fenced Governance & Escrow Controlled</span>
-                </div>
-              </ScrollCardReveal>
-            ))}
+              <Link
+                to="/fleet"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#2563EB] text-white hover:bg-[#1D4ED8] text-xs font-bold uppercase tracking-wider transition-colors shrink-0 shadow-sm shadow-blue-600/25 w-full sm:w-auto"
+              >
+                <span>View Complete Fleet</span>
+                <ArrowRight className="w-4 h-4 text-white" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+              {[
+                { name: 'Airless Spray Plants', count: '4 Units', desc: 'Heavy high-volume coating systems' },
+                { name: 'Mobile Blasting Rigs', count: '2 Heavy Rigs', desc: 'Sa 2.5 profile surface preparation' },
+                { name: 'MIG/TIG Inverter Stations', count: '8 Stations', desc: 'AWS D1.1 certified structural welding' },
+                { name: 'Aluminum Scaffolding', count: '2,500 m²', desc: 'High-altitude viaduct access decking' },
+              ].map((eq, i) => (
+                <ScrollCardReveal
+                  key={eq.name}
+                  delay={0.06 + i * 0.08}
+                  yOffset={26}
+                  className="p-4 sm:p-5 rounded-2xl bg-[#F8FAFF] border border-[#E2E9F4] space-y-2 hover:border-[#2563EB] hover:bg-white transition-all shadow-2xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#2563EB]">{eq.count}</span>
+                    <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2563EB]" />
+                  </div>
+                  <h4 className="font-bold text-[#20242D] text-xs sm:text-sm font-heading">{eq.name}</h4>
+                  <p className="text-[11px] sm:text-xs text-[#687386] line-clamp-2">{eq.desc}</p>
+                </ScrollCardReveal>
+              ))}
+            </div>
           </div>
+
+          {/* Sub-Part B: Special Purpose Vehicles (SPVs) */}
+          <div className="space-y-5 sm:space-y-6 pt-4 sm:pt-6">
+            <div className="space-y-1 border-b border-[#E2E9F4] pb-3 sm:pb-4">
+              <div className="flex items-center gap-2">
+                <Briefcase className="w-4 h-4 text-[#2563EB]" />
+                <h3 className="text-base sm:text-lg font-bold text-[#20242D] font-heading">
+                  Special Purpose Vehicles (SPVs)
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-[#687386] font-body">
+                Dedicated project companies incorporated for concession agreements, HAM models, and ring-fenced public infrastructure delivery.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
+              {[
+                {
+                  name: 'Varan Expressway Infra SPV',
+                  model: 'HAM & Concession Packages',
+                  focus: 'Dedicated execution entity for national high-speed expressway alignments and river crossing bridges.',
+                  status: 'Active Concession'
+                },
+                {
+                  name: 'Varan Transit Viaducts JV',
+                  model: 'Metro Rail EPC Consortium',
+                  focus: 'Joint venture entity dedicated to urban elevated viaducts, transit portals, and specialized coating programs.',
+                  status: 'Active EPC'
+                },
+                {
+                  name: 'Varan Structural Steelworks SPV',
+                  model: 'Turnkey Fabrication & Erection',
+                  focus: 'Specialized vehicle for heavy toll plaza canopies, highway overhead gantries, and CNC fabricated trusses.',
+                  status: 'Active Delivery'
+                },
+              ].map((spv, i) => (
+                <ScrollCardReveal
+                  key={spv.name}
+                  delay={0.08 + i * 0.1}
+                  yOffset={28}
+                  className="p-5 sm:p-7 rounded-2xl bg-[#F8FAFF] border border-[#E2E9F4] shadow-xs space-y-3 sm:space-y-4 flex flex-col justify-between hover-card-smooth hover:bg-white hover:border-[#2563EB]"
+                >
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-[#EAF2FF] text-[#2454C6] font-semibold">
+                        {spv.model}
+                      </span>
+                      <span className="text-[10px] sm:text-xs font-mono text-[#2563EB] font-semibold">
+                        ● {spv.status}
+                      </span>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-bold text-[#20242D] font-heading">
+                      {spv.name}
+                    </h3>
+                    <p className="text-xs text-[#687386] leading-relaxed font-body">
+                      {spv.focus}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 sm:pt-4 border-t border-[#E2E9F4] flex items-center gap-1.5 text-[11px] sm:text-xs text-[#687386] font-medium">
+                    <Briefcase className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <span>Ring-Fenced Governance & Escrow Controlled</span>
+                  </div>
+                </ScrollCardReveal>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* 9. CORPORATE POLICY & ACCREDITATION — WHITE SECTION BAND */}
+      {/* 7. CORPORATE POLICY & ACCREDITATION — WHITE SECTION BAND */}
       {/* ========================================================= */}
       <section id="policy" className="scroll-mt-24 sm:scroll-mt-36 py-12 sm:py-20 lg:py-24 bg-white border-b border-[#E2E9F4] w-full">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
           <div className="space-y-1.5 sm:space-y-2 max-w-2xl">
             <span className="text-[11px] sm:text-xs font-mono font-bold text-[#2563EB] uppercase tracking-wider block bg-[#EAF2FF] px-2.5 py-0.5 rounded-md w-fit">
-              09 · Compliance & Standards
+              07 · Compliance & Standards
             </span>
             <h2 className="text-xl sm:text-3xl lg:text-[34px] font-bold text-[#20242D] font-heading tracking-tight mt-0.5">
               Corporate Policy & Accreditation

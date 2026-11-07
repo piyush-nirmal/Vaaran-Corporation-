@@ -124,8 +124,8 @@ export const ProjectsPage: FC<ProjectsPageProps> = ({ onOpenCapabilityModal }) =
 
                 <div className="p-3 rounded-xl bg-white/95 border border-[#DCE4EF] shadow-2xs hover:border-[#2864F0]/30 transition-colors">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xl sm:text-2xl font-bold font-heading text-[#2864F0]">100</span>
-                    <span className="text-[10px] sm:text-[11px] font-mono text-[#66748A]">Ft</span>
+                    <span className="text-xl sm:text-2xl font-bold font-heading text-[#2864F0]">100ft+</span>
+                    <span className="text-[10px] sm:text-[11px] font-mono text-[#66748A]">Sea Barrier</span>
                   </div>
                   <div className="text-[10px] font-bold uppercase tracking-wider text-[#15315B] mt-0.5 leading-snug">
                     Marine Elevation
@@ -134,7 +134,7 @@ export const ProjectsPage: FC<ProjectsPageProps> = ({ onOpenCapabilityModal }) =
 
                 <div className="p-3 rounded-xl bg-white/95 border border-[#DCE4EF] shadow-2xs hover:border-[#2864F0]/30 transition-colors">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xl sm:text-2xl font-bold font-heading text-[#2864F0]">150+</span>
+                    <span className="text-xl sm:text-2xl font-bold font-heading text-[#2864F0]">75+</span>
                     <span className="text-[10px] sm:text-[11px] font-mono text-[#66748A]">Staff</span>
                   </div>
                   <div className="text-[10px] font-bold uppercase tracking-wider text-[#15315B] mt-0.5 leading-snug">

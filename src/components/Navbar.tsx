@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { VrnLogo } from './VrnLogo';
-import { Menu, X, ArrowRight, Phone } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, ChevronDown, ChevronRight } from 'lucide-react';
 import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
 import { useContent } from '../context/ContentContext';
@@ -16,6 +16,21 @@ export interface NavItem {
   path: string;
   label: string;
 }
+
+export interface NavSubItem {
+  label: string;
+  href: string;
+  id: string;
+}
+
+export const aboutDropdownItems: NavSubItem[] = [
+  { label: 'Mission, Vision', href: '/about#story', id: 'story' },
+  { label: 'Board Members', href: '/board-members', id: 'board' },
+  { label: 'Our Esteemed Clients', href: '/about#clients', id: 'clients' },
+  { label: 'Infrastructure', href: '/about#infrastructure', id: 'infrastructure' },
+  { label: 'Machinery & Equipment Assets / SPVs', href: '/about#machinery-spvs', id: 'machinery-spvs' },
+  { label: 'Corporate Governance & Accreditation', href: '/about#policy', id: 'policy' },
+];
 
 const navItems: NavItem[] = [
   { path: '/', label: 'Home' },
@@ -32,6 +47,9 @@ export const Navbar: FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
+  const aboutTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -85,6 +103,27 @@ export const Navbar: FC<NavbarProps> = () => {
     return location.pathname.startsWith(path);
   };
 
+  const handleSubItemClick = (href: string) => {
+    setIsAboutDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+    if (aboutTimeoutRef.current) clearTimeout(aboutTimeoutRef.current);
+    if (href.includes('#')) {
+      const [path, hash] = href.split('#');
+      if (location.pathname === path && hash) {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (aboutTimeoutRef.current) clearTimeout(aboutTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <>
       {/* Scroll Progress Bar at very top */}
@@ -121,14 +160,102 @@ export const Navbar: FC<NavbarProps> = () => {
             </div>
           </Link>
           
-          {/* Desktop Navigation Links: Clean Modern Minimalist Links with Animated Bottom Glowing Indicator */}
+          {/* Desktop Navigation Links: Clean Modern Minimalist Links with Apco-Style Segregated Dropdown */}
           <nav 
-            onMouseLeave={() => setHoveredPath(null)}
+            onMouseLeave={() => {
+              setHoveredPath(null);
+            }}
             className="hidden lg:flex items-center gap-1.5 xl:gap-3 text-[14.5px] font-medium font-sans relative py-1"
           >
             {navItems.map((link) => {
               const isActive = isLinkActive(link.path);
               const isHovered = hoveredPath === link.path;
+
+              // Segregated Dropdown for About Us (Reference: Apco Infratech dropdown)
+              if (link.path === '/about') {
+                return (
+                  <div
+                    key={link.label}
+                    className="relative py-2"
+                    onMouseEnter={() => {
+                      if (aboutTimeoutRef.current) clearTimeout(aboutTimeoutRef.current);
+                      setIsAboutDropdownOpen(true);
+                      setHoveredPath('/about');
+                    }}
+                    onMouseLeave={() => {
+                      aboutTimeoutRef.current = setTimeout(() => {
+                        setIsAboutDropdownOpen(false);
+                        setHoveredPath(null);
+                      }, 180);
+                    }}
+                  >
+                    <Link
+                      to={link.path}
+                      className={`group relative px-3.5 py-2 transition-all duration-200 cursor-pointer flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2864F0] rounded-lg ${
+                        isActive || isAboutDropdownOpen
+                          ? 'text-[#2864F0] font-semibold'
+                          : 'text-[#202A38] hover:text-[#2864F0]'
+                      }`}
+                    >
+                      {/* Subtle translucent hover background bloom */}
+                      {(isHovered || isAboutDropdownOpen) && !isActive && (
+                        <motion.div
+                          layoutId="navHoverBackdrop"
+                          transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                          className="absolute inset-0 rounded-lg pointer-events-none bg-[#EAF1FF]/70"
+                        />
+                      )}
+
+                      {/* Nav Label Text */}
+                      <span className="relative z-10 tracking-[0.01em] transition-transform duration-200 group-hover:-translate-y-0.5">
+                        {link.label}
+                      </span>
+
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 relative z-10 transition-transform duration-200 ${
+                          isAboutDropdownOpen ? 'rotate-180 text-[#2864F0]' : 'text-slate-500 group-hover:text-[#2864F0]'
+                        }`}
+                      />
+
+                      {/* Active Bottom Indicator Line */}
+                      {(isActive || isAboutDropdownOpen) && (
+                        <motion.div
+                          layoutId="navActiveLine"
+                          transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                          className="absolute -bottom-1 left-2 right-2 h-[2.5px] rounded-full bg-[#2864F0] shadow-[0_1px_6px_rgba(40,100,240,0.4)]"
+                        />
+                      )}
+                    </Link>
+
+                    {/* Dropdown Menu (Apco Infra Style Segregated Parts Reference) */}
+                    <AnimatePresence>
+                      {isAboutDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                          transition={{ duration: 0.16, ease: 'easeOut' }}
+                          className="absolute top-full left-0 w-72 sm:w-80 bg-white rounded-xl shadow-2xl border border-slate-200/90 py-1 overflow-hidden z-50 mt-0.5 divide-y divide-slate-100"
+                        >
+                          {aboutDropdownItems.map((item) => (
+                            <Link
+                              key={item.label}
+                              to={item.href}
+                              onClick={() => handleSubItemClick(item.href)}
+                              className="flex items-center justify-between px-5 py-3 text-[13.5px] font-bold text-[#15233E] hover:text-[#2563EB] hover:bg-[#F4F8FF] transition-all font-heading group/sub"
+                            >
+                              <span className="group-hover/sub:translate-x-1 transition-transform duration-150">
+                                {item.label}
+                              </span>
+                              <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover/sub:text-[#2563EB] group-hover/sub:translate-x-0.5 transition-all" />
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
 
               return (
                 <Link
@@ -273,6 +400,68 @@ export const Navbar: FC<NavbarProps> = () => {
                 </div>
                 {navItems.map((link, idx) => {
                   const isActive = isLinkActive(link.path);
+
+                  if (link.path === '/about') {
+                    return (
+                      <motion.div
+                        key={link.label}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.04, duration: 0.2 }}
+                        className="rounded-xl border border-slate-200/80 overflow-hidden bg-slate-50 shadow-xs"
+                      >
+                        <div className="flex items-center justify-between p-1">
+                          <Link
+                            to={link.path}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`flex-1 text-sm sm:text-base font-bold uppercase tracking-wide font-heading py-2.5 px-3 rounded-lg transition-colors ${
+                              isActive ? 'text-[#2563EB]' : 'text-slate-800 hover:text-[#2563EB]'
+                            }`}
+                          >
+                            <span>{link.label}</span>
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setIsMobileAboutExpanded(!isMobileAboutExpanded)}
+                            className="p-2.5 text-slate-500 hover:text-[#2563EB] cursor-pointer rounded-lg hover:bg-slate-200/60"
+                            aria-label="Toggle About Submenu"
+                          >
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-200 ${
+                                isMobileAboutExpanded ? 'rotate-180 text-[#2563EB]' : ''
+                              }`}
+                            />
+                          </button>
+                        </div>
+
+                        {/* Expandable Segregated Parts Submenu */}
+                        <AnimatePresence>
+                          {isMobileAboutExpanded && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="bg-white border-t border-slate-200/80 divide-y divide-slate-100"
+                            >
+                              {aboutDropdownItems.map((sub) => (
+                                <Link
+                                  key={sub.label}
+                                  to={sub.href}
+                                  onClick={() => handleSubItemClick(sub.href)}
+                                  className="flex items-center justify-between px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-[#2563EB] hover:bg-[#F8FAFF] font-heading transition-colors"
+                                >
+                                  <span>{sub.label}</span>
+                                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    );
+                  }
+
                   return (
                     <motion.div
                       key={link.label}
@@ -299,16 +488,25 @@ export const Navbar: FC<NavbarProps> = () => {
 
               {/* High-Visibility Action Buttons */}
               <div className="space-y-3 pt-5 border-t border-slate-200">
-                {/* Direct Call Button */}
-                <a
-                  href={`tel:${currentCompany.phoneRaw}`}
-                  className="w-full py-3.5 bg-emerald-50 hover:bg-emerald-100 active:scale-[0.99] text-emerald-700 rounded-xl font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2.5 font-heading transition-all border border-emerald-300 shadow-xs"
-                >
-                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-xs">
-                    <Phone className="w-3.5 h-3.5 fill-white" />
-                  </div>
-                  <span>Direct Desk: {currentCompany.phone}</span>
-                </a>
+                {/* Direct Call Buttons */}
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href="tel:+918104158309"
+                    className="py-3 bg-emerald-50 hover:bg-emerald-100 active:scale-[0.99] text-emerald-800 rounded-xl font-bold uppercase text-[11px] tracking-wider flex items-center justify-center gap-1.5 font-heading transition-all border border-emerald-300 shadow-xs"
+                    title="Call Desk 1"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>8104158309</span>
+                  </a>
+                  <a
+                    href="tel:+919324841946"
+                    className="py-3 bg-emerald-50 hover:bg-emerald-100 active:scale-[0.99] text-emerald-800 rounded-xl font-bold uppercase text-[11px] tracking-wider flex items-center justify-center gap-1.5 font-heading transition-all border border-emerald-300 shadow-xs"
+                    title="Call Desk 2"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>9324841946</span>
+                  </a>
+                </div>
 
                 {/* Primary CTA */}
                 <button

@@ -97,7 +97,7 @@ export const CareersPage: FC<CareersPageProps> = () => {
       {/* Dynamic SEO Meta Tags */}
       <SeoHead
         title="Careers & Workforce Opportunities | Varan Corporation"
-        description="Join Varan Corporation's nationwide workforce of 150+ permanent professionals. Explore engineering opportunities in civil construction, high-altitude rigging, and industrial protective coatings."
+        description="Join Varan Corporation's nationwide workforce of 75+ permanent professionals. Explore engineering opportunities in civil construction, high-altitude rigging, and industrial protective coatings."
         keywords="Varan Corporation careers, civil engineer jobs Mumbai, industrial painter jobs, high altitude rigging technician, infrastructure engineering careers India, ESIC PF compliant employer"
       />
 
@@ -132,13 +132,13 @@ export const CareersPage: FC<CareersPageProps> = () => {
                   <span className="text-[#2864F0]">Advance Your Career.</span>
                 </h1>
                 <p className="text-sm sm:text-base font-semibold text-[#2864F0] tracking-normal leading-relaxed">
-                  &ldquo;Work is Worship&rdquo; (कर्म ही पूजा है) · 150+ Permanent Infrastructure Personnel
+                  &ldquo;Work is Worship&rdquo; (कर्म ही पूजा है) · 75+ Permanent Infrastructure Personnel
                 </p>
               </div>
 
               {/* Compelling Introduction (Concise 2-3 lines) */}
               <p className="text-sm sm:text-base text-[#66748A] max-w-xl font-normal leading-relaxed font-body">
-                A dedicated team of 150+ permanent employees comprising experienced civil engineers, high-altitude safety technicians, and skilled site personnel ensuring zero-incident delivery across India.
+                A dedicated team of 75+ permanent employees comprising experienced civil engineers, high-altitude safety technicians, and skilled site personnel ensuring zero-incident delivery across India.
               </p>
 
               {/* Discipline Tags */}
@@ -199,7 +199,7 @@ export const CareersPage: FC<CareersPageProps> = () => {
                       Direct Employment Model
                     </span>
                     <div className="text-xl font-bold font-heading text-[#15315B]">
-                      150+ Permanent Staff
+                      75+ Permanent Staff
                     </div>
                   </div>
                   <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#EAF1FF] text-[#2864F0] border border-[#DCE4EF]">
@@ -294,7 +294,7 @@ export const CareersPage: FC<CareersPageProps> = () => {
             </div>
             <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-[#DCE4EF] shadow-2xs text-xs font-heading font-semibold text-[#15315B] shrink-0">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>150+ Full-Time Field Personnel</span>
+              <span>75+ Full-Time Field Personnel</span>
             </div>
           </div>
 

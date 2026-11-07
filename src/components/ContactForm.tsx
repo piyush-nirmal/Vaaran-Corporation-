@@ -124,9 +124,16 @@ export const ContactForm: FC = () => {
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
                 </div>
                 <div>
-                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Engineering Dispatch Wire</h4>
-                  <p className="text-xs text-[#20242D] font-mono font-bold mt-0.5 sm:mt-1">{currentCompany.phone}</p>
-                  <p className="text-[10px] sm:text-[11px] text-[#687386] mt-0.5">{currentCompany.hours}</p>
+                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Engineering Dispatch Wires</h4>
+                  <div className="flex flex-col gap-1 mt-1 font-mono font-bold text-xs text-[#20242D]">
+                    <a href="tel:+918104158309" className="hover:text-[#3F73F5] transition-colors flex items-center gap-1.5">
+                      <span>+91 81041 58309</span>
+                    </a>
+                    <a href="tel:+919324841946" className="hover:text-[#3F73F5] transition-colors flex items-center gap-1.5">
+                      <span>+91 93248 41946</span>
+                    </a>
+                  </div>
+                  <p className="text-[10px] sm:text-[11px] text-[#687386] mt-1">{currentCompany.hours}</p>
                 </div>
               </div>
 

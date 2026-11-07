@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import type { FC, FormEvent } from 'react';
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Check, Download, Loader2, ArrowRight } from 'lucide-react';
+import { Download, Phone, Mail } from 'lucide-react';
 import { VrnLogo } from './VrnLogo';
-import { submitLead, validateEmail } from '../services/leadService';
-import { track } from '../services/analytics';
 import { companyConfig } from '../data/content';
 import { useContent } from '../context/ContentContext';
 
@@ -17,45 +14,6 @@ interface FooterProps {
 export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
   const { company } = useContent();
   const currentCompany = company || companyConfig;
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSubscribe = async (e: FormEvent) => {
-    e.preventDefault();
-    setError('');
-
-    const emailErr = validateEmail(email);
-    if (emailErr) {
-      setError(emailErr);
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const res = await submitLead({
-        name: 'Newsletter Subscriber',
-        company: 'Pending Tender / Bulletin',
-        email,
-        phone: 'Not provided',
-        sourceSection: 'newsletter',
-        specialDirectives: 'Requested monthly procurement and transit milestone bulletin',
-      });
-
-      if (res.success) {
-        setSubscribed(true);
-        track('cta_click', { location: 'footer_newsletter', email });
-      } else {
-        setError(res.error || 'Subscription failed. Please retry.');
-      }
-    } catch {
-      setError('Connection interrupted. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <footer className="bg-gradient-to-b from-[#F0F5FF] via-[#EAF2FF] to-[#E4EEFF] pt-12 sm:pt-16 lg:pt-20 pb-28 sm:pb-28 lg:pb-12 border-t border-[#D6E4F7] text-[#687386] relative overflow-hidden">
@@ -93,10 +51,6 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
               Trusted civil construction, commercial painting, and specialized structural fabrication services across India. Founded in 1997 on the ethos of &ldquo;Work is Worship&rdquo; (कर्म ही पूजा है).
             </p>
 
-            <div className="text-xs font-body text-[#687386] pt-0.5">
-              Registered Contractor ID: <span className="text-[#3F73F5] font-semibold font-mono text-xs">VRN-IND-9001</span>
-            </div>
-
             {/* Lead Magnet Download Button */}
             <div className="pt-1">
               <button
@@ -110,12 +64,15 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             </div>
           </div>
 
-          {/* Quick Operations Links (Col span 2) */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* Quick Operations Links (Col span 3) */}
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Operations</h4>
-            <ul className="space-y-3 text-xs text-[#687386] font-body">
+            <ul className="space-y-2.5 text-xs text-[#687386] font-body">
               {[
                 { to: '/operations', label: 'All Capabilities' },
+                { to: '/operations', label: 'Civil Repairing' },
+                { to: '/operations', label: 'Beautification & Maintenance' },
+                { to: '/operations', label: 'Construction Work' },
                 { to: '/operations', label: 'Protective Coatings' },
                 { to: '/operations', label: 'Gantry Fabrication' },
                 { to: '/fleet', label: 'Machinery & Fleet Deck' },
@@ -134,10 +91,10 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             </ul>
           </div>
 
-          {/* Infrastructure Governance & Tenders (Col span 2) */}
+          {/* Infrastructure Navigation (Col span 2) */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Navigation</h4>
-            <ul className="space-y-3 text-xs text-[#687386] font-body">
+            <ul className="space-y-2.5 text-xs text-[#687386] font-body">
               {[
                 { to: '/', label: 'Overview & Highlights' },
                 { to: '/operations', label: 'Service Sectors' },
@@ -159,101 +116,50 @@ export const Footer: FC<FooterProps> = ({ onOpenCapabilityModal }) => {
             </ul>
           </div>
 
-          {/* Newsletter / Bulletin using submitLead (Col span 4) */}
-          <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Tender & Milestone Bulletin</h4>
-            <p className="text-xs text-[#687386] leading-relaxed font-body">
-              Receive quarterly technical bulletins on protective coating specifications, transit deployment schedules, and plant mobilization alerts.
-            </p>
-
-            {subscribed ? (
-              <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2.5 text-xs text-emerald-800 font-body font-medium animate-fadeIn">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Subscription confirmed. Quarterly technical updates will be sent to your email.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="space-y-2">
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter corporate email..."
-                    aria-label="Corporate Email for Tender Bulletin"
-                    className="flex-1 bg-white border border-[#E2E9F4] rounded-xl px-3.5 py-2.5 min-h-[44px] text-xs text-[#20242D] placeholder:text-[#687386] focus:outline-none focus:ring-2 focus:ring-[#3F73F5] focus:border-[#3F73F5] font-body shadow-xs"
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="px-5 py-2.5 min-h-[44px] bg-[#3F73F5] hover:bg-[#2454C6] text-white rounded-xl text-xs font-semibold font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50 shrink-0 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3F73F5] active:scale-[0.99]"
+          {/* Direct Contact & Inquiries (Col span 3) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Direct Contact</h4>
+            <div className="space-y-3.5 text-xs text-[#687386] font-body">
+              <div>
+                <span className="text-[11px] font-medium text-[#687386] block uppercase tracking-wider">Direct Phone Lines</span>
+                <div className="flex flex-col gap-1.5 mt-1.5 font-mono font-semibold">
+                  <a
+                    href="tel:+918104158309"
+                    className="text-[#3F73F5] hover:text-[#2454C6] flex items-center gap-2 hover:underline transition-colors"
                   >
-                    {loading ? (
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                    ) : (
-                      <>
-                        <span>Join</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </>
-                    )}
-                  </button>
+                    <Phone className="w-3.5 h-3.5 text-[#3F73F5] shrink-0" />
+                    <span>+91 81041 58309</span>
+                  </a>
+                  <a
+                    href="tel:+919324841946"
+                    className="text-[#3F73F5] hover:text-[#2454C6] flex items-center gap-2 hover:underline transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-[#3F73F5] shrink-0" />
+                    <span>+91 93248 41946</span>
+                  </a>
                 </div>
-                {error && (
-                  <p className="text-[11px] text-red-600 font-body">{error}</p>
-                )}
-                <span className="text-[10px] sm:text-[11px] text-[#687386] block font-body">
-                  Strictly confidential. No spam. You may opt out anytime.
-                </span>
-              </form>
-            )}
+              </div>
 
-            {/* Quick Contact Line */}
-            <div className="pt-2 text-xs font-body text-[#687386] space-y-1">
-              <div>Tender Inquiries: <a href={`mailto:${currentCompany.email}`} className="text-[#3F73F5] hover:underline font-semibold font-mono text-xs">{currentCompany.email}</a></div>
-              <div>Direct Desk: <a href={`tel:${currentCompany.phoneRaw}`} className="text-[#3F73F5] hover:underline font-semibold font-mono text-xs">{currentCompany.phone}</a></div>
+              <div>
+                <span className="text-[11px] font-medium text-[#687386] block uppercase tracking-wider">Tender Inquiries</span>
+                <a
+                  href={`mailto:${currentCompany.email}`}
+                  className="text-[#3F73F5] hover:text-[#2454C6] flex items-center gap-2 hover:underline font-mono font-semibold mt-1 transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#3F73F5] shrink-0" />
+                  <span>{currentCompany.email}</span>
+                </a>
+              </div>
+
+              <div className="pt-2 text-[11px] text-[#687386] border-t border-[#D6E4F7]/70 space-y-0.5">
+                <span className="block font-medium text-[#20242D]">Headquarters</span>
+                <span>Mumbai, Maharashtra, India</span>
+                <span className="block text-[10px] text-[#8692A6] pt-0.5">{currentCompany.hours}</span>
+              </div>
             </div>
           </div>
 
         </div>
-
-        {/* Corporate Trust Matrix in Pure White Cards */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 bg-white p-4 sm:p-6 lg:p-8 border border-[#E2E9F4] rounded-xl sm:rounded-2xl shadow-sm">
-          <div className="flex items-start gap-3 sm:gap-3.5">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EAF2FF] flex items-center justify-center shrink-0">
-              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
-            </div>
-            <div>
-              <h5 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Statutory Labor Compliance</h5>
-              <p className="text-xs text-[#687386] mt-0.5 sm:mt-1 leading-relaxed font-body">
-                100% compliance with PASARA, DGR, ESIC, and PF regulatory labor code audits.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3 sm:gap-3.5 border-t border-[#E2E9F4] pt-3.5 md:border-t-0 md:pt-0 md:border-x md:border-[#E2E9F4] md:px-6">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EAF2FF] flex items-center justify-center shrink-0">
-              <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
-            </div>
-            <div>
-              <h5 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">ISO 12944 Certified Standards</h5>
-              <p className="text-xs text-[#687386] mt-0.5 sm:mt-1 leading-relaxed font-body">
-                Sa 2.5 near-white blast profiles and high-durability C5-I corrosive environments.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3 sm:gap-3.5 border-t border-[#E2E9F4] pt-3.5 md:border-t-0 md:pt-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#EAF2FF] flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#3F73F5]" />
-            </div>
-            <div>
-              <h5 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#20242D] font-heading">Scale & Continuous Mobilization</h5>
-              <p className="text-xs text-[#687386] mt-0.5 sm:mt-1 leading-relaxed font-body">
-                Delivered ₹30+ Crore projects with 150+ permanent personnel across Maharashtra, Goa, Delhi & Bangalore.
-              </p>
-            </div>
-          </div>
-        </div> */}
 
         {/* Bottom Bar */}
         <div className="border-t border-[#D6E4F7] pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[11px] sm:text-[13px] text-[#687386] font-body text-center sm:text-left">

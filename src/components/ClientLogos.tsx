@@ -12,10 +12,8 @@ import roadwayImg from '../assets/images/clients/roadway.png';
 import pragatiImg from '../assets/images/clients/pragati.png';
 import apcoImg from '../assets/images/clients/apco.png';
 import tataImg from '../assets/images/clients/tata.png';
-import godrejImg from '../assets/images/clients/godrej.png';
 import amulImg from '../assets/images/clients/amul.png';
 import ashmiImg from '../assets/images/clients/ashmi.png';
-import saiImg from '../assets/images/clients/sai.png';
 
 interface LogoProps {
   className?: string;
@@ -978,10 +976,8 @@ export const clientLogoImages: Record<string, string> = {
   'Pragati Infra': pragatiImg,
   'Apco Infratech': apcoImg,
   'TATA Group': tataImg,
-  'Godrej': godrejImg,
   'Amul (GCMMF)': amulImg,
   'ASHMI': ashmiImg,
-  'Sai Enterprises': saiImg,
 };
 
 export const getClientLogoImage = (name: string): string | null => {
@@ -1009,10 +1005,8 @@ export const clientLogoMap: Record<string, React.FC<LogoProps>> = {
 
   // Tier 3 - Corporate & Industrial
   'TATA Group': createImageLogo(tataImg, 'TATA Group'),
-  'Godrej': createImageLogo(godrejImg, 'Godrej'),
   'Amul (GCMMF)': createImageLogo(amulImg, 'Amul'),
   'ASHMI': createImageLogo(ashmiImg, 'ASHMI Group'),
-  'Sai Enterprises': createImageLogo(saiImg, 'Sai Enterprises'),
 };
 
 /**

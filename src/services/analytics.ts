@@ -19,6 +19,7 @@ export type AnalyticsEvent =
   | 'simulator_apply_to_rfp'
   | 'project_modal_open'
   | 'machine_modal_open'
+  | 'hero_video_change'
   | 'filter_change';
 
 export interface EventParams {

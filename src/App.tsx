@@ -18,6 +18,7 @@ const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ defa
 const RfpPage = lazy(() => import('./pages/RfpPage').then(m => ({ default: m.RfpPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const BoardMembersPage = lazy(() => import('./pages/BoardMembersPage').then(m => ({ default: m.BoardMembersPage })));
 const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
 const SustainabilityPage = lazy(() => import('./pages/SustainabilityPage').then(m => ({ default: m.SustainabilityPage })));
 const AdminPage = lazy(() => import('./pages/AdminPage').then(m => ({ default: m.AdminPage })));
@@ -141,6 +142,14 @@ function MainApp() {
                 <Route 
                   path="/about-us" 
                   element={<Navigate to="/about" replace />} 
+                />
+                <Route 
+                  path="/board-members" 
+                  element={<BoardMembersPage onOpenCapabilityModal={handleOpenCapabilityProfile} />} 
+                />
+                <Route 
+                  path="/board" 
+                  element={<Navigate to="/board-members" replace />} 
                 />
                 <Route 
                   path="/careers" 

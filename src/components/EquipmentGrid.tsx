@@ -63,7 +63,7 @@ export const EquipmentGrid: FC = () => {
   const handleChatWhatsApp = () => {
     if (!inspectedItem) return;
     openWhatsApp(
-      `Hi Varan Corporation, I am interested in mobilizing equipment: ${inspectedItem.name} (${inspectedItem.capacity}) for our project.`,
+      `Hi Varan Corporation, I am interested in mobilizing equipment: ${inspectedItem.name} for our project.`,
       'equipment_modal'
     );
   };
@@ -154,7 +154,7 @@ export const EquipmentGrid: FC = () => {
             <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
               <div>
                 <div className="text-[12px] font-body font-medium uppercase tracking-[0.04em] text-[#687386]">
-                  <span className="font-mono font-bold text-[#3F73F5]">{item.capacity}</span> Available
+                  <span className="font-mono font-bold text-[#3F73F5]">{item.capacity}</span> · Active Fleet
                 </div>
                 <h3 className="text-base font-semibold text-[#20242D] group-hover:text-[#3F73F5] transition-colors mt-0.5 leading-snug font-heading">
                   {item.name}

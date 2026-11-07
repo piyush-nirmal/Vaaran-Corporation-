@@ -14,8 +14,8 @@ export const ContactPage: FC = () => {
       {/* Dynamic SEO Meta Tags */}
       <SeoHead
         title="Contact Us & Tender Inquiries | Varan Corporation"
-        description="Direct contact desk for Varan Corporation. Phone: 8104158309, Email: varancorporation@gmail.com. Reach out for corporate communications, tender inquiries, and project specifications."
-        keywords="Contact Varan Corporation, phone 8104158309, email varancorporation@gmail.com, tender desk, civil contractor contact, Mumbai headquarters"
+        description="Direct contact desk for Varan Corporation. Phone: 8104158309 / 9324841946, Email: varancorporation@gmail.com. Reach out for corporate communications, tender inquiries, and project specifications."
+        keywords="Contact Varan Corporation, phone 8104158309, phone 9324841946, email varancorporation@gmail.com, tender desk, civil contractor contact, Mumbai headquarters"
       />
       {/* Engineered Page Header */}
       <PageHeader
@@ -23,12 +23,12 @@ export const ContactPage: FC = () => {
         badgeName="CORPORATE COMMUNICATIONS & TENDERS"
         title="Direct Engineering Tender & Site"
         highlightWord="Desk"
-        description="Connect directly with our senior project managers, estimation directors, and safety compliance officers. Inquiries received during business hours are acknowledged within 2 hours."
+        description="Connect directly with our senior project managers, estimation directors, and safety compliance officers. Inquiries received during business hours are acknowledged within 24 hours."
         breadcrumbs={[
           { label: 'Contact' }
         ]}
         metrics={[
-          { label: 'Response Window', value: '< 2h', unit: 'Business Hours' },
+          { label: 'Response Window', value: '24hr', unit: 'Business Hours' },
           { label: 'Registered CIN', value: 'Active', unit: 'MCA Verified' },
           { label: 'Tender Desk', value: 'Direct', unit: 'Landline' },
           { label: 'Workforce Hub', value: 'Mumbai', unit: 'HQ' },
@@ -37,10 +37,17 @@ export const ContactPage: FC = () => {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <a
               href={`tel:${currentCompany.phoneRaw}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-sm shadow-[#3F73F5]/25 transition-all min-h-[44px]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#3F73F5] hover:bg-[#2454C6] text-white font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-sm shadow-[#3F73F5]/25 transition-all min-h-[44px]"
             >
               <Phone className="w-3.5 h-3.5 text-white shrink-0" />
-              <span>Call Direct: {currentCompany.phone}</span>
+              <span>Call: +91 81041 58309</span>
+            </a>
+            <a
+              href="tel:+919324841946"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white border border-[#3F73F5]/30 hover:border-[#3F73F5] text-[#3F73F5] font-semibold text-xs uppercase tracking-[0.04em] font-heading shadow-xs transition-all min-h-[44px]"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#3F73F5] shrink-0" />
+              <span>Call: +91 93248 41946</span>
             </a>
             <a
               href={`mailto:${currentCompany.email}`}

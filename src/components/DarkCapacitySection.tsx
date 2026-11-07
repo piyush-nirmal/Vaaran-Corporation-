@@ -32,7 +32,7 @@ export const DarkCapacitySection: FC = () => {
               Nationwide Mobilization
             </h2>
             <p className="text-xs sm:text-base lg:text-[16px] text-[#64748B] font-normal leading-relaxed">
-              ₹30+ Crore projects delivered with 150+ permanent personnel across Maharashtra, Goa, Delhi & Bangalore.
+              ₹30+ Crore projects delivered with 75+ permanent personnel across Maharashtra, Goa, Delhi & Bangalore.
             </p>
           </div>
 
