@@ -31,7 +31,7 @@ export const HERO_VIDEO_SLIDES: HeroVideoSlide[] = [
     category: 'Commercial & Highway Painting',
     src: '/videos/divider-painting.webm',
     fallbackSrc: '/videos/highway-construction.webm',
-    poster: '/assets/hero_infrastructure_viaduct_1791032354735.jpg',
+    poster: '/images/divider-painting-real.jpg',
   },
   {
     id: 'worli-sealink',
@@ -115,15 +115,6 @@ export const Hero: FC<HeroProps> = () => {
       return next;
     });
   }, [currentSlideIndex]);
-
-  const handleSelectSlide = (index: number) => {
-    setCurrentSlideIndex(index);
-    track('hero_video_change', {
-      slideIndex: index,
-      slideId: HERO_VIDEO_SLIDES[index].id,
-      title: HERO_VIDEO_SLIDES[index].shortLabel,
-    });
-  };
 
   const handleRequestBid = () => {
     track('cta_click', { location: 'hero_primary', target: '/rfp-portal' });
@@ -209,32 +200,6 @@ export const Hero: FC<HeroProps> = () => {
           <span className="text-xs font-semibold text-[#2563EB] tracking-wide max-w-[140px] sm:max-w-[200px] truncate">
             {activeSlide.shortLabel}
           </span>
-        </div>
-
-        {/* 4-Step Interactive Progress Timeline */}
-        <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-950/70 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 rounded-full border border-white/15 shadow-lg">
-          {HERO_VIDEO_SLIDES.map((slide, idx) => {
-            const isActive = idx === currentSlideIndex;
-            return (
-              <button
-                key={slide.id}
-                type="button"
-                onClick={() => handleSelectSlide(idx)}
-                className={`group relative flex items-center gap-1 px-2 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/50'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
-                title={`Switch to ${slide.number}. ${slide.shortLabel}`}
-              >
-                <span className="font-mono text-[10px] opacity-80">{slide.number}</span>
-                <span className="hidden sm:inline font-sans">{slide.shortLabel}</span>
-                {isActive && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse ml-0.5" />
-                )}
-              </button>
-            );
-          })}
         </div>
       </div>
 
